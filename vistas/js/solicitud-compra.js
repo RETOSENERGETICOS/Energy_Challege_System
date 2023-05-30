@@ -91,7 +91,7 @@ function addInput(elem, type) {
 }
 
 /* -------------------------------------------------------------------------- */
-/*                 Remover filas al formulario de productos                */
+/*                 Remover filas al formulario de productos                   */
 /* -------------------------------------------------------------------------- */
 
 function removeInput(index, type) {
@@ -104,7 +104,7 @@ function removeInput(index, type) {
 
         console.log(inputs);
         console.log(index);
-        console.log(i + "hola");
+        
 
       }
     });
