@@ -1,0 +1,15 @@
+<?php
+require_once "Controladores/plantillaC.php";
+
+require_once "controladores/usuariosC.php";
+require_once "modelos/usuariosM.php";
+
+require_once "controladores/proveedoresC.php";
+require_once "modelos/proveedoresM.php";
+
+require_once "controladores/solicitudC.php";
+require_once "modelos/solicitudM.php";
+
+$plantilla = new Plantilla();
+$plantilla -> LlamarPlantilla();
+
