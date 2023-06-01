@@ -102,7 +102,7 @@
 
                                 ?>
                                     <tr>
-                                        <td><?php echo $value["solicitante"] ?></td>
+                                        <td><?php echo $value["solicitante_soli"] ?></td>
                                         <td><?php echo $value["plazo_entr"] ?></td>
                                         <td><?php echo $value["nombre"] ?></td>
                                         <td><?php echo $value["atn"] ?></td>
@@ -182,7 +182,7 @@
                                     <h6 class="mb-0 text-uppercase">VENDOR / SUMINISTRADOR</h6>
                                     <div class="col-md-6">
                                         <label for="validationDefault01" class="form-label">Nombre</label>
-                                        <select class="form-select" name="" id="" required>
+                                        <select class="form-select" value="" name="proveedorN" id="" required>
                                             <option value="" name="">...</option>
                                             <?php
                                             $item = null;
@@ -190,7 +190,7 @@
 
                                             $suminis = ProveedoresC::VerCombProveedoresC($item, $valor);
                                             foreach ($suminis as $key => $value) {
-                                                echo '<option value="' . $value["id"] . '">' . $value["nombre"] . '</option>';
+                                                echo '<option value="' . $value["id"] . '" >' . $value["nombre"] . '</option>';
                                             }
                                             // 
                                             ?>
@@ -208,13 +208,13 @@
                                     </div>
                                     <div class="col-md-3">
                                         <label for="validationDefault02" class="form-label">RFC</label>
-                                        <input type="text" class="form-control" name="rfcN" id="validationDefault02" required>
+                                        <input type="text" class="form-control" name="rfcSN" id="validationDefault02" required>
 
                                     </div>
 
                                     <div class="col-md-3">
                                         <label for="validationDefault03" class="form-label">Teléfono</label>
-                                        <input type="text" class="form-control" name="telefonoN" id="validationDefault03" required>
+                                        <input type="text" class="form-control" name="telefonoSN" id="validationDefault03" required>
 
                                     </div>
 
@@ -226,12 +226,12 @@
                                     </div>
                                     <div class="col-md-3">
                                         <label for="validationDefaul05" class="form-label">ATN</label>
-                                        <input type="text" class="form-control" name="atnN" id="validationDefault05" required>
+                                        <input type="text" class="form-control" name="atnSN" id="validationDefault05" required>
 
                                     </div>
                                     <div class="col-md-3">
                                         <label for="validationDefault06" class="form-label">Email</label>
-                                        <input type="text" class="form-control" name="emailN" id="validationDefault06" required>
+                                        <input type="text" class="form-control" name="emailSN" id="validationDefault06" required>
 
                                     </div>
 
@@ -253,13 +253,13 @@
                                     <h6 class="mb-0 text-uppercase">SHIP TO /LUGAR DE ENTREGA</h6>
                                     <div class="col-md-4">
                                         <label for="validationDefault01" class="form-label">Lugar/entrega</label>
-                                        <input type="text" class="form-control" name="entregaN" id="validationDefaul01" value="RETOS ENERGETICOS SA DE CV">
+                                        <input type="text" class="form-control" name="entregaLN" id="validationDefaul01" value="RETOS ENERGETICOS SA DE CV">
 
                                     </div>
                                     <div class="col-md-4">
                                         <label for="validationDefault02" class="form-label">ATN</label>
                                         <div class="col-md-12">
-                                            <input type="text" class="form-control" name="atnN" id="validationDefaul03" value="" required>
+                                            <input type="text" class="form-control" name="atnLN" id="validationDefaul03" value="" required>
 
                                         </div>
                                         <!-- <select class="form-select" name="atnN" id="" required>
@@ -281,29 +281,29 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label for="validationDefault01" class="form-label">CP</label>
-                                        <input type="text" class="form-control" name="cpN" id="validationDefaul03" value="91919, VERACRUZ VER, MEXICO" required>
+                                        <input type="text" class="form-control" name="cpLN" id="validationDefaul03" value="91919, VERACRUZ VER, MEXICO" required>
 
                                     </div>
 
                                     <div class="col-md-8">
                                         <label for="validationDefaul03" class="form-label">Dirección</label>
-                                        <input type="text" class="form-control" name="direccionN" id="validationDefault04" value="JUAN GRIJALVA #610" required>
+                                        <input type="text" class="form-control" name="direccionLN" id="validationDefault04" value="JUAN GRIJALVA #610" required>
 
                                     </div>
                                     <div class="col-md-4">
                                         <label for="validationDefault03" class="form-label">Teléfono</label>
-                                        <input type="text" class="form-control" name="telefonoN" id="validationDefault05" value="+52 1 229 937 1727" required>
+                                        <input type="text" class="form-control" name="telefonoLN" id="validationDefault05" value="+52 1 229 937 1727" required>
 
                                     </div>
                                     <div class="col-md-6">
                                         <label for="validationDefault2" class="form-label">Solicitante</label>
-                                        <input type="text" class="form-control" name="solicitanteN" id="validationDefault2" value="<?php echo $_SESSION["nombre"]; ?>" disabled>
+                                        <input type="text" class="form-control" name="solicitanteLN" id="validationDefault2" value="<?php echo $_SESSION["nombre"]; ?>" disabled>
 
                                     </div>
 
                                     <div class="col-md-6">
                                         <label for="validationDefault08" class="form-label">Email</label>
-                                        <input type="text" class="form-control" name="emailN" id="validationDefault08" value="<?php echo $_SESSION["correo"]; ?>" disabled>
+                                        <input type="text" class="form-control" name="emailLN" id="validationDefault08" value='<?php echo $_SESSION["correo"]; ?>' disabled>
 
                                     </div>
 
@@ -325,7 +325,7 @@
 
                                     <div class="col-md-2">
                                         <label for="validationDefault01" class="form-label">Requisitioner / Solicitante</label>
-                                        <input type="text" class="form-control" name="solicitanteN" id="validationDefault01" value="<?php echo $_SESSION["iniciales_firma"]; ?>" required disabled>
+                                        <input type="text" class="form-control" name="solicitanteSN" id="validationDefault01" value="<?php echo $_SESSION["iniciales_firma"]; ?>" required disabled>
 
                                     </div>
                                     <div class="col-md-3">
@@ -418,7 +418,7 @@
                                                     <!-- -------------------------------------------------------------------------- -->
                                                     <!--removeInput para eliminar filas de solicitud  boton danger                  -->
                                                     <!-- -------------------------------------------------------------------------- -->
-
+                                                    <input type="hidden" name="inputSummary" value="1">
                                                     <td><button class="btn btn-danger" onclick="removeInput(0,'inputSummary')" title="Eliminar fila" value="Borrar Campos"><i class="lni lni-trash"></i></button></td>
                                                     <td>
                                                         <div class="col-md-12">
@@ -517,6 +517,11 @@
 
             <button class="btn btn-primary" type="submit">Crear solicitud</button>
             <br>
+
+            <?php
+            $crearSoli = new SolicitudC();
+            $crearSoli->CrearSolicitudC();
+            ?>
 
             </form>
 

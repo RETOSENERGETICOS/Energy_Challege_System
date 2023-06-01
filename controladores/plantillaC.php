@@ -2,7 +2,7 @@
 
 class Plantilla{
 
-    public function LlamarPlantilla(){
+   static public function LlamarPlantilla(){
         include "vistas/plantilla.php";
     }
 }

@@ -3,13 +3,13 @@
 /* -------------------------------------------------------------------------- */
 
 function addInput(elem, type) {
-    inputs=+ 1;
+
   var inputs = $("." + type);
 
   if (type == "inputSummary") {
     $(elem).before(
       `
-            
+
             <div class="table-responsive inputSummary">
             <table class="table table-bordered">
                 <thead>
@@ -88,6 +88,8 @@ function addInput(elem, type) {
             </table>`
     );
   }
+
+  $('[name="'+type+'"]').val(inputs.length+1);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -100,14 +102,19 @@ function removeInput(index, type) {
   if (inputs.length > 1) {
     inputs.each(i => {
       if (i == index) {
-        $(inputs[i+1]).remove();
+        $(inputs[i]).remove();
+        // var num;
+        // num = inputs.length;
+        // inputs.length ;
+        // console.log(inputs);
+        // console.log(index);
+        // console.log(num);
 
-        console.log(inputs);
-        console.log(index);
         
-
       }
     });
+    $('[name="'+type+'"]').val(inputs.length-1);
+
   } //else{
   //      fncNotie(3,"At least one entry must exist");
   //  } index = numero de posicion,  inputs = toda la tabla que genera, type = inputSummary

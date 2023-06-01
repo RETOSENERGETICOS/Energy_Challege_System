@@ -39,7 +39,7 @@ class ProveedoresM extends ConexionBD{
         
 		if($item != null){
 
-			$pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE $item = :$item");
+			$pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE $item = :$item AND estado = 1");
 
 			$pdo -> bindParam(":" .$item, $valor, PDO::PARAM_STR);
 
@@ -49,7 +49,7 @@ class ProveedoresM extends ConexionBD{
 
 		}else{
 
-			$pdo = ConexionBD::cBD()->prepare("SELECT* FROM $tablaBD");
+			$pdo = ConexionBD::cBD()->prepare("SELECT* FROM $tablaBD WHERE estado = 1");
 
 			$pdo -> execute();
 
