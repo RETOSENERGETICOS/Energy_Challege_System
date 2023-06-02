@@ -100,7 +100,33 @@
         if($_SESSION["rol"] == "Manager"){
           echo'
               
-          
+          <li class="menu-label">Elementos</li>
+          <li>
+            <a href="javascript:;" class="has-arrow">
+              <div class="parent-icon">
+                <ion-icon name="briefcase-sharp"></ion-icon>
+              </div>
+              <div class="menu-title">Herramientas</div>
+            </a>
+  
+            <ul>
+              <!-- <li> <a href="inicio">
+                  <ion-icon name="ellipse-outline"></ion-icon>Inicio
+                </a>
+              </li> -->
+              <li> <a href="usuarios">
+                  <ion-icon name="ellipse-outline"></ion-icon>Usuarios
+                </a>
+              </li>
+  
+              <li> <a href="proveedores">
+                  <ion-icon name="ellipse-outline"></ion-icon>Proveedores
+                </a>
+              </li>
+              
+              
+              
+            </ul>
           
             
           </li> 
@@ -322,12 +348,12 @@
 
      
         ?>
-        
 
-        
-       
-        
-      
+
+
+
+
+
       </ul>
       <!--end navigation-->
     </aside>

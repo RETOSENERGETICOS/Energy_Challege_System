@@ -12,7 +12,7 @@
 
             <!--start breadcrumb-->
             <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">Gestor de proveedores </div>
+                <div class="breadcrumb-title pe-3">Gestor de solicitud de compra</div>
                 <div class="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 p-0 align-items-center">
@@ -41,7 +41,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0 align-items-center">
 
-                    <!-- <li class="breadcrumb-item active" aria-current="page"><button type="button" class="btn btn-info px-5" style="color: #fff;" data-bs-toggle="modal" data-bs-target="#insertarP"><i class="fadeIn animated bx bx-user-plus"></i>Agregar proveedor</button></li> -->
+                     <li class="breadcrumb-item active" aria-current="page"><button type="button" class="btn btn-info px-5" style="color: #fff;" data-bs-toggle="modal" data-bs-target="#insertarP"><i class="fadeIn animated bx bx-user-plus"></i>Agregar solicitud</button></li> 
 
 
                 </ol>
@@ -69,7 +69,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <table id="example2" class="table table-striped table-bordered TB">
-                        <thead>
+                            <thead>
                                 <tr>
                                     <th>Estado</th>
                                     <th>Solicitante</th>
@@ -86,9 +86,9 @@
                                     <th>Otros</th>
                                     <th>Total</th>
                                     <th>Moneda</th>
-                                   
+
                                     <th>Acciones</th>
-                               
+
                             </thead>
                             <tbody>
                                 <!-- -------------------------------------------------------------------------- -->
@@ -106,21 +106,22 @@
                                 /* -------------------------------------------------------------------------- */
 
                                 foreach ($verS as $key => $value) {
-                                    echo'
+                                    echo '
                                     </tr>';
                                 ?>
                                     <tr>
-                                    <td><?php 
-                                        if($value['estado'] == 1){
-                                            echo ' <button class="btn btn-secondary btn-block" type="submit">En proceso</button>';
-                                            
-                                        }if($value['estado'] == 2){
-                                            echo ' <button class="btn btn-success btn-block" type="submit">Aprobada</button>';
-                                        }if($value['estado'] == 3){
-                                            echo ' <button class="btn btn-danger btn-block" type="submit">Rechazada</button>';
-                                        }
-                                        
-                                        ?></td>
+                                        <td><?php
+                                            if ($value['estado'] == 1) {
+                                                echo ' <button class="btn btn-secondary btn-block" type="submit">En proceso</button>';
+                                            }
+                                            if ($value['estado'] == 2) {
+                                                echo ' <button class="btn btn-success btn-block" type="submit">Aprobada</button>';
+                                            }
+                                            if ($value['estado'] == 3) {
+                                                echo ' <button class="btn btn-danger btn-block" type="submit">Rechazada</button>';
+                                            }
+
+                                            ?></td>
 
                                         <td><?php echo $value["solicitante_soli"] ?></td>
                                         <td><?php echo $value["plazo_entr"] ?></td>
@@ -142,8 +143,8 @@
                                         ?>
                                         <td><?php echo $decimal ?></td>
                                         <td><?php echo $value["moneda"] ?></td>
-                                        
-                                       
+
+
                                         <td>
                                             <div class="btn-group">
                                                 <button type="button" class="btn btn-warning"><i class="fadeIn animated bx bx-edit-alt"></i></button>
@@ -245,7 +246,7 @@
 
                                     ?>
 
-                            </div>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -350,6 +351,73 @@
 </div>
 </div>
 <!--end wrapper-->
+
+<!-- <div class="modal fade show" id="aprovSolicitud" tabindex="-1" style="display: block;" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" role="form" enctype="multipart/form-data" class="row g-3 needs-validation">
+                                    <div class="col-md-12">
+                                        <label class="form-label">Nombre proveedor</label>
+                                        <input type="text" class="form-control" name="nombreN" required>
+                                        <div class="valid-feedback">Campo relleno correctamente!</div>
+                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="form-label">Rfc</label>
+                                        <input type="text" class="form-control" name="rfcN" required>
+                                        <div class="valid-feedback">Campo relleno correctamente!</div>
+                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="frm-label">Dirección</label>
+                                        <input type="text" class="form-control" name="direccionN" required>
+                                        <div class="valid-feedback">Campo relleno correctamente!</div>
+                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="frm-label">Teléfono</label>
+                                        <input type="number" class="form-control" name="telefonoN" required>
+                                        <div class="valid-feedback">Campo relleno correctamente!</div>
+                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="frm-label">Atn</label>
+                                        <input type="text" class="form-control" name="atnN" required>
+                                        <div class="valid-feedback">Campo relleno correctamente!</div>
+                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="frm-label">Correo eletrónico</label>
+                                        <input type="email" class="form-control" name="emailN" required>
+                                        <div class="valid-feedback">Campo relleno correctamente!</div>
+                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                    </div>
+
+
+                                    <div class="modal-footer">
+
+                                        <button class="btn btn-primary btn-lg btn-block" type="submit">Agregar</button>
+                                    </div>
+                                    <?php
+                                    $crearP = new ProveedoresC();
+                                    $crearP->CrearProveedoresC();
+
+                                    ?>
+
+                                </div>
+                            </form>
+            <div class="modal-body">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur.</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div> -->
 
 
 <?php
