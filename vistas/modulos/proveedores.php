@@ -1,3 +1,19 @@
+<?php
+
+// if($_SESSION["rol"] != "Administrador" || $_SESSION["rol"] != "Compras"){
+
+//     echo '<script>
+  
+//     window.location = "inicio";
+//     </script>';
+  
+//     return;
+  
+//   }
+?>
+
+
+
 <!--start wrapper-->
 <div class="wrapper">
 
@@ -5,7 +21,7 @@
 
 
 
-    <!-- start page content wrapper-->
+  <!-- start page content wrapper-->
     <div class="page-content-wrapper">
         <!-- start page content-->
         <div class="page-content" style="margin-bottom: -3%;">

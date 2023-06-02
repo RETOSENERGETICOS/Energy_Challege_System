@@ -1,3 +1,19 @@
+<?php
+
+// if( $_SESSION["rol"] == "Empleado" 
+// || $_SESSION["rol"] == "Manager" || $_SESSION["rol"] = "Director" 
+// || $_SESSION["rol"] == "Compras"){
+
+//     echo '<script>
+  
+//     window.location = "inicio";
+//     </script>';
+  
+//     return;
+  
+//   }
+?>
+
 <!--start wrapper-->
 <div class="wrapper">
     <!-- start page content wrapper-->
@@ -81,15 +97,18 @@
                                     <th>Otros</th>
                                     <th>Total</th>
                                     <th>Moneda</th>
+                                    <th>Estado</th>
                                     <th>Acciones</th>
-                                </tr>
+                               
                             </thead>
                             <tbody>
                                 <!-- -------------------------------------------------------------------------- -->
                                 <!--                      Vista de datos de tabla solicitud                     -->
                                 <!-- -------------------------------------------------------------------------- -->
                                 <?php
-                                $verS = SolicitudC::VerSolicitudC();
+                                $item = null;
+                                $valor = null;
+                                $verS = SolicitudC::VerSolicitudC($item, $valor);
                                 ?>
                                 <?php
                                 /* -------------------------------------------------------------------------- */
@@ -98,8 +117,8 @@
                                 /* -------------------------------------------------------------------------- */
 
                                 foreach ($verS as $key => $value) {
-                                    //var_dump ($verS);
-
+                                    echo'
+                                    </tr>';
                                 ?>
                                     <tr>
                                         <td><?php echo $value["solicitante_soli"] ?></td>
@@ -110,12 +129,30 @@
                                         <td><?php echo $value["descripcion"] ?></td>
                                         <td><?php echo $value["cantidad"] ?></td>
                                         <td><?php echo $value["precio_unitario"] ?></td>
+                                        <?php $texto = $value["otros_soli"];
+                                        $decimal = floatval($texto);;
+                                        ?>
                                         <td><?php echo $value["subtotal_soli"] ?></td>
                                         <td><?php echo $value["taxes"] ?></td>
                                         <td><?php echo $value["pago_envio_soli"] ?></td>
                                         <td><?php echo $value["otros_soli"] ?></td>
-                                        <td><?php echo $value["total_soli"] ?></td>
+                                        <?php $texto = $value["total_soli"];
+                                        $decimal = number_format($texto, 2, ".", "");
+                                        ?>
+                                        <td><?php echo $decimal ?></td>
                                         <td><?php echo $value["moneda"] ?></td>
+                                        
+                                        <td><?php 
+                                        if($value['estado'] == 1){
+                                            echo ' <button class="btn btn-secondary btn-block" type="submit">En proceso</button>';
+                                            
+                                        }if($value['estado'] == 2){
+                                            echo ' <button class="btn btn-success btn-block" type="submit">Aprobada</button>';
+                                        }if($value['estado'] == 3){
+                                            echo ' <button class="btn btn-danger btn-block" type="submit">Rechazada</button>';
+                                        }
+                                        
+                                        ?></td>
 
                                         <td>
                                             <div class="btn-group">
@@ -490,24 +527,19 @@
                 <div class="card mb-0">
                     <div class="card-body">
                         <div class="my-3 border-top"></div>
-                        <h6 class="mb-0">Subtotal: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="subtotalN" value="" required disabled></span></h5>
+                        <h6 class="mb-0">Subtotal: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="subtotalN" value="" required></span></h5>
                             <div class="my-3 border-top"></div>
-                            <h6 class="mb-0">Taxes: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="taxesN" value="" required disabled></span></h5>
+                            <h6 class="mb-0">Taxes: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="taxesN" value="" required></span></h5>
                                 <div class="my-3 border-top"></div>
-                                <h6 class="mb-0">Shipping: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="shippinglN" value="" required disabled></span></h5>
+                                <h6 class="mb-0">Shipping: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="shippinglN" value="" required></span></h5>
                                     <div class="my-3 border-top"></div>
-                                    <h6 class="mb-0">Otros: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="otrosN" value="" required disabled></span></h5>
+                                    <h6 class="mb-0">Otros: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="otrosN" value="" required></span></h5>
                                         <div class="my-3 border-top"></div>
-                                        <h6 class="mb-0">Total: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="totalN" value="" required disabled></span></h5>
+                                        <h6 class="mb-0">Total: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="totalN" value="" required></span></h5>
 
                                             <div class="my-3 border-top"></div>
                                             <h6 class="mb-0">Moneda: <span class="float-end">
-                                                    <select class="form-select" name="" id="" required>
-                                                        <option value="" name="monedaN">...</option>
-                                                        <option value="MXN">MXN</option>
-                                                        <option value="USD">USD</option>
-                                                        <option value="EUR">EUR</option>
-                                                    </select>
+                                                    <input type="text" class="form-control" style="position: relative; margin-top: -5%" name="monedaN" value="" required>
                     </div>
                 </div>
                 <br>

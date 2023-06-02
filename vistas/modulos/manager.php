@@ -41,7 +41,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0 align-items-center">
 
-                    <li class="breadcrumb-item active" aria-current="page"><button type="button" class="btn btn-info px-5" style="color: #fff;" data-bs-toggle="modal" data-bs-target="#insertarP"><i class="fadeIn animated bx bx-user-plus"></i>Agregar proveedor</button></li>
+                    <!-- <li class="breadcrumb-item active" aria-current="page"><button type="button" class="btn btn-info px-5" style="color: #fff;" data-bs-toggle="modal" data-bs-target="#insertarP"><i class="fadeIn animated bx bx-user-plus"></i>Agregar proveedor</button></li> -->
 
 
                 </ol>
@@ -69,59 +69,92 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <table id="example2" class="table table-striped table-bordered TB">
-                            <thead>
+                        <thead>
                                 <tr>
-                                    <th>Nombre</th>
-                                    <th>RFC</th>
-                                    <th>Dirección</th>
-                                    <th>Teléfono</th>
+                                    <th>Estado</th>
+                                    <th>Solicitante</th>
+                                    <th>Plazo de entrega</th>
+                                    <th>Suministrador</th>
                                     <th>ATN</th>
-                                    <th>Correo electrónico</th>
+                                    <th>Referencia suministrador</th>
+                                    <th>Descripción</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio Unitario</th>
+                                    <th>Subtotal</th>
+                                    <th>Taxes</th>
+                                    <th>Shipping</th>
+                                    <th>Otros</th>
+                                    <th>Total</th>
+                                    <th>Moneda</th>
+                                   
                                     <th>Acciones</th>
-                                </tr>
+                               
                             </thead>
                             <tbody>
-
+                                <!-- -------------------------------------------------------------------------- -->
+                                <!--                      Vista de datos de tabla solicitud                     -->
+                                <!-- -------------------------------------------------------------------------- -->
                                 <?php
-
-
-                                $verP = ProveedoresC::VerProveedoresC();
+                                $item = null;
+                                $valor = null;
+                                $verS = SolicitudC::VerSolicitudC($item, $valor);
                                 ?>
                                 <?php
-                                //abrimos un foreach con la variable respuesta traiga un echo con lo que tenemos como registros en la tabla
-                                foreach ($verP as $key => $value) {
-                                    echo '
-                        
+                                /* -------------------------------------------------------------------------- */
+                                /*abrimos un foreach con la variable respuesta traiga un echo con lo que tenemos
+                                  como registros en la tabla                                                  */
+                                /* -------------------------------------------------------------------------- */
+
+                                foreach ($verS as $key => $value) {
+                                    echo'
+                                    </tr>';
+                                ?>
                                     <tr>
-                                        <td>' . $value["nombre"] . '</td>
-                                        <td>' . $value["rfc"] . '</td>
-                                        <td>' . $value["direccion"] . ' ?></td>
-                                        <td>' . $value["telefono"] . '</td>
-                                        <td>' . $value["atn"] . '</td>
-                                        <td>' . $value["email"] . '</td>
+                                    <td><?php 
+                                        if($value['estado'] == 1){
+                                            echo ' <button class="btn btn-secondary btn-block" type="submit">En proceso</button>';
+                                            
+                                        }if($value['estado'] == 2){
+                                            echo ' <button class="btn btn-success btn-block" type="submit">Aprobada</button>';
+                                        }if($value['estado'] == 3){
+                                            echo ' <button class="btn btn-danger btn-block" type="submit">Rechazada</button>';
+                                        }
+                                        
+                                        ?></td>
+
+                                        <td><?php echo $value["solicitante_soli"] ?></td>
+                                        <td><?php echo $value["plazo_entr"] ?></td>
+                                        <td><?php echo $value["nombre"] ?></td>
+                                        <td><?php echo $value["atn"] ?></td>
+                                        <td><?php echo $value["ref_suministrador"] ?></td>
+                                        <td><?php echo $value["descripcion"] ?></td>
+                                        <td><?php echo $value["cantidad"] ?></td>
+                                        <td><?php echo $value["precio_unitario"] ?></td>
+                                        <?php $texto = $value["otros_soli"];
+                                        $decimal = floatval($texto);;
+                                        ?>
+                                        <td><?php echo $value["subtotal_soli"] ?></td>
+                                        <td><?php echo $value["taxes"] ?></td>
+                                        <td><?php echo $value["pago_envio_soli"] ?></td>
+                                        <td><?php echo $value["otros_soli"] ?></td>
+                                        <?php $texto = $value["total_soli"];
+                                        $decimal = number_format($texto, 2, ".", "");
+                                        ?>
+                                        <td><?php echo $decimal ?></td>
+                                        <td><?php echo $value["moneda"] ?></td>
+                                        
+                                       
                                         <td>
                                             <div class="btn-group">
-                                                <button type="button"  class="btn btn-warning  EditarP" Pid="' . $value["id"] . '" data-bs-toggle="modal" data-bs-target="#EditarP"><i class="fadeIn animated bx bx-edit-alt"></i></button>
-                                                <button class="btn btn-danger BorrarP" Pid="' . $value["id"] . '"><i class="fadeIn animated bx bx-trash-alt"></i></button>
+                                                <button type="button" class="btn btn-warning"><i class="fadeIn animated bx bx-edit-alt"></i></button>
+                                                <button class="btn btn-danger " title="Eliminar solicitud"><i class="fadeIn animated bx bx-trash-alt"></i></button>
+                                                <button class="btn btn-secondary " title="PDF"><i class="bi bi-file-earmark-pdf"></i></button>
                                             </div>
                                         </td>
 
-                                    </tr ';
-                                }
-
-                                $item = null;
-                                $valor = null;
-
-                                $editarP = ProveedoresC::EProveedoresC($item, $valor);
-
-
-
-                                $eliminarP = new ProveedoresC();
-                                $eliminarP->EliminarProveedorC();
-                                ?>
+                                    </tr <?php } ?> ?>
 
                             </tbody>
-
                         </table>
                     </div>
                 </div>
