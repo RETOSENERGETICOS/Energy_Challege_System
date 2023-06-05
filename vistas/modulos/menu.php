@@ -26,10 +26,7 @@
             </a>
   
             <ul>
-              <!-- <li> <a href="inicio">
-                  <ion-icon name="ellipse-outline"></ion-icon>Inicio
-                </a>
-              </li> -->
+              
               <li> <a href="usuarios">
                   <ion-icon name="ellipse-outline"></ion-icon>Usuarios
                 </a>
@@ -37,6 +34,10 @@
   
               <li> <a href="proveedores">
                   <ion-icon name="ellipse-outline"></ion-icon>Proveedores
+                </a>
+              </li>
+              <li> <a href="clientes">
+                  <ion-icon name="ellipse-outline"></ion-icon>Clientes
                 </a>
               </li>
               

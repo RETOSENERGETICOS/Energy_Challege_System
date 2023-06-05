@@ -27,36 +27,25 @@
 
             <!--start breadcrumb-->
             <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">Gestor de usuarios </div>
+                <div class="breadcrumb-title pe-3">Gestor de clientes </div>
                 <div class="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 p-0 align-items-center">
                             <li class="breadcrumb-item"><a href="inicio"><ion-icon name="home-outline"></ion-icon></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Consulta usuarios</li>
+                            <li class="breadcrumb-item active" aria-current="page">Consulta clientes</li>
                         </ol>
 
                     </nav>
 
                 </div>
-                <!-- <div class="ms-auto">
-              <div class="btn-group">
-                <button type="button" class="btn btn-outline-primary">Settings</button>
-                <button type="button" class="btn btn-outline-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
-                </button>
-                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">Action</a>
-                  <a class="dropdown-item" href="javascript:;">Another action</a>
-                  <a class="dropdown-item" href="javascript:;">Something else here</a>
-                  <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">Separated link</a>
-                </div>
-              </div>
-            </div> -->
+              
             </div>
             <!--end breadcrumb-->
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0 align-items-center">
 
-                    <li class="breadcrumb-item active" aria-current="page"><button type="button" class="btn btn-info px-5" style="color: #fff;" data-bs-toggle="modal" data-bs-target="#insertarUsuarios"><i class="fadeIn animated bx bx-user-plus"></i>Agregar usuario</button></li>
+                    <li class="breadcrumb-item active" aria-current="page"><button type="button" class="btn btn-info px-5" style="color: #fff;" data-bs-toggle="modal" data-bs-target="#insertarUsuarios"><i class="fadeIn animated bx bx-user-plus"></i>Agregar cliente</button></li>
 
 
                 </ol>
@@ -84,64 +73,57 @@
                         <table id="example2" class="table table-striped table-bordered TB">
                             <thead>
                                 <tr>
-                                    <th>Usuario</th>
-                                    <th>Nombre</th>
-                                    <th>Cargo</th>
-                                    <th>Correo electrónico</th>
-                                    <th>Rol</th>
-                                    <th>Foto</th>
-                                    <th>Firma</th>
-                                    <th>Iniciales solicitante</th>
+                                    <th>Pais</th>
+                                    <th>Actividad</th>
+                                    <th>Servicios</th>
+                                    <th>Distribución</th>
+                                    <th>Capacitación</th>                                  
+                                    <th>Nombre comercial</th>
+                                    <th>Rfc</th>
+                                    <th>Dirección</th>
+                                    <th>Contacto compras</th>
+                                    <th>Teléfono</th>
+                                    <th>Email</th>
+                                    <th>Contacto pago</th>
+                                    <th>Condiciones de venta</th>
+                                    <th>Crédito</th>
                                     <th>Acciones</th>
 
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                $verU = UsuariosC::VerUsuariosC();
+                                $verCli = ClientesC::VerClientesC();
 
-                                foreach ($verU as $key => $value) {
+                                foreach ($verCli as $key => $value) {
 
                                     echo '<tr>
-                                            <td>' . $value["usuario"] . '</td>
-                                            <td>' . $value["nombre"] . '</td>
-                                            <td>' . $value["cargo"] . '</td>
-                                            <td>' . $value["correo"] . '</td>
-                                            <td>' . $value["rol"] . '</td>
+                                            <td>' . $value["pais_cli"] . '</td>
+                                            <td>' . $value["actividad_cli"] . '</td>
+                                            <td>' . $value["servicios_cli"] . '</td>
+                                            <td>' . $value["distribucion_cli"] . '</td>
+                                            <td>' . $value["capacitacion_cli"] . '</td>
+                                            <td>' . $value["nombrecomercial_cli"] . '</td>
+                                            <td>' . $value["rfc_cli"] . '</td>
+                                            <td>' . $value["direccion_cli"] . '</td>
+                                            <td>' . $value["contacto_compras"] . '</td>
+                                            <td>' . $value["telefono_cli"] . '</td>
+                                            <td>' . $value["correo_cli"] . '</td>
+                                            <td>' . $value["contacto_pago"] . '</td>
+                                            <td>' . $value["condiventa_cli"] . '</td>
+                                            <td>' . $value["credito_cli"] . '</td>
                                             ';
-
-                                    //abrimos una nueva condicion en dodnde foto es diferente a vacio tendra un eco en el td entonces mostrara la foto de la base de datos en la variable value[foto]
-                                    if ($value["foto"] != "") {
-                                        //<!--Se agregara un tamaño de imagen en width-->
-                                        echo '
-                                                <td>
-                                                <img src="' . $value["foto"] . '" class="user-image" alt="User Image" width="40px;"></td>';
-                                        //si no vendra con la imagen por defecto sin foto 
-                                    } else {
-                                        echo '<td>
-                                            <img src="vistas/img/usuarios/defecto.png" class="user-image" alt="User Image" width="40px;"></td>';
-                                    }
-                                    if ($value["firma"] != "") {
-                                        //<!--Se agregara un tamaño de imagen en width-->
-                                        echo '
-                                                <td>
-                                                <img src="' . $value["firma"] . '" class="user-image" alt="User Image" width="40px;"></td>';
-                                        //si no vendra con la imagen por defecto sin foto 
-                                    } else {
-                                        echo '<td>
-                                            <img src="vistas/img/usuarios/defecto.png" class="user-image" alt="User Image" width="40px;"></td>';
-                                    }
 
 
 
 
                                     //Agregamos la clase BorrarU y un atributo llamado Uid ese atributo sera igual a lo que venga concatenado a value["rol"] id del modelo de la base de datos 
-                                    echo ' <td>' . $value["iniciales_firma"] . '</td>
+                                    echo ' 
                                             <td>
                                             <div class="btn-group">
                                             <button class="btn btn-warning EditarU" Uid="' . $value["id"] . '"" data-bs-toggle="modal" data-bs-target="#EditarU"><i class="fadeIn animated bx bx-edit-alt"></i></button>
 
-                                            <button class="btn btn-danger BorrarU" Uid="' . $value["id"] . '" Ufoto="' . $value["foto"] . '" Ufirma="' . $value["firma"] . '" ><i class="fadeIn animated bx bx-trash-alt"></i></button>
+                                            <button class="btn btn-danger BorrarU" Uid="' . $value["id"] . '"  ><i class="fadeIn animated bx bx-trash-alt"></i></button>
                                         </div>
                                             </td>
 
@@ -149,10 +131,10 @@
                                 }
 
 
-                                $item = null;
-                                $valor = null;
+                                // $item = null;
+                                // $valor = null;
 
-                                $editarU = UsuariosC::EUsuariosC($item, $valor);
+                                // $editarU = UsuariosC::EUsuariosC($item, $valor);
 
                                 ?>
 
@@ -191,7 +173,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <i class="fadeIn animated bx bx-user-plus"></i>
-                <h5 class="modal-title">Agregar usuario</h5>
+                <h5 class="modal-title">Agregar clientes</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="row">
@@ -260,8 +242,8 @@
                                         <button class="btn btn-primary btn-lg btn-block" type="submit">Agregar</button>
                                     </div>
                                     <?php
-                                    $crearU = new UsuariosC();
-                                    $crearU->CrearUsuariosC();
+                                    // $crearCli = new ClientesC();
+                                    // $crearCli->CrearClientesC();
                                     ?>
                             </div>
                             </form>
@@ -376,8 +358,8 @@
                             </div>
 
                             <?php
-                             $actualizarU = new UsuariosC();
-                             $actualizarU -> ActualizarUsuariosC();
+                            //  $actualizarU = new UsuariosC();
+                            //  $actualizarU -> ActualizarUsuariosC();
 
 
                             ?>
@@ -394,7 +376,7 @@
 <!--end wrapper-->
 
 <?php
-$borrarU = new UsuariosC();
-$borrarU->BorrarUsuariosC();
+// $borrarU = new UsuariosC();
+// $borrarU->BorrarUsuariosC();
 
 ?>

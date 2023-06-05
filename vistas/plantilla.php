@@ -70,7 +70,7 @@ session_start();
                 $_GET["url"] == "inicio" || $_GET["url"] == "ingreso" || $_GET["url"] == "salir"
                 || $_GET["url"] == "usuarios"  || $_GET["url"] == "perfil-usuario" || $_GET["url"] == "proveedores"
                 || $_GET["url"] == "solicitud-compras" || $_GET["url"] == "orden-compras"
-                || $_GET["url"] == "manager"
+                || $_GET["url"] == "manager"  || $_GET["url"] == "clientes"
             ) {
                 include "modulos/" . $_GET["url"] . ".php";
             }
