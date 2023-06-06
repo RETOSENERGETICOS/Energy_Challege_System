@@ -16,7 +16,7 @@ class UsuariosC
 
 				if ($respuesta["usuario"] == $_POST["usuario-Ing"] && $respuesta["clave"] == $_POST["clave-Ing"]) {
 
-					$_SESSION["Ingreso"] = true;
+					$_SESSION["Ingreso"] = "ok";
 
 					$_SESSION["id"] = $respuesta["id"];
 					$_SESSION["usuario"] = $respuesta["usuario"];
@@ -127,30 +127,40 @@ class UsuariosC
 			$tablaBD = "usuarios";
 
 			//Creamos una nueva variable llamada datosC que sera igual a un array con propiedades la primera sera la de "usuario" el valor de esa prodiedad sera lo que venga en la variable $_POST segunda propiedad sera clave y le asiganeremos el valor de lo que venga en la variable post $_POST["claveN"] que viene del input del formulario para agregar el usuario
-			$datosC = array("usuario" => $_POST["usuarioN"], "nombre" => $_POST["nombreN"], "cargo" => $_POST["cargoN"], "correo" => $_POST["correoN"], "clave" => $_POST["claveN"], "foto" => $rutaImg, "rol" => $_POST["rolN"], "firma" => $rutaImgf, "iniciales_firma" => $_POST["iniciales_firmaN"]);
+			$datosC = array("usuario" => $_POST["usuarioN"], "nombre" => $_POST["nombreN"],
+			 "cargo" => $_POST["cargoN"], "correo" => $_POST["correoN"], 
+			 "clave" => $_POST["claveN"], "foto" => $rutaImg, "rol" => $_POST["rolN"],
+			 "firma" => $rutaImgf, "iniciales_firma" => $_POST["iniciales_firmaN"]);
 
 			//solicitamos una respuesta hacia nuestro modelo cola clase UsuariosM y la conectamos con la funcion CrearUsuariosM y mandando como  parametros $tablaBD y $datosC
 			$respuesta = UsuariosM::CrearUsuariosM($tablaBD, $datosC);
 
 			//creamos condicion lo que venga en respuesta es igual a verdadero entonces
-			if ($respuesta == true) {
+			if ($respuesta == "ok" ) {
 
-				echo '
-				<div class="alert alert-danger d-flex align-items-center" role="alert">
-  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-  <div>
-    An example danger alert with an icon
-  </div>
-</div>
-				
-				<script>
-						window.location = "usuarios";
+				echo '<script>
+			
+				Swal.fire({
+					
+					title: "Usuario ha sido agregado correctamente!",
+					icon: "success",
+					confirmButtonText: "Cerrar"
+				  });
+				  window.location = "usuarios";	
 						</script>';
 			} else {
 
-				echo ' <div class="col">
-                    <button type="button" class="btn btn-danger px-5" onclick="error_noti()"><ion-icon name="close-circle-sharp"></ion-icon>Upss.. error en la operacion!</button>
-                  </div>';
+				echo '<script>
+			
+				Swal.fire({
+					
+					title: "Hubo un problema al agregar usuario!",
+					icon: "error",
+					confirmButtonText: "Cerrar"
+				  });
+				  window.location = "usuarios";	
+						
+						</script>';
 			}
 		}
 	}
@@ -192,7 +202,7 @@ class UsuariosC
 			$respuesta = UsuariosM::BorrarUsuariosM($tablaBD, $datosC);
 
 			//creamos una confidicion, si la respuesta del modelo es true recargara la pagina usuarios 
-			if ($respuesta == true) {
+			if ($respuesta == "ok") {
 
 				echo '
 				<script>
@@ -262,14 +272,15 @@ class UsuariosC
 			$datosC = array(
 				"id" => $_POST["Uid"], "usuario" => $_POST["usuarioE"], "nombre" => $_POST["nombreE"],
 				"cargo" => $_POST["cargoE"], "correo" => $_POST["correoE"], "clave" => $_POST["claveE"], "foto" => $rutaImg,
-				"rol" => $_POST["rolE"],  "firma" => $rutaImgF,"iniciales_firma" => $_POST["iniciales_firmaE"]);
+				"rol" => $_POST["rolE"],  "firma" => $rutaImgF, "iniciales_firma" => $_POST["iniciales_firmaE"]
+			);
 
 			$respuesta = UsuariosM::ActualizarUsuariosM($tablaBD, $datosC);
 
 
-			if ($respuesta == true) {
+			if ($respuesta == "ok") {
 
-				echo'
+				echo '
 				<div class="alert alert-dismissible fade show py-2 bg-success">
                 <div class="d-flex align-items-center">
                   <div class="fs-3 text-white"><ion-icon name="checkmark-circle-sharp" role="img" class="md hydrated" aria-label="checkmark circle sharp"></ion-icon>

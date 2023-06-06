@@ -58,6 +58,7 @@ class ProveedoresM extends ConexionBD{
 		}
 
 		$pdo -> close();
+		$pdo = null;
     }
 
     /* -------------------------------------------------------------------------- */
@@ -97,7 +98,7 @@ class ProveedoresM extends ConexionBD{
 		/*                          Cerramos conexion de pdo                          */
 		/* -------------------------------------------------------------------------- */
 		$pdo -> close();
-
+		$pdo = null;
 
     }
 

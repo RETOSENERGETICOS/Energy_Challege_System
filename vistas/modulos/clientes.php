@@ -45,7 +45,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0 align-items-center">
 
-                    <li class="breadcrumb-item active" aria-current="page"><button type="button" class="btn btn-info px-5" style="color: #fff;" data-bs-toggle="modal" data-bs-target="#insertarUsuarios"><i class="fadeIn animated bx bx-user-plus"></i>Agregar cliente</button></li>
+                    <li class="breadcrumb-item active" aria-current="page"><button type="button" class="btn btn-info px-5" style="color: #fff;" data-bs-toggle="modal" data-bs-target="#insertarClientes"><i class="fadeIn animated bx bx-user-plus"></i>Agregar cliente</button></li>
 
 
                 </ol>
@@ -73,12 +73,12 @@
                         <table id="example2" class="table table-striped table-bordered TB">
                             <thead>
                                 <tr>
+                                    <th>Nombre comercial</th>
                                     <th>Pais</th>
                                     <th>Actividad</th>
                                     <th>Servicios</th>
                                     <th>Distribución</th>
                                     <th>Capacitación</th>                                  
-                                    <th>Nombre comercial</th>
                                     <th>Rfc</th>
                                     <th>Dirección</th>
                                     <th>Contacto compras</th>
@@ -98,12 +98,13 @@
                                 foreach ($verCli as $key => $value) {
 
                                     echo '<tr>
+                                            <td>' . $value["nombrecomercial_cli"] . '</td>
                                             <td>' . $value["pais_cli"] . '</td>
                                             <td>' . $value["actividad_cli"] . '</td>
                                             <td>' . $value["servicios_cli"] . '</td>
                                             <td>' . $value["distribucion_cli"] . '</td>
                                             <td>' . $value["capacitacion_cli"] . '</td>
-                                            <td>' . $value["nombrecomercial_cli"] . '</td>
+                                           
                                             <td>' . $value["rfc_cli"] . '</td>
                                             <td>' . $value["direccion_cli"] . '</td>
                                             <td>' . $value["contacto_compras"] . '</td>
@@ -168,7 +169,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="insertarUsuarios" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="insertarClientes" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -183,67 +184,99 @@
                         <div class="card-body">
                             <div class="p-4 border rounded">
                                 <form method="post" role="form" enctype="multipart/form-data" class="row g-3 needs-validation">
-                                    <div class="col-md-12">
-                                        <label class="form-label">Usuario</label>
-                                        <input type="text" class="form-control" name="usuarioN" required>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Nombre comercial</label>
+                                        <input type="text" class="form-control" name="nombrecomercial_cliN" required>
                                         <div class="valid-feedback">Campo relleno correctamente!</div>
                                         <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <label class="form-label">Nombre completo</label>
-                                        <input type="text" class="form-control" name="nombreN" required>
+                                    <div class="col-md-6">
+                                        <label class="frm-label">País</label>
+                                        <input type="text" class="form-control" name="pais_cliN" required>
                                         <div class="valid-feedback">Campo relleno correctamente!</div>
                                         <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <label class="frm-label">Cargo laboral</label>
-                                        <input type="text" class="form-control" name="cargoN" required>
+                                   
+                                    <div class="col-md-6">
+                                        <label class="frm-label">Actividad comercial</label>
+                                        <input type="text" class="form-control" name="actividad_cliN" required>
                                         <div class="valid-feedback">Campo relleno correctamente!</div>
                                         <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <label class="frm-label">Correo electrónico </label>
-                                        <input type="email" class="form-control" name="correoN" required>
+                                    <div class="col-md-6">
+                                        <label class="frm-label">Servicios </label>
+                                        <input type="text" class="form-control" name="servicios_cliN" required>
                                         <div class="valid-feedback">Campo relleno correctamente!</div>
                                         <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <label class="frm-label">Contraseña</label>
-                                        <input type="password" class="form-control" name="claveN" required>
+                                    <div class="col-md-6">
+                                        <label class="frm-label">Distribución</label>
+                                        <input type="text" class="form-control" name="distribucion_cliN" required>
                                         <div class="valid-feedback">Campo relleno correctamente!</div>
                                         <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <label class="form-label">Foto de perfil</label>
-                                        <input type="file" class="form-control" name="fotoN">
+                                    <div class="col-md-6">
+                                        <label class="frm-label">Capacitación</label>
+                                        <input type="text" class="form-control" name="capacitacion_cliN" required>
+                                        <div class="valid-feedback">Campo relleno correctamente!</div>
+                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <label class="form-label">Firma</label>
-                                        <input type="file" class="form-control" name="firmaN">
+                                    <div class="col-md-6">
+                                        <label class="frm-label">RFC</label>
+                                        <input type="text" class="form-control" name="rfc_cliN" required>
+                                        <div class="valid-feedback">Campo relleno correctamente!</div>
+                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <label class="form-label">Iniciales Solicitante</label>
-                                        <input type="text" class="form-control" name="iniciales_firmaN">
+                                    <div class="col-md-6">
+                                        <label class="frm-label">Dirección</label>
+                                        <input type="text" class="form-control" name="direccion_cliN" required>
+                                        <div class="valid-feedback">Campo relleno correctamente!</div>
+                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <label class="form-label">Rol de usuario</label>
-                                        <select class="form-select" name="rolN">
-                                            <option selected disabled value="">Elige un rol...</option>
-                                            <option value="Administracion">Administrador</option>
-                                            <option value="Empleado">Empleado</option>
-                                            <option value="Director">Director</option>
-                                            <option value="Manager">Manager</option>
-                                            <option value="Compras">Compras</option>
-                                        </select>
-                                        <div class="valid-feedback">Archivo relleno correctamente!</div>
-                                        <div class="invalid-feedback"> requerido, favor de rellenar!</div>
+                                    <div class="col-md-6">
+                                        <label class="frm-label">Contacto de compras</label>
+                                        <input type="text" class="form-control" name="contacto_comprasN" required>
+                                        <div class="valid-feedback">Campo relleno correctamente!</div>
+                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <label class="frm-label">Teléfono</label>
+                                        <input type="text" class="form-control" name="telefono_cliN" required>
+                                        <div class="valid-feedback">Campo relleno correctamente!</div>
+                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="frm-label">Email</label>
+                                        <input type="text" class="form-control" name="correo_cliN" required>
+                                        <div class="valid-feedback">Campo relleno correctamente!</div>
+                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="frm-label">Contacto pago</label>
+                                        <input type="text" class="form-control" name="contacto_pagoN" required>
+                                        <div class="valid-feedback">Campo relleno correctamente!</div>
+                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="frm-label">Condiciones de venta</label>
+                                        <input type="text" class="form-control" name="condiventa_cliN" required>
+                                        <div class="valid-feedback">Campo relleno correctamente!</div>
+                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="frm-label">Crédito</label>
+                                        <input type="text" class="form-control" name="credito_cliN" required>
+                                        <div class="valid-feedback">Campo relleno correctamente!</div>
+                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                    </div>
+                                  
+                            
                                     <div class="modal-footer">
                                         <button class="btn btn-primary btn-lg btn-block" type="submit">Agregar</button>
                                     </div>
                                     <?php
-                                    // $crearCli = new ClientesC();
-                                    // $crearCli->CrearClientesC();
+                                     $crearCli = new ClientesC();
+                                     $crearCli-> CrearClientesC();
                                     ?>
                             </div>
                             </form>
@@ -312,30 +345,9 @@
                                         <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
                                     </div>
 
-                                    <div class="col-md-12">
-                                        <label class="form-label">Foto de perfil</label>
-                                        <input type="file" class="form-control" id="fotoE" name="fotoE">
-                                        <br>
-                                        <div class="user-change-photo shadow">
-                                            <img class="visor" src="vistas/img/usuarios/defecto.png" alt="Foto usuario actual">
-                                        </div>
-                                        <br>
-                                        <p class="mb-1">peso máximo permitido 200MB</p>
-                                        <input type="hidden" name="FotoActual" id="FotoActual">
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label class="form-label">Firma</label>
-                                        <input type="file" class="form-control" id="firmaE" name="firmaE">
-                                        <br>
-                                        <div class="user-change-photo shadow">
-                                            <img class="visor2" src="vistas/img/usuarios/defecto.png" alt="Firma usuario actual">
-                                        </div>
-                                        <br>
-                                        <p class="mb-1">peso máximo permitido 200MB</p>
-                                        <input type="hidden" name="FirmaActual" id="FirmaActual">
-                                    </div>
+                                    
 
-                                    <div class="col-md-12">
+                                    <!-- <div class="col-md-12">
                                         <label class="form-label">Rol de usuario</label>
                                         <select class="form-select" name="rolE">
                                             <option id="rolE"></option>
@@ -348,7 +360,7 @@
                                         </select>
                                         <div class="valid-feedback">Archivo relleno correctamente!</div>
                                         <div class="invalid-feedback"> requerido, favor de rellenar!</div>
-                                    </div>
+                                    </div> -->
 
 
                                     <div class="modal-footer">

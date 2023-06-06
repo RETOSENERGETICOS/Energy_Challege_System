@@ -12,6 +12,23 @@ session_start();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <script src="vistas/assets/js/jquery.min.js"></script>
+    <!-- <script src="vistas/assets/plugins/Sweet-alert/dist/sweetalert2.all.min.js"></script>
+    <link href="vistas/assets/plugins/Sweet-alert/dist/sweetalert2.min.css" rel="stylesheet" /> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> -->
+
+
+
+    <!--SweetAlert2Javascript-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- <script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css"> -->
+
+
+
+
     <!-- loader-->
     <link href="vistas/assets/css/pace.min.css" rel="stylesheet" />
     <script src="vistas/assets/js/pace.min.js"></script>
@@ -39,8 +56,11 @@ session_start();
     <link href="vistas/assets/css/semi-dark.css" rel="stylesheet" />
     <link href="vistas/assets/css/header-colors.css" rel="stylesheet" />
 
+    <link href="vistas/assets/css/header-colors.css" rel="stylesheet" />
+
     <!--SweetAlerts2-->
-    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css" rel="stylesheet">
+
+
 
 
     <title>Retos Energeticos</title>
@@ -102,7 +122,7 @@ session_start();
     <script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
 
     <!-- JS Files-->
-    <script src="vistas/assets/js/jquery.min.js"></script>
+
     <script src="vistas/assets/plugins/simplebar/js/simplebar.min.js"></script>
     <script src="vistas/assets/plugins/metismenu/js/metisMenu.min.js"></script>
     <script src="vistas/assets/js/bootstrap.bundle.min.js"></script>
@@ -121,14 +141,16 @@ session_start();
     <script src="vistas/js/usuarios.js"></script>
     <script src="vistas/js/proveedores.js"></script>
     <script src="vistas/js/solicitud-compra.js"></script>
+    <!-- <script src="vistas/js/clientes.js"></script> -->
 
-    <!--SweetAlert2-->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js"></script>
+
+
+
 
     <!--notification js -->
-    <script src="vistas/assets/plugins/notifications/js/lobibox.min.js"></script>
+    <!-- <script src="vistas/assets/plugins/notifications/js/lobibox.min.js"></script>
     <script src="vistas/assets/plugins/notifications/js/notifications.min.js"></script>
-    <script src="vistas/assets/plugins/notifications/js/notification-custom-script.js"></script>
+    <script src="vistas/assets/plugins/notifications/js/notification-custom-script.js"></script> -->
 
     <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields

@@ -31,8 +31,45 @@ class ClientesM extends ConexionBD{
 		/*                        Cerramos la conexion de la BD                       */
 		/* -------------------------------------------------------------------------- */
 		$pdo -> close();
-
+        $pdo = null;
+       
 	}
 
+    static public function AgregarClientesM($tablaBD, $datosC) {
+        $pdo = ConexionBD::cBD()->prepare("INSERT INTO $tablaBD (pais_cli, actividad_cli, servicios_cli, distribucion_cli, capacitacion_cli,
+            nombrecomercial_cli, rfc_cli, direccion_cli, contacto_compras, telefono_cli, correo_cli, contacto_pago, condiventa_cli, credito_cli, status) 
+            VALUES (:pais_cli, :actividad_cli, :servicios_cli, :distribucion_cli, :capacitacion_cli, :nombrecomercial_cli, :rfc_cli,
+            :direccion_cli, :contacto_compras, :telefono_cli, :correo_cli, :contacto_pago, :condiventa_cli, :credito_cli, 1)");
+        
+        $pdo->bindParam(":pais_cli", $datosC["pais_cli"], PDO::PARAM_STR);
+        $pdo->bindParam(":actividad_cli", $datosC["actividad_cli"], PDO::PARAM_STR);
+        $pdo->bindParam(":servicios_cli", $datosC["servicios_cli"], PDO::PARAM_STR);
+        $pdo->bindParam(":distribucion_cli", $datosC["distribucion_cli"], PDO::PARAM_STR);
+        $pdo->bindParam(":capacitacion_cli", $datosC["capacitacion_cli"], PDO::PARAM_STR);
+        $pdo->bindParam(":nombrecomercial_cli", $datosC["nombrecomercial_cli"], PDO::PARAM_STR);
+        $pdo->bindParam(":rfc_cli", $datosC["rfc_cli"], PDO::PARAM_STR);
+        $pdo->bindParam(":direccion_cli", $datosC["direccion_cli"], PDO::PARAM_STR);
+        $pdo->bindParam(":contacto_compras", $datosC["contacto_compras"], PDO::PARAM_STR);
+        $pdo->bindParam(":telefono_cli", $datosC["telefono_cli"], PDO::PARAM_STR);
+        $pdo->bindParam(":correo_cli", $datosC["correo_cli"], PDO::PARAM_STR);
+        $pdo->bindParam(":contacto_pago", $datosC["contacto_pago"], PDO::PARAM_STR);
+        $pdo->bindParam(":condiventa_cli", $datosC["condiventa_cli"], PDO::PARAM_STR);
+        $pdo->bindParam(":credito_cli", $datosC["credito_cli"], PDO::PARAM_STR);
+        
+        print_r($pdo);
+		
+        if ($pdo->execute()) {
+             // Cerramos la conexión de PDO
+            return true;
+        } else {
+           // Cerramos la conexión de PDO
+            return false;
+        }
+        $pdo->close();
+        $pdo = null;
+    }
+            
     
+
+   
 }

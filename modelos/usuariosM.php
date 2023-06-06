@@ -42,7 +42,7 @@ class UsuariosM extends ConexionBD{
 		/*                        Cerramos la conexion de la BD                       */
 		/* -------------------------------------------------------------------------- */
 		$pdo -> close();
-
+		
 	}
 
 
@@ -66,8 +66,7 @@ class UsuariosM extends ConexionBD{
         $pdo -> bindParam(":rol", $datosC["rol"], PDO::PARAM_STR);
 		$pdo -> bindParam(":firma", $datosC["firma"], PDO::PARAM_STR);
 		$pdo -> bindParam(":iniciales_firma", $datosC["iniciales_firma"], PDO::PARAM_STR);
-       
-
+      
 
 		/* -------------------------------------------------------------------------- */
 		/* utilizaremos una condicion si nuestra variable pdo se nos ejecula vamos
@@ -75,19 +74,18 @@ class UsuariosM extends ConexionBD{
 		/* -------------------------------------------------------------------------- */
 		 
 		if($pdo -> execute()) {
-			return true;
+			return "ok";
 		/* -------------------------------------------------------------------------- */
 		/*                 si no se cumple que nos retorne como falso                 */
 		/* -------------------------------------------------------------------------- */
 		}else{
-			return false;
+			return "error";
 		}
-
 		/* -------------------------------------------------------------------------- */
 		/*                          Cerramos conexion de pdo                          */
 		/* -------------------------------------------------------------------------- */
 		$pdo -> close();
-
+		$pdo = null;
 	}
 
     /* -------------------------------------------------------------------------- */
@@ -101,19 +99,19 @@ class UsuariosM extends ConexionBD{
         
                                                                                                        
 		if($pdo -> execute()) {
-			return true;
+			return "ok";
 		/* -------------------------------------------------------------------------- */
 		/*                 si no se cumple que nos retorne como falso                 */
 		/* -------------------------------------------------------------------------- */
 		}else{
-			return false;
+			return "error";
 		}
 
 		/* -------------------------------------------------------------------------- */
 		/*                          Cerramos conexion de pdo                          */
 		/* -------------------------------------------------------------------------- */
 		$pdo -> close();
-
+		$pdo = null;
 	}
 
 	/* -------------------------------------------------------------------------- */
@@ -141,7 +139,7 @@ class UsuariosM extends ConexionBD{
 		}
 
 		$pdo -> close();
-		 
+		$pdo = null;
 	}
 
 	static public function VerManagerM($tablaBD,$item,$valor){
@@ -167,7 +165,7 @@ class UsuariosM extends ConexionBD{
 		}
 
 		$pdo -> close();
-		 
+		$pdo = null;
 	}
 
 	
@@ -193,19 +191,19 @@ class UsuariosM extends ConexionBD{
 		$pdo -> bindParam(":iniciales_firma", $datosC["iniciales_firma"], PDO::PARAM_STR);
 
 		if($pdo -> execute()) {
-			return true;
+			return "ok";
 		/* -------------------------------------------------------------------------- */
 		/*                 si no se cumple que nos retorne como falso                 */
 		/* -------------------------------------------------------------------------- */
 		}else{
-			return false;
+			return "error";
 		}
 
 		/* -------------------------------------------------------------------------- */
 		/*                          Cerramos conexion de pdo                          */
 		/* -------------------------------------------------------------------------- */
 		$pdo -> close();
-
+		$pdo = null;
 	}
 
 
