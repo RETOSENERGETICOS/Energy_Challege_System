@@ -12,7 +12,7 @@ session_start();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="vistas/assets/js/jquery.min.js"></script>
+   
     <!-- <script src="vistas/assets/plugins/Sweet-alert/dist/sweetalert2.all.min.js"></script>
     <link href="vistas/assets/plugins/Sweet-alert/dist/sweetalert2.min.css" rel="stylesheet" /> -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
@@ -21,8 +21,8 @@ session_start();
 
 
     <!--SweetAlert2Javascript-->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+    
+    <link href="vistas/assets/plugins/Sweet-alert/dist/sweetalert2.min.css" rel="stylesheet" />
     <!-- <script src="sweetalert2.min.js"></script>
 <link rel="stylesheet" href="sweetalert2.min.css"> -->
 
@@ -87,13 +87,24 @@ session_start();
 
         if (isset($_GET["url"])) {
             if (
-                $_GET["url"] == "inicio" || $_GET["url"] == "ingreso" || $_GET["url"] == "salir"
-                || $_GET["url"] == "usuarios"  || $_GET["url"] == "perfil-usuario" || $_GET["url"] == "proveedores"
-                || $_GET["url"] == "solicitud-compras" || $_GET["url"] == "orden-compras"
-                || $_GET["url"] == "manager"  || $_GET["url"] == "clientes"
+                $_GET["url"] == "inicio" 
+                ||$_GET["url"] == "ingreso" 
+                ||$_GET["url"] == "salir"
+                || $_GET["url"] == "usuarios"  
+                || $_GET["url"] == "perfil-usuario" 
+                || $_GET["url"] == "proveedores"
+                || $_GET["url"] == "solicitud-compras" 
+                || $_GET["url"] == "orden-compras"
+                || $_GET["url"] == "manager"  
+                || $_GET["url"] == "clientes" 
+                || $_GET["url"] == "404"
             ) {
                 include "modulos/" . $_GET["url"] . ".php";
+
+            }else{
+                include "modulos/404.php";
             }
+
         } else {
             include "modulos/inicio.php";
         }
@@ -118,7 +129,7 @@ session_start();
 
     <!--Sweetalert -->
 
-
+    <script src="vistas/assets/js/jquery.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
 
     <!-- JS Files-->
@@ -136,12 +147,16 @@ session_start();
     <script src="vistas/assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
     <script src="vistas/assets/js/table-datatable.js"></script>
 
+
+    <script src="vistas/assets/plugins/Sweet-alert/dist/sweetalert2.min.js"></script>
+
+
     <!-- Main JS-->
     <script src="vistas/assets/js/main.js"></script>
     <script src="vistas/js/usuarios.js"></script>
     <script src="vistas/js/proveedores.js"></script>
     <script src="vistas/js/solicitud-compra.js"></script>
-    <!-- <script src="vistas/js/clientes.js"></script> -->
+    <script src="vistas/js/clientes.js"></script>
 
 
 

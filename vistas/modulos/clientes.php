@@ -93,9 +93,15 @@
                             </thead>
                             <tbody>
                                 <?php
+
+                                $item = null;
+                                $valor = null;
+
+                                $clientes = ClientesC::MostrarClientesC($item, $valor);
+
                                 $verCli = ClientesC::VerClientesC();
 
-                                foreach ($verCli as $key => $value) {
+                                foreach ($clientes as $key => $value) {
 
                                     echo '<tr>
                                             <td>' . $value["nombrecomercial_cli"] . '</td>
@@ -122,9 +128,9 @@
                                     echo ' 
                                             <td>
                                             <div class="btn-group">
-                                            <button class="btn btn-warning EditarU" Uid="' . $value["id"] . '"" data-bs-toggle="modal" data-bs-target="#EditarU"><i class="fadeIn animated bx bx-edit-alt"></i></button>
+                                            <button class="btn btn-warning EditarCliente" idCliente="' . $value["id"] . '" data-bs-toggle="modal" data-bs-target="#editarClientes"><i class="fadeIn animated bx bx-edit-alt"></i></button>
 
-                                            <button class="btn btn-danger BorrarU" Uid="' . $value["id"] . '"  ><i class="fadeIn animated bx bx-trash-alt"></i></button>
+                                            <button class="btn btn-danger BorrarClientes" idCliente="' . $value["id"] . '"  ><i class="fadeIn animated bx bx-trash-alt"></i></button>
                                         </div>
                                             </td>
 
@@ -168,7 +174,9 @@
 
 
 
-<!-- Modal -->
+ <!-- -------------------------------------------------------------------------- -->
+ <!--                           Modal Insertar clientes                          -->
+ <!-- -------------------------------------------------------------------------- -->
 <div class="modal fade" id="insertarClientes" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -271,7 +279,7 @@
                                     </div>
                                   
                             
-                                    <div class="modal-footer">
+                                    <div class="modal-footer ">
                                         <button class="btn btn-primary btn-lg btn-block" type="submit">Agregar</button>
                                     </div>
                                     <?php
@@ -288,98 +296,126 @@
     </div>
 </div>
 
-<!-- Modal Editar Usuarios -->
-<div class="modal fade" id="EditarU" tabindex="-1" aria-hidden="true">
+
+<!-- -------------------------------------------------------------------------- -->
+<!--                            Modal editar clientes                           -->
+<!-- -------------------------------------------------------------------------- -->
+
+<div class="modal fade" id="editarClientes" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <i class="fadeIn animated bx bx-user-plus"></i>
-                <h5 class="modal-title">Editar usuario</h5>
+                <h5 class="modal-title">Editar clientes</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="row">
                 <div class="col-xl-12 mx-auto">
-
                     <hr />
                     <div class="card">
                         <div class="card-body">
                             <div class="p-4 border rounded">
-                                <form method="post" role="form" enctype="multipart/form-data" class="row g-3 needs-validation">
-                                    <div class="col-md-12">
-                                        <label class="form-label">Usuario</label>
-                                        <input type="text" class="form-control" id="usuarioE" name="usuarioE" required>
-
-                                        <input type="hidden" id="Uid" name="Uid">
-
+                                <form method="post" role="form" enctype="multipart/form-data" class="row g-3 needs-validation TB">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Nombre comercial</label>
+                                        <input type="text" class="form-control" id="nombrecomercial_cliE" name="nombrecomercial_cliE" required>
+                                        <input type="hidden" id="idCliente" name="idCliente">
                                         <div class="valid-feedback">Campo relleno correctamente!</div>
                                         <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <label class="form-label">Nombre completo</label>
-                                        <input type="text" class="form-control" id="nombreE" name="nombreE" required>
+                                    <div class="col-md-6">
+                                        <label class="frm-label">País</label>
+                                        <input type="text" class="form-control" id="pais_cliE" name="pais_cliE" required>
                                         <div class="valid-feedback">Campo relleno correctamente!</div>
                                         <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <label class="frm-label">Cargo</label>
-                                        <input type="text" class="form-control" id="cargoE" name="cargoE" required>
+                                   
+                                    <div class="col-md-6">
+                                        <label class="frm-label">Actividad comercial</label>
+                                        <input type="text" class="form-control" id="actividad_cliE" name="actividad_cliE" required>
                                         <div class="valid-feedback">Campo relleno correctamente!</div>
                                         <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <label class="frm-label">Correo electrónico</label>
-                                        <input type="text" class="form-control" id="correoE" name="correoE" required>
+                                    <div class="col-md-6">
+                                        <label class="frm-label">Servicios </label>
+                                        <input type="text" class="form-control" id="servicios_cliE" name="servicios_cliE" required>
                                         <div class="valid-feedback">Campo relleno correctamente!</div>
                                         <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <label class="frm-label">Contraseña</label>
-                                        <input type="password" class="form-control" id="claveE" name="claveE" required>
+                                    <div class="col-md-6">
+                                        <label class="frm-label">Distribución</label>
+                                        <input type="text" class="form-control" id="distribucion_cliE" name="distribucion_cliE" required>
                                         <div class="valid-feedback">Campo relleno correctamente!</div>
                                         <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <label class="frm-label">Iniciales Solicitante</label>
-                                        <input type="text" class="form-control" id="iniciales_firmaE" name="iniciales_firmaE" required>
+                                    <div class="col-md-6">
+                                        <label class="frm-label">Capacitación</label>
+                                        <input type="text" class="form-control" id="capacitacion_cliE" name="capacitacion_cliE" required>
                                         <div class="valid-feedback">Campo relleno correctamente!</div>
                                         <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
                                     </div>
-
-                                    
-
-                                    <!-- <div class="col-md-12">
-                                        <label class="form-label">Rol de usuario</label>
-                                        <select class="form-select" name="rolE">
-                                            <option id="rolE"></option>
-                                            <option value="Administracion">Administrador</option>
-                                            <option value="Empleado">Empleado</option>
-                                            <option value="Director">Director</option>
-                                            <option value="Manager">Manager</option>
-                                            <option value="Compras">Compras</option>
-                                            
-                                        </select>
-                                        <div class="valid-feedback">Archivo relleno correctamente!</div>
-                                        <div class="invalid-feedback"> requerido, favor de rellenar!</div>
-                                    </div> -->
-
-
-                                    <div class="modal-footer">
-
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block">Guardar cambios</button>
+                                    <div class="col-md-6">
+                                        <label class="frm-label">RFC</label>
+                                        <input type="text" class="form-control" id="rfc_cliE" name="rfc_cliE" required>
+                                        <div class="valid-feedback">Campo relleno correctamente!</div>
+                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <label class="frm-label">Dirección</label>
+                                        <input type="text" class="form-control" id="direccion_cliE" name="direccion_cliE" required>
+                                        <div class="valid-feedback">Campo relleno correctamente!</div>
+                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="frm-label">Contacto de compras</label>
+                                        <input type="text" class="form-control" id="contacto_comprasE" name="contacto_comprasE" required>
+                                        <div class="valid-feedback">Campo relleno correctamente!</div>
+                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="frm-label">Teléfono</label>
+                                        <input type="text" class="form-control" id="telefono_cliE" name="telefono_cliE" required>
+                                        <div class="valid-feedback">Campo relleno correctamente!</div>
+                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="frm-label">Email</label>
+                                        <input type="text" class="form-control" id="correo_cliE" name="correo_cliE" required>
+                                        <div class="valid-feedback">Campo relleno correctamente!</div>
+                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="frm-label">Contacto pago</label>
+                                        <input type="text" class="form-control" id="contacto_pagoE" name="contacto_pagoE" required>
+                                        <div class="valid-feedback">Campo relleno correctamente!</div>
+                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="frm-label">Condiciones de venta</label>
+                                        <input type="text" class="form-control" id="condiventa_cliE" name="condiventa_cliE" required>
+                                        <div class="valid-feedback">Campo relleno correctamente!</div>
+                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="frm-label">Crédito</label>
+                                        <input type="text" class="form-control" id="credito_cliE" name="credito_cliE" required>
+                                        <div class="valid-feedback">Campo relleno correctamente!</div>
+                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                    </div>
+                                  
+                            
+                                    <div class="modal-footer ">
+                                        <button class="btn btn-primary btn-lg btn-block" type="submit">Guardar cambios</button>
+                                    </div>
+                                    <?php
+                                     $editarCliente = new ClientesC();
+                                     $editarCliente -> EditarClienteC();
+                                    ?>
                             </div>
-
-                            <?php
-                            //  $actualizarU = new UsuariosC();
-                            //  $actualizarU -> ActualizarUsuariosC();
-
-
-                            ?>
                             </form>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -388,7 +424,7 @@
 <!--end wrapper-->
 
 <?php
-// $borrarU = new UsuariosC();
-// $borrarU->BorrarUsuariosC();
+ $borrarCliente = new ClientesC();
+ $borrarCliente->eliminarClientesC();
 
 ?>
