@@ -3,11 +3,12 @@
   <div class="sidebar-header" style="
     background-color: #1B4F72;">
     <div>
-      <a href="inicio"><img src="vistas/img/logo-re.png" class="logo-icon" style="transform: rotate(30deg);margin-left: -18%;width: 121%;margin-top: 23%;" alt="logo icon"></a>
+      <a href="inicio"><img src="vistas/img/logo-re.png" class="logo-icon" style="transform: rotate(26deg);margin-left: -8%;width: 81%; margin-top: 23%;" alt="logo icon"></a>
     </div>
     <div>
       <a href="inicio">
-        <h4 class="logo-text">Retos Energeticos</h4>
+        <h4 class="logo-text" style="font-size: 18px; margin-left: -11%;
+    margin-top: 6%;">Retos Energeticos</h4>
       </a>
     </div>
     <div class="toggle-icon ms-auto">
@@ -59,12 +60,7 @@
 
       }
     }
-    elseif( $_SESSION["rol"] == "Empleado" ){
-      echo '<li> <a href="proveedores">
-                      <i class="lni lni-delivery"></i>&nbsp Proveedores
-                        </a>
-                      </li>';
-    }
+    
 
 
     if (
@@ -89,7 +85,7 @@
 
       if (
         $_SESSION["rol"] == "Administrador" || $_SESSION["rol"] == "Manager"
-        || $_SESSION["rol"] == "Director" || $_SESSION["rol"] == "Empleado"
+        || $_SESSION["rol"] == "Director" 
       ) {
         echo '<li> <a href="orden-compras">
                            <i class="fadeIn animated bx bx-clipboard"></i>&nbsp Orden de compra

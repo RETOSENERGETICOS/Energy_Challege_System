@@ -15,7 +15,7 @@
         <!--end breadcrumb-->
 
 
-        <div class="row row-cols-1 row-cols-lg-2 row-cols-xxl-4">
+        <!-- <div class="row row-cols-1 row-cols-lg-2 row-cols-xxl-4">
           <div class="col">
             <div class="card radius-10">
               <div class="card-body">
@@ -108,7 +108,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
         <!--end row-->
 
 

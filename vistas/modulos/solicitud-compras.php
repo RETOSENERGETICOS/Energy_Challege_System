@@ -1,16 +1,16 @@
 <?php
 
-// if( $_SESSION["rol"] == "Empleado" 
-// || $_SESSION["rol"] == "Manager" || $_SESSION["rol"] = "Director" 
+// if( $_SESSION["rol"] == "Empleado"
+// || $_SESSION["rol"] == "Manager" || $_SESSION["rol"] = "Director"
 // || $_SESSION["rol"] == "Compras"){
 
 //     echo '<script>
-  
+
 //     window.location = "inicio";
 //     </script>';
-  
+
 //     return;
-  
+
 //   }
 ?>
 
@@ -99,7 +99,7 @@
                                     <th>Moneda</th>
                                     <th>Estado</th>
                                     <th>Acciones</th>
-                               
+
                             </thead>
                             <tbody>
                                 <!-- -------------------------------------------------------------------------- -->
@@ -141,17 +141,17 @@
                                         ?>
                                         <td><?php echo $decimal ?></td>
                                         <td><?php echo $value["moneda"] ?></td>
-                                        
-                                        <td><?php 
+
+                                        <td><?php
                                         if($value['estado'] == 1){
                                             echo ' <button class="btn btn-secondary btn-block" type="submit">En proceso</button>';
-                                            
+
                                         }if($value['estado'] == 2){
                                             echo ' <button class="btn btn-success btn-block" type="submit">Aprobada</button>';
                                         }if($value['estado'] == 3){
                                             echo ' <button class="btn btn-danger btn-block" type="submit">Rechazada</button>';
                                         }
-                                        
+
                                         ?></td>
 
                                         <td>
@@ -229,7 +229,7 @@
                                             foreach ($suminis as $key => $value) {
                                                 echo '<option value="' . $value["id"] . '" >' . $value["nombre"] . '</option>';
                                             }
-                                            // 
+                                            //
                                             ?>
                                             <!-- // <option value="" name="monedaN">...</option>
                                             // <option value="MXN">MXN</option> -->
@@ -237,13 +237,13 @@
 
                                         <!-- <input class="form-control" list="datalistOptions" name="nombre_sumiN" id="validationDefault01" placeholder="">
                                         <datalist name="" id="datalistOptions">
-                                            
+
 
 
                                         </datalist> -->
 
                                     </div>
-                                    <div class="col-md-3">
+                                    <!-- <div class="col-md-3">
                                         <label for="validationDefault02" class="form-label">RFC</label>
                                         <input type="text" class="form-control" name="rfcSN" id="validationDefault02" required>
 
@@ -260,17 +260,17 @@
                                         <label for="validationDefaul05" class="form-label">Dirección</label>
                                         <input type="text" class="form-control" name="direccion_sumiN" id="validationDefaul04" required>
 
-                                    </div>
-                                    <div class="col-md-3">
+                                    </div> -->
+                                    <div class="col-md-6">
                                         <label for="validationDefaul05" class="form-label">ATN</label>
                                         <input type="text" class="form-control" name="atnSN" id="validationDefault05" required>
 
                                     </div>
-                                    <div class="col-md-3">
+                                    <!-- <div class="col-md-3">
                                         <label for="validationDefault06" class="form-label">Email</label>
                                         <input type="text" class="form-control" name="emailSN" id="validationDefault06" required>
 
-                                    </div>
+                                    </div> -->
 
                             </div>
                         </div>
@@ -366,9 +366,22 @@
 
                                     </div>
                                     <div class="col-md-3">
-                                        <label for="validationDefault02" class="form-label">Request by/ Firma del supervisor</label>
-                                        <input type="text" class="form-control" name="firmasupN" id="validationDefault02" value="" required>
+                                        <label for="validationDefault02" class="form-label">Request by/ Firma de Autorizador</label>
+                                        <select class="form-select" value="" name="firmasupN" id="" required>
+                                            <option value="" name="">...</option>
+                                            <?php
+                                            $item = null;
+                                            $valor = null;
 
+                                            $suminis = UsuariosC::VerManagerC($item, $valor);
+                                            foreach ($suminis as $key => $value) {
+                                                echo '<option value="' . $value["id"] . '" >' . $value["nombre"] . '</option>';
+                                            }
+                                            //
+                                            ?>
+                                            <!-- // <option value="" name="monedaN">...</option>
+                                            // <option value="MXN">MXN</option> -->
+                                        </select>
                                     </div>
                                     <div class="col-md-2">
                                         <label for="validationDefault03" class="form-label">Ship via / Forma de envio</label>
@@ -390,11 +403,31 @@
                                     <br>
                                     <br>
                                     <br>
+
+
                                     <div class="col-md-2">
                                         <label for="validationDefault06" class="form-label">Client/ Cliente</label>
-                                        <input type="text" class="form-control" name="clienteN" id="validationDefault06" value="" required>
+                                        <select class="form-select" value="" name="clienteN" id="" required>
+                                            <option value="" name="">...</option>
+                                        <?php
+                                            $item = null;
+                                            $valor = null;
+
+                                            $clientes = ClientesC::MostrarClientesC($item, $valor);
+                                            foreach ($clientes as $key => $value) {
+                                                echo '<option value="' . $value["id"] . '" >' . $value["nombrecomercial_cli"] . '</option>';
+                                            }
+                                            //
+                                            ?>
+
+                                        </select>
 
                                     </div>
+
+
+
+
+
                                     <div class="col-md-2">
                                         <label for="validationDefault06" class="form-label">Project / Proyecto</label>
                                         <input type="text" class="form-control" name="proyectoN" id="validationDefault06" value="" required>
@@ -441,12 +474,12 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col-3">Acciones</th>
-                                                    <th style="width:13%;">Solicitante</th>
+                                                    <th style="width:13%;">Referencia</th>
                                                     <th style="width: 50%;">Descripción</th>
                                                     <th style="width:10%;">Cantidad</th>
                                                     <th>Precio unitario</th>
                                                     <th>Tasa</th>
-                                                    <th>Total</th>
+                                                    <th>Subtotal</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -508,6 +541,7 @@
                                         </table>
                                     </div>
 
+
                                 </div>
                                 <!-- -------------------------------------------------------------------------- -->
                                 <!-- addInput agrega filas a tabla de prouctos                                  -->
@@ -547,12 +581,94 @@
 
             </div>
 
+            <div class="card radius-10">
+              <div class="card-body">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-3 g-3">
+
+                   <div class="card-body">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="widget-icon-2 bg-light-success text-success">
+                    <i class="lni lni-archive"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                      <p class="mb-0">Cuadro de mando</p>
+                      <br>
+                      <input type="file" class="form-control" name="cuadro_msoliN" aria-label="file example" >
+                      <!-- <br> -->
+                      <div class="form-check mb-3">
+                      <!-- <input type="checkbox" class="form-check-input" name="vacio1">
+                      <label class="form-check-label" >No valido</label> -->
+                       
+                          
+                        </div>
+                      <div class="progress my-0" style="height: 6px;">
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="widget-icon-2 bg-light-success text-success">
+                    <i class="lni lni-archive"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                      <p class="mb-0">Oferta de proveedor</p>
+                       <br>
+                       <input type="file" class="form-control" name="ofertaprovN" aria-label="file example" >
+                        <div class="form-check mb-3">
+                        <!-- id="validationFormCheck1" -->
+                        <!-- <br> -->
+                            <!-- <input type="checkbox" class="form-check-input" name="vacio2" value="1">
+                            <label class="form-check-label" >No valido</label>
+                            -->
+                          </div>
+                       <?php 
+                      
+                       ?>                     
+                      
+                      <div class="progress my-0" style="height: 6px;">
+                       
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="widget-icon-2 bg-light-success text-success">
+                    <i class="lni lni-archive"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                      <p class="mb-0">Especificación tecnica</p>
+                      <br>
+                      <input type="file" class="form-control" aria-label="file example" >
+                      <div class="form-check mb-3">
+                      <!-- <br>
+                          <input type="checkbox" class="form-check-input" name="vacio3"  value="1">
+                         
+                          <label class="form-check-label">No valido</label> -->
+                         
+                        </div>
+                      <!-- <h4 class="mb-2 text-success">$85K</h4> -->
+                      <div class="progress my-0" style="height: 6px;">
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                  </div><!--end row-->
+              </div>
+            </div>
+
             <button class="btn btn-primary" type="submit">Crear solicitud</button>
             <br>
 
             <?php
+           
             $crearSoli = new SolicitudC();
             $crearSoli->CrearSolicitudC();
+           
             ?>
 
             </form>

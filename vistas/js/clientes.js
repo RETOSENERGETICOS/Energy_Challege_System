@@ -20,8 +20,8 @@ $(".TB").on("click",".EditarCliente", function(){
         dataType: "json",
         success:function(respuesta){
 
-            console.log(respuesta);
 
+            
             $("#idCliente").val(respuesta["id"]);
             $("#nombrecomercial_cliE").val(respuesta["nombrecomercial_cli"]);
             $("#pais_cliE").val(respuesta["pais_cli"]);

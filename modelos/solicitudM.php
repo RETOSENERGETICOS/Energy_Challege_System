@@ -7,6 +7,8 @@ class SolicitudM extends ConexionBD
 
     static public function VerSolicitudM($tablaBD, $item, $valor)
     {   
+        $idsuario = $_SESSION["id"];
+        
         if($item != null){
         /* -------------------------------------------------------------------------- */
         /*                          crearemos la variable pdo                         */
@@ -32,7 +34,7 @@ class SolicitudM extends ConexionBD
         /*                          crearemos la variable pdo                         */
         /* -------------------------------------------------------------------------- */
 
-        $pdo = ConexionBD::cBD()->prepare("SELECT * FROM vista_solicitud_compra " );
+        $pdo = ConexionBD::cBD()->prepare("SELECT * FROM vista_solicitud_compra WHERE status = 1 AND id_usuario = $idsuario" );
 
        
         /* -------------------------------------------------------------------------- */
@@ -59,6 +61,7 @@ class SolicitudM extends ConexionBD
         $solicitante = $_SESSION['nombre'];
         $email = $_SESSION["correo"];
         $iniciales= $_SESSION["iniciales_firma"];
+        $idsuario = $_SESSION["id"];
         // $Creofechayhora = $creo . ' ' . $fechatext;
         printf($email);
         print_r($datosC);
@@ -68,14 +71,15 @@ class SolicitudM extends ConexionBD
         ,solicitante_soli,firma_superv,forma_env,incoterms,plazo_entr,cliente_soli,
         proyecto_soli,seguro_inclu,oferta_suminis,condicion_especial,ref_suministrador,
         descripcion,cantidad,precio_unitario,tasa,total,subtotal_soli,taxes,
-        pago_envio_soli,otros_soli,total_soli,moneda,status, estado) 
+        pago_envio_soli,otros_soli,total_soli,moneda,status, estado,id_tipo_proceso,
+        id_usuario) 
         VALUES 
         (:id_provedor, :lugarentr_solicitud,:atn_lentrega,:cp_lentrega,
         :direccion_lentrega,:telefono_lentrega,'$solicitante','$email','$iniciales',
         :firma_superv,:forma_env,:incoterms,:plazo_entr,:cliente_soli,
         :proyecto_soli,:seguro_inclu,:oferta_suminis,:condicion_especial,:ref_suministrador,
         :descripcion,:cantidad,:precio_unitario,:tasa,:total,:subtotal_soli,:taxes,
-        :pago_envio_soli,:otros_soli,:total_soli,:moneda,1, 1)");
+        :pago_envio_soli,:otros_soli,:total_soli,:moneda,1, 1,1,$idsuario)");
 
          $pdo->bindParam(":id_provedor", $datosC["id_provedor"], PDO::PARAM_INT);
          $pdo->bindParam(":lugarentr_solicitud", $datosC["lugarentr_solicitud"], PDO::PARAM_STR);
@@ -105,14 +109,16 @@ class SolicitudM extends ConexionBD
          $pdo->bindParam(":total_soli",$datosC['total_soli'], PDO::PARAM_STR);
          $pdo->bindParam(":moneda",$datosC['moneda'], PDO::PARAM_STR);
         
-         
-         print_r($datosC);
-        print_r($pdo);
+        
+
         if ($pdo->execute()) {
             return true;
         } else {
             return false;
         }
+
+        $pdo -> close();
+        $pdo = null;
 
     }
 
