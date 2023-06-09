@@ -136,10 +136,8 @@
                                         <td><?php echo $value["taxes"] ?></td>
                                         <td><?php echo $value["pago_envio_soli"] ?></td>
                                         <td><?php echo $value["otros_soli"] ?></td>
-                                        <?php $texto = $value["total_soli"];
-                                        $decimal = number_format($texto, 2, ".", "");
-                                        ?>
-                                        <td><?php echo $decimal ?></td>
+                                        
+                                        <td><?php echo $value["total_soli"] ?></td>
                                         <td><?php echo $value["moneda"] ?></td>
 
                                         <td><?php
@@ -213,7 +211,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="p-4 border rounded">
-                                <form class="row g-3 needs-validation" method="post">
+                                <form class="row g-3 needs-validation" method="post" enctype="multipart/form-data">
                                     <!-- style="background-color: #1b4e88;color: #fff;
                                      padding-bottom: 2%; text-align:center;" -->
                                     <h6 class="mb-0 text-uppercase">VENDOR / SUMINISTRADOR</h6>
@@ -433,7 +431,7 @@
                                         <input type="text" class="form-control" name="proyectoN" id="validationDefault06" value="" required>
 
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <label for="validationDefault08" class="form-label">Insurance included/ Seguro incluido</label>
                                         <select class="form-select" name="seguroincluN" id="validationDefault08" required>
                                             <option selected disabled value="">...</option>
@@ -443,7 +441,7 @@
                                         </select>
 
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <label for="validationDefault09" class="form-label">Vendor offer / Oferta suministrador</label>
                                         <input type="text" class="form-control" name="ofertasumN" id="validationDefault09">
 
@@ -489,32 +487,32 @@
                                                     <!--removeInput para eliminar filas de solicitud  boton danger                  -->
                                                     <!-- -------------------------------------------------------------------------- -->
                                                     <input type="hidden" name="inputSummary" value="1">
-                                                    <td><button class="btn btn-danger" onclick="removeInput(0,'inputSummary')" title="Eliminar fila" value="Borrar Campos"><i class="lni lni-trash"></i></button></td>
+                                                    <td><button class="btn btn-danger" onclick="removeInput(0,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" name="solicitanteN_0" value="" required>
+                                                            <input type="text" class="form-control" name="solicitanteN_0"  required>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" name="descripN_0" value="" required>
+                                                            <input type="text" class="form-control" name="descripN_0"  required>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-10">
-
-                                                            <input type="text" class="form-control" name="cantN_0" value="" required>
+                                            
+                                                            <input type="text" class="form-control" name="cantN_0"  required>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="precuniN_0" value="" required>
+ 
+                                                            <input type="text" class="form-control" name="precuniN_0"  required>
 
                                                         </div>
                                                     </td>
@@ -534,9 +532,6 @@
                                                     </td>
 
                                                 </tr>
-
-
-
                                             </tbody>
                                         </table>
                                     </div>
@@ -641,7 +636,7 @@
                     <div class="flex-grow-1">
                       <p class="mb-0">Especificación tecnica</p>
                       <br>
-                      <input type="file" class="form-control" aria-label="file example" >
+                      <input type="file" class="form-control"  name="especiftecN" aria-label="file example" >
                       <div class="form-check mb-3">
                       <!-- <br>
                           <input type="checkbox" class="form-check-input" name="vacio3"  value="1">

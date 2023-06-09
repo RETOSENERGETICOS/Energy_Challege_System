@@ -25,15 +25,13 @@ function addInput(elem, type) {
                 </thead>
                 <tbody >
                     <tr>
-                        <td scope="row"><button class="btn btn-danger" onclick="removeInput(` +
-        inputs.length +
-        `,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td>
+                        <td scope="row"><button class="btn btn-danger" onclick="removeInput(` +inputs.length + `,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td>
                         <td>
                             <div class="col-md-12">
                             
                                 <input type="text" class="form-control" name="solicitanteN_` +
         inputs.length +
-        `" value="" required>
+        `" required>
                                 
                             </div>
                         </td>
@@ -42,7 +40,7 @@ function addInput(elem, type) {
                             
                                 <input type="text" class="form-control" name="descripN_` +
         inputs.length +
-        `" value="" required>
+        `"  required>
                                 
                             </div>
                         </td>
@@ -51,7 +49,7 @@ function addInput(elem, type) {
                                 
                                 <input type="text" class="form-control" name="cantN_` +
         inputs.length +
-        `" value="" required>
+        `"  required>
                             
                             </div>
                         </td>
@@ -60,14 +58,14 @@ function addInput(elem, type) {
                                 
                                 <input type="text" class="form-control" name="precuniN_` +
         inputs.length +
-        `" value="" required>
+        `"  required>
                                 
                             </div>
                         </td>
                         <td>
                         <div class="col-md-12">
                             
-                            <input type="text" class="form-control" name="tasalN_` +
+                            <input type="text" class="form-control" name="tasaN_` +
         inputs.length +
         `" required>
                             
@@ -88,6 +86,8 @@ function addInput(elem, type) {
             </table>`
     );
   }
+
+  
 
   $('[name="'+type+'"]').val(inputs.length+1);
 }

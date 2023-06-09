@@ -145,7 +145,7 @@ class UsuariosM extends ConexionBD{
 	static public function VerManagerM($tablaBD,$item,$valor){
 		if($item != null){
 
-			$pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE rol = 'Manager' AND $item = :$item ");
+			$pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE rol = 'Manager' AND $item = :$item AND estado = 1");
 
 			$pdo -> bindParam(":" .$item, $valor, PDO::PARAM_STR);
 
@@ -156,7 +156,7 @@ class UsuariosM extends ConexionBD{
 
 		}else{
 
-			$pdo = ConexionBD::cBD()->prepare("SELECT* FROM $tablaBD WHERE rol = 'Manager'");
+			$pdo = ConexionBD::cBD()->prepare("SELECT* FROM $tablaBD WHERE rol = 'Manager' AND estado = 1");
 
 			$pdo -> execute();
 

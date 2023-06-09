@@ -131,17 +131,13 @@
                                         <td><?php echo $value["descripcion"] ?></td>
                                         <td><?php echo $value["cantidad"] ?></td>
                                         <td><?php echo $value["precio_unitario"] ?></td>
-                                        <?php $texto = $value["otros_soli"];
-                                        $decimal = floatval($texto);;
-                                        ?>
+                                       
                                         <td><?php echo $value["subtotal_soli"] ?></td>
                                         <td><?php echo $value["taxes"] ?></td>
                                         <td><?php echo $value["pago_envio_soli"] ?></td>
                                         <td><?php echo $value["otros_soli"] ?></td>
-                                        <?php $texto = $value["total_soli"];
-                                        $decimal = number_format($texto, 2, ".", "");
-                                        ?>
-                                        <td><?php echo $decimal ?></td>
+                                        
+                                        <td><?php echo  $value["total_soli"] ?></td>
                                         <td><?php echo $value["moneda"] ?></td>
 
 

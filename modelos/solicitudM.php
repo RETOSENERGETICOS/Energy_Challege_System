@@ -53,7 +53,7 @@ class SolicitudM extends ConexionBD
         
     }
 
-    static public function AgregarSolicitudM($tablaBD, $datosC,$solicitanteN_)
+    static public function AgregarSolicitudM($tablaBD, $datosC)
     {
         date_default_timezone_set('America/Mexico_City');
         $fecha = date('Y-m-d H:i:s');
@@ -65,13 +65,16 @@ class SolicitudM extends ConexionBD
         // $Creofechayhora = $creo . ' ' . $fechatext;
         printf($email);
         print_r($datosC);
+
+        //  
         $pdo = ConexionBD::cBD()->prepare("INSERT INTO $tablaBD 
         (id_provedor, lugarentr_solicitud,atn_lentrega,cp_lentrega,
         direccion_lentrega,telefono_lentrega,solicitante_lentrega,email_solicitante
         ,solicitante_soli,firma_superv,forma_env,incoterms,plazo_entr,cliente_soli,
         proyecto_soli,seguro_inclu,oferta_suminis,condicion_especial,ref_suministrador,
         descripcion,cantidad,precio_unitario,tasa,total,subtotal_soli,taxes,
-        pago_envio_soli,otros_soli,total_soli,moneda,status, estado,id_tipo_proceso,
+        pago_envio_soli,otros_soli,total_soli,moneda,cuadro_msoli,ofertaprove_soli,
+        especificacion_tecsoli,status, estado,id_tipo_proceso,
         id_usuario) 
         VALUES 
         (:id_provedor, :lugarentr_solicitud,:atn_lentrega,:cp_lentrega,
@@ -79,7 +82,8 @@ class SolicitudM extends ConexionBD
         :firma_superv,:forma_env,:incoterms,:plazo_entr,:cliente_soli,
         :proyecto_soli,:seguro_inclu,:oferta_suminis,:condicion_especial,:ref_suministrador,
         :descripcion,:cantidad,:precio_unitario,:tasa,:total,:subtotal_soli,:taxes,
-        :pago_envio_soli,:otros_soli,:total_soli,:moneda,1, 1,1,$idsuario)");
+        :pago_envio_soli,:otros_soli,:total_soli,:moneda,:cuadro_msoli,:ofertaprove_soli,
+        :especificacion_tecsoli,1, 1,1,$idsuario)");
 
          $pdo->bindParam(":id_provedor", $datosC["id_provedor"], PDO::PARAM_INT);
          $pdo->bindParam(":lugarentr_solicitud", $datosC["lugarentr_solicitud"], PDO::PARAM_STR);
@@ -96,18 +100,21 @@ class SolicitudM extends ConexionBD
          $pdo->bindParam(":seguro_inclu", $datosC["seguro_inclu"], PDO::PARAM_STR);
          $pdo->bindParam(":oferta_suminis", $datosC["oferta_suminis"], PDO::PARAM_STR);
          $pdo->bindParam(":condicion_especial", $datosC["condicion_especial"], PDO::PARAM_STR);
-         $pdo->bindParam(":ref_suministrador",$datosC['ref_suministrador'], PDO::PARAM_STR);
-         $pdo->bindParam(":descripcion",$datosC['descripcion'], PDO::PARAM_STR);
-         $pdo->bindParam(":cantidad",$datosC['cantidad'], PDO::PARAM_STR);
-         $pdo->bindParam(":precio_unitario",$datosC['precio_unitario'], PDO::PARAM_STR);
-         $pdo->bindParam(":tasa",$datosC['tasa'], PDO::PARAM_STR);
-         $pdo->bindParam(":total",$datosC['total'], PDO::PARAM_STR);
-         $pdo->bindParam(":subtotal_soli",$datosC['subtotal_soli'], PDO::PARAM_STR);
-         $pdo->bindParam(":taxes",$datosC['taxes'], PDO::PARAM_STR);
-         $pdo->bindParam(":pago_envio_soli",$datosC['pago_envio_soli'], PDO::PARAM_STR);
-         $pdo->bindParam(":otros_soli",$datosC['otros_soli'], PDO::PARAM_STR);
-         $pdo->bindParam(":total_soli",$datosC['total_soli'], PDO::PARAM_STR);
-         $pdo->bindParam(":moneda",$datosC['moneda'], PDO::PARAM_STR);
+         $pdo->bindParam(":ref_suministrador",$datosC["ref_suministrador"], PDO::PARAM_STR);
+         $pdo->bindParam(":descripcion",$datosC["descripcion"], PDO::PARAM_STR);
+         $pdo->bindParam(":cantidad",$datosC["cantidad"], PDO::PARAM_STR);
+         $pdo->bindParam(":precio_unitario",$datosC["precio_unitario"], PDO::PARAM_STR);
+         $pdo->bindParam(":tasa",$datosC["tasa"], PDO::PARAM_STR);
+         $pdo->bindParam(":total",$datosC["total"], PDO::PARAM_STR);
+         $pdo->bindParam(":subtotal_soli",$datosC["subtotal_soli"], PDO::PARAM_STR);
+         $pdo->bindParam(":taxes",$datosC["taxes"], PDO::PARAM_STR);
+         $pdo->bindParam(":pago_envio_soli",$datosC["pago_envio_soli"], PDO::PARAM_STR);
+         $pdo->bindParam(":otros_soli",$datosC["otros_soli"], PDO::PARAM_STR);
+         $pdo->bindParam(":total_soli",$datosC["total_soli"], PDO::PARAM_STR);
+         $pdo->bindParam(":moneda",$datosC["moneda"], PDO::PARAM_STR);
+         $pdo->bindParam(":cuadro_msoli",$datosC["cuadro_msoli"], PDO::PARAM_STR);
+         $pdo->bindParam(":ofertaprove_soli",$datosC["ofertaprove_soli"], PDO::PARAM_STR);
+         $pdo->bindParam(":especificacion_tecsoli",$datosC["especificacion_tecsoli"], PDO::PARAM_STR);
         
         
 
