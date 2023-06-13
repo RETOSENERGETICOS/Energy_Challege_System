@@ -83,6 +83,8 @@
                         <table id="example2" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
                                     <th>Solicitante</th>
                                     <th>Plazo de entrega</th>
                                     <th>Suministrador</th>
@@ -97,8 +99,7 @@
                                     <th>Otros</th>
                                     <th>Total</th>
                                     <th>Moneda</th>
-                                    <th>Estado</th>
-                                    <th>Acciones</th>
+                                    
 
                             </thead>
                             <tbody>
@@ -121,26 +122,7 @@
                                     </tr>';
                                 ?>
                                     <tr>
-                                        <td><?php echo $value["solicitante_soli"] ?></td>
-                                        <td><?php echo $value["plazo_entr"] ?></td>
-                                        <td><?php echo $value["nombre"] ?></td>
-                                        <td><?php echo $value["atn"] ?></td>
-                                        <td><?php echo $value["ref_suministrador"] ?></td>
-                                        <td><?php echo $value["descripcion"] ?></td>
-                                        <td><?php echo $value["cantidad"] ?></td>
-                                        <td><?php echo $value["precio_unitario"] ?></td>
-                                        <?php $texto = $value["otros_soli"];
-                                        $decimal = floatval($texto);;
-                                        ?>
-                                        <td><?php echo $value["subtotal_soli"] ?></td>
-                                        <td><?php echo $value["taxes"] ?></td>
-                                        <td><?php echo $value["pago_envio_soli"] ?></td>
-                                        <td><?php echo $value["otros_soli"] ?></td>
-                                        
-                                        <td><?php echo $value["total_soli"] ?></td>
-                                        <td><?php echo $value["moneda"] ?></td>
-
-                                        <td><?php
+                                    <td><?php
                                         if($value['estado'] == 1){
                                             echo ' <button class="btn btn-secondary btn-block" type="submit">En proceso</button>';
 
@@ -159,6 +141,26 @@
                                                 <button class="btn btn-secondary " title="PDF"><i class="bi bi-file-earmark-pdf"></i></button>
                                             </div>
                                         </td>
+                                        <td><?php echo $value["solicitante_lentrega"] ?></td>
+                                        <td><?php echo $value["plazo_entr"] ?></td>
+                                        <td><?php echo $value["nombre"] ?></td>
+                                        <td><?php echo $value["atn"] ?></td>
+                                        <td><?php echo $value["ref_suministrador"] ?></td>
+                                        <td><?php echo $value["descripcion"] ?></td>
+                                        <td><?php echo $value["cantidad"] ?></td>
+                                        <td><?php echo $value["precio_unitario"] ?></td>
+                                        <?php $texto = $value["otros_soli"];
+                                        $decimal = floatval($texto);;
+                                        ?>
+                                        <td><?php echo $value["subtotal_soli"] ?></td>
+                                        <td><?php echo $value["taxes"] ?></td>
+                                        <td><?php echo $value["pago_envio_soli"] ?></td>
+                                        <td><?php echo $value["otros_soli"] ?></td>
+                                        
+                                        <td><?php echo $value["total_soli"] ?></td>
+                                        <td><?php echo $value["moneda"] ?></td>
+
+                                      
 
                                     </tr <?php } ?> ?>
 

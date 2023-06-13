@@ -84,8 +84,7 @@
         </li>';
 
       if (
-        $_SESSION["rol"] == "Administrador" || $_SESSION["rol"] == "Manager"
-        || $_SESSION["rol"] == "Director" 
+        $_SESSION["rol"] == "Administrador" || $_SESSION["rol"] == "Director" 
       ) {
         echo '<li> <a href="orden-compras">
                            <i class="fadeIn animated bx bx-clipboard"></i>&nbsp Orden de compra

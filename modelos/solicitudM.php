@@ -14,7 +14,7 @@ class SolicitudM extends ConexionBD
         /*                          crearemos la variable pdo                         */
         /* -------------------------------------------------------------------------- */
 
-        $pdo = ConexionBD::cBD()->prepare("SELECT * FROM vista_solicitud_compra WHERE $item = :$item" );
+        $pdo = ConexionBD::cBD()->prepare("SELECT * FROM vista_solicitud_compra WHERE $item = :$item " );
 
         $pdo -> bindParam(":".$item, $valor, PDO::PARAM_STR);
         /* -------------------------------------------------------------------------- */
@@ -34,7 +34,7 @@ class SolicitudM extends ConexionBD
         /*                          crearemos la variable pdo                         */
         /* -------------------------------------------------------------------------- */
 
-        $pdo = ConexionBD::cBD()->prepare("SELECT * FROM vista_solicitud_compra WHERE status = 1 AND id_usuario = $idsuario" );
+        $pdo = ConexionBD::cBD()->prepare("SELECT * FROM vista_solicitud_compra WHERE status = 1 AND id_usuario = $idsuario " );
 
        
         /* -------------------------------------------------------------------------- */
@@ -51,7 +51,9 @@ class SolicitudM extends ConexionBD
         $pdo->close();
         }
         
+        
     }
+
 
     static public function AgregarSolicitudM($tablaBD, $datosC)
     {
@@ -68,34 +70,36 @@ class SolicitudM extends ConexionBD
 
         //  
         $pdo = ConexionBD::cBD()->prepare("INSERT INTO $tablaBD 
-        (id_provedor, lugarentr_solicitud,atn_lentrega,cp_lentrega,
+        (id_provedor,atnproveedor_soli, lugarentr_solicitud,atn_lentrega,cp_lentrega,
         direccion_lentrega,telefono_lentrega,solicitante_lentrega,email_solicitante
-        ,solicitante_soli,firma_superv,forma_env,incoterms,plazo_entr,cliente_soli,
+        ,firma_superv,forma_env,incoterms,plazo_entr,id_cliente,
         proyecto_soli,seguro_inclu,oferta_suminis,condicion_especial,ref_suministrador,
         descripcion,cantidad,precio_unitario,tasa,total,subtotal_soli,taxes,
         pago_envio_soli,otros_soli,total_soli,moneda,cuadro_msoli,ofertaprove_soli,
         especificacion_tecsoli,status, estado,id_tipo_proceso,
         id_usuario) 
         VALUES 
-        (:id_provedor, :lugarentr_solicitud,:atn_lentrega,:cp_lentrega,
-        :direccion_lentrega,:telefono_lentrega,'$solicitante','$email','$iniciales',
-        :firma_superv,:forma_env,:incoterms,:plazo_entr,:cliente_soli,
+        (:id_provedor,:atnproveedor_soli, :lugarentr_solicitud,:atn_lentrega,:cp_lentrega,
+        :direccion_lentrega,:telefono_lentrega,'$solicitante','$email',:firma_superv,:forma_env,
+        :incoterms,:plazo_entr,:id_cliente,
         :proyecto_soli,:seguro_inclu,:oferta_suminis,:condicion_especial,:ref_suministrador,
         :descripcion,:cantidad,:precio_unitario,:tasa,:total,:subtotal_soli,:taxes,
         :pago_envio_soli,:otros_soli,:total_soli,:moneda,:cuadro_msoli,:ofertaprove_soli,
         :especificacion_tecsoli,1, 1,1,$idsuario)");
 
          $pdo->bindParam(":id_provedor", $datosC["id_provedor"], PDO::PARAM_INT);
+         $pdo->bindParam(":atnproveedor_soli", $datosC["atnproveedor_soli"], PDO::PARAM_INT);
          $pdo->bindParam(":lugarentr_solicitud", $datosC["lugarentr_solicitud"], PDO::PARAM_STR);
          $pdo->bindParam(":atn_lentrega", $datosC["atn_lentrega"], PDO::PARAM_STR);
          $pdo->bindParam(":cp_lentrega", $datosC["cp_lentrega"], PDO::PARAM_STR);
          $pdo->bindParam(":direccion_lentrega", $datosC["direccion_lentrega"], PDO::PARAM_STR);
          $pdo->bindParam(":telefono_lentrega", $datosC["telefono_lentrega"], PDO::PARAM_STR);
+         
          $pdo->bindParam(":firma_superv", $datosC["firma_superv"], PDO::PARAM_STR);
          $pdo->bindParam(":forma_env", $datosC["forma_env"], PDO::PARAM_STR);
          $pdo->bindParam(":incoterms", $datosC["incoterms"], PDO::PARAM_STR);
          $pdo->bindParam(":plazo_entr", $datosC["plazo_entr"], PDO::PARAM_STR);
-         $pdo->bindParam(":cliente_soli", $datosC["cliente_soli"], PDO::PARAM_STR);
+         $pdo->bindParam(":id_cliente", $datosC["id_cliente"], PDO::PARAM_STR);
          $pdo->bindParam(":proyecto_soli", $datosC["proyecto_soli"], PDO::PARAM_STR);
          $pdo->bindParam(":seguro_inclu", $datosC["seguro_inclu"], PDO::PARAM_STR);
          $pdo->bindParam(":oferta_suminis", $datosC["oferta_suminis"], PDO::PARAM_STR);
@@ -129,4 +133,5 @@ class SolicitudM extends ConexionBD
 
     }
 
+    
 }

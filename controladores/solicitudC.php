@@ -3,10 +3,12 @@
 class SolicitudC
 {
 
-    static public function VerSolicitudC($item, $valor)
+    static public function VerSolicitudC($item, $valor,)
     {
+    
 
         //Creamos la variable de Bd
+      
         $tablaBD = "solicitud_compra";
 
         //Solicitamos una respuesta a nuestro modelo y conocectamos una funcion con VerUsuariosM enviaremos los parametros $tablaBD
@@ -25,6 +27,20 @@ class SolicitudC
         return $respuesta;
     }
 
+
+    // static public function VistaManagerC($item, $valor,)
+    // {
+    
+
+    //     //Creamos la variable de Bd
+      
+    //     $tablaBD = "solicitud_compra";
+
+    //     //Solicitamos una respuesta a nuestro modelo y conocectamos una funcion con VerUsuariosM enviaremos los parametros $tablaBD
+    //     $respuesta = SolicitudM::VistaManagerM($tablaBD, $item, $valor);
+
+    //     return $respuesta;
+    // }
 
  /* -------------------------------------------------------------------------- */
  /*                               CREAR SOLICITUD                              */
@@ -101,6 +117,7 @@ class SolicitudC
 
             $datosC = array(
                 "id_provedor" => $_POST["proveedorN"],
+                "atnproveedor_soli" => $_POST["atnSN"],
                 "lugarentr_solicitud" => $_POST["entregaLN"],
                 "atn_lentrega" => $_POST["atnLN"],
                 "cp_lentrega" => $_POST["cpLN"],
@@ -110,7 +127,7 @@ class SolicitudC
                 "forma_env" => $_POST["formaenvN"],
                 "incoterms" => $_POST["incotermsN"],
                 "plazo_entr" => $_POST["plazoentregaN"],
-                "cliente_soli" => $_POST["clienteN"],
+                "id_cliente" => $_POST["clienteN"],
                 "proyecto_soli" => $_POST["proyectoN"],
                 "seguro_inclu" => $_POST["seguroincluN"],
                 "oferta_suminis" => $_POST["ofertasumN"],
