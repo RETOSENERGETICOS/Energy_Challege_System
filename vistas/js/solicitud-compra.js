@@ -25,7 +25,7 @@ function addInput(elem, type) {
                 </thead>
                 <tbody >
                     <tr>
-                        <td scope="row"><button class="btn btn-danger" onclick="removeInput(` +inputs.length + `,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td>
+                        <td scope="row"><button class="btn btn-danger quitarProducto"  title="Eliminar fila"><i class="lni lni-trash"></i></button></td>
                         <td>
                             <div class="col-md-12">
                             
@@ -119,3 +119,100 @@ function removeInput(index, type) {
   //      fncNotie(3,"At least one entry must exist");
   //  } index = numero de posicion,  inputs = toda la tabla que genera, type = inputSummary
 }
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                        AGREGANDO INPUTS DINAMICOS PRUEBA 2                 */
+/* -------------------------------------------------------------------------- */
+var nunProducto = 0;
+
+$(".btnAgregarProducto").click(function(){
+
+
+    $(".btnAgregarProducto").click(function(){
+        numProducto++;
+
+        $(".nuevoProducto").append(
+
+         
+                           ' <table class="table table-bordered">'+
+                               ' <thead>'+
+                                   ' <tr>'+
+                                        '<th scope="col-3">Acciones</th>'+
+                                        '<th style="width:13%;">Referencia</th>'+
+                                       ' <th style="width: 50%;">Descripción</th>'+
+                                        '<th style="width:10%;">Cantidad</th>'+
+                                        '<th>Precio unitario</th>'+
+                                        '<th>Tasa</th>'+
+                                       '<th>Subtotal</th>'+
+                                ' </tr>'+
+                            ' </thead>'+
+                            ' <tbody>'+
+
+                                '<tr>'+
+                                        // <!-- -------------------------------------------------------------------------- -->
+                                        // <!--removeInput para eliminar filas de solicitud  boton danger                  -->
+                                        // <!-- -------------------------------------------------------------------------- -->
+                                    // ' <input type="hidden" name="inputSummary" value="1">'+
+                                    ' <td><button class="btn btn-danger"  title="Eliminar fila"><i class="lni lni-trash"></i></button></td>'+
+                                    ' <td>'+
+                                        '<div class="col-md-12">'+
+
+                                            '  <input type="text" class="form-control" id="solicitanteN'+numProducto+'" name="solicitanteN" required>'+
+
+                                    '     </div>'+
+                                    '</td>'+
+                                      ' <td>'+
+                                        ' <div class="col-md-12">'+
+
+                                            ' <input type="text" class="form-control" id="descripN'+numProducto+'" name="descripN" required>'>+
+
+                                        '</div>'+
+                                    ' </td>'+
+                                    '<td>'+
+                                           '<div class="col-md-10">'+
+
+                                            ' <input type="text" class="form-control" id="cantN'+numProducto+'" name="cantN" required>'+
+
+                                           '</div'+
+                                    ' </td>'+
+                                    '<td>'+
+                                        ' <div class="col-md-12">'+
+
+                                            ' <input type="text" class="form-control" id="precuniN'+numProducto+'" name="precuniN" required>'+
+
+                                          ' </div'+
+                                    ' </td>'+
+                                    ' <td>'+
+                                        ' <div class="col-md-12"'+
+
+                                            ' <input type="text" class="form-control" id="tasaN'+numProducto+'" name="tasaN" required>'+
+
+                   
+                                        ' </div>'+
+                                    '</td'>+
+                                    '<td'>+
+                                           '<div class="col-md-12">'+
+
+                                            '<input type="text" class="form-control" id="totalN'+numProducto+'" name="totalN" required>'+
+
+                                        '</div>'+
+                                      ' </td>'+
+
+                                '</tr>'+
+                            ' </tbody'+
+                          ' </table'
+                  
+                    // <!-- -------------------------------------------------------------------------- -->
+                    // <!-- addInput agrega filas a tabla de prouctos                                  -->
+                    // <!-- -------------------------------------------------------------------------- -->
+
+                
+              
+        );
+
+    })
+    
+})

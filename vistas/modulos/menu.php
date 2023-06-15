@@ -19,7 +19,7 @@
   <ul class="metismenu" id="menu">
 
     <?php
-    if ($_SESSION["rol"] == "Administrador" || $_SESSION["rol"] == "Manager" ||  $_SESSION["rol"] == "Director") {
+    if ($_SESSION["rol"] == "Administrador" || $_SESSION["rol"] == "Director") {
       echo '<li class="menu-label">Elementos</li>
           <li>
             <a href="javascript:;" class="has-arrow">
@@ -65,7 +65,7 @@
 
     if (
       $_SESSION["rol"] == "Administrador" || $_SESSION["rol"] == "Empleado"
-      || $_SESSION["rol"] == "Compras" || $_SESSION["rol"] == "Manager" || $_SESSION["rol"] == "Director"
+      || $_SESSION["rol"] == "Compras"  || $_SESSION["rol"] == "Director"
     ) {
       echo '   
        <li>
@@ -93,6 +93,28 @@
                            </ul>
                            ';
       }
+    }
+
+    if (
+       $_SESSION["rol"] == "Manager" 
+    ) {
+      echo '   
+       <li>
+                <a class="has-arrow" href="javascript:;">
+                  <div class="parent-icon">
+                    <ion-icon name="server-sharp"></ion-icon>
+                  </div>
+                  <div class="menu-title">Compras</div>
+                </a>
+                <ul>
+                  <li> <a href="manager">
+                  <i class="fadeIn animated bx bx-receipt"></i>&nbsp Solicitud de compra
+                    </a>
+                  </li>
+
+        </li>';
+
+     
     }
 
     if ($_SESSION["rol"] == "Administrador") {

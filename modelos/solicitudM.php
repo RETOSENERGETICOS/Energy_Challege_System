@@ -54,6 +54,56 @@ class SolicitudM extends ConexionBD
         
     }
 
+    static public function VistaManagerM($tablaBD, $item, $valor)
+    {   
+        $idsuario = $_SESSION["id"];
+        
+        if($item != null){
+        /* -------------------------------------------------------------------------- */
+        /*                          crearemos la variable pdo                         */
+        /* -------------------------------------------------------------------------- */
+
+        $pdo = ConexionBD::cBD()->prepare("SELECT * FROM vista_solicitud_compra WHERE $item = :$item " );
+
+        $pdo -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+        /* -------------------------------------------------------------------------- */
+        /*          //variable pdo para que se nos ejecute la consulta SELECT         */
+        /* -------------------------------------------------------------------------- */
+        $pdo->execute();
+        /* -------------------------------------------------------------------------- */
+        /*    //retornamos el pdo con un fetchAll() para mostrar todos los usuarios   */
+        /* -------------------------------------------------------------------------- */
+        return $pdo->fetchAll();
+        /* -------------------------------------------------------------------------- */
+        /*                       //Cerramos la conexion de la BD                      */
+        /* -------------------------------------------------------------------------- */
+        $pdo->close();
+        }else{
+             /* -------------------------------------------------------------------------- */
+        /*                          crearemos la variable pdo                         */
+        /* -------------------------------------------------------------------------- */
+
+        $pdo = ConexionBD::cBD()->prepare("SELECT * FROM vista_solicitud_compra WHERE status = 1  AND firma_superv = $idsuario" );
+
+       
+        /* -------------------------------------------------------------------------- */
+        /*          //variable pdo para que se nos ejecute la consulta SELECT         */
+        /* -------------------------------------------------------------------------- */
+        $pdo->execute();
+        /* -------------------------------------------------------------------------- */
+        /*    //retornamos el pdo con un fetchAll() para mostrar todos los usuarios   */
+        /* -------------------------------------------------------------------------- */
+        return $pdo->fetchAll();
+        /* -------------------------------------------------------------------------- */
+        /*                       //Cerramos la conexion de la BD                      */
+        /* -------------------------------------------------------------------------- */
+        $pdo->close();
+        }
+        
+        
+    }
+
+
 
     static public function AgregarSolicitudM($tablaBD, $datosC)
     {

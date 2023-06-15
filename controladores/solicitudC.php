@@ -17,6 +17,20 @@ class SolicitudC
         return $respuesta;
     }
 
+    static public function VistaManagerC($item, $valor,)
+    {
+    
+
+        //Creamos la variable de Bd
+      
+        $tablaBD = "vista_solicitud_compra";
+
+        //Solicitamos una respuesta a nuestro modelo y conocectamos una funcion con VerUsuariosM enviaremos los parametros $tablaBD
+        $respuesta = SolicitudM::VistaManagerM($tablaBD, $item, $valor);
+
+        return $respuesta;
+    }
+
     //Traer datos Managers
     static public function VersC($item, $valor)
     {
