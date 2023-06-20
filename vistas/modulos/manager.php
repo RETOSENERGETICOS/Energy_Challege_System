@@ -390,7 +390,7 @@
 
                                     <div class="col-md-2">
                                         <label for="validationDefault06" class="form-label">Client/ Cliente</label>
-                                        <select class="form-select" value="" name="clienteN" id="" required>
+                                        <select class="form-select" value="" name="clienteN"  required>
                                             <option value="" name="">...</option>
                                         <?php
                                             $item = null;
@@ -406,9 +406,6 @@
                                         </select>
 
                                     </div>
-
-
-
 
 
                                     <div class="col-md-2">

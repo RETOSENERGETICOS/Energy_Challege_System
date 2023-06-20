@@ -41,7 +41,7 @@
               </li>
               
               <li> <a href="manager">
-                      <ion-icon name="ellipse-outline"></ion-icon>Manager
+              <i class="fadeIn animated bx bx-user-pin"></i></ion-icon>&nbsp Manager
                     </a>
               </li>
           </li>';

@@ -6,6 +6,8 @@ function addInput(elem, type) {
 
   var inputs = $("." + type);
 
+  console.log("inputs",inputs.length);
+
   if (type == "inputSummary") {
     $(elem).before(
       `
@@ -128,7 +130,7 @@ function removeInput(index, type) {
 /* -------------------------------------------------------------------------- */
 var nunProducto = 0;
 
-$(".btnAgregarProducto").click(function(){
+
 
 
     $(".btnAgregarProducto").click(function(){
@@ -215,4 +217,52 @@ $(".btnAgregarProducto").click(function(){
 
     })
     
-})
+
+    document.getElementById("solicitante").addEventListener("submit", function(event) {
+        var checkbox1 = document.getElementById("novalido1");
+        var checkbox2 = document.getElementById("novalido2");
+        var checkbox3 = document.getElementById("novalido3");
+        var inputfile1 = document.getElementById("cuadro_msoliN");
+        var inputfile2 = document.getElementById("ofertaprovN");
+        var inputfile3 = document.getElementById("especiftecN");
+
+
+        if (inputfile1.files.length === 0 && !checkbox1.checked ) {
+          event.preventDefault(); // Evitar el envío del formulario si el checkbox no está marcado
+          
+          // Mostrar SweetAlert
+          Swal.fire({
+            icon: 'warning',
+            title: 'Aviso',
+            text: 'Documento obligatorio, favor de marcar como no valido, para continuar proceso.',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Aceptar'
+          });
+        }
+
+        if (inputfile2.files.length === 0 && !checkbox2.checked ) {
+            event.preventDefault(); // Evitar el envío del formulario si el checkbox no está marcado
+            
+            // Mostrar SweetAlert
+            Swal.fire({
+              icon: 'warning',
+              title: 'Aviso',
+              text: 'Documento obligatorio, favor de marcar como no valido, para continuar proceso.',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'Aceptar'
+            });
+          }
+
+          if (inputfile3.files.length === 0 && !checkbox3.checked ) {
+            event.preventDefault(); // Evitar el envío del formulario si el checkbox no está marcado
+            
+            // Mostrar SweetAlert
+            Swal.fire({
+              icon: 'warning',
+              title: 'Aviso',
+              text: 'Documento obligatorio, favor de marcar como no valido, para continuar proceso.',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'Aceptar'
+            });
+          }
+      });

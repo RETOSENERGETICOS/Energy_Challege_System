@@ -128,6 +128,8 @@ class SolicitudM extends ConexionBD
         pago_envio_soli,otros_soli,total_soli,moneda,cuadro_msoli,ofertaprove_soli,
         especificacion_tecsoli,status, estado,id_tipo_proceso,
         id_usuario) 
+
+         
         VALUES 
         (:id_provedor,:atnproveedor_soli, :lugarentr_solicitud,:atn_lentrega,:cp_lentrega,
         :direccion_lentrega,:telefono_lentrega,'$solicitante','$email',:firma_superv,:forma_env,
@@ -135,7 +137,7 @@ class SolicitudM extends ConexionBD
         :proyecto_soli,:seguro_inclu,:oferta_suminis,:condicion_especial,:ref_suministrador,
         :descripcion,:cantidad,:precio_unitario,:tasa,:total,:subtotal_soli,:taxes,
         :pago_envio_soli,:otros_soli,:total_soli,:moneda,:cuadro_msoli,:ofertaprove_soli,
-        :especificacion_tecsoli,1, 1,1,$idsuario)");
+        :especificacion_tecsoli,1, 1,1,$idsuario)");        
 
          $pdo->bindParam(":id_provedor", $datosC["id_provedor"], PDO::PARAM_INT);
          $pdo->bindParam(":atnproveedor_soli", $datosC["atnproveedor_soli"], PDO::PARAM_INT);
