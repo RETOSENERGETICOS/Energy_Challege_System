@@ -63,7 +63,7 @@ class SolicitudM extends ConexionBD
         /*                          crearemos la variable pdo                         */
         /* -------------------------------------------------------------------------- */
 
-        $pdo = ConexionBD::cBD()->prepare("SELECT * FROM vista_solicitud_compra WHERE $item = :$item " );
+        $pdo = ConexionBD::cBD()->prepare("SELECT * FROM vista_solicitud_general WHERE $item = :$item " );
 
         $pdo -> bindParam(":".$item, $valor, PDO::PARAM_STR);
         /* -------------------------------------------------------------------------- */
@@ -83,7 +83,7 @@ class SolicitudM extends ConexionBD
         /*                          crearemos la variable pdo                         */
         /* -------------------------------------------------------------------------- */
 
-        $pdo = ConexionBD::cBD()->prepare("SELECT * FROM vista_solicitud_compra WHERE status = 1  AND firma_superv = $idsuario" );
+        $pdo = ConexionBD::cBD()->prepare("SELECT * FROM vista_solicitud_general WHERE status = 1  AND firma_superv = $idsuario" );
 
        
         /* -------------------------------------------------------------------------- */
@@ -103,7 +103,7 @@ class SolicitudM extends ConexionBD
         
     }
 
-
+    
 
     static public function AgregarSolicitudM($tablaBD, $datosC)
     {

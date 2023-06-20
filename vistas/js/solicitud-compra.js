@@ -130,9 +130,6 @@ function removeInput(index, type) {
 /* -------------------------------------------------------------------------- */
 var nunProducto = 0;
 
-
-
-
     $(".btnAgregarProducto").click(function(){
         numProducto++;
 
@@ -218,6 +215,13 @@ var nunProducto = 0;
     })
     
 
+
+
+    
+     /* -------------------------------------------------------------------------- */
+     /*                 VALIDACION DE ARCHIVOS SOLICITUD DE COMPRA                 */
+     /* -------------------------------------------------------------------------- */
+
     document.getElementById("solicitante").addEventListener("submit", function(event) {
         var checkbox1 = document.getElementById("novalido1");
         var checkbox2 = document.getElementById("novalido2");
@@ -266,3 +270,18 @@ var nunProducto = 0;
             });
           }
       });
+
+
+
+      $(".TB").on("click", ".btnVistaSolicitud", function(){
+
+        var idSolicitud = $(this).attr("idSolicitud");
+
+        var datos = new FormData();
+        datos.append("idSolicitud", idSolicitud);
+
+        $.ajax({
+            
+        })
+
+      })
