@@ -272,6 +272,9 @@ var nunProducto = 0;
       });
 
 
+      /* -------------------------------------------------------------------------- */
+      /*                                 TRAER DATOS                                */
+      /* -------------------------------------------------------------------------- */
 
       $(".TB").on("click", ".btnVistaSolicitud", function(){
 
@@ -281,7 +284,18 @@ var nunProducto = 0;
         datos.append("idSolicitud", idSolicitud);
 
         $.ajax({
+
+        url:"ajax/solicitudA.php",
+        method: "POST",
+        data: datos,
+        cache:false,
+        contentType:false,
+        proccesData:false,
+        dataType:"json",
+        success:function(repuesta){
             
+        }
+
         })
 
       })

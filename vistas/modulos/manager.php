@@ -201,8 +201,9 @@
                                      padding-bottom: 2%; text-align:center;" -->
                                     <h6 class="mb-0 text-uppercase">VENDOR / SUMINISTRADOR</h6>
                                     <div class="col-md-6">
+                                    <input type="text" class="form-control" name="idSolicitud" id="idSolicitud" required>
                                         <label for="validationDefault01" class="form-label">Nombre</label>
-                                        <select class="form-select" value="" name="proveedorN" id="" required>
+                                        <select class="form-select" value="" name="proveedorN" id="proveedorN" required>
                                             <option value="" name="">...</option>
                                             <?php
                                             $item = null;
@@ -279,7 +280,7 @@
                                     <div class="col-md-4">
                                         <label for="validationDefault02" class="form-label">ATN</label>
                                         <div class="col-md-12">
-                                            <input type="text" class="form-control" name="atnLN" id="validationDefaul03" value="" required>
+                                            <input type="text" class="form-control" name="atnLN" id="validationDefaul02" value="" required>
 
                                         </div>
                                         <!-- <select class="form-select" name="atnN" id="" required>
@@ -317,13 +318,13 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label for="validationDefault2" class="form-label">Solicitante</label>
-                                        <input type="text" class="form-control" name="solicitanteLN" id="validationDefault2" value="<?php echo $_SESSION["nombre"]; ?>" disabled>
+                                        <input type="text" class="form-control" name="solicitanteLN" id="validationDefault06" value="<?php echo $_SESSION["nombre"]; ?>" disabled>
 
                                     </div>
 
                                     <div class="col-md-6">
                                         <label for="validationDefault08" class="form-label">Email</label>
-                                        <input type="text" class="form-control" name="emailLN" id="validationDefault08" value='<?php echo $_SESSION["correo"]; ?>' disabled>
+                                        <input type="text" class="form-control" name="emailLN" id="validationDefault07" value='<?php echo $_SESSION["correo"]; ?>' disabled>
 
                                     </div>
 
@@ -345,7 +346,7 @@
 
                                     <div class="col-md-2">
                                         <label for="validationDefault01" class="form-label">Requisitioner / Solicitante</label>
-                                        <input type="text" class="form-control" name="solicitanteSN" id="validationDefault01" value="<?php echo $_SESSION["iniciales_firma"]; ?>" required disabled>
+                                        <input type="text" class="form-control" name="solicitanteSN" id="validationDefault08" value="<?php echo $_SESSION["iniciales_firma"]; ?>" required disabled>
 
                                     </div>
                                     <div class="col-md-3">
@@ -368,17 +369,17 @@
                                     </div>
                                     <div class="col-md-2">
                                         <label for="validationDefault03" class="form-label">Ship via / Forma de envio</label>
-                                        <input type="text" class="form-control" name="formaenvN" id="validationDefault03" value="" required>
+                                        <input type="text" class="form-control" name="formaenvN" id="validationDefault09" value="" required>
 
                                     </div>
                                     <div class="col-md-2">
                                         <label for="validationDefault04" class="form-label">Incoterms</label>
-                                        <input type="text" class="form-control" name="incotermsN" id="validationDefault04" value="" required>
+                                        <input type="text" class="form-control" name="incotermsN" id="validationDefault10" value="" required>
 
                                     </div>
                                     <div class="col-md-3">
                                         <label for="validationDefault05" class="form-label">Lead Time/ Plazo de entrega</label>
-                                        <input type="text" class="form-control" name="plazoentregaN" id="validationDefault05" required>
+                                        <input type="text" class="form-control" name="plazoentregaN" id="validationDefault11" required>
 
                                     </div>
 
@@ -390,7 +391,7 @@
 
                                     <div class="col-md-2">
                                         <label for="validationDefault06" class="form-label">Client/ Cliente</label>
-                                        <select class="form-select" value="" name="clienteN" id="" required>
+                                        <select class="form-select" value="" name="clienteN" id="clienteN" required>
                                             <option value="" name="">...</option>
                                         <?php
                                             $item = null;
@@ -413,12 +414,12 @@
 
                                     <div class="col-md-2">
                                         <label for="validationDefault06" class="form-label">Project / Proyecto</label>
-                                        <input type="text" class="form-control" name="proyectoN" id="validationDefault06" value="" required>
+                                        <input type="text" class="form-control" name="proyectoN" id="validationDefault12" value="" required>
 
                                     </div>
                                     <div class="col-md-3">
                                         <label for="validationDefault08" class="form-label">Insurance included/ Seguro incluido</label>
-                                        <select class="form-select" name="seguroincluN" id="validationDefault08" required>
+                                        <select class="form-select" name="seguroincluN" id="validationDefault12" required>
                                             <option selected disabled value="">...</option>
                                             <option>Sí</option>
                                             <option>No</option>
@@ -428,12 +429,12 @@
                                     </div>
                                     <div class="col-md-2">
                                         <label for="validationDefault09" class="form-label">Vendor offer / Oferta suministrador</label>
-                                        <input type="text" class="form-control" name="ofertasumN" id="validationDefault09">
+                                        <input type="text" class="form-control" name="ofertasumN" id="validationDefault13">
 
                                     </div>
                                     <div class="col-md-3">
                                         <label for="validationDefault10" class="form-label">Special Instructions / Condiciones Especiales</label>
-                                        <input type="text" class="form-control" name="condicionesespN" id="validationDefault10" required>
+                                        <input type="text" class="form-control" name="condicionesespN" id="validationDefault14" required>
 
                                     </div>
 
@@ -526,7 +527,7 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" name="solicitanteN[]"  >
+                                                            <input type="text" class="form-control" name="solicitanteN[]" id= solicitanteN[]  >
 
                                                         </div>
                                                     </td>
