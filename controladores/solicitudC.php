@@ -31,7 +31,27 @@ class SolicitudC
         return $respuesta;
     }
 
-    //Traer datos Managers
+
+    /* -------------------------------------------------------------------------- */
+    /*                         VISTA DE SOLICITUD MANAGER CONSULTA TRAER DATOS    */
+    /* -------------------------------------------------------------------------- */
+    static public function VistaSolicitudC($item2, $valor2)
+    {
+        //Creamos la variable de Bd
+
+        $tablaBD = "vista_solicitud_general";
+
+        //Solicitamos una respuesta a nuestro modelo y conocectamos una funcion con VerUsuariosM enviaremos los parametros $tablaBD
+        $respuesta = SolicitudM::VistaSolicitudM($tablaBD, $item2, $valor2);
+
+        return $respuesta;
+    }
+
+
+
+    /* -------------------------------------------------------------------------- */
+    /*                        Traer datos Managers combobox                       */
+    /* -------------------------------------------------------------------------- */
     static public function VersC($item, $valor)
     {
         $tablaBD = "provedores";
@@ -42,20 +62,6 @@ class SolicitudC
     }
 
 
-    // static public function VistaManagerC($item, $valor,)
-    // {
-
-
-    //     //Creamos la variable de Bd
-
-    //     $tablaBD = "solicitud_compra";
-
-    //     //Solicitamos una respuesta a nuestro modelo y conocectamos una funcion con VerUsuariosM enviaremos los parametros $tablaBD
-    //     $respuesta = SolicitudM::VistaManagerM($tablaBD, $item, $valor);
-
-    //     return $respuesta;
-    // }
-
     /* -------------------------------------------------------------------------- */
     /*                               CREAR SOLICITUD                              */
     /* -------------------------------------------------------------------------- */
@@ -63,33 +69,8 @@ class SolicitudC
     {
         if (isset($_POST["proveedorN"])) {
 
-            // if (isset($_POST["inputSummary"])) {
-
-            // $detalleproducto = array();
-
-            // for($i = 0; $i < $_POST["inputSummary"]; $i++){
-
-            //     $detalleproducto[$i] = (object)["solicitanteN_"=>trim($_POST["solicitanteN_".$i]),
-            //     "descripN_" => trim($_POST["descripN_".$i]),"cantN_" => trim($_POST["cantN_".$i])
-            //     ,"precuniN_" => trim($_POST["precuniN_".$i]),"tasalN_" => trim($_POST["tasalN_".$i])
-            //     ,"totalN_" => trim($_POST["totalN_".$i])];
-            // }
-
-            // $solicitanteN_ = array();
-            // $descripN_ = array();
-            // $cantN_ = array();
-            // $precuniN_ = array();
-            // $tasaN_ = array();
-            // $totalN_ = array();
-
-            // for ($i = 0; $i < $_POST["inputSummary"]; $i++) {
-            //     array_push($solicitanteN_,trim($_POST["solicitanteN_" . $i]));
-            //     array_push($descripN_,trim($_POST["descripN_". $i])); 
-            //     array_push($cantN_,trim($_POST["cantN_".$i]));  
-            //     array_push($precuniN_,trim($_POST["precuniN_".$i]));
-            //     array_push($tasaN_,trim($_POST["tasaN_".$i])); 
-            //     array_push($totalN_,trim($_POST["totalN_".$i]));
-            // }
+           
+            //declaracion de arreglos inputs
             $solici = array();
             $descrip = array();
             $cant = array();
@@ -108,29 +89,18 @@ class SolicitudC
                     empty($solicitante) || empty($descripcion) || empty($cant) || empty($precu)
                     || empty($tasaa) || empty($totall))
                     {
-
+                    
+                    //insertar lo que viene en los input al array
                     array_push($solici, $solicitante);
-                    // echo "<br><br>" .json_encode($solici);
-
-                    array_push($descrip, $descripcion);
-                    // echo "<br><br>" .json_encode($descrip);
-
-                    array_push($cant, $cantidad);
-                    // echo "<br><br>".json_encode($cant);
-
-                    array_push($precu, $precuni);
-                    // echo "<br><br>".json_encode($precu);
-
+                    array_push($descrip, $descripcion);             
+                    array_push($cant, $cantidad);                   
+                    array_push($precu, $precuni);               
                     array_push($tasaa, $tasa);
-                    // echo "<br><br>".json_encode($tasaa);
-
                     array_push($totall, $total);
-                    // echo "<br><br>".json_encode($totall);
-
                 }
             }
 
-
+            //declaracion de variable string de ruta
             $rutacuadro = "";
             $rutaofertaprov = "";
             $rutaespeciftec = "";

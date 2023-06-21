@@ -5,7 +5,7 @@
 $(".TB").on("click",".EditarCliente", function(){
 
     var idCliente = $(this).attr("idCliente");
-
+    console.log(idCliente);
     var datos = new FormData();
     datos.append("idCliente", idCliente);
 
@@ -19,7 +19,7 @@ $(".TB").on("click",".EditarCliente", function(){
         processData:false,
         dataType: "json",
         success:function(respuesta){
-
+            console.log(respuesta);
 
             
             $("#idCliente").val(respuesta["id"]);

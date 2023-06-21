@@ -219,7 +219,7 @@ var nunProducto = 0;
 
     
      /* -------------------------------------------------------------------------- */
-     /*                 VALIDACION DE ARCHIVOS SOLICITUD DE COMPRA                 */
+     /*                 VALIDACION DE ARCHIVOS CHECKBOX SOLICITUD DE COMPRA        */
      /* -------------------------------------------------------------------------- */
 
     document.getElementById("solicitante").addEventListener("submit", function(event) {
@@ -276,11 +276,12 @@ var nunProducto = 0;
       /*                                 TRAER DATOS                                */
       /* -------------------------------------------------------------------------- */
 
-      $(".TB").on("click", ".btnVistaSolicitud", function(){
+      $(".TB").on("click",".btnVistaSolicitud", function(){
 
         var idSolicitud = $(this).attr("idSolicitud");
-
+        console.log(idSolicitud);
         var datos = new FormData();
+        
         datos.append("idSolicitud", idSolicitud);
 
         $.ajax({
@@ -290,12 +291,26 @@ var nunProducto = 0;
         data: datos,
         cache:false,
         contentType:false,
-        proccesData:false,
+        processData:false,
         dataType:"json",
         success:function(repuesta){
+
+          console.log("respuesta",repuesta);
+
+           $("#idSolicitud").val(respuesta["id"]);
+           $("#proveedorN").html(respuesta["nombre"]);
+           $("#proveedorN").val(respuesta["nombre"]);
+           $("#atnSN").val(respuesta["atnproveedor_soli"]);
+           $("#entregaLN").val(respuesta["lugarentr_solicitud"]);
+           $("#atnLN").val(respuesta["atn_lentrega"]);
+           $("#solicitanteLN").val(respuesta["solicitante_lentrega"]);
+          // $("#validationDefaul01").val(respuesta["lugarentr_solicitud"]);
+          // $("#validationDefaul01").val(respuesta["lugarentr_solicitud"]);
+
+
             
         }
 
-        })
+        });
 
       })

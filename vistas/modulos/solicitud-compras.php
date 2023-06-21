@@ -87,7 +87,7 @@
                                     <th>Acciones</th>
                                     <th>Solicitante</th>
                                     <th>Plazo de entrega</th>
-                                    <th>Suministrador</th>
+                                     <th>Suministrador</th> 
                                     <th>ATN</th>
                                     <th>Referencia suministrador</th>
                                     <th>Descripción</th>
@@ -107,9 +107,13 @@
                                 <!--                      Vista de datos de tabla solicitud                     -->
                                 <!-- -------------------------------------------------------------------------- -->
                                 <?php
+                                $item2 = null;
+                                $valor2 = null;
+
+
                                 $item = null;
                                 $valor = null;
-                                $verS = SolicitudC::VerSolicitudC($item, $valor);
+                                $verS = SolicitudC::VistaManagerC($item, $valor);
                                 ?>
                                 <?php
                                 /* -------------------------------------------------------------------------- */
@@ -145,7 +149,7 @@
                                         <td><?php echo $value["plazo_entr"] ?></td>
                                         <td><?php echo $value["nombre"] ?></td>
                                         <td><?php echo $value["atn"] ?></td>
-                                        <td><?php echo $value["ref_suministrador"] ?></td>
+                                         <td><?php echo $value["ref_suministrador"] ?></td> 
                                         <td><?php echo $value["descripcion"] ?></td>
                                         <td><?php echo $value["cantidad"] ?></td>
                                         <td><?php echo $value["precio_unitario"] ?></td>
@@ -213,14 +217,15 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="p-4 border rounded">
-                                <form id="solicitante" class="row g-3 needs-validation" method="post" enctype="multipart/form-data">
+                                <form id="solicitante" class="row g-3 needs-validation " method="post" enctype="multipart/form-data" >
                                     <!-- style="background-color: #1b4e88;color: #fff;
                                      padding-bottom: 2%; text-align:center;" -->
                                     <h6 class="mb-0 text-uppercase">VENDOR / SUMINISTRADOR</h6>
                                     <div class="col-md-6">
                                         <label for="validationDefault01" class="form-label">Nombre</label>
-                                        <select class="form-select" value="" name="proveedorN" id="" required>
-                                            <option value="" name="">...</option>
+                                        
+                                        <select class="form-select" value="" name="proveedorN" id="proveedorN" required>
+                                            <option value="" name="" id="proveedorN">...</option>
                                             <?php
                                             $item = null;
                                             $valor = null;
@@ -263,7 +268,7 @@
                                     </div> -->
                                     <div class="col-md-6">
                                         <label for="validationDefaul05" class="form-label">ATN</label>
-                                        <input type="text" class="form-control" name="atnSN" id="validationDefault05" required>
+                                        <input type="text" class="form-control" name="atnSN" id="validationDefault0" required>
 
                                     </div>
                                     <!-- <div class="col-md-3">

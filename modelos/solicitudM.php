@@ -14,7 +14,7 @@ class SolicitudM extends ConexionBD
         /*                          crearemos la variable pdo                         */
         /* -------------------------------------------------------------------------- */
 
-        $pdo = ConexionBD::cBD()->prepare("SELECT * FROM vista_solicitud_compra WHERE $item = :$item " );
+        $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE $item = :$item " );
 
         $pdo -> bindParam(":".$item, $valor, PDO::PARAM_STR);
         /* -------------------------------------------------------------------------- */
@@ -34,7 +34,7 @@ class SolicitudM extends ConexionBD
         /*                          crearemos la variable pdo                         */
         /* -------------------------------------------------------------------------- */
 
-        $pdo = ConexionBD::cBD()->prepare("SELECT * FROM vista_solicitud_compra WHERE status = 1 AND id_usuario = $idsuario " );
+        $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE status = 1 AND id_usuario = $idsuario " );
 
        
         /* -------------------------------------------------------------------------- */
@@ -53,6 +53,9 @@ class SolicitudM extends ConexionBD
         
         
     }
+
+
+
 
     static public function VistaManagerM($tablaBD, $item, $valor)
     {   
@@ -103,7 +106,45 @@ class SolicitudM extends ConexionBD
         
     }
 
-    
+
+    /* -------------------------------------------------------------------------- */
+    /*                            CONSULTA TRAER DATOS                            */
+    /* -------------------------------------------------------------------------- */
+    static public function VistaSolicitudM($tablaBD, $item2, $valor2)
+    {   
+        
+        
+        if($item2 != null){
+       
+
+        $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE $item2 = :$item2 AND status=1" );
+
+        $pdo -> bindParam(":".$item2, $valor2, PDO::PARAM_STR);
+       
+        $pdo->execute();
+       
+        return $pdo->fetch();
+      
+      
+        }else{
+       
+
+        $pdo = ConexionBD::cBD()->prepare("SELECT * FROM tablaBD WHERE status = 1" );
+
+        $pdo->execute();
+        
+        return $pdo->fetchAll();
+       
+       
+        }
+        
+        $pdo->close();
+        $pdo = null;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /*                        insert de datos de solicitud                        */
+    /* -------------------------------------------------------------------------- */
 
     static public function AgregarSolicitudM($tablaBD, $datosC)
     {
@@ -140,7 +181,7 @@ class SolicitudM extends ConexionBD
         :especificacion_tecsoli,1, 1,1,$idsuario)");        
 
          $pdo->bindParam(":id_provedor", $datosC["id_provedor"], PDO::PARAM_INT);
-         $pdo->bindParam(":atnproveedor_soli", $datosC["atnproveedor_soli"], PDO::PARAM_INT);
+         $pdo->bindParam(":atnproveedor_soli", $datosC["atnproveedor_soli"], PDO::PARAM_STR);
          $pdo->bindParam(":lugarentr_solicitud", $datosC["lugarentr_solicitud"], PDO::PARAM_STR);
          $pdo->bindParam(":atn_lentrega", $datosC["atn_lentrega"], PDO::PARAM_STR);
          $pdo->bindParam(":cp_lentrega", $datosC["cp_lentrega"], PDO::PARAM_STR);
