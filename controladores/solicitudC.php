@@ -9,7 +9,7 @@ class SolicitudC
 
         //Creamos la variable de Bd
 
-        $tablaBD = "solicitud_compra";
+        $tablaBD = "vista_solicitud_general";
 
         //Solicitamos una respuesta a nuestro modelo y conocectamos una funcion con VerUsuariosM enviaremos los parametros $tablaBD
         $respuesta = SolicitudM::VerSolicitudM($tablaBD, $item, $valor);

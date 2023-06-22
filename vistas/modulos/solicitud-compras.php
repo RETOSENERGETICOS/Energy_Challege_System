@@ -113,7 +113,7 @@
 
                                 $item = null;
                                 $valor = null;
-                                $verS = SolicitudC::VistaManagerC($item, $valor);
+                                $verS = SolicitudC::VerSolicitudC($item, $valor);
                                 ?>
                                 <?php
                                 /* -------------------------------------------------------------------------- */
@@ -140,7 +140,7 @@
 
                                         <td>
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-warning"><i class="fadeIn animated bx bx-edit-alt"></i></button>
+                                                <!-- <button type="button" class="btn btn-warning"><i class="fadeIn animated bx bx-edit-alt"></i></button> -->
                                                 <button class="btn btn-danger " title="Eliminar solicitud"><i class="fadeIn animated bx bx-trash-alt"></i></button>
                                                 <button class="btn btn-secondary " title="PDF"><i class="bi bi-file-earmark-pdf"></i></button>
                                             </div>

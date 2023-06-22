@@ -14,7 +14,7 @@ class SolicitudM extends ConexionBD
         /*                          crearemos la variable pdo                         */
         /* -------------------------------------------------------------------------- */
 
-        $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE $item = :$item " );
+        $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE $item = :$item AND status =1 " );
 
         $pdo -> bindParam(":".$item, $valor, PDO::PARAM_STR);
         /* -------------------------------------------------------------------------- */
