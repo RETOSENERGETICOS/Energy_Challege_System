@@ -293,11 +293,11 @@ var nunProducto = 0;
         contentType:false,
         processData:false,
         dataType:"json",
-        success:function(repuesta){
+        success:function(respuesta){
 
-          console.log("respuesta",repuesta);
+          console.log("respuesta",respuesta);
 
-           $("#idSolicitud").val(respuesta["id"]);
+           $("#idSolicitud2").val(respuesta["id"]);
            $("#proveedorN").html(respuesta["nombre"]);
            $("#proveedorN").val(respuesta["nombre"]);
            $("#atnSN").val(respuesta["atnproveedor_soli"]);
@@ -307,8 +307,6 @@ var nunProducto = 0;
           // $("#validationDefaul01").val(respuesta["lugarentr_solicitud"]);
           // $("#validationDefaul01").val(respuesta["lugarentr_solicitud"]);
 
-
-            
         }
 
         });

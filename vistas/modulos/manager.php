@@ -1362,9 +1362,9 @@
                                      padding-bottom: 2%; text-align:center;" -->
                                     <h6 class="mb-0 text-uppercase">VENDOR / SUMINISTRADOR</h6>
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" name="idSolicitud" id="idSolicitud" required>
+                                        <input type="text" class="form-control" name="idSolicitud" id="idSolicitud2" >
                                         <label for="validationDefault01" class="form-label">Nombre</label>
-                                        <select class="form-select" value="" name="proveedorN" disabled required>
+                                        <select class="form-select" value="" name="proveedorN" disabled >
                                             <option value="" name="" id="proveedorN"></option>
                                             <?php
                                             $item = null;
@@ -1412,7 +1412,7 @@
                                     <div class="col-md-4">
                                         <label for="validationDefault02" class="form-label">ATN</label>
                                         <div class="col-md-12">
-                                            <input type="text" class="form-control" name="atnLN" id="atnLN" value="" readonly>
+                                            <input type="text" class="form-control" name="atnLN" id="atnLN" >
 
                                         </div>
                                         <!-- <select class="form-select" name="atnN" id="" readonly>
@@ -1434,18 +1434,18 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label for="validationDefault01" class="form-label">CP</label>
-                                        <input type="text" class="form-control" name="cpLN" id="cpLN" value="" readonly readonly>
+                                        <input type="text" class="form-control" name="cpLN" id="cpLN" value=""  >
 
                                     </div>
 
                                     <div class="col-md-8">
                                         <label for="validationDefaul03" class="form-label">Dirección</label>
-                                        <input type="text" class="form-control" name="direccionLN" id="direccionLN" value="JUAN GRIJALVA #610" readonly readonly>
+                                        <input type="text" class="form-control" name="direccionLN" id="direccionLN" value=""  >
 
                                     </div>
                                     <div class="col-md-4">
                                         <label for="validationDefault03" class="form-label">Teléfono</label>
-                                        <input type="text" class="form-control" name="telefonoLN" id="telefonoLN" value="+52 1 229 937 1727" readonly readonly>
+                                        <input type="text" class="form-control" name="telefonoLN" id="telefonoLN" value="" readonly readonly>
 
                                     </div>
                                     <div class="col-md-6">
