@@ -129,7 +129,7 @@ class SolicitudM extends ConexionBD
         }else{
        
 
-        $pdo = ConexionBD::cBD()->prepare("SELECT * FROM tablaBD WHERE status = 1" );
+        $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE status = 1" );
 
         $pdo->execute();
         
@@ -163,7 +163,7 @@ class SolicitudM extends ConexionBD
         $pdo = ConexionBD::cBD()->prepare("INSERT INTO $tablaBD 
         (id_provedor,atnproveedor_soli, lugarentr_solicitud,atn_lentrega,cp_lentrega,
         direccion_lentrega,telefono_lentrega,solicitante_lentrega,email_solicitante
-        ,firma_superv,forma_env,incoterms,plazo_entr,id_cliente,
+        ,solicitante_soli,firma_superv,forma_env,incoterms,plazo_entr,id_cliente,
         proyecto_soli,seguro_inclu,oferta_suminis,condicion_especial,ref_suministrador,
         descripcion,cantidad,precio_unitario,tasa,total,subtotal_soli,taxes,
         pago_envio_soli,otros_soli,total_soli,moneda,cuadro_msoli,ofertaprove_soli,
@@ -173,7 +173,7 @@ class SolicitudM extends ConexionBD
          
         VALUES 
         (:id_provedor,:atnproveedor_soli, :lugarentr_solicitud,:atn_lentrega,:cp_lentrega,
-        :direccion_lentrega,:telefono_lentrega,'$solicitante','$email',:firma_superv,:forma_env,
+        :direccion_lentrega,:telefono_lentrega,'$solicitante','$email','$iniciales',:firma_superv,:forma_env,
         :incoterms,:plazo_entr,:id_cliente,
         :proyecto_soli,:seguro_inclu,:oferta_suminis,:condicion_especial,:ref_suministrador,
         :descripcion,:cantidad,:precio_unitario,:tasa,:total,:subtotal_soli,:taxes,
@@ -187,7 +187,7 @@ class SolicitudM extends ConexionBD
          $pdo->bindParam(":cp_lentrega", $datosC["cp_lentrega"], PDO::PARAM_STR);
          $pdo->bindParam(":direccion_lentrega", $datosC["direccion_lentrega"], PDO::PARAM_STR);
          $pdo->bindParam(":telefono_lentrega", $datosC["telefono_lentrega"], PDO::PARAM_STR);
-         
+
          $pdo->bindParam(":firma_superv", $datosC["firma_superv"], PDO::PARAM_STR);
          $pdo->bindParam(":forma_env", $datosC["forma_env"], PDO::PARAM_STR);
          $pdo->bindParam(":incoterms", $datosC["incoterms"], PDO::PARAM_STR);

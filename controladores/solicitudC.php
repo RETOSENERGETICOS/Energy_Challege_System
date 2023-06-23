@@ -67,16 +67,12 @@ class SolicitudC
     /* -------------------------------------------------------------------------- */
     static public function CrearSolicitudC()
     {
+       
         if (isset($_POST["proveedorN"])) {
 
            
             //declaracion de arreglos inputs
-            $solici = array();
-            $descrip = array();
-            $cant = array();
-            $precu = array();
-            $tasaa = array();
-            $totall = array();
+           
 
             if (isset($_POST["solicitanteN"]) || isset($_POST["descripN"]) || isset($_POST["cantN"])) {
                 $solicitante = $_POST['solicitanteN'];
@@ -84,20 +80,12 @@ class SolicitudC
                 $cantidad = $_POST['cantN'];
                 $precuni = $_POST['precuniN'];
                 $tasa = $_POST['tasaN'];
-                $total = $_POST['totalN'];
-                if (
-                    empty($solicitante) || empty($descripcion) || empty($cant) || empty($precu)
-                    || empty($tasaa) || empty($totall))
-                    {
-                    
-                    //insertar lo que viene en los input al array
-                    array_push($solici, $solicitante);
-                    array_push($descrip, $descripcion);             
-                    array_push($cant, $cantidad);                   
-                    array_push($precu, $precuni);               
-                    array_push($tasaa, $tasa);
-                    array_push($totall, $total);
-                }
+                $totales = $_POST['totalesN'];
+                
+
+
+                
+              
             }
 
             //declaracion de variable string de ruta
@@ -144,12 +132,12 @@ class SolicitudC
                 "seguro_inclu" => $_POST["seguroincluN"],
                 "oferta_suminis" => $_POST["ofertasumN"],
                 "condicion_especial" => $_POST["condicionesespN"],
-                "ref_suministrador" => json_encode($solici),
-                "descripcion" => json_encode($descrip),
-                "cantidad" => json_encode($cant),
-                "precio_unitario" => json_encode($precu),
-                "tasa" => json_encode($tasaa),
-                "total" => json_encode($totall),
+                "ref_suministrador" => json_encode($solicitante),
+                "descripcion" => json_encode($descripcion),
+                "cantidad" => json_encode($cantidad),
+                "precio_unitario" => json_encode($precuni),
+                "tasa" => json_encode($tasa),
+                "total" => json_encode($totales),
                 "subtotal_soli" => $_POST["subtotalN"],
                 "taxes" => $_POST["taxesN"],
                 "pago_envio_soli" => $_POST["shippinglN"],

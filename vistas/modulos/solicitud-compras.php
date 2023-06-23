@@ -147,7 +147,7 @@
                                         </td>
                                         <td><?php echo $value["solicitante_lentrega"] ?></td>
                                         <td><?php echo $value["plazo_entr"] ?></td>
-                                        <td><?php echo $value["nombre"] ?></td>
+                                        <td><?php echo $value["nombre_prov"] ?></td>
                                         <td><?php echo $value["atn"] ?></td>
                                          <td><?php echo $value["ref_suministrador"] ?></td> 
                                         <td><?php echo $value["descripcion"] ?></td>
@@ -232,50 +232,22 @@
 
                                             $suminis = ProveedoresC::VerCombProveedoresC($item, $valor);
                                             foreach ($suminis as $key => $value) {
-                                                echo '<option value="' . $value["id"] . '" >' . $value["nombre"] . '</option>';
+                                                echo '<option value="' . $value["id"] . '" >' . $value["nombre_prov"] . '</option>';
                                             }
-                                            //
+                                 
                                             ?>
-                                            <!-- // <option value="" name="monedaN">...</option>
-                                            // <option value="MXN">MXN</option> -->
+                                           
                                         </select>
 
-                                        <!-- <input class="form-control" list="datalistOptions" name="nombre_sumiN" id="validationDefault01" placeholder="">
-                                        <datalist name="" id="datalistOptions">
-
-
-
-                                        </datalist> -->
 
                                     </div>
-                                    <!-- <div class="col-md-3">
-                                        <label for="validationDefault02" class="form-label">RFC</label>
-                                        <input type="text" class="form-control" name="rfcSN" id="validationDefault02" required>
-
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <label for="validationDefault03" class="form-label">Teléfono</label>
-                                        <input type="text" class="form-control" name="telefonoSN" id="validationDefault03" required>
-
-                                    </div>
-
-
-                                    <div class="col-md-6">
-                                        <label for="validationDefaul05" class="form-label">Dirección</label>
-                                        <input type="text" class="form-control" name="direccion_sumiN" id="validationDefaul04" required>
-
-                                    </div> -->
+                                  
                                     <div class="col-md-6">
                                         <label for="validationDefaul05" class="form-label">ATN</label>
                                         <input type="text" class="form-control" name="atnSN" id="validationDefault0" required>
 
                                     </div>
-                                    <!-- <div class="col-md-3">
-                                        <label for="validationDefault06" class="form-label">Email</label>
-                                        <input type="text" class="form-control" name="emailSN" id="validationDefault06" required>
-
-                                    </div> -->
+                                 
 
                             </div>
                         </div>
@@ -533,7 +505,7 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" name="totalN[]" >
+                                                            <input type="text" class="form-control" name="totalesN[]" >
 
                                                         </div>
                                                     </td>
@@ -583,408 +555,7 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" name="totalN[]" >
-
-                                                        </div>
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <!-- -------------------------------------------------------------------------- -->
-                                                    <!--removeInput para eliminar filas de solicitud  boton danger                  -->
-                                                    <!-- -------------------------------------------------------------------------- -->
-                                                    <!-- <input type="" name="inputSummary" value="1"> -->
-                                                    <!-- <td><button class="btn btn-danger" onclick="removeInput(0,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td> -->
-                                                    <td>
-                                                        <div class="col-md-12">
-                                                            
-                                                            <input type="text" class="form-control" name="solicitanteN[]"  >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-                                                            
-                                                        <textarea class="form-control" rows="1" cols="1" name="descripN[]" ></textarea>
-                                                            <!-- <input type="text" class="form-control" name="descripN[]"  > -->
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-10">
-                                            
-                                                            <input type="text" class="form-control" name="cantN[]"  >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
- 
-                                                            <input type="text" class="form-control" name="precuniN[]"  >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="tasaN[]" >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="totalN[]" >
-
-                                                        </div>
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <!-- -------------------------------------------------------------------------- -->
-                                                    <!--removeInput para eliminar filas de solicitud  boton danger                  -->
-                                                    <!-- -------------------------------------------------------------------------- -->
-                                                    <!-- <input type="" name="inputSummary" value="1"> -->
-                                                    <!-- <td><button class="btn btn-danger" onclick="removeInput(0,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td> -->
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="solicitanteN[]"  >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-                                                        <textarea class="form-control" rows="1" cols="1" name="descripN[]" ></textarea>
-                                                            <!-- <input type="text" class="form-control" name="descripN[]"  > -->
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-10">
-                                            
-                                                            <input type="text" class="form-control" name="cantN[]"  >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
- 
-                                                            <input type="text" class="form-control" name="precuniN[]"  >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="tasaN[]" >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="totalN[]" >
-
-                                                        </div>
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <!-- -------------------------------------------------------------------------- -->
-                                                    <!--removeInput para eliminar filas de solicitud  boton danger                  -->
-                                                    <!-- -------------------------------------------------------------------------- -->
-                                                    <!-- <input type="" name="inputSummary" value="1"> -->
-                                                    <!-- <td><button class="btn btn-danger" onclick="removeInput(0,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td> -->
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="solicitanteN[]"  >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-                                                        <textarea class="form-control" rows="1" cols="1" name="descripN[]" ></textarea>
-                                                            <!-- <input type="text" class="form-control" name="descripN[]"  > -->
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-10">
-                                            
-                                                            <input type="text" class="form-control" name="cantN[]"  >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
- 
-                                                            <input type="text" class="form-control" name="precuniN[]"  >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="tasaN[]" >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="totalN[]" >
-
-                                                        </div>
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <!-- -------------------------------------------------------------------------- -->
-                                                    <!--removeInput para eliminar filas de solicitud  boton danger                  -->
-                                                    <!-- -------------------------------------------------------------------------- -->
-                                                    <!-- <input type="" name="inputSummary" value="1"> -->
-                                                    <!-- <td><button class="btn btn-danger" onclick="removeInput(0,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td> -->
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="solicitanteN[]"  >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-                                                        <textarea class="form-control" rows="1" cols="1" name="descripN[]" ></textarea>
-                                                            <!-- <input type="text" class="form-control" name="descripN[]"  > -->
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-10">
-                                            
-                                                            <input type="text" class="form-control" name="cantN[]"  >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
- 
-                                                            <input type="text" class="form-control" name="precuniN[]"  >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="tasaN[]" >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="totalN[]" >
-
-                                                        </div>
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <!-- -------------------------------------------------------------------------- -->
-                                                    <!--removeInput para eliminar filas de solicitud  boton danger                  -->
-                                                    <!-- -------------------------------------------------------------------------- -->
-                                                    <!-- <input type="" name="inputSummary" value="1"> -->
-                                                    <!-- <td><button class="btn btn-danger" onclick="removeInput(0,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td> -->
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="solicitanteN[]"  >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-                                                        <textarea class="form-control" rows="1" cols="1" name="descripN[]" ></textarea>
-                                                            <!-- <input type="text" class="form-control" name="descripN[]"  > -->
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-10">
-                                            
-                                                            <input type="text" class="form-control" name="cantN[]"  >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
- 
-                                                            <input type="text" class="form-control" name="precuniN[]"  >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="tasaN[]" >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="totalN[]" >
-
-                                                        </div>
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <!-- -------------------------------------------------------------------------- -->
-                                                    <!--removeInput para eliminar filas de solicitud  boton danger                  -->
-                                                    <!-- -------------------------------------------------------------------------- -->
-                                                    <!-- <input type="" name="inputSummary" value="1"> -->
-                                                    <!-- <td><button class="btn btn-danger" onclick="removeInput(0,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td> -->
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="solicitanteN[]"  >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-                                                        <textarea class="form-control" rows="1" cols="1" name="descripN[]" ></textarea>
-                                                            <!-- <input type="text" class="form-control" name="descripN[]"  > -->
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-10">
-                                            
-                                                            <input type="text" class="form-control" name="cantN[]"  >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
- 
-                                                            <input type="text" class="form-control" name="precuniN[]"  >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="tasaN[]" >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="totalN[]" >
-
-                                                        </div>
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <!-- -------------------------------------------------------------------------- -->
-                                                    <!--removeInput para eliminar filas de solicitud  boton danger                  -->
-                                                    <!-- -------------------------------------------------------------------------- -->
-                                                    <!-- <input type="" name="inputSummary" value="1"> -->
-                                                    <!-- <td><button class="btn btn-danger" onclick="removeInput(0,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td> -->
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="solicitanteN[]"  >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-                                                        <textarea class="form-control" rows="1" cols="1" name="descripN[]" ></textarea>
-                                                            <!-- <input type="text" class="form-control" name="descripN[]"  > -->
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-10">
-                                            
-                                                            <input type="text" class="form-control" name="cantN[]"  >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
- 
-                                                            <input type="text" class="form-control" name="precuniN[]"  >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="tasaN[]" >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="totalN[]" >
-
-                                                        </div>
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <!-- -------------------------------------------------------------------------- -->
-                                                    <!--removeInput para eliminar filas de solicitud  boton danger                  -->
-                                                    <!-- -------------------------------------------------------------------------- -->
-                                                    <!-- <input type="" name="inputSummary" value="1"> -->
-                                                    <!-- <td><button class="btn btn-danger" onclick="removeInput(0,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td> -->
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="solicitanteN[]"  >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-                                                        <textarea class="form-control" rows="1" cols="1" name="descripN[]" ></textarea>
-                                                            <!-- <input type="text" class="form-control" name="descripN[]"  > -->
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-10">
-                                            
-                                                            <input type="text" class="form-control" name="cantN[]"  >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
- 
-                                                            <input type="text" class="form-control" name="precuniN[]"  >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="tasaN[]" >
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="totalN[]" >
+                                                            <input type="text" class="form-control" name="totalesN[]" >
 
                                                         </div>
                                                     </td>
@@ -1035,7 +606,357 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" name="totalN[]" >
+                                                            <input type="text" class="form-control" name="totalesN[]" >
+
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <!-- -------------------------------------------------------------------------- -->
+                                                    <!--removeInput para eliminar filas de solicitud  boton danger                  -->
+                                                    <!-- -------------------------------------------------------------------------- -->
+                                                    <!-- <input type="" name="inputSummary" value="1"> -->
+                                                    <!-- <td><button class="btn btn-danger" onclick="removeInput(0,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td> -->
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="solicitanteN[]"  >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+                                                        <textarea class="form-control" rows="1" cols="1" name="descripN[]" ></textarea>
+                                                            <!-- <input type="text" class="form-control" name="descripN[]"  > -->
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-10">
+                                            
+                                                            <input type="text" class="form-control" name="cantN[]"  >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+ 
+                                                            <input type="text" class="form-control" name="precuniN[]"  >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="tasaN[]" >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="totalesN[]" >
+
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <!-- -------------------------------------------------------------------------- -->
+                                                    <!--removeInput para eliminar filas de solicitud  boton danger                  -->
+                                                    <!-- -------------------------------------------------------------------------- -->
+                                                    <!-- <input type="" name="inputSummary" value="1"> -->
+                                                    <!-- <td><button class="btn btn-danger" onclick="removeInput(0,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td> -->
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="solicitanteN[]"  >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+                                                        <textarea class="form-control" rows="1" cols="1" name="descripN[]" ></textarea>
+                                                            <!-- <input type="text" class="form-control" name="descripN[]"  > -->
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-10">
+                                            
+                                                            <input type="text" class="form-control" name="cantN[]"  >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+ 
+                                                            <input type="text" class="form-control" name="precuniN[]"  >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="tasaN[]" >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="totalesN[]" >
+
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <!-- -------------------------------------------------------------------------- -->
+                                                    <!--removeInput para eliminar filas de solicitud  boton danger                  -->
+                                                    <!-- -------------------------------------------------------------------------- -->
+                                                    <!-- <input type="" name="inputSummary" value="1"> -->
+                                                    <!-- <td><button class="btn btn-danger" onclick="removeInput(0,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td> -->
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="solicitanteN[]"  >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+                                                        <textarea class="form-control" rows="1" cols="1" name="descripN[]" ></textarea>
+                                                            <!-- <input type="text" class="form-control" name="descripN[]"  > -->
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-10">
+                                            
+                                                            <input type="text" class="form-control" name="cantN[]"  >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+ 
+                                                            <input type="text" class="form-control" name="precuniN[]"  >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="tasaN[]" >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="totalesN[]" >
+
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <!-- -------------------------------------------------------------------------- -->
+                                                    <!--removeInput para eliminar filas de solicitud  boton danger                  -->
+                                                    <!-- -------------------------------------------------------------------------- -->
+                                                    <!-- <input type="" name="inputSummary" value="1"> -->
+                                                    <!-- <td><button class="btn btn-danger" onclick="removeInput(0,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td> -->
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="solicitanteN[]"  >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+                                                        <textarea class="form-control" rows="1" cols="1" name="descripN[]" ></textarea>
+                                                            <!-- <input type="text" class="form-control" name="descripN[]"  > -->
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-10">
+                                            
+                                                            <input type="text" class="form-control" name="cantN[]"  >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+ 
+                                                            <input type="text" class="form-control" name="precuniN[]"  >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="tasaN[]" >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="totalesN[]" >
+
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <!-- -------------------------------------------------------------------------- -->
+                                                    <!--removeInput para eliminar filas de solicitud  boton danger                  -->
+                                                    <!-- -------------------------------------------------------------------------- -->
+                                                    <!-- <input type="" name="inputSummary" value="1"> -->
+                                                    <!-- <td><button class="btn btn-danger" onclick="removeInput(0,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td> -->
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="solicitanteN[]"  >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+                                                        <textarea class="form-control" rows="1" cols="1" name="descripN[]" ></textarea>
+                                                            <!-- <input type="text" class="form-control" name="descripN[]"  > -->
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-10">
+                                            
+                                                            <input type="text" class="form-control" name="cantN[]"  >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+ 
+                                                            <input type="text" class="form-control" name="precuniN[]"  >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="tasaN[]" >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="totalesN[]" >
+
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <!-- -------------------------------------------------------------------------- -->
+                                                    <!--removeInput para eliminar filas de solicitud  boton danger                  -->
+                                                    <!-- -------------------------------------------------------------------------- -->
+                                                    <!-- <input type="" name="inputSummary" value="1"> -->
+                                                    <!-- <td><button class="btn btn-danger" onclick="removeInput(0,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td> -->
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="solicitanteN[]"  >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+                                                        <textarea class="form-control" rows="1" cols="1" name="descripN[]" ></textarea>
+                                                            <!-- <input type="text" class="form-control" name="descripN[]"  > -->
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-10">
+                                            
+                                                            <input type="text" class="form-control" name="cantN[]"  >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+ 
+                                                            <input type="text" class="form-control" name="precuniN[]"  >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="tasaN[]" >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="totalesN[]" >
+
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <!-- -------------------------------------------------------------------------- -->
+                                                    <!--removeInput para eliminar filas de solicitud  boton danger                  -->
+                                                    <!-- -------------------------------------------------------------------------- -->
+                                                    <!-- <input type="" name="inputSummary" value="1"> -->
+                                                    <!-- <td><button class="btn btn-danger" onclick="removeInput(0,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td> -->
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="solicitanteN[]"  >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+                                                        <textarea class="form-control" rows="1" cols="1" name="descripN[]" ></textarea>
+                                                            <!-- <input type="text" class="form-control" name="descripN[]"  > -->
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-10">
+                                            
+                                                            <input type="text" class="form-control" name="cantN[]"  >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+ 
+                                                            <input type="text" class="form-control" name="precuniN[]"  >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="tasaN[]" >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="totalesN[]" >
 
                                                         </div>
                                                     </td>
@@ -1086,7 +1007,7 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" name="totalN[]" >
+                                                            <input type="text" class="form-control" name="totalesN[]" >
 
                                                         </div>
                                                     </td>
@@ -1137,7 +1058,7 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" name="totalN[]" >
+                                                            <input type="text" class="form-control" name="totalesN[]" >
 
                                                         </div>
                                                     </td>
@@ -1188,7 +1109,58 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" name="totalN[]" >
+                                                            <input type="text" class="form-control" name="totalesN[]" >
+
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <!-- -------------------------------------------------------------------------- -->
+                                                    <!--removeInput para eliminar filas de solicitud  boton danger                  -->
+                                                    <!-- -------------------------------------------------------------------------- -->
+                                                    <!-- <input type="" name="inputSummary" value="1"> -->
+                                                    <!-- <td><button class="btn btn-danger" onclick="removeInput(0,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td> -->
+                                                    <td>
+                                                        <div class="col-md-12">
+                                                            
+                                                            <input type="text" class="form-control" name="solicitanteN[]"  >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+                                                            
+                                                        <textarea class="form-control" rows="1" cols="1" name="descripN[]" ></textarea>
+                                                            <!-- <input type="text" class="form-control" name="descripN[]"  > -->
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-10">
+                                            
+                                                            <input type="text" class="form-control" name="cantN[]"  >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+ 
+                                                            <input type="text" class="form-control" name="precuniN[]"  >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="tasaN[]" >
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="totalesN[]" >
 
                                                         </div>
                                                     </td>

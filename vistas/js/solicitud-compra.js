@@ -3,10 +3,9 @@
 /* -------------------------------------------------------------------------- */
 
 function addInput(elem, type) {
-
   var inputs = $("." + type);
 
-  console.log("inputs",inputs.length);
+  console.log("inputs", inputs.length);
 
   if (type == "inputSummary") {
     $(elem).before(
@@ -89,9 +88,7 @@ function addInput(elem, type) {
     );
   }
 
-  
-
-  $('[name="'+type+'"]').val(inputs.length+1);
+  $('[name="' + type + '"]').val(inputs.length + 1);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -111,204 +108,275 @@ function removeInput(index, type) {
         // console.log(inputs);
         // console.log(index);
         // console.log(num);
-
-        
       }
     });
-    $('[name="'+type+'"]').val(inputs.length-1);
-
+    $('[name="' + type + '"]').val(inputs.length - 1);
   } //else{
   //      fncNotie(3,"At least one entry must exist");
   //  } index = numero de posicion,  inputs = toda la tabla que genera, type = inputSummary
 }
-
-
-
 
 /* -------------------------------------------------------------------------- */
 /*                        AGREGANDO INPUTS DINAMICOS PRUEBA 2                 */
 /* -------------------------------------------------------------------------- */
 var nunProducto = 0;
 
-    $(".btnAgregarProducto").click(function(){
-        numProducto++;
+$(".btnAgregarProducto").click(function() {
+  numProducto++;
 
-        $(".nuevoProducto").append(
+  $(".nuevoProducto").append(
+    ' <table class="table table-bordered">' +
+      " <thead>" +
+      " <tr>" +
+      '<th scope="col-3">Acciones</th>' +
+      '<th style="width:13%;">Referencia</th>' +
+      ' <th style="width: 50%;">Descripción</th>' +
+      '<th style="width:10%;">Cantidad</th>' +
+      "<th>Precio unitario</th>" +
+      "<th>Tasa</th>" +
+      "<th>Subtotal</th>" +
+      " </tr>" +
+      " </thead>" +
+      " <tbody>" +
+      "<tr>" +
+      // <!-- -------------------------------------------------------------------------- -->
+      // <!--removeInput para eliminar filas de solicitud  boton danger                  -->
+      // <!-- -------------------------------------------------------------------------- -->
+      // ' <input type="hidden" name="inputSummary" value="1">'+
+      ' <td><button class="btn btn-danger"  title="Eliminar fila"><i class="lni lni-trash"></i></button></td>' +
+      " <td>" +
+      '<div class="col-md-12">' +
+      '  <input type="text" class="form-control" id="solicitanteN' +
+      numProducto +
+      '" name="solicitanteN" required>' +
+      "     </div>" +
+      "</td>" +
+      " <td>" +
+      ' <div class="col-md-12">' +
+      ' <input type="text" class="form-control" id="descripN' +
+      numProducto +
+      '" name="descripN" required>' >
+      +"</div>" +
+        " </td>" +
+        "<td>" +
+        '<div class="col-md-10">' +
+        ' <input type="text" class="form-control" id="cantN' +
+        numProducto +
+        '" name="cantN" required>' +
+        "</div" +
+        " </td>" +
+        "<td>" +
+        ' <div class="col-md-12">' +
+        ' <input type="text" class="form-control" id="precuniN' +
+        numProducto +
+        '" name="precuniN" required>' +
+        " </div" +
+        " </td>" +
+        " <td>" +
+        ' <div class="col-md-12"' +
+        ' <input type="text" class="form-control" id="tasaN' +
+        numProducto +
+        '" name="tasaN" required>' +
+        " </div>" +
+        "</td" >
+      +"<td" >
+      +'<div class="col-md-12">' +
+        '<input type="text" class="form-control" id="totalN' +
+        numProducto +
+        '" name="totalN" required>' +
+        "</div>" +
+        " </td>" +
+        "</tr>" +
+        " </tbody" +
+        " </table"
 
-         
-                           ' <table class="table table-bordered">'+
-                               ' <thead>'+
-                                   ' <tr>'+
-                                        '<th scope="col-3">Acciones</th>'+
-                                        '<th style="width:13%;">Referencia</th>'+
-                                       ' <th style="width: 50%;">Descripción</th>'+
-                                        '<th style="width:10%;">Cantidad</th>'+
-                                        '<th>Precio unitario</th>'+
-                                        '<th>Tasa</th>'+
-                                       '<th>Subtotal</th>'+
-                                ' </tr>'+
-                            ' </thead>'+
-                            ' <tbody>'+
+    // <!-- -------------------------------------------------------------------------- -->
+    // <!-- addInput agrega filas a tabla de prouctos                                  -->
+    // <!-- -------------------------------------------------------------------------- -->
+  );
+});
 
-                                '<tr>'+
-                                        // <!-- -------------------------------------------------------------------------- -->
-                                        // <!--removeInput para eliminar filas de solicitud  boton danger                  -->
-                                        // <!-- -------------------------------------------------------------------------- -->
-                                    // ' <input type="hidden" name="inputSummary" value="1">'+
-                                    ' <td><button class="btn btn-danger"  title="Eliminar fila"><i class="lni lni-trash"></i></button></td>'+
-                                    ' <td>'+
-                                        '<div class="col-md-12">'+
+/* -------------------------------------------------------------------------- */
+/*                 VALIDACION DE ARCHIVOS CHECKBOX SOLICITUD DE COMPRA        */
+/* -------------------------------------------------------------------------- */
 
-                                            '  <input type="text" class="form-control" id="solicitanteN'+numProducto+'" name="solicitanteN" required>'+
+document
+  .getElementById("solicitante")
+  .addEventListener("submit", function(event) {
+    var checkbox1 = document.getElementById("novalido1");
+    var checkbox2 = document.getElementById("novalido2");
+    var checkbox3 = document.getElementById("novalido3");
+    var inputfile1 = document.getElementById("cuadro_msoliN");
+    var inputfile2 = document.getElementById("ofertaprovN");
+    var inputfile3 = document.getElementById("especiftecN");
 
-                                    '     </div>'+
-                                    '</td>'+
-                                      ' <td>'+
-                                        ' <div class="col-md-12">'+
+    if (inputfile1.files.length === 0 && !checkbox1.checked) {
+      event.preventDefault(); // Evitar el envío del formulario si el checkbox no está marcado
 
-                                            ' <input type="text" class="form-control" id="descripN'+numProducto+'" name="descripN" required>'>+
-
-                                        '</div>'+
-                                    ' </td>'+
-                                    '<td>'+
-                                           '<div class="col-md-10">'+
-
-                                            ' <input type="text" class="form-control" id="cantN'+numProducto+'" name="cantN" required>'+
-
-                                           '</div'+
-                                    ' </td>'+
-                                    '<td>'+
-                                        ' <div class="col-md-12">'+
-
-                                            ' <input type="text" class="form-control" id="precuniN'+numProducto+'" name="precuniN" required>'+
-
-                                          ' </div'+
-                                    ' </td>'+
-                                    ' <td>'+
-                                        ' <div class="col-md-12"'+
-
-                                            ' <input type="text" class="form-control" id="tasaN'+numProducto+'" name="tasaN" required>'+
-
-                   
-                                        ' </div>'+
-                                    '</td'>+
-                                    '<td'>+
-                                           '<div class="col-md-12">'+
-
-                                            '<input type="text" class="form-control" id="totalN'+numProducto+'" name="totalN" required>'+
-
-                                        '</div>'+
-                                      ' </td>'+
-
-                                '</tr>'+
-                            ' </tbody'+
-                          ' </table'
-                  
-                    // <!-- -------------------------------------------------------------------------- -->
-                    // <!-- addInput agrega filas a tabla de prouctos                                  -->
-                    // <!-- -------------------------------------------------------------------------- -->
-
-                
-              
-        );
-
-    })
-    
-
-
-
-    
-     /* -------------------------------------------------------------------------- */
-     /*                 VALIDACION DE ARCHIVOS CHECKBOX SOLICITUD DE COMPRA        */
-     /* -------------------------------------------------------------------------- */
-
-    document.getElementById("solicitante").addEventListener("submit", function(event) {
-        var checkbox1 = document.getElementById("novalido1");
-        var checkbox2 = document.getElementById("novalido2");
-        var checkbox3 = document.getElementById("novalido3");
-        var inputfile1 = document.getElementById("cuadro_msoliN");
-        var inputfile2 = document.getElementById("ofertaprovN");
-        var inputfile3 = document.getElementById("especiftecN");
-
-
-        if (inputfile1.files.length === 0 && !checkbox1.checked ) {
-          event.preventDefault(); // Evitar el envío del formulario si el checkbox no está marcado
-          
-          // Mostrar SweetAlert
-          Swal.fire({
-            icon: 'warning',
-            title: 'Aviso',
-            text: 'Documento obligatorio, favor de marcar como no valido, para continuar proceso.',
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: 'Aceptar'
-          });
-        }
-
-        if (inputfile2.files.length === 0 && !checkbox2.checked ) {
-            event.preventDefault(); // Evitar el envío del formulario si el checkbox no está marcado
-            
-            // Mostrar SweetAlert
-            Swal.fire({
-              icon: 'warning',
-              title: 'Aviso',
-              text: 'Documento obligatorio, favor de marcar como no valido, para continuar proceso.',
-              confirmButtonColor: '#3085d6',
-              confirmButtonText: 'Aceptar'
-            });
-          }
-
-          if (inputfile3.files.length === 0 && !checkbox3.checked ) {
-            event.preventDefault(); // Evitar el envío del formulario si el checkbox no está marcado
-            
-            // Mostrar SweetAlert
-            Swal.fire({
-              icon: 'warning',
-              title: 'Aviso',
-              text: 'Documento obligatorio, favor de marcar como no valido, para continuar proceso.',
-              confirmButtonColor: '#3085d6',
-              confirmButtonText: 'Aceptar'
-            });
-          }
+      // Mostrar SweetAlert
+      Swal.fire({
+        icon: "warning",
+        title: "Aviso",
+        text:
+          "Documento obligatorio, favor de marcar como no valido, para continuar proceso.",
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "Aceptar"
       });
+    }
+
+    if (inputfile2.files.length === 0 && !checkbox2.checked) {
+      event.preventDefault(); // Evitar el envío del formulario si el checkbox no está marcado
+
+      // Mostrar SweetAlert
+      Swal.fire({
+        icon: "warning",
+        title: "Aviso",
+        text:
+          "Documento obligatorio, favor de marcar como no valido, para continuar proceso.",
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "Aceptar"
+      });
+    }
+
+    if (inputfile3.files.length === 0 && !checkbox3.checked) {
+      event.preventDefault(); // Evitar el envío del formulario si el checkbox no está marcado
+
+      // Mostrar SweetAlert
+      Swal.fire({
+        icon: "warning",
+        title: "Aviso",
+        text:
+          "Documento obligatorio, favor de marcar como no valido, para continuar proceso.",
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "Aceptar"
+      });
+    }
+  });
+
+/* -------------------------------------------------------------------------- */
+/*                                 TRAER DATOS                                */
+/* -------------------------------------------------------------------------- */
+
+$(".TB").on("click", ".btnVistaSolicitud", function() {
+  var idSolicitud = $(this).attr("idSolicitud");
+  console.log(idSolicitud);
+  var datos = new FormData();
+
+  datos.append("idSolicitud", idSolicitud);
+
+  $.ajax({
+    url: "ajax/solicitudA.php",
+    method: "POST",
+    data: datos,
+    cache: false,
+    contentType: false,
+    processData: false,
+    dataType: "json",
+    success: function(respuesta) {
+      $provedor = $("#proveedorNS").html(respuesta["nombre_prov"]);
+      console.log("respuesta", respuesta);
+      console.log($provedor);
+
+      $("#idSolicitud2").val(respuesta["id"]);
+      $("#proveedorNS").html(respuesta["nombre_prov"]);
+      $("#proveedorNS").val(respuesta["nombre_prov"]);
+      $("#atnSN").val(respuesta["atnproveedor_soli"]);
+      $("#entregaLN").val(respuesta["lugarentr_solicitud"]);
+      $("#atnLN").val(respuesta["atn_lentrega"]);
+      $("#cpLN").val(respuesta["cp_lentrega"]);
+      $("#direccionLN").val(respuesta["direccion_lentrega"]);
+      $("#telefonoLN").val(respuesta["telefono_lentrega"]);
+      $("#solicitanteLN").val(respuesta["solicitante_lentrega"]);
+      $("#emailLN").val(respuesta["email_solicitante"]);
+      $("#solicitanteSN").val(respuesta["solicitante_soli"]);
+      $("#formaenvN").val(respuesta["forma_env"]);
+      $("#incotermsN").val(respuesta["incoterms"]);
+      $("#plazoentregaN").val(respuesta["plazo_entr"]);
+      $("#clienteN").html(respuesta["nombrecomercial_cli"]);
+      $("#clienteN").val(respuesta["nombrecomercial_cli"]);
+      $("#proyectoN").val(respuesta["proyecto_soli"]);
+      $("#seguroincluN").html(respuesta["seguro_inclu"]);
+      $("#seguroincluN").val(respuesta["seguro_inclu"]);
+      $("#ofertasumN").val(respuesta["oferta_suminis"]);
+      $("#condicionesespN").val(respuesta["condicion_especial"]);
+      // $("#subtotalN").val(respuesta["subtotal_soli"]);
+      // $("#taxesN").val(respuesta["taxes"]);
+      // $("#shippinglN").val(respuesta["pago_envio_soli"]);
+      // $("#otrosN").val(respuesta["otros_soli"]);
+      // $("#totalN").val(respuesta["total_soli"]);
+      // $("#monedaN").val(respuesta["moneda"]);
 
 
-      /* -------------------------------------------------------------------------- */
-      /*                                 TRAER DATOS                                */
-      /* -------------------------------------------------------------------------- */
+      // var ref_suministrador = JSON.stringify(respuesta["ref_suministrador"]);
+      var texto1 = respuesta["ref_suministrador"];
+      var textoSinCaracteres = texto1.replace(/\\/g, "");
+      var arreglo = JSON.parse(textoSinCaracteres);
 
-      $(".TB").on("click",".btnVistaSolicitud", function(){
+      for (var i = 0; i < arreglo.length; i++) {
+        var elemento = arreglo[i];
+        console.log(texto1);
+        $("#solicitanteN_" + i).val(elemento);
+      }
 
-        var idSolicitud = $(this).attr("idSolicitud");
-        console.log(idSolicitud);
-        var datos = new FormData();
-        
-        datos.append("idSolicitud", idSolicitud);
+      var texto2= respuesta["descripcion"];
+      var textoSinCaracteres = texto2.replace(/\\/g, "");
+      var arreglo = JSON.parse(textoSinCaracteres);
 
-        $.ajax({
+      for (var i = 0; i < arreglo.length; i++) {
+        var elemento = arreglo[i];
+        console.log(texto2);
+        $("#descripN_" + i).val(elemento);
+      }
 
-        url:"ajax/solicitudA.php",
-        method: "POST",
-        data: datos,
-        cache:false,
-        contentType:false,
-        processData:false,
-        dataType:"json",
-        success:function(respuesta){
+      var texto3 = respuesta["cantidad"];
+      var textoSinCaracteres = texto3.replace(/\\/g, "");
+      var arreglo = JSON.parse(textoSinCaracteres);
 
-          console.log("respuesta",respuesta);
+      for (var i = 0; i < arreglo.length; i++) {
+        var elemento = arreglo[i];
+        console.log(texto3);
+        $("#cantN_" + i).val(elemento);
+      }
 
-           $("#idSolicitud2").val(respuesta["id"]);
-           $("#proveedorN").html(respuesta["nombre"]);
-           $("#proveedorN").val(respuesta["nombre"]);
-           $("#atnSN").val(respuesta["atnproveedor_soli"]);
-           $("#entregaLN").val(respuesta["lugarentr_solicitud"]);
-           $("#atnLN").val(respuesta["atn_lentrega"]);
-           $("#solicitanteLN").val(respuesta["solicitante_lentrega"]);
-          // $("#validationDefaul01").val(respuesta["lugarentr_solicitud"]);
-          // $("#validationDefaul01").val(respuesta["lugarentr_solicitud"]);
+      var texto4 = respuesta["precio_unitario"];
+      var textoSinCaracteres = texto4.replace(/\\/g, "");
+      var arreglo = JSON.parse(textoSinCaracteres);
 
-        }
+      for (var i = 0; i < arreglo.length; i++) {
+        var elemento = arreglo[i];
+        console.log(texto4);
+        $("#precuniN_" + i).val(elemento);
+      }
 
-        });
+      var texto5 = respuesta["tasa"];
+      var textoSinCaracteres = texto5.replace(/\\/g, "");
+      var arreglo = JSON.parse(textoSinCaracteres);
 
-      })
+      for (var i = 0; i < arreglo.length; i++) {
+        var elemento = arreglo[i];
+        console.log(texto5);
+        $("#tasaN_" + i).val(elemento);
+      }
+
+
+      var texto6 = respuesta["total"];
+      var textoSinCaracteres = texto6.replace(/\\/g, "");
+      var arreglo = JSON.parse(textoSinCaracteres);
+
+      for (var i = 0; i < arreglo.length; i++) {
+        var elemento = arreglo[i];
+        console.log(texto6);
+        $("#totalesN_" + i).val(elemento);
+      }
+      
+    
+      
+
+
+    
+      
+
+      
+    }
+  });
+});
