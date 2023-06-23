@@ -292,19 +292,30 @@ $(".TB").on("click", ".btnVistaSolicitud", function() {
       $("#formaenvN").val(respuesta["forma_env"]);
       $("#incotermsN").val(respuesta["incoterms"]);
       $("#plazoentregaN").val(respuesta["plazo_entr"]);
-      $("#clienteN").html(respuesta["nombrecomercial_cli"]);
-      $("#clienteN").val(respuesta["nombrecomercial_cli"]);
+      $("#clienteeN").html(respuesta["nombrecomercial_cli"]);
+      $("#clienteeN").val(respuesta["nombrecomercial_cli"]);
       $("#proyectoN").val(respuesta["proyecto_soli"]);
       $("#seguroincluN").html(respuesta["seguro_inclu"]);
       $("#seguroincluN").val(respuesta["seguro_inclu"]);
       $("#ofertasumN").val(respuesta["oferta_suminis"]);
       $("#condicionesespN").val(respuesta["condicion_especial"]);
-      // $("#subtotalN").val(respuesta["subtotal_soli"]);
-      // $("#taxesN").val(respuesta["taxes"]);
-      // $("#shippinglN").val(respuesta["pago_envio_soli"]);
-      // $("#otrosN").val(respuesta["otros_soli"]);
-      // $("#totalN").val(respuesta["total_soli"]);
-      // $("#monedaN").val(respuesta["moneda"]);
+      $("#subtotallN").val(respuesta["subtotal_soli"]);
+      $("#taxessN").val(respuesta["taxes"]);
+      $("#shippingglN").val(respuesta["pago_envio_soli"]);
+      $("#otrossN").val(respuesta["otros_soli"]);
+      $("#totalsoliN").val(respuesta["total_soli"]);
+      $("#monedaaN").val(respuesta["moneda"]);
+
+      
+
+
+      $("#cuadroM").attr("download",respuesta["cuadro_msoli"]);
+      $("#cuadroM").attr("href",respuesta["cuadro_msoli"]);
+      $("#ofertaP").attr("download",respuesta["ofertaprove_soli"]);
+      $("#ofertaP").attr("href",respuesta["ofertaprove_soli"]);
+      $("#especifiT").attr("download",respuesta["especificacion_tecsoli"]);
+      $("#especifiT").attr("href",respuesta["especificacion_tecsoli"]);
+   
 
 
       // var ref_suministrador = JSON.stringify(respuesta["ref_suministrador"]);
@@ -380,3 +391,49 @@ $(".TB").on("click", ".btnVistaSolicitud", function() {
     }
   });
 });
+
+$("#especifiT").on("click", function(event) {
+  var rutaDownload = $(this).attr("download");
+  var rutaHref = $(this).attr("href");
+
+  if (!rutaDownload && !rutaHref) {
+    event.preventDefault(); // Evita que se siga el enlace
+
+    Swal.fire({
+      icon: 'warning',
+      title: 'Archivo vacio.',
+      text: 'Fue declarado como no valido.'
+    });
+  }
+});
+
+$("#ofertaP").on("click", function(event) {
+  var rutaDownload2 = $(this).attr("download");
+  var rutaHref2 = $(this).attr("href");
+
+  if (!rutaDownload2 && !rutaHref2) {
+    event.preventDefault(); // Evita que se siga el enlace
+
+    Swal.fire({
+      icon: 'warning',
+      title: 'Archivo vacio.',
+      text: 'Fue declarado como no valido.'
+    });
+  }
+});
+
+$("#cuadroM").on("click", function(event) {
+  var rutaDownload3 = $(this).attr("download");
+  var rutaHref3 = $(this).attr("href");
+
+  if (!rutaDownload3 && !rutaHref3) {
+    event.preventDefault(); // Evita que se siga el enlace
+
+    Swal.fire({
+      icon: 'warning',
+      title: 'Archivo vacio.',
+      text: 'Fue declarado como no valido.'
+    });
+  }
+});
+

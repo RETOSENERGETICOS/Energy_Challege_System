@@ -1504,7 +1504,7 @@
                                     <div class="col-md-2">
                                         <label for="validationDefault06" class="form-label">Client/ Cliente</label>
                                         <select class="form-select" value="" name="clienteN" readonly>
-                                            <option value="" id="clienteN"></option>
+                                            <option value="" id="clienteeN"></option>
 
 
                                         </select>
@@ -1610,7 +1610,7 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalN_0" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_0" readonly>
 
                                                         </div>
                                                     </td>
@@ -1660,7 +1660,7 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalN_1" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_1" readonly>
 
                                                         </div>
                                                     </td>
@@ -1711,7 +1711,7 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalN_2" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_2" readonly>
 
                                                         </div>
                                                     </td>
@@ -1761,7 +1761,7 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalN_3" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_3" readonly>
 
                                                         </div>
                                                     </td>
@@ -1811,7 +1811,7 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalN_4" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_4" readonly>
 
                                                         </div>
                                                     </td>
@@ -1861,7 +1861,7 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalN_5" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_5" readonly>
 
                                                         </div>
                                                     </td>
@@ -1911,7 +1911,7 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalN_6" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_6" readonly>
 
                                                         </div>
                                                     </td>
@@ -1961,7 +1961,7 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalN_7" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_7" readonly>
 
                                                         </div>
                                                     </td>
@@ -2011,7 +2011,7 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalN_8" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_8" readonly>
 
                                                         </div>
                                                     </td>
@@ -2061,7 +2061,7 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalN_9" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_9" readonly>
 
                                                         </div>
                                                     </td>
@@ -2111,7 +2111,7 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalN_10" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_10" readonly>
 
                                                         </div>
                                                     </td>
@@ -2161,7 +2161,7 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalN_11" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_11" readonly>
 
                                                         </div>
                                                     </td>
@@ -2211,7 +2211,7 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalN_12" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_12" readonly>
 
                                                         </div>
                                                     </td>
@@ -2261,7 +2261,7 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalN_13" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_13" readonly>
 
                                                         </div>
                                                     </td>
@@ -2291,19 +2291,19 @@
                 <div class="card mb-0">
                     <div class="card-body">
                         <div class="my-3 border-top"></div>
-                        <h6 class="mb-0">Subtotal: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="subtotalN" id="subtotalN" value="" readonly></span></h5>
+                        <h6 class="mb-0">Subtotal: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%"  id="subtotallN" value="" readonly></span></h5>
                             <div class="my-3 border-top"></div>
-                            <h6 class="mb-0">Taxes: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="taxesN" id="taxesN" value="" readonly></span></h5>
+                            <h6 class="mb-0">Taxes: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%"  id="taxessN" value="" readonly></span></h5>
                                 <div class="my-3 border-top"></div>
-                                <h6 class="mb-0">Shipping: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="shippinglN" id="shippinglN" value="" readonly></span></h5>
+                                <h6 class="mb-0">Shipping: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%"  id="shippingglN" value="" readonly></span></h5>
                                     <div class="my-3 border-top"></div>
-                                    <h6 class="mb-0">Otros: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="otrosN" id="otrosN" value="" readonly></span></h5>
+                                    <h6 class="mb-0">Otros: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%"  id="otrossN" value="" readonly></span></h5>
                                         <div class="my-3 border-top"></div>
-                                        <h6 class="mb-0">Total: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="totalN" id="totalN" value="" readonly></span></h5>
+                                        <h6 class="mb-0">Total: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%"  id="totalsoliN" value="" readonly></span></h5>
 
                                             <div class="my-3 border-top"></div>
                                             <h6 class="mb-0">Moneda: <span class="float-end">
-                                                    <input type="text" class="form-control" style="position: relative; margin-top: -5%" name="monedaN" id="monedaN" value="" readonly>
+                                                    <input type="text" class="form-control" style="position: relative; margin-top: -5%"  id="monedaaN" value="" readonly>
                     </div>
                 </div>
                 <br>
@@ -2323,7 +2323,7 @@
                                 <div class="flex-grow-1">
                                     <p class="mb-0">Cuadro de mando</p>
                                     <br>
-                                    <a href="vistas/img/cmando/Cuadro-mando_629.pdf" download="vistas/img/cmando/Cuadro-mando_629.pdf">Archivo adjunto</a>
+                                    <a  href="" download="" id="cuadroM">Archivo adjunto</a>
                                     <br>
                                     <div class="form-check mb-3">
 
@@ -2346,7 +2346,7 @@
                                 <div class="flex-grow-1">
                                     <p class="mb-0">Oferta de proveedor</p>
                                     <br>
-                                    <a href="javascript:;">Archivo adjunto</a>
+                                    <a href="" download="" id="ofertaP">Archivo adjunto</a>
                                     <div class="form-check mb-3">
                                         <!-- id="validationFormCheck1" -->
                                         <br>
@@ -2372,7 +2372,7 @@
                                 <div class="flex-grow-1">
                                     <p class="mb-0">Especificación tecnica</p>
                                     <br>
-                                    <a href="javascript:;">Archivo adjunto</a>
+                                    <a href="" download="" id="especifiT">Archivo adjunto</a>
                                     <div class="form-check mb-3">
                                         <br>
                                         <!-- <input type="checkbox" name="novalido3" id="novalido3" value="Option 1">
