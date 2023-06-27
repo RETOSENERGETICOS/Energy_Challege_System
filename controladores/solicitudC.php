@@ -159,5 +159,59 @@ class SolicitudC
             </script>';
             }
         }
+
+        
     }
+
+
+    /* -------------------------------------------------------------------------- */
+    /*                       ACTUALIZAR ESTADO DE SOLICITUD                       */
+    /* -------------------------------------------------------------------------- */
+
+    public function ActualizarARSolicitudC()
+	{
+       
+		if (isset($_POST["comentarioRechazo"])) {		
+            $comentario = $_POST["comentarioRechazo"];
+			$tablaBD = "solicitud_compra";
+
+			$datosC = array(
+				"id" => $_POST["idSolicitud"], "comentarios" => $_POST["comentarioRechazo"]
+                
+			);
+
+			$respuesta = SolicitudM::ActualizarARSolicitudM($tablaBD, $datosC,$comentario);
+
+
+			if ($respuesta == true) {
+
+				echo '
+				<div class="alert alert-dismissible fade show py-2 bg-success">
+                <div class="d-flex align-items-center">
+                  <div class="fs-3 text-white"><ion-icon name="checkmark-circle-sharp" role="img" class="md hydrated" aria-label="checkmark circle sharp"></ion-icon>
+                  </div>
+                  <div class="ms-3">
+                    <div class="text-white">Usuario actualizado con exito!</div>
+                  </div>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+				<script>
+						window.location ="manager";
+						</script>';
+			} else {
+
+				echo '<div class="alert alert-dismissible fade show py-2 bg-danger">
+					<div class="d-flex align-items-center">
+					  <div class="fs-3 text-white"><ion-icon name="checkmark-circle-sharp" role="img" class="md hydrated" aria-label="checkmark circle sharp"></ion-icon>
+					  </div>
+					  <div class="ms-3">
+						<div class="text-white">Error al actualizar proveedor!</div>
+					  </div>
+					</div>
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				  </div>';
+			}
+		}
+	}
 }

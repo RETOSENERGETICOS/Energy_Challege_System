@@ -94,6 +94,8 @@ session_start();
                 || $_GET["url"] == "perfil-usuario" 
                 || $_GET["url"] == "proveedores"
                 || $_GET["url"] == "solicitud-compras" 
+                || $_GET["url"] == "solicitud-compraD" 
+                || $_GET["url"] == "solicitud-compraCO"
                 || $_GET["url"] == "orden-compras"
                 || $_GET["url"] == "manager"  
                 || $_GET["url"] == "clientes" 

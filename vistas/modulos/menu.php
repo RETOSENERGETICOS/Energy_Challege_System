@@ -3,7 +3,7 @@
   <div class="sidebar-header" style="
     background-color: #1B4F72;">
     <div>
-      <a href="inicio"><img src="vistas/img/logo-re.png" class="logo-icon" style="transform: rotate(26deg);margin-left: -8%;width: 81%; margin-top: 23%;" alt="logo icon"></a>
+      <a href="inicio"><img src="vistas/img/logo-re.png" class="logo-icon" style="margin-left: -8%;width: 81%; margin-top: 23%;" alt="logo icon"></a>
     </div>
     <div>
       <a href="inicio">
@@ -42,6 +42,14 @@
               
               <li> <a href="manager">
               <i class="fadeIn animated bx bx-user-pin"></i></ion-icon>&nbsp Manager
+                    </a>
+              </li>
+              <li> <a href="solicitud-compraD">
+              <i class="fadeIn animated bx bx-user-pin"></i></ion-icon>&nbsp Director
+                    </a>
+              </li>
+              <li> <a href="solicitud-compraCO">
+              <i class="fadeIn animated bx bx-user-pin"></i></ion-icon>&nbsp Compras
                     </a>
               </li>
           </li>';

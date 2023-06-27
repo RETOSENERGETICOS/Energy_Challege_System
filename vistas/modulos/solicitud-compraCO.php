@@ -112,19 +112,13 @@
                                     <tr>
                                         <td><?php
                                             if ($value['estado'] == 1) {
-                                                echo ' <button class="btn btn-secondary btn-block" >En proceso</button>';
+                                                echo ' <button class="btn btn-secondary btn-block" ">En proceso</button>';
                                             }
                                             if ($value['estado'] == 2) {
-                                                echo ' <button class="btn btn-primary btn-block" style="background-color: #1F618D;">Aprobada</button>';
+                                                echo ' <button class="btn btn-success btn-block" ">Aprobada</button>';
                                             }
                                             if ($value['estado'] == 3) {
-                                                echo ' <button class="btn btn-danger btn-block" >Rechazada</button>';
-                                            }
-                                            if ($value['estado'] == 4) {
-                                                echo ' <button class="btn btn-warning btn-block" >En espera</button>';
-                                            }
-                                            if ($value['estado'] == 5) {
-                                                echo ' <button class="btn btn-success btn-block" >Autorizado</button>';
+                                                echo ' <button class="btn btn-danger btn-block" ">Rechazada</button>';
                                             }
 
                                             echo '</td>';
@@ -148,7 +142,7 @@
 
 
 
-                                    </tr> <?php } ?>
+                                        </tr> <?php } ?> 
 
                             </tbody>
                         </table>
@@ -194,7 +188,7 @@
                         <div class="card-body">
                             <div class="p-4 border rounded">
                                 <form id="solicitante" class="row g-3 needs-validation" method="post" enctype="multipart/form-data">
-
+                                   
                                     <h6 class="mb-0 text-uppercase">VENDOR / SUMINISTRADOR</h6>
                                     <div class="col-md-6">
 
@@ -210,23 +204,21 @@
                                             foreach ($suminis as $key => $value) {
                                                 echo '<option value="' . $value["id"] . '" >' . $value["nombre_prov"] . '</option>';
                                             }
-
+                                            //
                                             ?>
-
+                                          
                                         </select>
 
 
 
-
                                     </div>
-
+                                   
                                     <div class="col-md-6">
                                         <label for="validationDefaul05" class="form-label">ATN</label>
                                         <input type="text" class="form-control" name="atnSN" id="validationDefault00" required>
 
                                     </div>
-
-
+                                   
                             </div>
                         </div>
                     </div>
@@ -240,7 +232,7 @@
                         <div class="card-body">
                             <div class="p-4 border rounded">
                                 <div class="row g-3 needs-validation" novalidate>
-
+                                  
                                     <h6 class="mb-0 text-uppercase">SHIP TO /LUGAR DE ENTREGA</h6>
                                     <div class="col-md-4">
                                         <label for="validationDefault01" class="form-label">Lugar/entrega</label>
@@ -253,7 +245,11 @@
                                             <input type="text" class="form-control" name="atnLN" id="validationDefaul02" value="" required>
 
                                         </div>
+                                       
 
+
+                                        </select> 
+                                       
 
                                     </div>
                                     <div class="col-md-4">
@@ -1499,7 +1495,7 @@
                                                     <th style="width: 50%;">Descripción</th>
                                                     <th style="width:10%;">Cantidad</th>
                                                     <th>Precio unitario</th>
-
+                                                  
                                                     <th>Tasa</th>
                                                     <th>Subtotal</th>
                                                 </tr>
@@ -2336,49 +2332,17 @@
                             </div>
                         </div>
 
-                        
-
-
-
-
                     </div><!--end row-->
-                  
-                   
-                           
-                    <div class="col-12" id="inputContainer" style="display: none;">
-                      <label class="form-label">Comentarios</label>
-                      <textarea class="form-control" rows="4" cols="4" id="comentarioRechazo" name="comentarioRechazo"></textarea>
-                    </div>
-
-                    <div class="col-12">
-
-                    <?php
-                        
-                        date_default_timezone_set('America/Mexico_City');$year = date('Y');$fechacorta = substr($year, -2);
-                        $codigo= 850;$code = $codigo ."-".$fechacorta;echo  
-                        '<input type="text" value="'.$code.'" class="form-control" name="codigoS" id="codigoS">' ; ?>
-                      <br><br>
-                      <label for="rechazarCheckbox">Rechazar solicitud</label>
-                        <input type="checkbox" id="rechazarCheckbox"><br>
-
-                    </div>
                 </div>
             </div>
 
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-              
-                
-                
-                <button id="Brechazar"  class="btn btn-danger btn-md btn-block " style="display: none;" type="submit" >Rechazar solicitud</button>
-                
-                <button id="Baprobar" class="btn btn-primary btn-md btn-block" style="display: block;" type="submit">Aprobar solicitud</button>
-                <br>
-            </div>
+            <button class="btn btn-primary" type="submit">Crear solicitud</button>
+            <br>
 
             <?php
 
-             $actualizarSolicitarAR= new SolicitudC();
-             $actualizarSolicitarAR ->  ActualizarARSolicitudC();
+            $crearSoli = new SolicitudC();
+            $crearSoli->CrearSolicitudC();
 
             ?>
 
@@ -2388,10 +2352,8 @@
     </div>
 </div>
 
-
-
 <?php
-// $borrarU = new UsuariosC();
-// $borrarU->BorrarUsuariosC();
+$borrarU = new UsuariosC();
+$borrarU->BorrarUsuariosC();
 
 ?>

@@ -116,93 +116,13 @@ function removeInput(index, type) {
   //  } index = numero de posicion,  inputs = toda la tabla que genera, type = inputSummary
 }
 
-/* -------------------------------------------------------------------------- */
-/*                        AGREGANDO INPUTS DINAMICOS PRUEBA 2                 */
-/* -------------------------------------------------------------------------- */
-var nunProducto = 0;
 
-$(".btnAgregarProducto").click(function() {
-  numProducto++;
-
-  $(".nuevoProducto").append(
-    ' <table class="table table-bordered">' +
-      " <thead>" +
-      " <tr>" +
-      '<th scope="col-3">Acciones</th>' +
-      '<th style="width:13%;">Referencia</th>' +
-      ' <th style="width: 50%;">Descripción</th>' +
-      '<th style="width:10%;">Cantidad</th>' +
-      "<th>Precio unitario</th>" +
-      "<th>Tasa</th>" +
-      "<th>Subtotal</th>" +
-      " </tr>" +
-      " </thead>" +
-      " <tbody>" +
-      "<tr>" +
-      // <!-- -------------------------------------------------------------------------- -->
-      // <!--removeInput para eliminar filas de solicitud  boton danger                  -->
-      // <!-- -------------------------------------------------------------------------- -->
-      // ' <input type="hidden" name="inputSummary" value="1">'+
-      ' <td><button class="btn btn-danger"  title="Eliminar fila"><i class="lni lni-trash"></i></button></td>' +
-      " <td>" +
-      '<div class="col-md-12">' +
-      '  <input type="text" class="form-control" id="solicitanteN' +
-      numProducto +
-      '" name="solicitanteN" required>' +
-      "     </div>" +
-      "</td>" +
-      " <td>" +
-      ' <div class="col-md-12">' +
-      ' <input type="text" class="form-control" id="descripN' +
-      numProducto +
-      '" name="descripN" required>' >
-      +"</div>" +
-        " </td>" +
-        "<td>" +
-        '<div class="col-md-10">' +
-        ' <input type="text" class="form-control" id="cantN' +
-        numProducto +
-        '" name="cantN" required>' +
-        "</div" +
-        " </td>" +
-        "<td>" +
-        ' <div class="col-md-12">' +
-        ' <input type="text" class="form-control" id="precuniN' +
-        numProducto +
-        '" name="precuniN" required>' +
-        " </div" +
-        " </td>" +
-        " <td>" +
-        ' <div class="col-md-12"' +
-        ' <input type="text" class="form-control" id="tasaN' +
-        numProducto +
-        '" name="tasaN" required>' +
-        " </div>" +
-        "</td" >
-      +"<td" >
-      +'<div class="col-md-12">' +
-        '<input type="text" class="form-control" id="totalN' +
-        numProducto +
-        '" name="totalN" required>' +
-        "</div>" +
-        " </td>" +
-        "</tr>" +
-        " </tbody" +
-        " </table"
-
-    // <!-- -------------------------------------------------------------------------- -->
-    // <!-- addInput agrega filas a tabla de prouctos                                  -->
-    // <!-- -------------------------------------------------------------------------- -->
-  );
-});
 
 /* -------------------------------------------------------------------------- */
 /*                 VALIDACION DE ARCHIVOS CHECKBOX SOLICITUD DE COMPRA        */
 /* -------------------------------------------------------------------------- */
 
-document
-  .getElementById("solicitante")
-  .addEventListener("submit", function(event) {
+document.getElementById("solicitante").addEventListener("submit", function(event) {
     var checkbox1 = document.getElementById("novalido1");
     var checkbox2 = document.getElementById("novalido2");
     var checkbox3 = document.getElementById("novalido3");
@@ -218,6 +138,7 @@ document
         icon: "warning",
         title: "Aviso",
         text:
+
           "Documento obligatorio, favor de marcar como no valido, para continuar proceso.",
         confirmButtonColor: "#3085d6",
         confirmButtonText: "Aceptar"
@@ -277,6 +198,10 @@ $(".TB").on("click", ".btnVistaSolicitud", function() {
       console.log("respuesta", respuesta);
       console.log($provedor);
 
+      /* -------------------------------------------------------------------------- */
+      /*                        IMPRESION DE DATOS GENERALES                        */
+      /* -------------------------------------------------------------------------- */
+
       $("#idSolicitud2").val(respuesta["id"]);
       $("#proveedorNS").html(respuesta["nombre_prov"]);
       $("#proveedorNS").val(respuesta["nombre_prov"]);
@@ -305,10 +230,6 @@ $(".TB").on("click", ".btnVistaSolicitud", function() {
       $("#otrossN").val(respuesta["otros_soli"]);
       $("#totalsoliN").val(respuesta["total_soli"]);
       $("#monedaaN").val(respuesta["moneda"]);
-
-      
-
-
       $("#cuadroM").attr("download",respuesta["cuadro_msoli"]);
       $("#cuadroM").attr("href",respuesta["cuadro_msoli"]);
       $("#ofertaP").attr("download",respuesta["ofertaprove_soli"]);
@@ -318,7 +239,9 @@ $(".TB").on("click", ".btnVistaSolicitud", function() {
    
 
 
-      // var ref_suministrador = JSON.stringify(respuesta["ref_suministrador"]);
+      /* -------------------------------------------------------------------------- */
+      /*      IMPRESION DE DATOS REFERENCIA, DESCRIPCION,CANTIDAD,TASA,SUBTOTAL     */
+      /* -------------------------------------------------------------------------- */
       var texto1 = respuesta["ref_suministrador"];
       var textoSinCaracteres = texto1.replace(/\\/g, "");
       var arreglo = JSON.parse(textoSinCaracteres);
@@ -380,18 +303,13 @@ $(".TB").on("click", ".btnVistaSolicitud", function() {
         $("#totalesN_" + i).val(elemento);
       }
       
-    
-      
-
-
-    
-      
-
-      
     }
   });
 });
 
+/* -------------------------------------------------------------------------- */
+/*          CONDICION QUE MUESTRA ALERTA SI EL DOCUMENTO VIENE VACIO          */
+/* -------------------------------------------------------------------------- */
 $("#especifiT").on("click", function(event) {
   var rutaDownload = $(this).attr("download");
   var rutaHref = $(this).attr("href");
@@ -437,3 +355,25 @@ $("#cuadroM").on("click", function(event) {
   }
 });
 
+/* -------------------------------------------------------------------------- */
+/*          /FIN CONDICION QUE MUESTRA ALERTA SI EL DOCUMENTO VIENE VACIO     */
+/* -------------------------------------------------------------------------- */
+
+
+/* -------------------------------------------------------------------------- */
+/*                  MOSTRAR Y OCULTAR COMENTARIOS CHECK BOX                   */
+/* -------------------------------------------------------------------------- */
+
+$(document).ready(function() {
+  $("#rechazarCheckbox").change(function() {
+    if ($(this).is(":checked")) {
+      $("#inputContainer").show();
+      $("#Baprobar").hide();
+      $("#Brechazar").show();
+    } else {
+      $("#inputContainer").hide();
+      $("#Baprobar").show();
+      $("#Brechazar").hide();
+    }
+  });
+});

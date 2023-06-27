@@ -143,6 +143,8 @@ class UsuariosM extends ConexionBD{
 	}
 
 	static public function VerManagerM($tablaBD,$item,$valor){
+
+		
 		if($item != null){
 
 			$pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE rol = 'Manager' AND $item = :$item AND estado = 1");
@@ -205,10 +207,6 @@ class UsuariosM extends ConexionBD{
 		$pdo -> close();
 		$pdo = null;
 	}
-
-	/* -------------------------------------------------------------------------- */
-		/*                         Vista Manager                                  */
-		/* -------------------------------------------------------------------------- */
 
 	
 	
