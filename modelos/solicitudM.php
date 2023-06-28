@@ -253,7 +253,7 @@ class SolicitudM extends ConexionBD
         {
 
             $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentarios = :comentarios, 
-             estado = 2  WHERE id = :id");
+             estado = 2, id_tipo_proceso= 2  WHERE id = :id");
 
             $pdo->bindParam(":id", $datosC["id"], PDO::PARAM_INT);
             $pdo->bindParam(":comentarios", $datosC["comentarios"], PDO::PARAM_STR);
