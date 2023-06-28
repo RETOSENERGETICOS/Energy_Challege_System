@@ -116,13 +116,13 @@ function removeInput(index, type) {
   //  } index = numero de posicion,  inputs = toda la tabla que genera, type = inputSummary
 }
 
-
-
 /* -------------------------------------------------------------------------- */
 /*                 VALIDACION DE ARCHIVOS CHECKBOX SOLICITUD DE COMPRA        */
 /* -------------------------------------------------------------------------- */
 
-document.getElementById("solicitante").addEventListener("submit", function(event) {
+document
+  .getElementById("solicitante")
+  .addEventListener("submit", function(event) {
     var checkbox1 = document.getElementById("novalido1");
     var checkbox2 = document.getElementById("novalido2");
     var checkbox3 = document.getElementById("novalido3");
@@ -138,7 +138,6 @@ document.getElementById("solicitante").addEventListener("submit", function(event
         icon: "warning",
         title: "Aviso",
         text:
-
           "Documento obligatorio, favor de marcar como no valido, para continuar proceso.",
         confirmButtonColor: "#3085d6",
         confirmButtonText: "Aceptar"
@@ -230,14 +229,12 @@ $(".TB").on("click", ".btnVistaSolicitud", function() {
       $("#otrossN").val(respuesta["otros_soli"]);
       $("#totalsoliN").val(respuesta["total_soli"]);
       $("#monedaaN").val(respuesta["moneda"]);
-      $("#cuadroM").attr("download",respuesta["cuadro_msoli"]);
-      $("#cuadroM").attr("href",respuesta["cuadro_msoli"]);
-      $("#ofertaP").attr("download",respuesta["ofertaprove_soli"]);
-      $("#ofertaP").attr("href",respuesta["ofertaprove_soli"]);
-      $("#especifiT").attr("download",respuesta["especificacion_tecsoli"]);
-      $("#especifiT").attr("href",respuesta["especificacion_tecsoli"]);
-   
-
+      $("#cuadroM").attr("download", respuesta["cuadro_msoli"]);
+      $("#cuadroM").attr("href", respuesta["cuadro_msoli"]);
+      $("#ofertaP").attr("download", respuesta["ofertaprove_soli"]);
+      $("#ofertaP").attr("href", respuesta["ofertaprove_soli"]);
+      $("#especifiT").attr("download", respuesta["especificacion_tecsoli"]);
+      $("#especifiT").attr("href", respuesta["especificacion_tecsoli"]);
 
       /* -------------------------------------------------------------------------- */
       /*      IMPRESION DE DATOS REFERENCIA, DESCRIPCION,CANTIDAD,TASA,SUBTOTAL     */
@@ -252,7 +249,7 @@ $(".TB").on("click", ".btnVistaSolicitud", function() {
         $("#solicitanteN_" + i).val(elemento);
       }
 
-      var texto2= respuesta["descripcion"];
+      var texto2 = respuesta["descripcion"];
       var textoSinCaracteres = texto2.replace(/\\/g, "");
       var arreglo = JSON.parse(textoSinCaracteres);
 
@@ -269,7 +266,7 @@ $(".TB").on("click", ".btnVistaSolicitud", function() {
       for (var i = 0; i < arreglo.length; i++) {
         var elemento = arreglo[i];
         console.log(texto3);
-        $("#cantN_" + i).val(elemento);
+        $("#cantN_  " + i).val(elemento);
       }
 
       var texto4 = respuesta["precio_unitario"];
@@ -292,7 +289,6 @@ $(".TB").on("click", ".btnVistaSolicitud", function() {
         $("#tasaN_" + i).val(elemento);
       }
 
-
       var texto6 = respuesta["total"];
       var textoSinCaracteres = texto6.replace(/\\/g, "");
       var arreglo = JSON.parse(textoSinCaracteres);
@@ -302,11 +298,9 @@ $(".TB").on("click", ".btnVistaSolicitud", function() {
         console.log(texto6);
         $("#totalesN_" + i).val(elemento);
       }
-      
     }
   });
 });
-
 
 /* -------------------------------------------------------------------------- */
 /*          CONDICION QUE MUESTRA ALERTA SI EL DOCUMENTO VIENE VACIO          */
@@ -319,9 +313,9 @@ $("#especifiT").on("click", function(event) {
     event.preventDefault(); // Evita que se siga el enlace
 
     Swal.fire({
-      icon: 'warning',
-      title: 'Archivo vacio.',
-      text: 'Fue declarado como no valido.'
+      icon: "warning",
+      title: "Archivo vacio.",
+      text: "Fue declarado como no valido."
     });
   }
 });
@@ -334,9 +328,9 @@ $("#ofertaP").on("click", function(event) {
     event.preventDefault(); // Evita que se siga el enlace
 
     Swal.fire({
-      icon: 'warning',
-      title: 'Archivo vacio.',
-      text: 'Fue declarado como no valido.'
+      icon: "warning",
+      title: "Archivo vacio.",
+      text: "Fue declarado como no valido."
     });
   }
 });
@@ -349,9 +343,9 @@ $("#cuadroM").on("click", function(event) {
     event.preventDefault(); // Evita que se siga el enlace
 
     Swal.fire({
-      icon: 'warning',
-      title: 'Archivo vacio.',
-      text: 'Fue declarado como no valido.'
+      icon: "warning",
+      title: "Archivo vacio.",
+      text: "Fue declarado como no valido."
     });
   }
 });
@@ -359,9 +353,6 @@ $("#cuadroM").on("click", function(event) {
 /* -------------------------------------------------------------------------- */
 /*          /FIN CONDICION QUE MUESTRA ALERTA SI EL DOCUMENTO VIENE VACIO     */
 /* -------------------------------------------------------------------------- */
-
-
-
 
 /* -------------------------------------------------------------------------- */
 /*                  MOSTRAR Y OCULTAR COMENTARIOS CHECK BOX                   */
@@ -381,9 +372,56 @@ $(document).ready(function() {
   });
 });
 
-
 /* -------------------------------------------------------------------------- */
 /*                             FUNCION DE AUTOSUMA                            */
 /* -------------------------------------------------------------------------- */
 
+function calcularS() {
+  var totalesN = document.getElementsByName("totalesN[]");
+  var taxesN = document.getElementsByName("tasaporN[]");
+  var subtotalN = 0;
+  var taxes = 0;
 
+  for (var i = 0; i < 13; i++) {
+    var a = parseFloat(document.getElementsByName("cantN[]")[i].value) || 0;
+    var b = parseFloat(document.getElementsByName("precuniN[]")[i].value) || 0;
+    var c = parseFloat(document.getElementsByName("tasaN[]")[i].value) || 0;
+
+    var resultado = a * b * c / 100;
+    var total = a * b + resultado;
+    var resultadoFormateado =
+      resultado !== 0 ? parseFloat(resultado).toFixed(2) : "";
+    var resultadototal = total !== 0 ? parseFloat(total).toFixed(2) : "";
+
+    document.getElementsByName("tasaporN[]")[i].value = resultadoFormateado;
+    document.getElementsByName("totalesN[]")[i].value = resultadototal;
+  }
+
+  for (var i = 0; i < totalesN.length; i++) {
+    var value = parseFloat(totalesN[i].value) || 0;
+    subtotalN += value;
+  }
+
+  document.getElementById("subtotalN").value = subtotalN.toFixed(2);
+
+  for (var i = 0; i < taxesN.length; i++) {
+    var value = parseFloat(taxesN[i].value) || 0;
+    taxes += value;
+  }
+
+  document.getElementById("taxesN").value = taxes.toFixed(2);
+
+  var s = parseFloat(document.getElementById("subtotalN").value) || 0;
+  var t = parseFloat(document.getElementById("taxesN").value) || 0;
+  var sh = parseFloat(document.getElementById("shippinglN").value) || 0;
+  var o = parseFloat(document.getElementById("otrosN").value) || 0;
+
+  console.log(s);
+  console.log(t);
+  console.log(sh);
+  console.log(o);
+
+  var totalfin = s + t + sh + o;
+
+  document.getElementById("totalN").value = totalfin.toFixed(2);
+}
