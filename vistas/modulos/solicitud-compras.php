@@ -388,7 +388,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <label for="validationDefault08" class="form-label">Insurance included/ Seguro incluido</label>
-                                        <select class="form-select" name="seguroincluN" id="validationDefault08" required>
+                                        <select  class="form-select" name="seguroincluN" id="validationDefault08" required>
                                             <option selected disabled value="">...</option>
                                             <option>Sí</option>
                                             <option>No</option>
@@ -396,13 +396,13 @@
                                         </select>
 
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <label for="validationDefault09" class="form-label">Vendor offer / Oferta suministrador</label>
                                         <input type="text" class="form-control" name="ofertasumN" id="validationDefault09">
 
                                     </div>
-                                    <div class="col-md-3">
-                                        <label for="validationDefault10" class="form-label">Special Instructions / Condiciones Especiales</label>
+                                    <div class="col-md-2">
+                                        <label for="validationDefault10" class="form-label"> Condiciones Especiales</label>
                                         <input type="text" class="form-control" name="condicionesespN" id="validationDefault10" required>
 
                                     </div>
@@ -428,7 +428,7 @@
                                                 <tr>
 
                                                     <th style="width:13%;">Referencia</th>
-                                                    <th style="width: 50%;">Descripción</th>
+                                                    <th style="width: 35%;">Descripción</th>
                                                     <th style="width:10%;">Cantidad</th>
                                                     <th>Precio unitario</th>
                                                     <th>Tasa</th>
@@ -461,35 +461,35 @@
                                                     <td>
                                                         <div class="col-md-10">
 
-                                                            <input type="number" class="form-control" name="cantN[]" id="cantN[]" oninput="calcularS()">
+                                                            <input type="text" class="form-control" name="cantN[]" id="cantN[]" oninput="calcularS()">
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="number" class="form-control" name="precuniN[]" id="precuniN[]" oninput="calcularS()">
+                                                            <input type="text" class="form-control" name="precuniN[]" id="precuniN[]" oninput="calcularS()">
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="number" class="form-control" name="tasaporN[]" id="tasaporN[]" oninput="calcularS()">
+                                                            <input type="text" class="form-control" name="tasaporN[]" id="tasaporN[]" oninput="calcularS()">
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="number" class="form-control" name="tasaN[]" id="tasaN[]" oninput="calcularS()">
+                                                            <input type="text" class="form-control" name="tasaN[]" id="tasaN[]" oninput="calcularS()">
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="number" class="form-control" name="totalesN[]" id="totalesN[]" oninput="calcularS()" value="">
+                                                            <input type="text" class="form-control" name="totalesN[]" id="totalesN[]" oninput="calcularS()" value="">
 
                                                         </div>
                                                     </td>
@@ -1270,10 +1270,10 @@
                 <div class="card mb-0">
                     <div class="card-body">
                         <div class="my-3 border-top"></div>
-                        <h6 class="mb-0">Subtotal: <span class="float-end"><input type="number" class="form-control" style="position: relative; margin-top: -5%" name="subtotalN" id="subtotalN" oninput="calcularS()" required></span></h5>
+                        <h6 class="mb-0">Subtotal: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="subtotalN" id="subtotalN" oninput="calcularS()" required></span></h5>
 
                             <div class="my-3 border-top"></div>
-                            <h6 class="mb-0">Taxes: <span class="float-end"><input type="number" class="form-control" style="position: relative; margin-top: -5%" name="taxesN" id="taxesN" oninput="calcularS()" required></span></h5>
+                            <h6 class="mb-0">Taxes: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="taxesN" id="taxesN" oninput="calcularS()" required></span></h5>
                                 <div class="my-3 border-top"></div>
                                 <h6 class="mb-0">Shipping: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="shippinglN" id="shippinglN" oninput="calcularS()" value="" required></span></h5>
                                     <div class="my-3 border-top"></div>

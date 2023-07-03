@@ -260,44 +260,41 @@ $(".TB").on("click", ".btnVistaSolicitud", function() {
       }
 
       var texto3 = respuesta["cantidad"];
-      var textoSinCaracteres = texto3.replace(/\\/g, "");
-      var arreglo = JSON.parse(textoSinCaracteres);
+var arreglo3 = JSON.parse(texto3);
 
-      for (var i = 0; i < arreglo.length; i++) {
-        var elemento = arreglo[i];
-        console.log(texto3);
-        $("#cantN_  " + i).val(elemento);
-      }
+for (var i = 0; i < arreglo3.length; i++) {
+  var elemento3 = arreglo3[i];
+  console.log(elemento3);
+  $("#cantN_" + i).val(elemento3);
+}
 
-      var texto4 = respuesta["precio_unitario"];
-      var textoSinCaracteres = texto4.replace(/\\/g, "");
-      var arreglo = JSON.parse(textoSinCaracteres);
+var texto4 = respuesta["precio_unitario"];
+var arreglo4 = JSON.parse(texto4);
 
-      for (var i = 0; i < arreglo.length; i++) {
-        var elemento = arreglo[i];
-        console.log(texto4);
-        $("#precuniN_" + i).val(elemento);
-      }
+for (var i = 0; i < arreglo4.length; i++) {
+  var elemento4 = arreglo4[i];
+  console.log(elemento4);
+  $("#precuniN_" + i).val(elemento4);
+}
 
-      var texto5 = respuesta["tasa"];
-      var textoSinCaracteres = texto5.replace(/\\/g, "");
-      var arreglo = JSON.parse(textoSinCaracteres);
+var texto5 = respuesta["tasa"];
+var arreglo5 = JSON.parse(texto5);
 
-      for (var i = 0; i < arreglo.length; i++) {
-        var elemento = arreglo[i];
-        console.log(texto5);
-        $("#tasaN_" + i).val(elemento);
-      }
+for (var i = 0; i < arreglo5.length; i++) {
+  var elemento5 = arreglo5[i];
+  console.log(elemento5);
+  $("#tasaN_" + i).val(elemento5);
+}
 
-      var texto6 = respuesta["total"];
-      var textoSinCaracteres = texto6.replace(/\\/g, "");
-      var arreglo = JSON.parse(textoSinCaracteres);
+var texto6 = respuesta["total"];
+var arreglo6 = JSON.parse(texto6);
 
-      for (var i = 0; i < arreglo.length; i++) {
-        var elemento = arreglo[i];
-        console.log(texto6);
-        $("#totalesN_" + i).val(elemento);
-      }
+for (var i = 0; i < arreglo6.length; i++) {
+  var elemento6 = arreglo6[i];
+  console.log(elemento6);
+  $("#totalesN_" + i).val(elemento6);
+}
+
     }
   });
 });
@@ -376,6 +373,18 @@ $(document).ready(function() {
 /*                             FUNCION DE AUTOSUMA                            */
 /* -------------------------------------------------------------------------- */
 
+function formatInputValue(element) {
+  var value = element.value;
+  var numericValue = value.replace(/[^0-9.]/g, "");
+  element.value = "";
+
+  if (numericValue !== "") {
+    var parts = numericValue.split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    element.value = "$" + parts.join(".");
+  }
+}
+
 function calcularS() {
   var totalesN = document.getElementsByName("totalesN[]");
   var taxesN = document.getElementsByName("tasaporN[]");
@@ -384,44 +393,47 @@ function calcularS() {
 
   for (var i = 0; i < 13; i++) {
     var a = parseFloat(document.getElementsByName("cantN[]")[i].value) || 0;
-    var b = parseFloat(document.getElementsByName("precuniN[]")[i].value) || 0;
+
+    var precuniElement = document.getElementsByName("precuniN[]")[i];
+    formatInputValue(precuniElement); // Dar formato en tiempo real
+    var b = parseFloat(precuniElement.value.replace(/[^0-9.]/g, "")) || 0;
+
     var c = parseFloat(document.getElementsByName("tasaN[]")[i].value) || 0;
 
-    var resultado = a * b * c / 100;
+    var resultado = (a * b * c) / 100;
     var total = a * b + resultado;
-    var resultadoFormateado =
-      resultado !== 0 ? parseFloat(resultado).toFixed(2) : "";
-    var resultadototal = total !== 0 ? parseFloat(total).toFixed(2) : "";
+    var resultadoFormateado = resultado !== 0 ? "$" + resultado.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "";
+    var resultadototal = total !== 0 ? "$" + total.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "";
 
     document.getElementsByName("tasaporN[]")[i].value = resultadoFormateado;
     document.getElementsByName("totalesN[]")[i].value = resultadototal;
   }
 
   for (var i = 0; i < totalesN.length; i++) {
-    var value = parseFloat(totalesN[i].value) || 0;
+    var value = parseFloat(totalesN[i].value.replace("$", "").replace(",", "")) || 0;
     subtotalN += value;
   }
-
-  document.getElementById("subtotalN").value = subtotalN.toFixed(2);
+  document.getElementById("subtotalN").value = "$" + subtotalN.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
   for (var i = 0; i < taxesN.length; i++) {
-    var value = parseFloat(taxesN[i].value) || 0;
+    var value = parseFloat(taxesN[i].value.replace("$", "").replace(",", "")) || 0;
     taxes += value;
   }
 
-  document.getElementById("taxesN").value = taxes.toFixed(2);
+  document.getElementById("taxesN").value = "$" + taxes.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-  var s = parseFloat(document.getElementById("subtotalN").value) || 0;
-  var t = parseFloat(document.getElementById("taxesN").value) || 0;
-  var sh = parseFloat(document.getElementById("shippinglN").value) || 0;
-  var o = parseFloat(document.getElementById("otrosN").value) || 0;
+  var s = parseFloat(document.getElementById("subtotalN").value.replace("$", "").replace(",", "")) || 0;
+  var t = parseFloat(document.getElementById("taxesN").value.replace("$", "").replace(",", "")) || 0;
 
-  console.log(s);
-  console.log(t);
-  console.log(sh);
-  console.log(o);
+  var shippinglNElement = document.getElementById("shippinglN");
+  formatInputValue(shippinglNElement); // Dar formato en tiempo real
+  var sh = parseFloat(shippinglNElement.value.replace(/[^0-9.]/g, "")) || 0;
+
+  var otrosNElement = document.getElementById("otrosN");
+  formatInputValue(otrosNElement); // Dar formato en tiempo real
+  var o = parseFloat(otrosNElement.value.replace(/[^0-9.]/g, "")) || 0;
 
   var totalfin = s + t + sh + o;
 
-  document.getElementById("totalN").value = totalfin.toFixed(2);
+  document.getElementById("totalN").value = "$" + totalfin.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }

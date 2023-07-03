@@ -1529,22 +1529,14 @@
                                                     <td>
                                                         <div class="col-md-10">
 
-                                                            <input type="number" class="form-control" id="cantN_0" oninput="calcular()">
+                                                            <input type="text" class="form-control" id="cantN_0" >
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="number" class="form-control" id="precuniN_0" oninput="calcular()">
-
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" id="tasaporN_0" oninput="calcular()">
+                                                            <input type="text" class="form-control" id="precuniN_0" >
 
                                                         </div>
                                                     </td>
@@ -1552,7 +1544,7 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="number" class="form-control" id="tasaN_0" oninput="calcular()">
+                                                            <input type="text" class="form-control" id="tasaporN_0" >
 
                                                         </div>
                                                     </td>
@@ -1560,7 +1552,15 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="number" class="form-control" id="totalesN_0" oninput="calcular()">
+                                                            <input type="text" class="form-control" id="tasaN_0" >
+
+                                                        </div>
+                                                    </td>
+
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" id="totalesN_0" >
 
                                                         </div>
                                                     </td>
@@ -1590,35 +1590,35 @@
                                                     <td>
                                                         <div class="col-md-10">
 
-                                                            <input type="text" class="form-control" id="cantN_1" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="cantN_1"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="precuniN_1" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="precuniN_1"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaporN_1" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaporN_1"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaN_1" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaN_1"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalesN_1" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_1"  readonly>
 
                                                         </div>
                                                     </td>
@@ -1648,35 +1648,35 @@
                                                     <td>
                                                         <div class="col-md-10">
 
-                                                            <input type="text" class="form-control" id="cantN_2" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="cantN_2"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="precuniN_2" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="precuniN_2"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaporN_2" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaporN_2"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaN_2" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaN_2"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalesN_2" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_2"  readonly>
 
                                                         </div>
                                                     </td>
@@ -1705,35 +1705,35 @@
                                                     <td>
                                                         <div class="col-md-10">
 
-                                                            <input type="text" class="form-control" id="cantN_3" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="cantN_3"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="precuniN_3" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="precuniN_3"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaporN_3" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaporN_3"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaN_3" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaN_3"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalesN_3" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_3"  readonly>
 
                                                         </div>
                                                     </td>
@@ -1762,35 +1762,35 @@
                                                     <td>
                                                         <div class="col-md-10">
 
-                                                            <input type="text" class="form-control" id="cantN_4" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="cantN_4"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="precuniN_4" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="precuniN_4"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaporN_4" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaporN_4"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaN_4" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaN_4"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalesN_4" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_4"  readonly>
 
                                                         </div>
                                                     </td>
@@ -1819,35 +1819,35 @@
                                                     <td>
                                                         <div class="col-md-10">
 
-                                                            <input type="text" class="form-control" id="cantN_5" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="cantN_5"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="precuniN_5" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="precuniN_5"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaporN_5" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaporN_5"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaN_5" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaN_5"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalesN_5" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_5"  readonly>
 
                                                         </div>
                                                     </td>
@@ -1876,35 +1876,35 @@
                                                     <td>
                                                         <div class="col-md-10">
 
-                                                            <input type="text" class="form-control" id="cantN_6" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="cantN_6"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="precuniN_6" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="precuniN_6"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaporN_6" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaporN_6"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaN_6" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaN_6"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalesN_6" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_6"  readonly>
 
                                                         </div>
                                                     </td>
@@ -1933,35 +1933,35 @@
                                                     <td>
                                                         <div class="col-md-10">
 
-                                                            <input type="text" class="form-control" id="cantN_7" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="cantN_7"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="precuniN_7" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="precuniN_7"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaporN_7" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaporN_7"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaN_7" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaN_7"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalesN_7" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_7"  readonly>
 
                                                         </div>
                                                     </td>
@@ -1990,35 +1990,35 @@
                                                     <td>
                                                         <div class="col-md-10">
 
-                                                            <input type="text" class="form-control" id="cantN_8" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="cantN_8"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="precuniN_8" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="precuniN_8"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaporN_8" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaporN_8"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaN_8" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaN_8"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalesN_8" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_8"  readonly>
 
                                                         </div>
                                                     </td>
@@ -2047,35 +2047,35 @@
                                                     <td>
                                                         <div class="col-md-10">
 
-                                                            <input type="text" class="form-control" id="cantN_9" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="cantN_9"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="precuniN_9" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="precuniN_9"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaporN_9" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaporN_9"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaN_9" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaN_9"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalesN_9" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_9"  readonly>
 
                                                         </div>
                                                     </td>
@@ -2104,35 +2104,35 @@
                                                     <td>
                                                         <div class="col-md-10">
 
-                                                            <input type="text" class="form-control" id="cantN_10" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="cantN_10"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="precuniN_1" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="precuniN_1"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaporN_10" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaporN_10"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaN_10" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaN_10"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalesN_10" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_10"  readonly>
 
                                                         </div>
                                                     </td>
@@ -2161,35 +2161,35 @@
                                                     <td>
                                                         <div class="col-md-10">
 
-                                                            <input type="text" class="form-control" id="cantN_11" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="cantN_11"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="precuniN_1" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="precuniN_1"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaporN_11" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaporN_11"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaN_11" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaN_11"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalesN_11" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_11"  readonly>
 
                                                         </div>
                                                     </td>
@@ -2218,35 +2218,35 @@
                                                     <td>
                                                         <div class="col-md-10">
 
-                                                            <input type="text" class="form-control" id="cantN_12" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="cantN_12"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="precuniN_1" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="precuniN_1"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaporN_12" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaporN_12"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaN_12" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaN_12"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalesN_12" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_12"  readonly>
 
                                                         </div>
                                                     </td>
@@ -2275,35 +2275,35 @@
                                                     <td>
                                                         <div class="col-md-10">
 
-                                                            <input type="text" class="form-control" id="cantN_13" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="cantN_13"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="precuniN_1" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="precuniN_1"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaporN_13" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaporN_13"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaN_13" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaN_13"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalesN_13" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_13"  readonly>
 
                                                         </div>
                                                     </td>
@@ -2332,35 +2332,35 @@
                                                     <td>
                                                         <div class="col-md-10">
 
-                                                            <input type="text" class="form-control" id="cantN_14" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="cantN_14"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="precuniN_1" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="precuniN_1"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaporN_14" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaporN_14"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaN_14" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaN_14"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalesN_14" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="totalesN_14"  readonly>
 
                                                         </div>
                                                     </td>
@@ -2389,21 +2389,21 @@
                                                     <td>
                                                         <div class="col-md-10">
 
-                                                            <input type="text" class="form-control cant" id="cantN_15" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control cant" id="cantN_15"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control precuni" id="precuniN_1" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control precuni" id="precuniN_15"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaporN_15" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control" id="tasaporN_15"  readonly>
 
                                                         </div>
                                                     </td>
@@ -2411,14 +2411,14 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control tasa" id="tasaN_15" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control tasa" id="tasaN_15"  readonly>
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control totales" id="totalesN_15" oninput="calcular()" readonly>
+                                                            <input type="text" class="form-control totales" id="totalesN_15"  readonly>
 
                                                         </div>
                                                     </td>
@@ -2448,15 +2448,15 @@
                 <div class="card mb-0">
                     <div class="card-body">
                         <div class="my-3 border-top"></div>
-                        <h6 class="mb-0">Subtotal: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" id="subtotallN" value="" oninput="calcular()"></span></h5>
+                        <h6 class="mb-0">Subtotal: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" id="subtotallN" value="" ></span></h5>
                             <div class="my-3 border-top"></div>
-                            <h6 class="mb-0">Taxes: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" id="taxessN" value="" oninput="calcular()" y></span></h5>
+                            <h6 class="mb-0">Taxes: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" id="taxessN" value=""  y></span></h5>
                                 <div class="my-3 border-top"></div>
                                 <h6 class="mb-0">Shipping: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" id="shippingglN" value="" readonly></span></h5>
                                     <div class="my-3 border-top"></div>
                                     <h6 class="mb-0">Otros: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" id="otrossN" value="" readonly></span></h5>
                                         <div class="my-3 border-top"></div>
-                                        <h6 class="mb-0">Total: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" id="totalsoliN" value="" oninput="calcular()"></span></h5>
+                                        <h6 class="mb-0">Total: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" id="totalsoliN" value="" ></span></h5>
 
                                             <div class="my-3 border-top"></div>
                                             <h6 class="mb-0">Moneda: <span class="float-end">
@@ -2561,15 +2561,9 @@
 
                     <div class="col-12">
 
-                        <?php
+                        
 
-                        date_default_timezone_set('America/Mexico_City');
-                        $year = date('Y');
-                        $fechacorta = substr($year, -2);
-                        $codigo = 850;
-                        $code = $codigo . "-" . $fechacorta;
-                        echo
-                        '<input type="text" value="' . $code . '" class="form-control" name="codigoS" id="codigoS">'; ?>
+                        
                         <br><br>
                         <label for="rechazarCheckbox">Rechazar solicitud</label>
                         <input type="checkbox" id="rechazarCheckbox"><br>
