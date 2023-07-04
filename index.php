@@ -1,5 +1,5 @@
 <?php
-require_once "Controladores/plantillaC.php";
+require_once "controladores/plantillaC.php";
 
 require_once "controladores/usuariosC.php";
 require_once "modelos/usuariosM.php";
