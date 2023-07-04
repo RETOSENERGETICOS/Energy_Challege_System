@@ -3,7 +3,7 @@
 class SolicitudC
 {
 
-    static public function VerSolicitudC($item, $valor,)
+    static public function VerSolicitudC($item, $valor)
     {
 
 
@@ -17,7 +17,7 @@ class SolicitudC
         return $respuesta;
     }
 
-    static public function VistaManagerC($item, $valor,)
+    static public function VistaManagerC($item, $valor)
     {
 
 
