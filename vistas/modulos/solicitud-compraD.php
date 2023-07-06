@@ -97,7 +97,7 @@
 
                                 $vistaSolicitud = SolicitudC::VerSolicitudC($item2, $valor2);
 
-                                $verS = SolicitudC::VistaManagerC($item, $valor);
+                                $verS = SolicitudC::VistaSolicitudDC($item, $valor);
                                 ?>
                                 <?php
                                 /* -------------------------------------------------------------------------- */
@@ -112,13 +112,19 @@
                                     <tr>
                                         <td><?php
                                             if ($value['estado'] == 1) {
-                                                echo ' <button class="btn btn-secondary btn-block" ">En proceso</button>';
+                                                echo ' <button class="btn btn-secondary btn-block" >En proceso</button>';
                                             }
                                             if ($value['estado'] == 2) {
-                                                echo ' <button class="btn btn-success btn-block" ">Aprobada</button>';
+                                                echo ' <button class="btn btn-primary btn-block" style="background-color: #1F618D;">Aprobada</button>';
                                             }
                                             if ($value['estado'] == 3) {
-                                                echo ' <button class="btn btn-danger btn-block" ">Rechazada</button>';
+                                                echo ' <button class="btn btn-danger btn-block" >Rechazada</button>';
+                                            }
+                                            if ($value['estado'] == 4) {
+                                                echo ' <button class="btn btn-warning btn-block" >En espera</button>';
+                                            }
+                                            if ($value['estado'] == 5) {
+                                                echo ' <button class="btn btn-success btn-block" >Autorizado</button>';
                                             }
 
                                             echo '</td>';
@@ -1450,8 +1456,9 @@
                                     </div>
                                     <div class="col-md-3">
                                         <label for="validationDefault02" class="form-label">Request by/ Firma de Autorizador</label>
-                                        <select class="form-select" value="" name="firmasupN" id="firmasupN" readonly>
-                                            <option value="" id="firmasupN">...</option>
+                                        <select class="form-select" value="" name="firmasupN" readonly>
+                                            <?php echo '<option value="' . $value["nombre"] . '" id="firmasupN">...</option>' ?>
+
 
                                         </select>
                                     </div>
@@ -1532,12 +1539,12 @@
                                             <thead>
                                                 <tr>
 
-                                                    <th style="width:13%;">Referencia</th>
-                                                    <th style="width: 50%;">Descripción</th>
+                                                    <th style="width:13%;">Referencia</t>
+                                                    <th style="width: 40%;">Descripción</th>
                                                     <th style="width:10%;">Cantidad</th>
                                                     <th>Precio unitario</th>
-                                                  
-                                                    <th>Tasa</th>
+                                                    <th> </th>
+                                                    <th>Tasa(%)</th>
                                                     <th>Subtotal</th>
                                                 </tr>
                                             </thead>
@@ -1566,35 +1573,38 @@
                                                     <td>
                                                         <div class="col-md-10">
 
-                                                            <input type="text" class="form-control" id="cantN_0" readonly>
+                                                            <input type="text" class="form-control" id="cantN_0">
 
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="precuniN_0" readonly>
+                                                            <input type="text" class="form-control" id="precuniN_0">
 
                                                         </div>
                                                     </td>
+
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaN_0" readonly>
+                                                            <input type="hidden" class="form-control" id="tasaporN_0">
 
                                                         </div>
                                                     </td>
-                                                    <!-- <td>
-                                                        <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="tasaporN_0" readonly>
-
-                                                        </div>
-                                                    </td> -->
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="totalesN_0" readonly>
+                                                            <input type="text" class="form-control" id="tasaN_0">
+
+                                                        </div>
+                                                    </td>
+
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" id="totalesN_0">
 
                                                         </div>
                                                     </td>
@@ -1632,6 +1642,13 @@
                                                         <div class="col-md-12">
 
                                                             <input type="text" class="form-control" id="precuniN_1" readonly>
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="hidden" class="form-control" id="tasaporN_1" readonly>
 
                                                         </div>
                                                     </td>
@@ -1689,6 +1706,13 @@
                                                     <td>
                                                         <div class="col-md-12">
 
+                                                            <input type="hidden" class="form-control" id="tasaporN_2" readonly>
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
                                                             <input type="text" class="form-control" id="tasaN_2" readonly>
 
                                                         </div>
@@ -1733,6 +1757,13 @@
                                                         <div class="col-md-12">
 
                                                             <input type="text" class="form-control" id="precuniN_3" readonly>
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="hidden" class="form-control" id="tasaporN_3" readonly>
 
                                                         </div>
                                                     </td>
@@ -1789,6 +1820,13 @@
                                                     <td>
                                                         <div class="col-md-12">
 
+                                                            <input type="hidden" class="form-control" id="tasaporN_4" readonly>
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
                                                             <input type="text" class="form-control" id="tasaN_4" readonly>
 
                                                         </div>
@@ -1833,6 +1871,13 @@
                                                         <div class="col-md-12">
 
                                                             <input type="text" class="form-control" id="precuniN_5" readonly>
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="hidden" class="form-control" id="tasaporN_5" readonly>
 
                                                         </div>
                                                     </td>
@@ -1889,6 +1934,13 @@
                                                     <td>
                                                         <div class="col-md-12">
 
+                                                            <input type="hidden" class="form-control" id="tasaporN_6" readonly>
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
                                                             <input type="text" class="form-control" id="tasaN_6" readonly>
 
                                                         </div>
@@ -1933,6 +1985,13 @@
                                                         <div class="col-md-12">
 
                                                             <input type="text" class="form-control" id="precuniN_7" readonly>
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="hidden" class="form-control" id="tasaporN_7" readonly>
 
                                                         </div>
                                                     </td>
@@ -1989,6 +2048,13 @@
                                                     <td>
                                                         <div class="col-md-12">
 
+                                                            <input type="hidden" class="form-control" id="tasaporN_8" readonly>
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
                                                             <input type="text" class="form-control" id="tasaN_8" readonly>
 
                                                         </div>
@@ -2039,6 +2105,13 @@
                                                     <td>
                                                         <div class="col-md-12">
 
+                                                            <input type="hidden" class="form-control" id="tasaporN_9" readonly>
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
                                                             <input type="text" class="form-control" id="tasaN_9" readonly>
 
                                                         </div>
@@ -2082,7 +2155,14 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="precuniN_10" readonly>
+                                                            <input type="text" class="form-control" id="precuniN_1" readonly>
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="hidden" class="form-control" id="tasaporN_10" readonly>
 
                                                         </div>
                                                     </td>
@@ -2132,7 +2212,14 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="precuniN_11" readonly>
+                                                            <input type="text" class="form-control" id="precuniN_1" readonly>
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="hidden" class="form-control" id="tasaporN_11" readonly>
 
                                                         </div>
                                                     </td>
@@ -2182,7 +2269,14 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="precuniN_12" readonly>
+                                                            <input type="text" class="form-control" id="precuniN_1" readonly>
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="hidden" class="form-control" id="tasaporN_12" readonly>
 
                                                         </div>
                                                     </td>
@@ -2232,7 +2326,14 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text" class="form-control" id="precuniN_13" readonly>
+                                                            <input type="text" class="form-control" id="precuniN_1" readonly>
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="hidden" class="form-control" id="tasaporN_13" readonly>
 
                                                         </div>
                                                     </td>
@@ -2247,6 +2348,121 @@
                                                         <div class="col-md-12">
 
                                                             <input type="text" class="form-control" id="totalesN_13" readonly>
+
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <!-- -------------------------------------------------------------------------- -->
+                                                    <!--removeInput para eliminar filas de solicitud  boton danger                  -->
+                                                    <!-- -------------------------------------------------------------------------- -->
+                                                    <!-- <input type="" name="inputSummary" value="1"> -->
+                                                    <!-- <td><button class="btn btn-danger" onclick="removeInput(0,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td> -->
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" id="solicitanteN_14" readonly>
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+                                                            <textarea class="form-control" rows="1" cols="1" id="descripN_14" readonly></textarea>
+
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-10">
+
+                                                            <input type="text" class="form-control" id="cantN_14" readonly>
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" id="precuniN_1" readonly>
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="hidden" class="form-control" id="tasaporN_14" readonly>
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" id="tasaN_14" readonly>
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" id="totalesN_14" readonly>
+
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <!-- -------------------------------------------------------------------------- -->
+                                                    <!--removeInput para eliminar filas de solicitud  boton danger                  -->
+                                                    <!-- -------------------------------------------------------------------------- -->
+                                                    <!-- <input type="" name="inputSummary" value="1"> -->
+                                                    <!-- <td><button class="btn btn-danger" onclick="removeInput(0,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td> -->
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control solicitante" id="solicitanteN_15" readonly>
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+                                                            <textarea class="form-control descrip" rows="1" cols="1" id="descripN_15" readonly></textarea>
+                                                            <!-- <input type="text" class="form-control" name="descripN[]"  > -->
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-10">
+
+                                                            <input type="text" class="form-control cant" id="cantN_15" readonly>
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control precuni" id="precuniN_15" readonly>
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="hidden" class="form-control" id="tasaporN_15" readonly>
+
+                                                        </div>
+                                                    </td>
+
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control tasa" id="tasaN_15" readonly>
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control totales" id="totalesN_15" readonly>
 
                                                         </div>
                                                     </td>
@@ -2276,15 +2492,15 @@
                 <div class="card mb-0">
                     <div class="card-body">
                         <div class="my-3 border-top"></div>
-                        <h6 class="mb-0">Subtotal: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" id="subtotallN" value="" readonly></span></h5>
+                        <h6 class="mb-0">Subtotal: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" id="subtotallN" value=""></span></h5>
                             <div class="my-3 border-top"></div>
-                            <h6 class="mb-0">Taxes: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" id="taxessN" value="" readonly></span></h5>
+                            <h6 class="mb-0">Taxes: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" id="taxessN" value="" y></span></h5>
                                 <div class="my-3 border-top"></div>
                                 <h6 class="mb-0">Shipping: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" id="shippingglN" value="" readonly></span></h5>
                                     <div class="my-3 border-top"></div>
                                     <h6 class="mb-0">Otros: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" id="otrossN" value="" readonly></span></h5>
                                         <div class="my-3 border-top"></div>
-                                        <h6 class="mb-0">Total: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" id="totalsoliN" value="" readonly></span></h5>
+                                        <h6 class="mb-0">Total: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" id="totalsoliN" value=""></span></h5>
 
                                             <div class="my-3 border-top"></div>
                                             <h6 class="mb-0">Moneda: <span class="float-end">
@@ -2373,17 +2589,80 @@
                             </div>
                         </div>
 
+
+
+
+
+
                     </div><!--end row-->
+
+
+
+
                 </div>
             </div>
 
-            <button class="btn btn-primary" type="submit">Crear solicitud</button>
-            <br>
+
+
+
+            <div class="card radius-10">
+            <div class="col-12" style="margin: 0 auto;">
+            <div class="col-12" id="inputContainer" style="display: none;">
+                        <label class="form-label">Comentarios</label>
+                        <textarea class="form-control" rows="4" cols="4" id="comentarioRechazo" name="comentarioRechazo"></textarea>
+                    </div>
+
+                    <div class="col-12" id="inputContainer2" style="display: none;">
+                        <label class="form-label">Comentarios</label>
+                        <textarea class="form-control" rows="4" cols="4" id="comentarioenespera" name="comentarioenespera"></textarea>
+                    </div>
+                    <br><br>
+                        </div>
+            
+                <div class="card-body">
+                    
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-3 g-3">
+
+
+
+                     
+                        <div class="col-12" style="margin: 0 auto;">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="aprobarCheckbox">
+                                <label class="form-check-label" for="aprobarCheckbox">Aprobar solicitud</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="rechazarCheckbox">
+                                <label class="form-check-label" for="rechazarCheckbox">Rechazar solicitud</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="enesperaCheckbox">
+                                <label class="form-check-label" for="enesperaCheckbox">En espera</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div><!--end row-->
+
+
+
+
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+
+
+
+                <button id="Brechazar" class="btn btn-danger btn-md btn-block " style="display: none;" type="submit">Rechazar solicitud</button>
+                <button id="Baprobar" class="btn btn-primary btn-md btn-block" style="display: none;" type="submit">Aprobar solicitud</button>
+                <button id="Benespera" class="btn btn-warning btn-md btn-block" style="display: none;" type="submit">En espera</button>
+                <br>
+            </div>
 
             <?php
 
-            $crearSoli = new SolicitudC();
-            $crearSoli->CrearSolicitudC();
+            $actualizarSolicitarAR = new SolicitudC();
+            $actualizarSolicitarAR->ActualizarARSolicitudC();
 
             ?>
 

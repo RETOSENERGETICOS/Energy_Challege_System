@@ -3,7 +3,10 @@
 class SolicitudC
 {
 
-    static public function VerSolicitudC($item, $valor,)
+    /* -------------------------------------------------------------------------- */
+    /*                                VISTA EMPLEADOS                                */
+    /* -------------------------------------------------------------------------- */
+    static public function VerSolicitudC($item, $valor)
     {
 
 
@@ -17,6 +20,9 @@ class SolicitudC
         return $respuesta;
     }
 
+    /* -------------------------------------------------------------------------- */
+    /*                                VISTA MANAGER                                */
+    /* -------------------------------------------------------------------------- */
     static public function VistaManagerC($item, $valor,)
     {
 
@@ -27,6 +33,23 @@ class SolicitudC
 
         //Solicitamos una respuesta a nuestro modelo y conocectamos una funcion con VerUsuariosM enviaremos los parametros $tablaBD
         $respuesta = SolicitudM::VistaManagerM($tablaBD, $item, $valor);
+
+        return $respuesta;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /*                                VISTA DIRECTOR                                */
+    /* -------------------------------------------------------------------------- */
+    static public function VistaSolicitudDC($item, $valor,)
+    {
+
+
+        //Creamos la variable de Bd
+
+        $tablaBD = "vista_solicitud_director";
+
+        //Solicitamos una respuesta a nuestro modelo y conocectamos una funcion con VerUsuariosM enviaremos los parametros $tablaBD
+        $respuesta = SolicitudM::VerSolicitudDM($tablaBD, $item, $valor);
 
         return $respuesta;
     }

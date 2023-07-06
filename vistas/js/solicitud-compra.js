@@ -213,6 +213,8 @@ $(".TB").on("click", ".btnVistaSolicitud", function() {
       $("#solicitanteLN").val(respuesta["solicitante_lentrega"]);
       $("#emailLN").val(respuesta["email_solicitante"]);
       $("#solicitanteSN").val(respuesta["solicitante_soli"]);
+      $("#firmasupN").html(respuesta["nombre"]);
+      $("#firmasupN").val(respuesta["nombre"]);
       $("#formaenvN").val(respuesta["forma_env"]);
       $("#incotermsN").val(respuesta["incoterms"]);
       $("#plazoentregaN").val(respuesta["plazo_entr"]);
@@ -356,18 +358,49 @@ $("#cuadroM").on("click", function(event) {
 /* -------------------------------------------------------------------------- */
 
 $(document).ready(function() {
+  $("#aprobarCheckbox").change(function() {
+    if ($(this).is(":checked")) {
+      $("#Baprobar").show();
+      $("#rechazarCheckbox").prop("checked", false);
+      $("#enesperaCheckbox").prop("checked", false);
+      $("#inputContainer").hide();
+      $("#inputContainer2").hide();
+      $("#Benespera").hide();
+      $("#Brechazar").hide();
+    } else {
+      $("#Baprobar").hide();
+    }
+  });
+
   $("#rechazarCheckbox").change(function() {
     if ($(this).is(":checked")) {
       $("#inputContainer").show();
+      $("#inputContainer2").hide();
       $("#Baprobar").hide();
+      $("#enesperaCheckbox").prop("checked", false);
+      $("#Benespera").hide();
       $("#Brechazar").show();
     } else {
       $("#inputContainer").hide();
-      $("#Baprobar").show();
+      $("#inputContainer2").hide();
       $("#Brechazar").hide();
     }
   });
+
+  $("#enesperaCheckbox").change(function() {
+    if ($(this).is(":checked")) {
+      $("#inputContainer2").show();
+      $("#Baprobar").hide();
+      $("#rechazarCheckbox").prop("checked", false);
+      $("#Benespera").show();
+      $("#Brechazar").hide();
+    } else {
+      $("#inputContainer2").hide();
+      $("#Benespera").hide();
+    }
+  });
 });
+
 
 /* -------------------------------------------------------------------------- */
 /*                             FUNCION DE AUTOSUMA                            */
@@ -381,9 +414,11 @@ function formatInputValue(element) {
   if (numericValue !== "") {
     var parts = numericValue.split(".");
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    element.value = "$" + parts.join(".");
+    var formattedValue = "$" + parts.join(".");
+    element.value = formattedValue;
   }
 }
+
 
 function calcularS() {
   var totalesN = document.getElementsByName("totalesN[]");

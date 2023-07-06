@@ -5,102 +5,109 @@ require_once "ConexionBD.php";
 class SolicitudM extends ConexionBD
 {
 
+    /* -------------------------------------------------------------------------- */
+    /*                               VISTA EMPLEADOS                               */
+    /* -------------------------------------------------------------------------- */
     static public function VerSolicitudM($tablaBD, $item, $valor)
     {
         $idsuario = $_SESSION["id"];
 
         if ($item != null) {
-            /* -------------------------------------------------------------------------- */
-            /*                          crearemos la variable pdo                         */
-            /* -------------------------------------------------------------------------- */
+          
 
             $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE $item = :$item AND status =1 ");
 
             $pdo->bindParam(":" . $item, $valor, PDO::PARAM_STR);
-            /* -------------------------------------------------------------------------- */
-            /*          //variable pdo para que se nos ejecute la consulta SELECT         */
-            /* -------------------------------------------------------------------------- */
+           
             $pdo->execute();
-            /* -------------------------------------------------------------------------- */
-            /*    //retornamos el pdo con un fetchAll() para mostrar todos los usuarios   */
-            /* -------------------------------------------------------------------------- */
+          
             return $pdo->fetchAll();
-            /* -------------------------------------------------------------------------- */
-            /*                       //Cerramos la conexion de la BD                      */
-            /* -------------------------------------------------------------------------- */
+          
             $pdo->close();
         } else {
-            /* -------------------------------------------------------------------------- */
-            /*                          crearemos la variable pdo                         */
-            /* -------------------------------------------------------------------------- */
+          
 
             $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE status = 1 AND id_usuario = $idsuario ");
 
 
-            /* -------------------------------------------------------------------------- */
-            /*          //variable pdo para que se nos ejecute la consulta SELECT         */
-            /* -------------------------------------------------------------------------- */
             $pdo->execute();
-            /* -------------------------------------------------------------------------- */
-            /*    //retornamos el pdo con un fetchAll() para mostrar todos los usuarios   */
-            /* -------------------------------------------------------------------------- */
+       
             return $pdo->fetchAll();
-            /* -------------------------------------------------------------------------- */
-            /*                       //Cerramos la conexion de la BD                      */
-            /* -------------------------------------------------------------------------- */
+           
             $pdo->close();
         }
     }
 
 
 
-
+    /* -------------------------------------------------------------------------- */
+    /*                                VISTA MANAGER                                */
+    /* -------------------------------------------------------------------------- */
     static public function VistaManagerM($tablaBD, $item, $valor)
     {
         $idsuario = $_SESSION["id"];
 
         if ($item != null) {
-            /* -------------------------------------------------------------------------- */
-            /*                          crearemos la variable pdo                         */
-            /* -------------------------------------------------------------------------- */
+           
 
             $pdo = ConexionBD::cBD()->prepare("SELECT * FROM vista_solicitud_general WHERE $item = :$item ");
 
             $pdo->bindParam(":" . $item, $valor, PDO::PARAM_STR);
-            /* -------------------------------------------------------------------------- */
-            /*          //variable pdo para que se nos ejecute la consulta SELECT         */
-            /* -------------------------------------------------------------------------- */
+          
             $pdo->execute();
-            /* -------------------------------------------------------------------------- */
-            /*    //retornamos el pdo con un fetchAll() para mostrar todos los usuarios   */
-            /* -------------------------------------------------------------------------- */
+           
             return $pdo->fetchAll();
-            /* -------------------------------------------------------------------------- */
-            /*                       //Cerramos la conexion de la BD                      */
-            /* -------------------------------------------------------------------------- */
+           
             $pdo->close();
+
         } else {
-            /* -------------------------------------------------------------------------- */
-            /*                          crearemos la variable pdo                         */
-            /* -------------------------------------------------------------------------- */
+          
 
             $pdo = ConexionBD::cBD()->prepare("SELECT * FROM vista_solicitud_general WHERE status = 1  AND firma_superv = $idsuario");
 
 
-            /* -------------------------------------------------------------------------- */
-            /*          //variable pdo para que se nos ejecute la consulta SELECT         */
-            /* -------------------------------------------------------------------------- */
+          
             $pdo->execute();
-            /* -------------------------------------------------------------------------- */
-            /*    //retornamos el pdo con un fetchAll() para mostrar todos los usuarios   */
-            /* -------------------------------------------------------------------------- */
+            
             return $pdo->fetchAll();
-            /* -------------------------------------------------------------------------- */
-            /*                       //Cerramos la conexion de la BD                      */
-            /* -------------------------------------------------------------------------- */
+           
             $pdo->close();
         }
     }
+
+     /* -------------------------------------------------------------------------- */
+    /*                               VISTA DIRECTOR                               */
+    /* -------------------------------------------------------------------------- */
+    static public function VerSolicitudDM($tablaBD, $item, $valor)
+    {
+        $idsuario = $_SESSION["id"];
+
+        if ($item != null) {
+          
+
+            $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE $item = :$item AND status =1 ");
+
+            $pdo->bindParam(":" . $item, $valor, PDO::PARAM_STR);
+           
+            $pdo->execute();
+          
+            return $pdo->fetchAll();
+          
+            $pdo->close();
+        } else {
+          
+
+            $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE status = 1  AND estado = 2 ");
+
+
+            $pdo->execute();
+       
+            return $pdo->fetchAll();
+           
+            $pdo->close();
+        }
+    }
+
 
 
     /* -------------------------------------------------------------------------- */
@@ -180,7 +187,6 @@ class SolicitudM extends ConexionBD
         $pdo->bindParam(":cp_lentrega", $datosC["cp_lentrega"], PDO::PARAM_STR);
         $pdo->bindParam(":direccion_lentrega", $datosC["direccion_lentrega"], PDO::PARAM_STR);
         $pdo->bindParam(":telefono_lentrega", $datosC["telefono_lentrega"], PDO::PARAM_STR);
-
         $pdo->bindParam(":firma_superv", $datosC["firma_superv"], PDO::PARAM_STR);
         $pdo->bindParam(":forma_env", $datosC["forma_env"], PDO::PARAM_STR);
         $pdo->bindParam(":incoterms", $datosC["incoterms"], PDO::PARAM_STR);
@@ -227,7 +233,7 @@ class SolicitudM extends ConexionBD
             $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentarios = :comentarios, 
              estado = 3  WHERE id = :id");
 
-            $pdo->bindParam(":id", $datosC["id"], PDO::PARAM_INT);
+            $pdo->bindParam(":id ", $datosC["id"], PDO::PARAM_INT);
             $pdo->bindParam(":comentarios", $datosC["comentarios"], PDO::PARAM_STR);
            
             // $pdo->bindParam(":estado", 2, PDO::PARAM_STR);
