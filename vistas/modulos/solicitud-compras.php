@@ -35,19 +35,7 @@
                     </nav>
 
                 </div>
-                <!-- <div class="ms-auto">
-              <div class="btn-group">
-                <button type="button" class="btn btn-outline-primary">Settings</button>
-                <button type="button" class="btn btn-outline-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
-                </button>
-                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">Action</a>
-                  <a c
-                  lass="dropdown-item" href="javascript:;">Another action</a>
-                  <a class="dropdown-item" href="javascript:;">Something else here</a>
-                  <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">Separated link</a>
-                </div>
-              </div>
-            </div> -->
+                
             </div>
             <!--end breadcrumb-->
             <div class="btn-group" role="group" aria-label="Basic example">
@@ -85,6 +73,7 @@
                                 <tr>
                                     <th>Estado</th>
                                     <th>Acciones</th>
+                                    <th>Codigo</th>
                                     <th>Fecha</th>
                                     <th>Solicitante</th>
                                     <th>Suministrador</th>
@@ -104,12 +93,19 @@
                                 $verS = SolicitudC::VerSolicitudC($item, $valor);
                                 ?>
                                 <?php
+                                 date_default_timezone_set('America/Mexico_City');
+                                 $fecha = date('Y-m-d H:i:s');
+                                 $anio = date('Y', strtotime($fecha));
+                                 $ultimosDosDigitos = substr($anio, -2);
                                 /* -------------------------------------------------------------------------- */
                                 /*abrimos un foreach con la variable respuesta traiga un echo con lo que tenemos
                                   como registros en la tabla                                                  */
                                 /* -------------------------------------------------------------------------- */
+                                $codigo = 870;
 
+                                $codf= $codigo.'_'. $ultimosDosDigitos;
                                 foreach ($verS as $key => $value) {
+                                    $codigo+=1; 
                                     echo '
                                     </tr>';
                                 ?>
@@ -137,9 +133,10 @@
                                             <div class="btn-group">
                                            <?php echo' <button class="btn btn-warning btnVistaSolicitud" data-bs-toggle="modal" data-bs-target="#solicitudCom22"  idSolicitud="' . $value["id"] . '"><i class="fadeIn animated bx bx-edit-alt"></i></button>' ?>
                                                 <button class="btn btn-danger " title="Eliminar solicitud"><i class="fadeIn animated bx bx-trash-alt"></i></button>
-                                                <button class="btn btn-secondary " title="PDF"><i class="bi bi-file-earmark-pdf"></i></button>
+                                            <?php  echo ' <button class="btn btn-secondary btnImprimirFactura" idSolicitudFac="'.$value['id'].'" title="PDF"><i class="bi bi-file-earmark-pdf"></i></button>'?>
                                             </div>
                                         </td>
+                                        <td><?php echo $codigo.'_'.$ultimosDosDigitos ?></td>
                                         <td><?php echo $value["fecha"] ?></td>
                                         <td><?php echo $value["solicitante_lentrega"] ?></td>
                                         <td><?php echo $value["nombre_prov"] ?></td>
@@ -200,12 +197,19 @@
                         <div class="card-body">
                             <div class="p-4 border rounded">
                                 <form id="solicitante" class="row g-3 needs-validation " method="post" enctype="multipart/form-data">
-                                    <!-- style="background-color: #1b4e88;color: #fff;
-                                     padding-bottom: 2%; text-align:center;" -->
+                                  
                                     <h6 class="mb-0 text-uppercase">VENDOR / SUMINISTRADOR</h6>
                                     <div class="col-md-6">
                                         <label for="validationDefault01" class="form-label">Nombre</label>
-
+                                        <?php
+                                        date_default_timezone_set('America/Mexico_City');
+                                        $fecha = date('Y-m-d H:i:s');
+                                        $anio = date('Y', strtotime($fecha));
+                                        $ultimosDosDigitos = substr($anio, -2);
+                                        $codigo+=1;
+                                       
+                                        ?>
+                                         <input type="text" class="form-control" value="<?php echo $codigo.'_'.$ultimosDosDigitos ?>" name="codigoN" id="codigoN" >
                                         <select class="form-select" value="" name="proveedorN" id="proveedorN" required>
                                             <option value="" name="" id="proveedorN">...</option>
                                             <?php
@@ -1429,12 +1433,15 @@
 
                                     <h6 class="mb-0 text-uppercase">VENDOR / SUMINISTRADOR</h6>
                                     <div class="col-md-6">
+                                       
+                                        
                                         <input type="hidden" class="form-control" name="idSolicitud" id="idSolicitud2">
                                         <label for="validationDefault01" class="form-label">Nombre</label>
                                         <select class="form-select" name="proveedorN" disabled>
                                             <option value=' . $value["nombre_prov"] . ' id="proveedorNS"></option>
 
                                         </select>
+                                        
 
 
                                     </div>
@@ -1442,6 +1449,7 @@
                                     <div class="col-md-6">
                                         <label for="validationDefaul05" class="form-label">ATN</label>
                                         <input type="text" class="form-control" name="atnSN" id="atnSN" readonly>
+                                        
 
                                     </div>
 

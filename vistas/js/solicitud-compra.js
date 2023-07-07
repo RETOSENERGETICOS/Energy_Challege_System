@@ -238,6 +238,12 @@ $(".TB").on("click", ".btnVistaSolicitud", function() {
       $("#especifiT").attr("download", respuesta["especificacion_tecsoli"]);
       $("#especifiT").attr("href", respuesta["especificacion_tecsoli"]);
 
+      if (respuesta.comentarioenespera) {
+        $("#comentarioenespera").val(respuesta.comentarioenespera);
+    } else if (respuesta.comentarioRechazo) {
+        $("#comentarioRechazo").val(respuesta.comentarioRechazo);
+    }
+
       /* -------------------------------------------------------------------------- */
       /*      IMPRESION DE DATOS REFERENCIA, DESCRIPCION,CANTIDAD,TASA,SUBTOTAL     */
       /* -------------------------------------------------------------------------- */
@@ -472,3 +478,16 @@ function calcularS() {
 
   document.getElementById("totalN").value = "$" + totalfin.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
+
+
+/* -------------------------------------------------------------------------- */
+/*                              IMPRIMIR FACTURA                              */
+/* -------------------------------------------------------------------------- */
+
+
+$(".TB").on("click",".btnImprimirFactura", function(){
+  
+  var idSolicitudFac = $(this).attr("idSolicitudFac");
+
+  window.open("plugins/TCPDF/examples/factura.php", "_blank")
+})

@@ -104,10 +104,6 @@ class SolicitudC
                 $precuni = $_POST['precuniN'];
                 $tasa = $_POST['tasaN'];
                 $totales = $_POST['totalesN'];
-                
-
-
-                
               
             }
 
@@ -140,6 +136,7 @@ class SolicitudC
 
             $datosC = array(
                 "id_provedor" => $_POST["proveedorN"],
+                "codigo" => $_POST["codigoN"],
                 "atnproveedor_soli" => $_POST["atnSN"],
                 "lugarentr_solicitud" => $_POST["entregaLN"],
                 "atn_lentrega" => $_POST["atnLN"],
@@ -188,6 +185,204 @@ class SolicitudC
 
 
     /* -------------------------------------------------------------------------- */
+    /*                               CREAR ORDEN COMPRA DIRECTOR                   */
+    /* -------------------------------------------------------------------------- */
+    static public function CrearSolicitudDC()
+    {
+       
+        if (isset($_POST["proveedorN"])) {
+
+           
+            //declaracion de arreglos inputs
+           
+
+            if (isset($_POST["solicitanteN"]) || isset($_POST["descripN"]) || isset($_POST["cantN"])) {
+                $solicitante = $_POST['solicitanteN'];
+                $descripcion = $_POST['descripN'];
+                $cantidad = $_POST['cantN'];
+                $precuni = $_POST['precuniN'];
+                $tasa = $_POST['tasaN'];
+                $totales = $_POST['totalesN'];
+              
+            }
+
+            //declaracion de variable string de ruta
+            $rutacuadro = "";
+            $rutaofertaprov = "";
+            $rutaespeciftec = "";
+            if ($_FILES["cuadro_msoliN"]["type"] == "application/pdf") {
+                $nombrecuadro = mt_rand(10, 999);
+                $rutacuadro = "vistas/img/cmando/Cuadro-mando_" . $nombrecuadro . ".pdf";
+                move_uploaded_file($_FILES["cuadro_msoliN"]["tmp_name"], $rutacuadro);
+            }
+
+
+            if ($_FILES["ofertaprovN"]["type"] == "application/pdf") {
+                $nombreofertaprov = mt_rand(10, 999);
+                $rutaofertaprov = "vistas/img/ofertaprov/Oferta-prov_" . $nombreofertaprov . ".pdf";
+                move_uploaded_file($_FILES["ofertaprovN"]["tmp_name"], $rutaofertaprov);
+            }
+
+
+            if ($_FILES["especiftecN"]["type"] == "application/pdf") {
+                $nombreespeciftec = mt_rand(10, 999);
+                $rutaespeciftec = "vistas/img/especiftec/Especif-tec_" . $nombreespeciftec . ".pdf";
+                move_uploaded_file($_FILES["especiftecN"]["tmp_name"], $rutaespeciftec);
+            }
+
+
+            $tablaBD = "solicitud_compra";
+
+            $datosC = array(
+                "id_provedor" => $_POST["proveedorN"],
+                "codigo" => $_POST["codigoN"],
+                "atnproveedor_soli" => $_POST["atnSN"],
+                "lugarentr_solicitud" => $_POST["entregaLN"],
+                "atn_lentrega" => $_POST["atnLN"],
+                "cp_lentrega" => $_POST["cpLN"],
+                "direccion_lentrega" => $_POST["direccionLN"],
+                "telefono_lentrega" => $_POST["telefonoLN"],
+                "firma_superv" => $_POST["firmasupN"],
+                "forma_env" => $_POST["formaenvN"],
+                "incoterms" => $_POST["incotermsN"],
+                "plazo_entr" => $_POST["plazoentregaN"],
+                "id_cliente" => $_POST["clienteN"],
+                "proyecto_soli" => $_POST["proyectoN"],
+                "seguro_inclu" => $_POST["seguroincluN"],
+                "oferta_suminis" => $_POST["ofertasumN"],
+                "condicion_especial" => $_POST["condicionesespN"],
+                "ref_suministrador" => json_encode($solicitante),
+                "descripcion" => json_encode($descripcion),
+                "cantidad" => json_encode($cantidad),
+                "precio_unitario" => json_encode($precuni),
+                "tasa" => json_encode($tasa),
+                "total" => json_encode($totales),
+                "subtotal_soli" => $_POST["subtotalN"],
+                "taxes" => $_POST["taxesN"],
+                "pago_envio_soli" => $_POST["shippinglN"],
+                "otros_soli" => $_POST["otrosN"],
+                "total_soli" => $_POST["totalN"],
+                "moneda" => $_POST["monedaN"],
+                "cuadro_msoli" => $rutacuadro,
+                "ofertaprove_soli" => $rutaofertaprov,
+                "especificacion_tecsoli" => $rutaespeciftec
+            );
+
+
+
+            $respuesta = SolicitudM::AgregarSolicitudDM($tablaBD, $datosC);
+
+            if ($respuesta) {
+                echo '<script>
+            window.location = "solicitud-compras";
+            </script>';
+            }
+        }
+
+        
+    }
+
+    
+    /* -------------------------------------------------------------------------- */
+    /*                               CREAR ORDEN COMPRA MANAGER                   */
+    /* -------------------------------------------------------------------------- */
+    static public function CrearSolicitudMC()
+    {
+       
+        if (isset($_POST["proveedorN"])) {
+
+           
+            //declaracion de arreglos inputs
+           
+
+            if (isset($_POST["solicitanteN"]) || isset($_POST["descripN"]) || isset($_POST["cantN"])) {
+                $solicitante = $_POST['solicitanteN'];
+                $descripcion = $_POST['descripN'];
+                $cantidad = $_POST['cantN'];
+                $precuni = $_POST['precuniN'];
+                $tasa = $_POST['tasaN'];
+                $totales = $_POST['totalesN'];
+              
+            }
+
+            //declaracion de variable string de ruta
+            $rutacuadro = "";
+            $rutaofertaprov = "";
+            $rutaespeciftec = "";
+            if ($_FILES["cuadro_msoliN"]["type"] == "application/pdf") {
+                $nombrecuadro = mt_rand(10, 999);
+                $rutacuadro = "vistas/img/cmando/Cuadro-mando_" . $nombrecuadro . ".pdf";
+                move_uploaded_file($_FILES["cuadro_msoliN"]["tmp_name"], $rutacuadro);
+            }
+
+
+            if ($_FILES["ofertaprovN"]["type"] == "application/pdf") {
+                $nombreofertaprov = mt_rand(10, 999);
+                $rutaofertaprov = "vistas/img/ofertaprov/Oferta-prov_" . $nombreofertaprov . ".pdf";
+                move_uploaded_file($_FILES["ofertaprovN"]["tmp_name"], $rutaofertaprov);
+            }
+
+
+            if ($_FILES["especiftecN"]["type"] == "application/pdf") {
+                $nombreespeciftec = mt_rand(10, 999);
+                $rutaespeciftec = "vistas/img/especiftec/Especif-tec_" . $nombreespeciftec . ".pdf";
+                move_uploaded_file($_FILES["especiftecN"]["tmp_name"], $rutaespeciftec);
+            }
+
+
+            $tablaBD = "solicitud_compra";
+
+            $datosC = array(
+                "id_provedor" => $_POST["proveedorN"],
+                "codigo" => $_POST["codigoN"],
+                "atnproveedor_soli" => $_POST["atnSN"],
+                "lugarentr_solicitud" => $_POST["entregaLN"],
+                "atn_lentrega" => $_POST["atnLN"],
+                "cp_lentrega" => $_POST["cpLN"],
+                "direccion_lentrega" => $_POST["direccionLN"],
+                "telefono_lentrega" => $_POST["telefonoLN"],
+                "firma_superv" => $_POST["firmasupN"],
+                "forma_env" => $_POST["formaenvN"],
+                "incoterms" => $_POST["incotermsN"],
+                "plazo_entr" => $_POST["plazoentregaN"],
+                "id_cliente" => $_POST["clienteN"],
+                "proyecto_soli" => $_POST["proyectoN"],
+                "seguro_inclu" => $_POST["seguroincluN"],
+                "oferta_suminis" => $_POST["ofertasumN"],
+                "condicion_especial" => $_POST["condicionesespN"],
+                "ref_suministrador" => json_encode($solicitante),
+                "descripcion" => json_encode($descripcion),
+                "cantidad" => json_encode($cantidad),
+                "precio_unitario" => json_encode($precuni),
+                "tasa" => json_encode($tasa),
+                "total" => json_encode($totales),
+                "subtotal_soli" => $_POST["subtotalN"],
+                "taxes" => $_POST["taxesN"],
+                "pago_envio_soli" => $_POST["shippinglN"],
+                "otros_soli" => $_POST["otrosN"],
+                "total_soli" => $_POST["totalN"],
+                "moneda" => $_POST["monedaN"],
+                "cuadro_msoli" => $rutacuadro,
+                "ofertaprove_soli" => $rutaofertaprov,
+                "especificacion_tecsoli" => $rutaespeciftec
+            );
+
+
+
+            $respuesta = SolicitudM::AgregarSolicitudMANM($tablaBD, $datosC);
+
+            if ($respuesta) {
+                echo '<script>
+            window.location = "solicitud-compras";
+            </script>';
+            }
+        }
+
+        
+    }
+
+
+    /* -------------------------------------------------------------------------- */
     /*                       ACTUALIZAR ESTADO DE SOLICITUD                       */
     /* -------------------------------------------------------------------------- */
 
@@ -196,6 +391,7 @@ class SolicitudC
        
 		if (isset($_POST["comentarioRechazo"])) {		
             $comentario = $_POST["comentarioRechazo"];
+            $comentario2 = $_POST["comentarioenespera"];
 			$tablaBD = "solicitud_compra";
 
 			$datosC = array(
@@ -203,7 +399,60 @@ class SolicitudC
                 
 			);
 
-			$respuesta = SolicitudM::ActualizarARSolicitudM($tablaBD, $datosC,$comentario);
+			$respuesta = SolicitudM::ActualizarARSolicitudM($tablaBD, $datosC,$comentario,$comentario2);
+
+
+			if ($respuesta == true) {
+
+				echo '
+				<div class="alert alert-dismissible fade show py-2 bg-success">
+                <div class="d-flex align-items-center">
+                  <div class="fs-3 text-white"><ion-icon name="checkmark-circle-sharp" role="img" class="md hydrated" aria-label="checkmark circle sharp"></ion-icon>
+                  </div>
+                  <div class="ms-3">
+                    <div class="text-white">Usuario actualizado con exito!</div>
+                  </div>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+				<script>
+						window.location ="manager";
+						</script>';
+			} else {
+
+				echo '<div class="alert alert-dismissible fade show py-2 bg-danger">
+					<div class="d-flex align-items-center">
+					  <div class="fs-3 text-white"><ion-icon name="checkmark-circle-sharp" role="img" class="md hydrated" aria-label="checkmark circle sharp"></ion-icon>
+					  </div>
+					  <div class="ms-3">
+						<div class="text-white">Error al actualizar proveedor!</div>
+					  </div>
+					</div>
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				  </div>';
+			}
+		}
+	}
+
+
+     /* -------------------------------------------------------------------------- */
+    /*                       ACTUALIZAR ESTADO DE SOLICITUD                       */
+    /* -------------------------------------------------------------------------- */
+
+    public function ActualizarSolicitudDC()
+	{
+       
+		if (isset($_POST["comentarioRechazo"])) {		
+            $comentario = $_POST["comentarioRechazo"];
+            $comentario2 = $_POST["comentarioenespera"];
+			$tablaBD = "solicitud_compra";
+
+			$datosC = array(
+				"id" => $_POST["idSolicitud"], "comentarios" => $_POST["comentarioRechazo"]
+                
+			);
+
+			$respuesta = SolicitudM::ActualizarSolicitudDM($tablaBD, $datosC,$comentario,$comentario2);
 
 
 			if ($respuesta == true) {

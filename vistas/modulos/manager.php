@@ -1364,7 +1364,7 @@
             <?php
 
             $crearSoli = new SolicitudC();
-            $crearSoli->CrearSolicitudC();
+            $crearSoli->CrearSolicitudMC();
 
             ?>
 
