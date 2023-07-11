@@ -58,49 +58,382 @@ $pdf->Image($imageFile, 10, 10, 40, '', 'PNG', '', 'T', false, 300, '', false, f
 // Establece el color del título "Orden de compra"
 $pdf->SetTextColor(27, 79, 114); // #1B4F72 (azul)
 
-// Agrega el título "Orden de compra" en la parte superior derecha
-$pdf->SetFont('helvetica', 'B', 14);
-$pdf->Cell(0, 10, 'Orden de compra', 0, 1, 'R');
-
-$pdf->Ln(15);
-
-// Agrega la información del cliente y la dirección
-$pdf->SetFont('helvetica', 'B', 10);
-$pdf->Cell(40, 8, 'Cliente:', 0);
-$pdf->SetFont('helvetica', '', 10);
-$pdf->Cell(0, 8, 'Nombre del cliente', 0, 1);
-
-$pdf->SetFont('helvetica', 'B', 10);
-$pdf->Cell(40, 8, 'Dirección:', 0);
-$pdf->SetFont('helvetica', '', 10);
-$pdf->Cell(0, 8, 'Dirección del cliente', 0, 1);
-
-$pdf->Ln(10);
-
-// Agrega la tabla de detalles de la factura
-$pdf->SetFont('helvetica', 'B', 10);
-$pdf->Cell(30, 8, 'Cantidad', 1, 0, 'C');
-$pdf->Cell(100, 8, 'Descripción', 1, 0, 'C');
-$pdf->Cell(30, 8, 'Precio', 1, 0, 'C');
-$pdf->Cell(30, 8, 'Total', 1, 1, 'C');
-
-$pdf->SetFont('helvetica', '', 10);
-$pdf->Cell(30, 8, '1', 1, 0, 'C');
-$pdf->Cell(100, 8, 'Producto 1', 1, 0);
-$pdf->Cell(30, 8, '10.00', 1, 0, 'R');
-$pdf->Cell(30, 8, '10.00', 1, 1, 'R');
-
-$pdf->Cell(30, 8, '2', 1, 0, 'C');
-$pdf->Cell(100, 8, 'Producto 2', 1, 0);
-$pdf->Cell(30, 8, '15.00', 1, 0, 'R');
-$pdf->Cell(30, 8, '30.00', 1, 1, 'R');
-
-// Agrega el total de la factura
-$pdf->Ln(5);
-$pdf->SetFont('helvetica', 'B', 10);
-$pdf->Cell(160, 8, 'Total:', 1, 0, 'R');
-$pdf->Cell(30, 8, '40.00', 1, 1, 'R');
-
+$html = '<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: right;">Orden de compra</h1>
+    <br>
+    <p><b>Cliente:</b> Nombre del cliente</p>
+    <p><b>Dirección:</b> Dirección del cliente</p>
+    <br>
+    <table>
+        <tr>
+            <th>Cantidad</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Total</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Producto 1</td>
+            <td>10.00</td>
+            <td>10.00</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Producto 2</td>
+            <td>15.00</td>
+            <td>30.00</td>
+        </tr>
+        <tr>
+        <td>2</td>
+        <td>Producto 2</td>
+        <td>15.00</td>
+        <td>30.00</td>
+    </tr>
+    <tr>
+    <td>2</td>
+    <td>Producto 2</td>
+    <td>15.00</td>
+    <td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Producto 2</td>
+<td>15.00</td>
+<td>30.00</td>
+</tr>
+    </table>
+    <br>
+    <p style="text-align: right;"><b>Total:</b> 40.00</p>
+</body>
+</html>
+';
+$pdf->writeHTML($html, true, false, true, false, ''); // Escribir la tabla en el PDF
 
 // Agrega una nueva página al documento
 $pdf->AddPage();

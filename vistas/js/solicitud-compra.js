@@ -490,5 +490,5 @@ $(".TB").on("click",".btnImprimirFactura", function(){
   
   var idSolicitudFac = $(this).attr("idSolicitudFac");
 
-  window.open("plugins/TCPDF/examples/example_001.php", "_blank")
+  window.open("plugins/TCPDF/examples/example_001.php?id="+idSolicitudFac, "_blank")
 })
