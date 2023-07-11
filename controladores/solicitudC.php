@@ -78,11 +78,10 @@ class SolicitudC
     {
         //Creamos la variable de Bd
 
-        $tablaBD = "vista_solicitud_general";
-        $itemFac = null;
-        $valorFac=null;
+        $tablaBD = "vista_solicitud_factura";
+       
         //Solicitamos una respuesta a nuestro modelo y conocectamos una funcion con VerUsuariosM enviaremos los parametros $tablaBD
-        $respuesta = SolicitudM::VistaSolicitudFACM($tablaBD,$itemFac,$valorFac, $item2, $valor2);
+        $respuesta = SolicitudM::VistaSolicitudFACM($tablaBD, $item2, $valor2);
 
         return $respuesta;
     }
@@ -95,7 +94,7 @@ class SolicitudC
     {
         //Creamos la variable de Bd
 
-        $tablaBD = "vista_solicitud_factura";
+        $tablaBD = "vista_solicitud_general";
 
     
         //Solicitamos una respuesta a nuestro modelo y conocectamos una funcion con VerUsuariosM enviaremos los parametros $tablaBD

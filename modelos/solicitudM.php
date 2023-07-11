@@ -23,7 +23,7 @@ class SolicitudM extends ConexionBD
 
             return $pdo->fetchAll();
 
-            $pdo->close();
+           
         } else {
 
 
@@ -34,8 +34,10 @@ class SolicitudM extends ConexionBD
 
             return $pdo->fetchAll();
 
-            $pdo->close();
+           
         }
+        $pdo->close();
+        $pdo = null;
     }
 
      /* -------------------------------------------------------------------------- */
@@ -43,12 +45,9 @@ class SolicitudM extends ConexionBD
     /* -------------------------------------------------------------------------- */
     static public function VistaSolicitudFACM($tablaBD, $itemFac, $valorFac)
     {
-        
-
         if ($itemFac != null) {
 
-
-            $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE $itemFac = :$itemFac AND status =1 ");
+            $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE $itemFac = :$itemFac AND status = 1 ");
 
             $pdo->bindParam(":" . $itemFac, $valorFac, PDO::PARAM_STR);
 
@@ -56,19 +55,18 @@ class SolicitudM extends ConexionBD
 
             return $pdo->fetch();
 
-            $pdo->close();
+           
         } else {
-
-
             $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE status = 1 ");
-
 
             $pdo->execute();
 
             return $pdo->fetchAll();
 
-            $pdo->close();
         }
+
+        $pdo->close();
+        $pdo =null;
     }
 
 
@@ -91,7 +89,7 @@ class SolicitudM extends ConexionBD
 
             return $pdo->fetchAll();
 
-            $pdo->close();
+           
         } else {
 
 
@@ -103,8 +101,9 @@ class SolicitudM extends ConexionBD
 
             return $pdo->fetchAll();
 
-            $pdo->close();
         }
+        $pdo->close();
+        $pdo = null;
     }
 
     /* -------------------------------------------------------------------------- */
@@ -125,7 +124,7 @@ class SolicitudM extends ConexionBD
 
             return $pdo->fetchAll();
 
-            $pdo->close();
+           
         } else {
 
 
@@ -136,8 +135,10 @@ class SolicitudM extends ConexionBD
 
             return $pdo->fetchAll();
 
-            $pdo->close();
+           
         }
+        $pdo->close();
+        $pdo = null;
     }
 
     /* -------------------------------------------------------------------------- */
@@ -158,7 +159,7 @@ class SolicitudM extends ConexionBD
 
             return $pdo->fetchAll();
 
-            $pdo->close();
+      
         } else {
 
 
@@ -169,8 +170,10 @@ class SolicitudM extends ConexionBD
 
             return $pdo->fetchAll();
 
-            $pdo->close();
+        
         }
+        $pdo->close();
+        $pdo = null;
     }
 
 

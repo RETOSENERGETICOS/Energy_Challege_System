@@ -73,7 +73,7 @@
                                 <tr>
                                     <th>Estado</th>
                                     <th>Acciones</th>
-                                    <th>Codigo</th>
+                                    <th>PO#</th>
                                     <th>Fecha</th>
                                     <th>Solicitante</th>
                                     <th>Suministrador</th>
