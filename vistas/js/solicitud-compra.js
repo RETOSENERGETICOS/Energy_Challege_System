@@ -238,11 +238,14 @@ $(".TB").on("click", ".btnVistaSolicitud", function() {
       $("#especifiT").attr("download", respuesta["especificacion_tecsoli"]);
       $("#especifiT").attr("href", respuesta["especificacion_tecsoli"]);
 
-      if (respuesta.comentarioenespera) {
+      if (respuesta.estado == 4) {
         $("#comentarioenespera").val(respuesta.comentarioenespera);
-    } else if (respuesta.comentarioRechazo) {
+        $("#Benespera").show();
+      } else if (respuesta.estado == 3) {
         $("#comentarioRechazo").val(respuesta.comentarioRechazo);
-    }
+        $("#Brechazar").show();
+      }
+      
 
       /* -------------------------------------------------------------------------- */
       /*      IMPRESION DE DATOS REFERENCIA, DESCRIPCION,CANTIDAD,TASA,SUBTOTAL     */

@@ -140,6 +140,40 @@ class SolicitudM extends ConexionBD
         }
     }
 
+    /* -------------------------------------------------------------------------- */
+    /*                               VISTA COMPRAS                               */
+    /* -------------------------------------------------------------------------- */
+    static public function VistaSolicitudCOM($tablaBD, $item, $valor)
+    {
+        $idsuario = $_SESSION["id"];
+
+        if ($item != null) {
+
+
+            $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE $item = :$item AND status =1 ");
+
+            $pdo->bindParam(":" . $item, $valor, PDO::PARAM_STR);
+
+            $pdo->execute();
+
+            return $pdo->fetchAll();
+
+            $pdo->close();
+        } else {
+
+
+            $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE status = 1  AND estado = 5 ");
+
+
+            $pdo->execute();
+
+            return $pdo->fetchAll();
+
+            $pdo->close();
+        }
+    }
+
+
 
 
     /* -------------------------------------------------------------------------- */
@@ -425,7 +459,7 @@ class SolicitudM extends ConexionBD
 
         if (isset($comentario) && !empty($comentario)) {
             $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentarios = :comentarios, 
-             estado = 3  WHERE id = :id");
+             estado = 2  WHERE id = :id");
 
             $pdo->bindParam(":id ", $datosC["id"], PDO::PARAM_INT);
             $pdo->bindParam(":comentarios", $datosC["comentarios"], PDO::PARAM_STR);
@@ -444,7 +478,7 @@ class SolicitudM extends ConexionBD
         } else {
 
             $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentarios = :comentarios, 
-             estado = 2, id_tipo_proceso= 2  WHERE id = :id");
+             estado = 3, id_tipo_proceso= 2  WHERE id = :id");
 
             $pdo->bindParam(":id", $datosC["id"], PDO::PARAM_INT);
             $pdo->bindParam(":comentarios", $datosC["comentarios"], PDO::PARAM_STR);

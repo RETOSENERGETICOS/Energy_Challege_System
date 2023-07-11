@@ -88,6 +88,23 @@ class SolicitudC
     }
 
 
+    /* -------------------------------------------------------------------------- */
+    /*                         VISTA DE SOLICITUD MANAGER CONSULTA TRAER DATOS    */
+    /* -------------------------------------------------------------------------- */
+    static public function VistaSolicitudCOC($item2, $valor2)
+    {
+        //Creamos la variable de Bd
+
+        $tablaBD = "vista_solicitud_factura";
+
+    
+        //Solicitamos una respuesta a nuestro modelo y conocectamos una funcion con VerUsuariosM enviaremos los parametros $tablaBD
+        $respuesta = SolicitudM::VistaSolicitudCOM($tablaBD, $item2, $valor2);
+
+        return $respuesta;
+    }
+
+
 
 
     /* -------------------------------------------------------------------------- */
