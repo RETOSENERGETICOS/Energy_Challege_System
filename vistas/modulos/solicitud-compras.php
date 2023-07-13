@@ -90,7 +90,7 @@
 
                                 $item = null;
                                 $valor = null;
-                                $verS = SolicitudC::VerSolicitudC($item, $valor);
+                                $verS = SolicitudC::VistaSolicitudFAC($item, $valor);
                                 ?>
                                 <?php
                                  date_default_timezone_set('America/Mexico_City');
@@ -136,7 +136,7 @@
                                             <?php  echo ' <button class="btn btn-secondary btnImprimirFactura" idSolicitudFac="'.$value['id'].'" title="PDF"><i class="bi bi-file-earmark-pdf"></i></button>'?>
                                             </div>
                                         </td>
-                                        <td><?php echo $codigo.'_'.$ultimosDosDigitos ?></td>
+                                        <td><?php echo $value["codigo"] ?></td>
                                         <td><?php echo $value["fecha"] ?></td>
                                         <td><?php echo $value["solicitante_lentrega"] ?></td>
                                         <td><?php echo $value["nombre_prov"] ?></td>

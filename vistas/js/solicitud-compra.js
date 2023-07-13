@@ -245,7 +245,6 @@ $(".TB").on("click", ".btnVistaSolicitud", function() {
         $("#comentarioRechazo").val(respuesta.comentarioRechazo);
         $("#Brechazar").show();
       }
-      
 
       /* -------------------------------------------------------------------------- */
       /*      IMPRESION DE DATOS REFERENCIA, DESCRIPCION,CANTIDAD,TASA,SUBTOTAL     */
@@ -271,41 +270,40 @@ $(".TB").on("click", ".btnVistaSolicitud", function() {
       }
 
       var texto3 = respuesta["cantidad"];
-var arreglo3 = JSON.parse(texto3);
+      var arreglo3 = JSON.parse(texto3);
 
-for (var i = 0; i < arreglo3.length; i++) {
-  var elemento3 = arreglo3[i];
-  console.log(elemento3);
-  $("#cantN_" + i).val(elemento3);
-}
+      for (var i = 0; i < arreglo3.length; i++) {
+        var elemento3 = arreglo3[i];
+        console.log(elemento3);
+        $("#cantN_" + i).val(elemento3);
+      }
 
-var texto4 = respuesta["precio_unitario"];
-var arreglo4 = JSON.parse(texto4);
+      var texto4 = respuesta["precio_unitario"];
+      var arreglo4 = JSON.parse(texto4);
 
-for (var i = 0; i < arreglo4.length; i++) {
-  var elemento4 = arreglo4[i];
-  console.log(elemento4);
-  $("#precuniN_" + i).val(elemento4);
-}
+      for (var i = 0; i < arreglo4.length; i++) {
+        var elemento4 = arreglo4[i];
+        console.log(elemento4);
+        $("#precuniN_" + i).val(elemento4);
+      }
 
-var texto5 = respuesta["tasa"];
-var arreglo5 = JSON.parse(texto5);
+      var texto5 = respuesta["tasa"];
+      var arreglo5 = JSON.parse(texto5);
 
-for (var i = 0; i < arreglo5.length; i++) {
-  var elemento5 = arreglo5[i];
-  console.log(elemento5);
-  $("#tasaN_" + i).val(elemento5);
-}
+      for (var i = 0; i < arreglo5.length; i++) {
+        var elemento5 = arreglo5[i];
+        console.log(elemento5);
+        $("#tasaN_" + i).val(elemento5);
+      }
 
-var texto6 = respuesta["total"];
-var arreglo6 = JSON.parse(texto6);
+      var texto6 = respuesta["total"];
+      var arreglo6 = JSON.parse(texto6);
 
-for (var i = 0; i < arreglo6.length; i++) {
-  var elemento6 = arreglo6[i];
-  console.log(elemento6);
-  $("#totalesN_" + i).val(elemento6);
-}
-
+      for (var i = 0; i < arreglo6.length; i++) {
+        var elemento6 = arreglo6[i];
+        console.log(elemento6);
+        $("#totalesN_" + i).val(elemento6);
+      }
     }
   });
 });
@@ -410,7 +408,6 @@ $(document).ready(function() {
   });
 });
 
-
 /* -------------------------------------------------------------------------- */
 /*                             FUNCION DE AUTOSUMA                            */
 /* -------------------------------------------------------------------------- */
@@ -428,7 +425,6 @@ function formatInputValue(element) {
   }
 }
 
-
 function calcularS() {
   var totalesN = document.getElementsByName("totalesN[]");
   var taxesN = document.getElementsByName("tasaporN[]");
@@ -444,30 +440,65 @@ function calcularS() {
 
     var c = parseFloat(document.getElementsByName("tasaN[]")[i].value) || 0;
 
-    var resultado = (a * b * c) / 100;
+    var resultado = a * b * c / 100;
     var total = a * b + resultado;
-    var resultadoFormateado = resultado !== 0 ? "$" + resultado.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "";
-    var resultadototal = total !== 0 ? "$" + total.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "";
+    var resultadoFormateado =
+      resultado !== 0
+        ? "$" +
+          resultado.toLocaleString("en-US", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          })
+        : "";
+    var resultadototal =
+      total !== 0
+        ? "$" +
+          total.toLocaleString("en-US", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          })
+        : "";
 
     document.getElementsByName("tasaporN[]")[i].value = resultadoFormateado;
     document.getElementsByName("totalesN[]")[i].value = resultadototal;
   }
 
   for (var i = 0; i < totalesN.length; i++) {
-    var value = parseFloat(totalesN[i].value.replace("$", "").replace(",", "")) || 0;
+    var value =
+      parseFloat(totalesN[i].value.replace("$", "").replace(",", "")) || 0;
     subtotalN += value;
   }
-  document.getElementById("subtotalN").value = "$" + subtotalN.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  document.getElementById("subtotalN").value =
+    "$" +
+    subtotalN.toLocaleString("en-US", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
 
   for (var i = 0; i < taxesN.length; i++) {
-    var value = parseFloat(taxesN[i].value.replace("$", "").replace(",", "")) || 0;
+    var value =
+      parseFloat(taxesN[i].value.replace("$", "").replace(",", "")) || 0;
     taxes += value;
   }
 
-  document.getElementById("taxesN").value = "$" + taxes.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  document.getElementById("taxesN").value =
+    "$" +
+    taxes.toLocaleString("en-US", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
 
-  var s = parseFloat(document.getElementById("subtotalN").value.replace("$", "").replace(",", "")) || 0;
-  var t = parseFloat(document.getElementById("taxesN").value.replace("$", "").replace(",", "")) || 0;
+  var s =
+    parseFloat(
+      document
+        .getElementById("subtotalN")
+        .value.replace("$", "")
+        .replace(",", "")
+    ) || 0;
+  var t =
+    parseFloat(
+      document.getElementById("taxesN").value.replace("$", "").replace(",", "")
+    ) || 0;
 
   var shippinglNElement = document.getElementById("shippinglN");
   formatInputValue(shippinglNElement); // Dar formato en tiempo real
@@ -479,19 +510,23 @@ function calcularS() {
 
   var totalfin = s + t + sh + o;
 
-  document.getElementById("totalN").value = "$" + totalfin.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  document.getElementById("totalN").value =
+    "$" +
+    totalfin.toLocaleString("en-US", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
 }
-
 
 /* -------------------------------------------------------------------------- */
 /*                              IMPRIMIR FACTURA                              */
 /* -------------------------------------------------------------------------- */
 
-     
-
-$(".TB").on("click",".btnImprimirFactura", function(){
-  
+$(".TB").on("click", ".btnImprimirFactura", function() {
   var idSolicitudFac = $(this).attr("idSolicitudFac");
 
-  window.open("plugins/TCPDF/examples/example_001.php?id="+idSolicitudFac, "_blank")
-})
+  window.open(
+    "plugins/TCPDF/examples/example_001.php?id=" + idSolicitudFac,
+    "_blank"
+  );
+});
