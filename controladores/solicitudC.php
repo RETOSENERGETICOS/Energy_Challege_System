@@ -3,9 +3,12 @@
 class SolicitudC
 {
 
+<<<<<<< HEAD
     /* -------------------------------------------------------------------------- */
     /*                                VISTA EMPLEADOS                                */
     /* -------------------------------------------------------------------------- */
+=======
+>>>>>>> b0cd22679ce485e1b3778094785bca293a247d51
     static public function VerSolicitudC($item, $valor)
     {
 
@@ -20,10 +23,14 @@ class SolicitudC
         return $respuesta;
     }
 
+<<<<<<< HEAD
     /* -------------------------------------------------------------------------- */
     /*                                VISTA MANAGER                                */
     /* -------------------------------------------------------------------------- */
     static public function VistaManagerC($item, $valor,)
+=======
+    static public function VistaManagerC($item, $valor)
+>>>>>>> b0cd22679ce485e1b3778094785bca293a247d51
     {
 
 
