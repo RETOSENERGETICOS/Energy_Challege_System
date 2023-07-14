@@ -1,8 +1,7 @@
 <?php
-<<<<<<< HEAD
 
-=======
->>>>>>> b0cd22679ce485e1b3778094785bca293a247d51
+
+
 require_once "controladores/plantillaC.php";
 
 require_once "controladores/usuariosC.php";

@@ -511,13 +511,13 @@ class SolicitudM extends ConexionBD
      static public function ActualizarARaprobarSolicitudM($tablaBD, $datosC)
      {
 
-          if ($comentario != null) {
-              $estado = 3;
-              $tipo_orden=1;
-          } else if ($comentario2 == null) {
-              $estado = 2;
-              $tipo_orden=2;
-          }
+        //   if ($comentario != null) {
+        //       $estado = 3;
+        //       $tipo_orden=1;
+        //   } else if ($comentario2 == null) {
+        //       $estado = 2;
+        //       $tipo_orden=2;
+        //   }
              $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentarios = :comentarios, 
               estado =3 , id_tipo_proceso = 1   WHERE id = :id");
 
