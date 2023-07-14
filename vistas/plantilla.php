@@ -100,6 +100,8 @@ session_start();
                 || $_GET["url"] == "manager"  
                 || $_GET["url"] == "clientes" 
                 || $_GET["url"] == "404"
+                || $_GET["url"] == "orden-compraD"
+                
             ) {
                 include "modulos/" . $_GET["url"] . ".php";
 

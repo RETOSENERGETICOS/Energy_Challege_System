@@ -18,7 +18,7 @@
                         <ol class="breadcrumb mb-0 p-0 align-items-center">
                             <li class="breadcrumb-item"><a href="inicio"><ion-icon name="home-outline"></ion-icon></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Consulta proveedores</li>
+                            <li class="breadcrumb-item active" aria-current="page"></li>
                         </ol>
 
                     </nav>
@@ -133,8 +133,8 @@
                                             echo '<td>
                                             <div class="btn-group">
                                                 <button class="btn btn-warning btnVistaSolicitud" data-bs-toggle="modal" data-bs-target="#solicitudCom22"  idSolicitud="' . $value["id"] . '"><i class="fadeIn animated bx bx-edit-alt"></i></button>
-                                                <button class="btn btn-danger " title="Eliminar solicitud"><i class="fadeIn animated bx bx-trash-alt"></i></button>
-                                                <button class="btn btn-secondary " title="PDF"><i class="bi bi-file-earmark-pdf"></i></button>
+                                                <button class="btn btn-secondary btnImprimirFactura" idSolicitudFac="'.$value['id'].'" title="PDF"><i class="bi bi-file-earmark-pdf"></i></button>
+                                                <button class="btn btn-danger BorrarM" Mid="' . $value["id"] . '"><i class="fadeIn animated bx bx-trash-alt"></i></button>
                                             </div>';
 
                                             ?>
@@ -2664,18 +2664,18 @@
 
                     <div class="col-12" id="inputContainer2" style="display: none;">
                         <label class="form-label">Comentarios</label>
-                        <textarea class="form-control" rows="4" cols="4" id="comentarioenespera" name="comentarioenespera"></textarea>
+                        <textarea class="form-control" rows="4" cols="4" id="comentarioenaceptar" name="comentarioenaceptarr"></textarea>
                     </div>
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-3 g-3">
 
                     <br><br>
                         <div class="col-12">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="aprobarCheckbox">
+                                <input class="form-check-input" type="checkbox" id="aprobarCheckbox" name="comentarioenaceptar" value="1">
                                 <label class="form-check-label" for="aprobarCheckbox">Aprobar solicitud</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="rechazarCheckbox">
+                                <input class="form-check-input" type="checkbox" id="rechazarCheckbox" name="comentarioRechazo" value="2">
                                 <label class="form-check-label" for="rechazarCheckbox">Rechazar solicitud</label>
                             </div>
                            
@@ -2691,23 +2691,24 @@
 
             <div class="col-12" id="inputContainer" style="display: none;">
                 <label class="form-label">Comentarios</label>
-                <textarea class="form-control" rows="4" cols="4" id="comentarioRechazo" name="comentarioRechazo"></textarea>
+                <textarea class="form-control" rows="4" cols="4" id="comentarioRechazo" name="comentarioRechazos"></textarea>
+                
             </div>
 
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
 
+            <input  type="hidden" class="form-control" rows="4" cols="4" id="aceptar " name="aceptar"></input>
+                <button id="Brechazar" value="R" name="comentarioR" class="btn btn-danger btn-md btn-block " style="display: none;" type="submit">Rechazar solicitud</button>
 
-                <button id="Brechazar" class="btn btn-danger btn-md btn-block " style="display: none;" type="submit">Rechazar solicitud</button>
-
-                <button id="Baprobar" class="btn btn-primary btn-md btn-block" style="display: none;" type="submit">Aprobar solicitud</button>
+                <button id="Baprobar" value="ace" name="comentarioenace" class="btn btn-primary btn-md btn-block" style="display: none;" type="submit">Aprobar solicitud</button>
                 <br>
             </div>
 
             <?php
 
             $actualizarSolicitarAR = new SolicitudC();
-            $actualizarSolicitarAR->ActualizarARSolicitudC();
+            $actualizarSolicitarAR->EliminarSolicitudC();
 
             ?>
 
@@ -2720,84 +2721,7 @@
 
 
 <?php
-// $borrarU = new UsuariosC();
-// $borrarU->BorrarUsuariosC();
-
+$borrarS = new SolicitudC();
+$borrarS->EliminarSolicitudC();
 ?>
 
-<script>
-    // Función para realizar la autosuma
-    function calcular() {
-        try {
-            for (var i = 0; i < 15; i++) {
-                var a = parseFloat(document.getElementById("cantN_" + i).value) || 0;
-                var b = parseFloat(document.getElementById("precuniN_" + i).value) || 0;
-                var c = parseFloat(document.getElementById("tasaN_" + i).value) || 0;
-                var d = parseFloat(document.getElementById("tasaporN_" + i).value) || 0;
-
-
-
-                var resultado = a * b * (c / 100);
-                var total = a * b + resultado;
-                var resultadoFormateado = parseFloat(resultado).toFixed(2);
-                var resultadototal = parseFloat(total).toFixed(2);
-
-                console.log(resultadoFormateado);
-                console.log(resultadototal);
-
-                document.getElementById("tasaporN_" + i).value = resultadoFormateado;
-                document.getElementById("totalesN_" + i).value = resultadototal;
-
-
-
-            }
-
-        } catch (e) {
-
-        }
-    }
-
-
-    function calcular() {
-        try {
-            for (var i = 0; i < 15; i++) {
-                var a = parseFloat(document.getElementById("cantN_" + i).value) || 0;
-                var b = parseFloat(document.getElementById("precuniN_" + i).value) || 0;
-                var c = parseFloat(document.getElementById("tasaN_" + i).value) || 0;
-                var d = parseFloat(document.getElementById("tasaporN_" + i).value) || 0;
-
-
-
-                var resultado = a * b * (c / 100);
-                var total = a * b + resultado;
-                var resultadoFormateado = parseFloat(resultado).toFixed(2);
-                var resultadototal = parseFloat(total).toFixed(2);
-
-                document.getElementById("tasaporN_" + i).value = resultadoFormateado;
-                document.getElementById("totalesN_" + i).value = resultadototal;
-            }
-
-        } catch (e) {
-
-        }
-    }
-
-
-
-    //     $(document).ready(function() {
-    //   var subtotalN = 0; // Variable para almacenar la suma de los totales
-
-    //   for (var i = 0; i < 15; i++) {
-    //     $("#totalesN_" + i).on("input", function() {
-    //       subtotalN = 0; // Reiniciar el subtotal
-
-    //       for (var j = 0; j < 15; j++) {
-    //         var totalValue = parseFloat($("#totalesN_" + j).val()) || 0;
-    //         subtotalN += totalValue;
-    //       }
-
-    //       $("#subtotalN").val(subtotalN.toFixed(2));
-    //     });
-    //   }
-    // });
-</script>

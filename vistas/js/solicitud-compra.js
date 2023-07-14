@@ -519,14 +519,54 @@ function calcularS() {
 }
 
 /* -------------------------------------------------------------------------- */
-/*                              IMPRIMIR FACTURA                              */
+/*                              IMPRIMIR ORDEN DE COMPRA                      */
 /* -------------------------------------------------------------------------- */
 
 $(".TB").on("click", ".btnImprimirFactura", function() {
   var idSolicitudFac = $(this).attr("idSolicitudFac");
 
   window.open(
-    "plugins/TCPDF/examples/example_001.php?id=" + idSolicitudFac,
+    "plugins/TCPDF/examples/orden_compra.php?id=" + idSolicitudFac,
     "_blank"
   );
 });
+
+/* -------------------------------------------------------------------------- */
+/*                              IMPRIMIR SOLICITUD DE COMPRA                  */
+/* -------------------------------------------------------------------------- */
+
+$(".TB").on("click", ".btnImprimirSolicitud", function() {
+  var idSolicitudFac = $(this).attr("idSolicitudFac");
+
+  window.open(
+    "plugins/TCPDF/examples/solicitud-compras_pdf.php?id=" + idSolicitudFac,
+    "_blank"
+  );
+});
+
+
+/* -------------------------------------------------------------------------- */
+/*                       FUNCION LETRAS MAYUSCULAS INPUT                      */
+/* -------------------------------------------------------------------------- */
+$(".TB").on("click", ".BorrarM", function(){
+
+  var Mid = $(this).attr("Mid");
+
+  Swal.fire({
+      title: '¿Estas realmente seguro?',
+      text: "No podras revertir este proceso!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí!'
+    }).then(function(result) {
+      if (result.value) {
+          window.location = "index.php?url=manager&Mid="+Mid;
+      
+      }
+    })
+        
+      
+
+})

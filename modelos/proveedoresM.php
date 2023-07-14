@@ -102,6 +102,9 @@ class ProveedoresM extends ConexionBD{
 
     }
 
+	/* -------------------------------------------------------------------------- */
+	/*                            ELIMINAR PROVEEDORES                            */
+	/* -------------------------------------------------------------------------- */
     static public function BorrarProveedoresM($tablaBD, $datosC){
 
         $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET estado = 0  WHERE id= :id");
@@ -184,6 +187,6 @@ class ProveedoresM extends ConexionBD{
 		/*                          Cerramos conexion de pdo                          */
 		/* -------------------------------------------------------------------------- */
 		$pdo -> close();
-
+		$pdo = null;
 	}
 }

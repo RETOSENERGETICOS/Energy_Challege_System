@@ -6,6 +6,7 @@ require_once "../../../modelos/solicitudM.php";
 class imprimirFactura
 {
     public $id;
+    // public $totalPages;
 
     public function traerImpresionFactura()
     {
@@ -37,9 +38,10 @@ class imprimirFactura
         require_once('tcpdf_include.php');
 
         // create new PDF document
-        $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);;
+        $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
         $pdf->setHeaderMargin(PDF_MARGIN_HEADER);
         $pdf->setFooterMargin(PDF_MARGIN_FOOTER);
+    
 
         // set auto page breaks
         $pdf->setAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
@@ -88,10 +90,9 @@ class imprimirFactura
                     <p style="text-align:left; font-size:8px; padding-top:-5px; padding-bottom:-5px; line-height: -1; color:#1B4F72; text-decoration:underline;">www.retosenergeticos.com</p>
                 </td>
                 <td class="left-section" style="border:none;">
-                    <h2 style="text-align:right; font-size:11px; margin-bottom:-100%; color:#1B4F72;">PURCHASE ORDER / ORDEN DE COMPRAS</h2>
-                    <p style="text-align:right; font-size:8px; line-height: -1;">DATE/FECHA $fecha</p>
-                    <p style="text-align:right; font-size:8px; line-height:-1;">PO #  $respuestaFac[codigo]  </p>
-                    <p style="text-align:right; font-size:6px; ">PLEASE INCLUDE THIS PO# IN ANY RELATED DOCUMENT. POR FAVOR INCLUIR ESTE NUMERO DE ORDEN EN CUALQUIER CORRESPONDENCIA ASOCIADA</p>
+                    <h2 style="text-align:right; font-size:11px; margin-bottom:-100%; color:#1B4F72;">PURCHASE REQUEST/SOLICITUD DE COMPRA</h2>
+                    <p style="text-align:right; font-size:8px; line-height: 0.2;">DATE/FECHA: $fecha</p>
+                    
                 </td>
             </tr>
         </table>
@@ -157,7 +158,7 @@ class imprimirFactura
     </thead>
     <thead>
         <tr>
-        <th style="background-color:#1B4F72; text-align:center; border:0.5px solid black; color:white; font-size:6px; height:14px;">PROJECT / PROYECTO</th>
+        <th style="background-color:#1B4F72; text-align:center; border:0.5px solid black; color:white; font-weight: bold; font-size:6px; height:14px;">CLIENT / CLIENTE</th>
             <th style="background-color:#1B4F72; text-align:center; border:0.5px solid black; font-weight: bold; color:white; font-size:6px; height:14px;">PROJECT / PROYECTO</th>
             <th style="background-color:#1B4F72; text-align:center; border:0.5px solid black; font-weight: bold; color:white; font-size:6px; height:14px;">INSURANCE INCLUDED / SEGURO INCLUIDO</th>
             <th style="background-color:#1B4F72; text-align:center; border:0.5px solid black; font-weight: bold; color:white; font-size:6px; height:14px;">VENDOR OFFER / OFERTA SUMINISTRADOR</th>
@@ -187,7 +188,7 @@ EOF;
         /*                       FIN DE PRIMER BLOQUE DE FACTURA                       */
         /* -------------------------------------------------------------------------- */
 
-    $contenido = <<<EOF
+        $contenido = <<<EOF
 <table>
 <thead>
 <tr>
@@ -205,46 +206,116 @@ EOF;
     <tbody>
 EOF;
 
+        $respuestaFacRef = json_decode($respuestaFac["ref_suministrador"]);
+        $r = $respuestaFacRef[0];
+        $r2 = $respuestaFacRef[1];
+        $r3 = $respuestaFacRef[2];
+        $r4 = $respuestaFacRef[3];
+        $r5 = $respuestaFacRef[4];
+        $r6 = $respuestaFacRef[5];
+        $r7 = $respuestaFacRef[6];
+        $r8 = $respuestaFacRef[7];
+        $r9 = $respuestaFacRef[8];
+        $r10 = $respuestaFacRef[9];
+        $r11 = $respuestaFacRef[10];
+        $r12 = $respuestaFacRef[11];
+        $r13 = $respuestaFacRef[12];
+        $r14 = $respuestaFacRef[13];
+        $r15 = $respuestaFacRef[14];
+        $r16 = $respuestaFacRef[15];
+
+        $respuestaFacRef = json_decode($respuestaFac["descripcion"]);
+        $d = $respuestaFacRef[0];
+        $d2 = $respuestaFacRef[1];
+        $d3 = $respuestaFacRef[2];
+        $d4 = $respuestaFacRef[3];
+        $d5 = $respuestaFacRef[4];
+        $d6 = $respuestaFacRef[5];
+        $d7 = $respuestaFacRef[6];
+        $d8 = $respuestaFacRef[7];
+        $d9 = $respuestaFacRef[8];
+        $d10 = $respuestaFacRef[9];
+        $d11 = $respuestaFacRef[10];
+        $d12 = $respuestaFacRef[11];
+        $d13 = $respuestaFacRef[12];
+        $d14 = $respuestaFacRef[13];
+        $d15 = $respuestaFacRef[14];
+        $d16 = $respuestaFacRef[15];
+
+        $respuestaFacRef = json_decode($respuestaFac["cantidad"]);
+        $c = $respuestaFacRef[0];
+        $c2 = $respuestaFacRef[1];
+        $c3 = $respuestaFacRef[2];
+        $c4 = $respuestaFacRef[3];
+        $c5 = $respuestaFacRef[4];
+        $c6 = $respuestaFacRef[5];
+        $c7 = $respuestaFacRef[6];
+        $c8 = $respuestaFacRef[7];
+        $c9 = $respuestaFacRef[8];
+        $c10 = $respuestaFacRef[9];
+        $c11 = $respuestaFacRef[10];
+        $c12 = $respuestaFacRef[11];
+        $c13 = $respuestaFacRef[12];
+        $c14 = $respuestaFacRef[13];
+        $c15 = $respuestaFacRef[14];
+        $c16 = $respuestaFacRef[15];
+
+        $respuestaFacRef = json_decode($respuestaFac["precio_unitario"]);
+        $p = $respuestaFacRef[0];
+        $p2 = $respuestaFacRef[1];
+        $p3 = $respuestaFacRef[2];
+        $p4 = $respuestaFacRef[3];
+        $p5 = $respuestaFacRef[4];
+        $p6 = $respuestaFacRef[5];
+        $p7 = $respuestaFacRef[6];
+        $p8 = $respuestaFacRef[7];
+        $p9 = $respuestaFacRef[8];
+        $p10 = $respuestaFacRef[9];
+        $p11 = $respuestaFacRef[10];
+        $p12 = $respuestaFacRef[11];
+        $p13 = $respuestaFacRef[12];
+        $p14 = $respuestaFacRef[13];
+        $p15 = $respuestaFacRef[14];
+        $p16 = $respuestaFacRef[15];
+
+        $respuestaFacRef = json_decode($respuestaFac["tasa"]);
+        $t = $respuestaFacRef[0];
+        $t2 = $respuestaFacRef[1];
+        $t3 = $respuestaFacRef[2];
+        $t4 = $respuestaFacRef[3];
+        $t5 = $respuestaFacRef[4];
+        $t6 = $respuestaFacRef[5];
+        $t7 = $respuestaFacRef[6];
+        $t8 = $respuestaFacRef[7];
+        $t9 = $respuestaFacRef[8];
+        $t10 = $respuestaFacRef[9];
+        $t11 = $respuestaFacRef[10];
+        $t12 = $respuestaFacRef[11];
+        $t13 = $respuestaFacRef[12];
+        $t14 = $respuestaFacRef[13];
+        $t15 = $respuestaFacRef[14];
+        $t16 = $respuestaFacRef[15];
+
+        $respuestaFacRef = json_decode($respuestaFac["total"]);
+        $to = $respuestaFacRef[0];
+        $to2 = $respuestaFacRef[1];
+        $to3 = $respuestaFacRef[2];
+        $to4 = $respuestaFacRef[3];
+        $to5 = $respuestaFacRef[4];
+        $to6 = $respuestaFacRef[5];
+        $to7 = $respuestaFacRef[6];
+        $to8 = $respuestaFacRef[7];
+        $to9 = $respuestaFacRef[8];
+        $to10 = $respuestaFacRef[9];
+        $to11 = $respuestaFacRef[10];
+        $to12 = $respuestaFacRef[11];
+        $to13 = $respuestaFacRef[12];
+        $to14 = $respuestaFacRef[13];
+        $to15 = $respuestaFacRef[14];
+        $to16 = $respuestaFacRef[15];
 
 
-$respuestaFacRef = json_decode($respuestaFac["ref_suministrador"]);
-    $r=$respuestaFacRef[0];$r2=$respuestaFacRef[1];$r3=$respuestaFacRef[2];$r4=$respuestaFacRef[3];
-    $r5=$respuestaFacRef[4];$r6=$respuestaFacRef[5];$r7=$respuestaFacRef[6];$r8=$respuestaFacRef[7];
-    $r9=$respuestaFacRef[8];$r10=$respuestaFacRef[9];$r11=$respuestaFacRef[10];$r12=$respuestaFacRef[11];
-    $r13=$respuestaFacRef[12];$r14=$respuestaFacRef[13];$r15=$respuestaFacRef[14];$r16=$respuestaFacRef[15];
-
-    $respuestaFacRef = json_decode($respuestaFac["descripcion"]);
-    $d=$respuestaFacRef[0];$d2=$respuestaFacRef[1];$d3=$respuestaFacRef[2];$d4=$respuestaFacRef[3];
-    $d5=$respuestaFacRef[4];$d6=$respuestaFacRef[5];$d7=$respuestaFacRef[6];$d8=$respuestaFacRef[7];
-    $d9=$respuestaFacRef[8];$d10=$respuestaFacRef[9];$d11=$respuestaFacRef[10];$d12=$respuestaFacRef[11];
-    $d13=$respuestaFacRef[12];$d14=$respuestaFacRef[13];$d15=$respuestaFacRef[14];$d16=$respuestaFacRef[15];
-
-    $respuestaFacRef = json_decode($respuestaFac["cantidad"]);
-    $c=$respuestaFacRef[0];$c2=$respuestaFacRef[1];$c3=$respuestaFacRef[2];$c4=$respuestaFacRef[3];
-    $c5=$respuestaFacRef[4];$c6=$respuestaFacRef[5];$c7=$respuestaFacRef[6];$c8=$respuestaFacRef[7];
-    $c9=$respuestaFacRef[8];$c10=$respuestaFacRef[9];$c11=$respuestaFacRef[10];$c12=$respuestaFacRef[11];
-    $c13=$respuestaFacRef[12];$c14=$respuestaFacRef[13];$c15=$respuestaFacRef[14];$c16=$respuestaFacRef[15];
-    
-    $respuestaFacRef = json_decode($respuestaFac["precio_unitario"]);
-    $p=$respuestaFacRef[0];$p2=$respuestaFacRef[1];$p3=$respuestaFacRef[2];$p4=$respuestaFacRef[3];
-    $p5=$respuestaFacRef[4];$p6=$respuestaFacRef[5];$p7=$respuestaFacRef[6];$p8=$respuestaFacRef[7];
-    $p9=$respuestaFacRef[8];$p10=$respuestaFacRef[9];$p11=$respuestaFacRef[10];$p12=$respuestaFacRef[11];
-    $p13=$respuestaFacRef[12];$p14=$respuestaFacRef[13];$p15=$respuestaFacRef[14];$p16=$respuestaFacRef[15];
-
-    $respuestaFacRef = json_decode($respuestaFac["tasa"]);
-    $t=$respuestaFacRef[0];$t2=$respuestaFacRef[1];$t3=$respuestaFacRef[2];$t4=$respuestaFacRef[3];
-    $t5=$respuestaFacRef[4];$t6=$respuestaFacRef[5];$t7=$respuestaFacRef[6];$t8=$respuestaFacRef[7];
-    $t9=$respuestaFacRef[8];$t10=$respuestaFacRef[9];$t11=$respuestaFacRef[10];$t12=$respuestaFacRef[11];
-    $t13=$respuestaFacRef[12];$t14=$respuestaFacRef[13];$t15=$respuestaFacRef[14];$t16=$respuestaFacRef[15];
-
-    $respuestaFacRef = json_decode($respuestaFac["total"]);
-    $to=$respuestaFacRef[0];$to2=$respuestaFacRef[1];$to3=$respuestaFacRef[2];$to4=$respuestaFacRef[3];
-    $to5=$respuestaFacRef[4];$to6=$respuestaFacRef[5];$to7=$respuestaFacRef[6];$to8=$respuestaFacRef[7];
-    $to9=$respuestaFacRef[8];$to10=$respuestaFacRef[9];$to11=$respuestaFacRef[10];$to12=$respuestaFacRef[11];
-    $to13=$respuestaFacRef[12];$to14=$respuestaFacRef[13];$to15=$respuestaFacRef[14];$to16=$respuestaFacRef[15];
-
-    
-    $contenido .= <<<EOF
+        $contenido .= <<<EOF
     <tr style="border:1px solid black;">
     <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">1</td>
     <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r}</td>
@@ -347,79 +418,117 @@ $respuestaFacRef = json_decode($respuestaFac["ref_suministrador"]);
     </tr>
 
 EOF;
-// }
 
-$contenido .= <<<EOF
+
+        $contenido .= <<<EOF
     </tbody>
 </table>
 EOF;
 
-    // Agrega aquí el código adicional que desees realizar con la variable $contenido.
+        // Agrega aquí el código adicional que desees realizar con la variable $contenido.
 
-    $pdf->writeHTMLCell(0, 0, '', '', $contenido, 0, 1, 0, true, '', true);
-  
-    $contenido2 = <<<EOF
+        $pdf->writeHTMLCell(0, 0, '', '', $contenido, 0, 1, 0, true, '', true);
+
+        $contenido2 = <<<EOF
     <br><br>
     <table>
     <thead>
         <tr>
-            <th style="background-color:#1B4F72; text-align:center; border:0.5px solid black; font-weight: bold; color:white; font-size:6px; height:14px;" colspan="2">PROJECT / PROYECTO</th>
-            <th style="background-color:#1B4F72; text-align:center; border:0.5px solid black; font-weight: bold; color:white; font-size:6px; height:14px;">PROJECT / PROYECTO</th>
+            <th style="background-color:#1B4F72; text-align:center; border:0.5px solid black; font-weight: bold; color:white; font-size:6px; height:14px;" colspan="2">REQ. BY: FIRMA SOLICITANTE</th>
+            <th style="background-color:#1B4F72; text-align:center; border:0.5px solid black; font-weight: bold; color:white; font-size:6px; height:14px;" colspan="2">AUTH. BY: FIRMA AUTORIZADOR</th>
             <th style="text-align:center; border:0.5px solid white; font-weight: bold; color:white; font-size:6px; height:14px;">INSURANCE INCLUDED / SEGURO INCLUIDO</th>
-            <th style=" text-align:right; border:0.5px solid white;  color:black; font-size:10px; height:14px;">SUBTOTAL</th>
-            <th style=" text-align:center; border:0.5px solid black; font-weight: bold; color:black; font-size:7px; height:14px;" >VARIABLE </th>
+            <th style=" text-align:right; border:0.5px solid white;  font-weight: bold;color:black; font-size:10px; height:14px;">SUBTOTAL</th>
+            <th style=" text-align:right; border:0.5px solid black;  color:black; font-size:10px; height:14px;" >$respuestaFac[moneda]  &nbsp;$respuestaFac[subtotal_soli] </th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td style="text-align:left; font-size:8px; height:18px; border:0.5px solid black;">Aceptado por:</td>
-            <td style="text-align:left; font-size:8px; border:0.5px solid black;"> </td>
-            <td style="text-align:left; font-size:8px; border:0.5px solid black;"> </td>
-            <td style="text-align:left; font-size:8px; border:0px solid white;" > </td>
-            <td style="text-align:right;  font-size:10px; border:0.5px solid white;" >TAXES</td>
-            <td style="text-align:center; font-size:8px; border:0.5px solid black;" >--</td>
+            <td style="text-align:left; font-size:8px; height:18px; border-left:0.5px solid black; border-right:0.5px solid white;"></td>
+            <td style="text-align:left; font-size:8px; border-left:0.5px solid white; border-right:0.5px solid black;"> </td>
+            <td style="text-align:center;  font-size:10px; border:0.5px solid white; border-right:0.5px solid black;" colspan="2" ></td>
+            <td style="text-align:right;  font-size:10px; border:0.5px solid white;" ></td>
+            <td style="text-align:right;  font-size:10px; font-weight: bold; border:0.5px solid white;" >TAXES</td>
+            <td style="text-align:right; font-size:10px; border:0.5px solid black;" >$respuestaFac[moneda]  &nbsp;$respuestaFac[taxes]</td>
         </tr>
         <tr>
-            <td style="text-align:left; font-size:8px; height:18px; border:0.5px solid black;">Cargo:</td>
-            <td style="text-align:left; font-size:8px; border:0.5px solid black;"> </td>
+            <td style="text-align:left; font-size:8px; height:18px; border-left:0.5px solid black; border-right:0.5px solid white;"></td>
+            <td style="text-align:left; font-size:8px; border-left:0.5px solid white; border-right:0.5px solid black;"> </td>
+            <td style="text-align:center;  font-size:10px; border:0.5px solid white; border-right:0.5px solid black;" colspan="2" ></td>
             <td style="text-align:right;  font-size:10px; border:0.5px solid white;" ></td>
-            <td style="text-align:right;  font-size:10px; border:0.5px solid white;" ></td>
-            <td style="text-align:right;  font-size:10px; border:0.5px solid white;" >SHIPPING</td>
-            <td style="text-align:center; font-size:8px; border:0.5px solid black;" >--</td>
+            <td style="text-align:right;  font-size:10px;  font-weight: bold; border:0.5px solid white;" >SHIPPING</td>
+            <td style="text-align:right; font-size:10px; border:0.5px solid black;" >$respuestaFac[moneda]  &nbsp;$respuestaFac[pago_envio_soli]</td>
             
         </tr>
         <tr>
-            <td style="text-align:left; font-size:8px; height:18px; border:0.5px solid black;">Fecha:</td>
-            <td style="text-align:left; font-size:8px; border:0.5px solid black;"> </td>
-            <td style="text-align:right;  font-size:10px; border:0.5px solid white;" ></td>
-            <td style="text-align:right;  font-size:10px; border:0.5px solid white;" ></td>
-            <td style="text-align:right;  font-size:10px; border-bottom:2px solid black;" >OTHER/OTROS</td>
-            <td style="text-align:center; font-size:8px; border-bottom:2px solid black; border:0.5px solid black;" >--</td>
+            <td style="text-align:left; font-size:8px; height:18px; border-left:0.5px solid black; border-right:0.5px solid white;"></td>
+            <td style="text-align:left; font-size:8px; border-left:0.5px solid white; border-right:0.5px solid black;"> </td>
+            <td style="text-align:right;  font-size:10px; border:0.5px solid white; border-right:0.5px solid black;"colspan="2" ></td>
+            <td style="text-align:right;  font-size:10px; border:0.5px solid white;"  ></td>
+            <td style="text-align:right;  font-size:10px; font-weight: bold; border-bottom:2px solid black;" >OTHER/OTROS</td>
+            <td style="text-align:right; font-size:10px; border-bottom:2px solid black; border:0.5px solid black;" >$respuestaFac[moneda]  &nbsp; $respuestaFac[otros_soli]</td>
         </tr>
         <tr>
-            <td style="text-align:left; font-size:8px; height:18px;border:0.5px solid black;">Firma y sello:</td>
-            <td style="text-align:left; font-size:8px; border:0.5px solid black;"> </td>
+            <td style="text-align:left; font-size:8px; border-bottom:0.5px solid black; border-left:0.5px solid black;"></td>
+            <td style="text-align:left; font-size:8px; border-right:0.5px solid black; border-bottom:0.5px solid black;"> </td>
+            <td style="text-align:right;  font-size:10px; border-bottom:0.5px solid black;border-right:0.5px solid black;" colspan="2" ></td>
             <td style="text-align:right;  font-size:10px; border:0.5px solid white;" ></td>
-            <td style="text-align:right;  font-size:10px; border:0.5px solid white;" ></td>
-            <td style="text-align:right;  font-size:10px; border:0.5px solid white;" >TOTAL</td>
-            <td style="text-align:center; font-size:8px; border:0.5px solid black;" >--</td>
+            <td style="text-align:right;  font-size:10px; font-weight: bold; border:0.5px solid white;" >TOTAL</td>
+            <td style="text-align:right; font-size:10px; border:0.5px solid black;" >$respuestaFac[moneda] &nbsp; $respuestaFac[total_soli]</td>
             
         </tr>
+
+        <tr>
+            <td style="text-align:left; font-size:8px; height:18px;border:0.5px solid white;"></td>
+            <td style="text-align:left; font-size:8px; border:0.5px solid white;"> </td>
+            <td style="text-align:right;  font-size:10px; border:0.5px solid white;" colspan="2" ></td>
+            <td style="text-align:right;  font-size:10px; border:0.5px solid white;" ></td>
+            <td style="text-align:justify;  font-weight: bold; font-size:7px; border:0.5px solid white;" >MONEDA/CURRENCY</td>
+            <td style="text-align:right; font-size:10px; border:0.5px solid black;">$respuestaFac[moneda]</td>
+            
+        </tr>
+
+
     </tbody>
     </table>
-    
 
- 
     EOF;
-    // }
+        // }
 
-    // Print text using writeHTMLCell()
-    $pdf->writeHTMLCell(0, 0, '', '', $contenido2, 0, 1, 0, true, '', true);
+        // Print text using writeHTMLCell()
+        $pdf->writeHTMLCell(0, 0, '', '', $contenido2, 0, 1, 0, true, '', true);
+
+
+        $contenido3 = <<<EOF
+    <br><br>
+    <table style="border:1px solid white; margin-bottom:-100px;">
+    <thead>
+        <tr style="border:0.5px solid white; text-align:center; font-size:8px;" >
+            <th style=" colspan="5"  border:0.5px solid white; font-weight: bold; color:white; font-size:2px; height:14px;">
+            Any questions about this request order, please contact. Cualquier duda sobre esta solicitud, por favor comuniquese con:</th>    
+        </tr>
+
+        <tr style="border:0.5px solid white; text-align:center; font-size:8px;" >
+        <th style=" colspan="5"  border:0.5px solid white; font-weight: bold; color:white; font-size:2px; height:14px;">
+        $respuestaFac[solicitante_lentrega] &nbsp; Tel: 229 937 2717 &nbsp; $respuestaFac[email_solicitante]</th>
+    </tr> 
+    
+    </thead>
+    
+    
+    </table>
+
+
+    EOF;
+
+        $pdf->writeHTMLCell(0, 0, '', '', $contenido3, 0, 1, 0, true, '', true);
         // ---------------------------------------------------------
-          ob_end_clean();
+
+
+
+        ob_end_clean();
         // Close and output PDF document
         // This method has several options, check the source code documentation for more information.
-        $pdf->Output('example_001.pdf', 'I');
+        $pdf->Output('Orden-de-compra_' . $respuestaFac['codigo'] . '.pdf', 'I');
     }
 }
 

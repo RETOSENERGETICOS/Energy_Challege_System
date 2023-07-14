@@ -22,8 +22,6 @@ class SolicitudM extends ConexionBD
             $pdo->execute();
 
             return $pdo->fetchAll();
-
-           
         } else {
 
 
@@ -33,40 +31,35 @@ class SolicitudM extends ConexionBD
             $pdo->execute();
 
             return $pdo->fetchAll();
-
-           
         }
         $pdo->close();
         $pdo = null;
     }
 
-     /* -------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------- */
     /*                               VISTA FACTURA                               */
     /* -------------------------------------------------------------------------- */
     static public function VistaSolicitudFACM($tablaBD, $itemFac, $valorFac)
     {
         if ($itemFac != null) {
 
-            $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE $itemFac = :$itemFac AND status = 1 ");
+            $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE UPPER($itemFac = :$itemFac) AND status = 1 ");
 
             $pdo->bindParam(":" . $itemFac, $valorFac, PDO::PARAM_STR);
 
             $pdo->execute();
 
             return $pdo->fetch();
-
-           
         } else {
             $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE status = 1 ");
 
             $pdo->execute();
 
             return $pdo->fetchAll();
-
         }
 
         $pdo->close();
-        $pdo =null;
+        $pdo = null;
     }
 
 
@@ -81,15 +74,13 @@ class SolicitudM extends ConexionBD
         if ($item != null) {
 
 
-            $pdo = ConexionBD::cBD()->prepare("SELECT * FROM vista_solicitud_general WHERE $item = :$item ");
+            $pdo = ConexionBD::cBD()->prepare("SELECT * FROM vista_solicitud_general WHERE $item = :$item AND status = 1 ");
 
             $pdo->bindParam(":" . $item, $valor, PDO::PARAM_STR);
 
             $pdo->execute();
 
             return $pdo->fetchAll();
-
-           
         } else {
 
 
@@ -100,7 +91,6 @@ class SolicitudM extends ConexionBD
             $pdo->execute();
 
             return $pdo->fetchAll();
-
         }
         $pdo->close();
         $pdo = null;
@@ -123,8 +113,6 @@ class SolicitudM extends ConexionBD
             $pdo->execute();
 
             return $pdo->fetchAll();
-
-           
         } else {
 
 
@@ -134,8 +122,6 @@ class SolicitudM extends ConexionBD
             $pdo->execute();
 
             return $pdo->fetchAll();
-
-           
         }
         $pdo->close();
         $pdo = null;
@@ -158,8 +144,6 @@ class SolicitudM extends ConexionBD
             $pdo->execute();
 
             return $pdo->fetchAll();
-
-      
         } else {
 
 
@@ -169,8 +153,6 @@ class SolicitudM extends ConexionBD
             $pdo->execute();
 
             return $pdo->fetchAll();
-
-        
         }
         $pdo->close();
         $pdo = null;
@@ -386,7 +368,7 @@ class SolicitudM extends ConexionBD
         $email = $_SESSION["correo"];
         $iniciales = $_SESSION["iniciales_firma"];
         $idsuario = $_SESSION["id"];
-        
+
         $pdo = ConexionBD::cBD()->prepare("INSERT INTO $tablaBD 
         (id_provedor,codigo,atnproveedor_soli, lugarentr_solicitud,atn_lentrega,cp_lentrega,
         direccion_lentrega,telefono_lentrega,solicitante_lentrega,email_solicitante
@@ -455,14 +437,117 @@ class SolicitudM extends ConexionBD
 
 
     /* --------------------------------------------------------------------------*/
-    /*                             Actualizar datos solicitud                    */
+    /*                     Aprobar,Rechazar datos solicitud Manager              */
     /* --------------------------------------------------------------------------*/
-    static public function ActualizarARSolicitudM($tablaBD, $datosC, $comentario, $comentario2)
+
+    static public function ActualizarARSolicitudM($tablaBD, $datosC, $comentario)
     {
 
         if (isset($comentario) && !empty($comentario)) {
             $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentarios = :comentarios, 
-             estado = 2  WHERE id = :id");
+             estado = 3, id_tipo_proceso= 1  WHERE id = :id");
+
+            $pdo->bindParam(":id", $datosC["id"], PDO::PARAM_INT);
+            $pdo->bindParam(":comentarios", $datosC["comentarios"], PDO::PARAM_STR);
+
+
+            if ($pdo->execute()) {
+                return true;
+            } else{
+                return false;
+            }
+
+            $pdo->close();
+            $pdo = null;
+
+        } else {
+
+            $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentarios = :comentarios, 
+             estado = 2, id_tipo_proceso= 2  WHERE id = :id");
+
+            $pdo->bindParam(":id", $datosC["id"], PDO::PARAM_INT);
+            $pdo->bindParam(":comentarios", $datosC["comentarios"], PDO::PARAM_STR);
+
+            if ($pdo->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+            $pdo->close();
+            $pdo = null;
+        }
+    }
+
+
+
+    /* --------------------------------------------------------------------------*/
+    /*                             Rechazar datos solicitud                    */
+    /* --------------------------------------------------------------------------*/
+    // static public function ActualizarARSolicitudM($tablaBD, $datosC)   {
+
+
+    //         $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentarios = :comentarios, 
+    //          estado = 2, id_tipo_proceso = 2  WHERE id = :id");
+
+    //         $pdo->bindParam(":id ", $datosC["id"], PDO::PARAM_INT);
+    //         $pdo->bindParam(":comentarios", $datosC["comentarios"], PDO::PARAM_STR);
+
+    //         if ($pdo->execute()) {
+    //             return true;
+    //         } else {
+    //             return false;
+    //         }
+
+    //         $pdo->close();
+    //         $pdo = null;
+
+
+    // }
+
+
+    /* --------------------------------------------------------------------------*/
+    /*                             aprobar datos solicitud                    */
+    /* --------------------------------------------------------------------------*/
+     static public function ActualizarARaprobarSolicitudM($tablaBD, $datosC)
+     {
+
+          if ($comentario != null) {
+              $estado = 3;
+              $tipo_orden=1;
+          } else if ($comentario2 == null) {
+              $estado = 2;
+              $tipo_orden=2;
+          }
+             $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentarios = :comentarios, 
+              estado =3 , id_tipo_proceso = 1   WHERE id = :id");
+
+             $pdo->bindParam(":id ", $datosC["id"], PDO::PARAM_INT);
+             $pdo->bindParam(":comentarios", $datosC["comentarios"], PDO::PARAM_STR);
+
+             // $pdo->bindParam(":estado", 2, PDO::PARAM_STR);
+
+
+             if ($pdo->execute()) {
+                 return true;
+             } else {
+                 return false;
+             }
+
+             $pdo->close();
+             $pdo = null;
+     } 
+
+
+
+    /* --------------------------------------------------------------------------*/
+    /*                            En espera datos solicitud director           */
+    /* --------------------------------------------------------------------------*/
+    static public function ActualizarSolicitudDM($tablaBD, $datosC)
+    {
+
+        if (isset($comentario) && !empty($comentario)) {
+            $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentarios = :comentarios, 
+              estado = 3  WHERE id = :id");
 
             $pdo->bindParam(":id ", $datosC["id"], PDO::PARAM_INT);
             $pdo->bindParam(":comentarios", $datosC["comentarios"], PDO::PARAM_STR);
@@ -471,9 +556,25 @@ class SolicitudM extends ConexionBD
 
 
             if ($pdo->execute()) {
-                return "ok";
+                return true;
             } else {
-                return "error";
+                return false;
+            }
+
+            $pdo->close();
+            $pdo = null;
+        } else if (isset($comentario2) && !empty($comentario2)) {
+
+            $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentarios = :comentarios, 
+              estado = 4, id_tipo_proceso= 2  WHERE id = :id");
+
+            $pdo->bindParam(":id", $datosC["id"], PDO::PARAM_INT);
+            $pdo->bindParam(":comentarios", $datosC["comentarios"], PDO::PARAM_STR);
+
+            if ($pdo->execute()) {
+                return true;
+            } else {
+                return false;
             }
 
             $pdo->close();
@@ -481,7 +582,7 @@ class SolicitudM extends ConexionBD
         } else {
 
             $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentarios = :comentarios, 
-             estado = 3, id_tipo_proceso= 2  WHERE id = :id");
+             estado = 5, id_tipo_proceso= 2  WHERE id = :id");
 
             $pdo->bindParam(":id", $datosC["id"], PDO::PARAM_INT);
             $pdo->bindParam(":comentarios", $datosC["comentarios"], PDO::PARAM_STR);
@@ -498,62 +599,24 @@ class SolicitudM extends ConexionBD
     }
 
 
-    /* --------------------------------------------------------------------------*/
-    /*                             Actualizar datos solicitud director           */
-    /* --------------------------------------------------------------------------*/
-    static public function ActualizarSolicitudDM($tablaBD, $datosC, $comentario, $comentario2)
-    {
+    /* -------------------------------------------------------------------------- */
+    /*                             ELIMINAR SOLICITUD MANAGER                     */
+    /* -------------------------------------------------------------------------- */
 
-        if (isset($comentario) && !empty($comentario)) {
-            $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentarios = :comentarios, 
-             estado = 3  WHERE id = :id");
+    static public function BorrarSolicitudM($tablaBD, $datosC){
 
-            $pdo->bindParam(":id ", $datosC["id"], PDO::PARAM_INT);
-            $pdo->bindParam(":comentarios", $datosC["comentarios"], PDO::PARAM_STR);
+        $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET status = 0  WHERE id= :id");
 
-            // $pdo->bindParam(":estado", 2, PDO::PARAM_STR);
+		$pdo -> bindParam(":id", $datosC, PDO::PARAM_INT);
+        
+		if($pdo -> execute()) {
+            return true;
 
+		}else{
+			return false;
+		}
 
-            if ($pdo->execute()) {
-                return "ok";
-            } else {
-                return "error";
-            }
-
-            $pdo->close();
-            $pdo = null;
-        } else if (isset($comentario2) && !empty($comentario2)) {
-
-            $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentarios = :comentarios, 
-             estado = 4, id_tipo_proceso= 2  WHERE id = :id");
-
-            $pdo->bindParam(":id", $datosC["id"], PDO::PARAM_INT);
-            $pdo->bindParam(":comentarios", $datosC["comentarios"], PDO::PARAM_STR);
-
-            if ($pdo->execute()) {
-                return true;
-            } else {
-                return false;
-            }
-
-            $pdo->close();
-            $pdo = null;
-        } else {
-
-            $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentarios = :comentarios, 
-            estado = 5, id_tipo_proceso= 2  WHERE id = :id");
-
-            $pdo->bindParam(":id", $datosC["id"], PDO::PARAM_INT);
-            $pdo->bindParam(":comentarios", $datosC["comentarios"], PDO::PARAM_STR);
-
-            if ($pdo->execute()) {
-                return true;
-            } else {
-                return false;
-            }
-
-            $pdo->close();
-            $pdo = null;
-        }
+		$pdo -> close();
+        $pdo = null;
     }
 }

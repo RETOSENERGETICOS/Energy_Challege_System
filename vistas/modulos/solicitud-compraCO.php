@@ -12,13 +12,13 @@
 
             <!--start breadcrumb-->
             <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">Gestor de solicitud de compra</div>
+                <div class="breadcrumb-title pe-3">Gestor de orden de compra</div>
                 <div class="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 p-0 align-items-center">
                             <li class="breadcrumb-item"><a href="inicio"><ion-icon name="home-outline"></ion-icon></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Consulta proveedores</li>
+                            <li class="breadcrumb-item active" aria-current="page"></li>
                         </ol>
 
                     </nav>
@@ -41,7 +41,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0 align-items-center">
 
-                    <li class="breadcrumb-item active" aria-current="page"><button type="button" class="btn btn-info px-5" style="color: #fff;" data-bs-toggle="modal" data-bs-target="#solicitudCom2"><i class="fadeIn animated bx bx-user-plus"></i>Agregar solicitud</button></li>
+                    <li class="breadcrumb-item active" aria-current="page"><button type="button" class="btn btn-info px-5" style="color: #fff;" data-bs-toggle="modal" data-bs-target="#solicitudCom2"><i class="fadeIn animated bx bx-user-plus"></i>Crear solicitud de compra</button></li>
 
 
                 </ol>
@@ -127,9 +127,15 @@
                                             echo '<td>
                                             <div class="btn-group">
                                                 <button class="btn btn-warning btnVistaSolicitud" data-bs-toggle="modal" data-bs-target="#solicitudCom22"  idSolicitud="' . $value["id"] . '"><i class="fadeIn animated bx bx-edit-alt"></i></button>
-                                                <button class="btn btn-danger " title="Eliminar solicitud"><i class="fadeIn animated bx bx-trash-alt"></i></button>
-                                                <button class="btn btn-secondary " title="PDF"><i class="bi bi-file-earmark-pdf"></i></button>
-                                            </div>';
+                                                <button class="btn btn-danger " title="Eliminar solicitud"><i class="fadeIn animated bx bx-trash-alt"></i></button>';
+                                                if($value["tipo_proceso"] == "Solicitud de compra"){
+                                                    echo '<button class="btn btn-secondary btnImprimirSolicitud" idSolicitudFac="'.$value['id'].'" title="PDF"><i class="bi bi-file-earmark-pdf"></i></button>
+                                                    </div>';
+                                                }elseif($value["tipo_proceso"] == "Orden de compra"){
+                                                    echo '<button class="btn btn-secondary btnImprimirFactura" idSolicitudFac="'.$value['id'].'" title="PDF"><i class="bi bi-file-earmark-pdf"></i></button>
+                                                    </div>';
+                                                }
+                                                
 
                                             ?>
                                         </td>

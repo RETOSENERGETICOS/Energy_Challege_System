@@ -74,11 +74,10 @@
                                     <th>Estado</th>
                                     <th>Acciones</th>
                                     <th>Fecha</th>
+                                    <th>PO #</th>
                                     <th>Solicitante</th>
                                     <th>Suministrador</th>
                                     <th>Total</th>
-
-
 
                             </thead>
                             <tbody>
@@ -133,14 +132,21 @@
                                             echo '<td>
                                             <div class="btn-group">
                                                 <button class="btn btn-warning btnVistaSolicitud" data-bs-toggle="modal" data-bs-target="#solicitudCom22"  idSolicitud="' . $value["id"] . '"><i class="fadeIn animated bx bx-edit-alt"></i></button>
-                                                <button class="btn btn-danger " title="Eliminar solicitud"><i class="fadeIn animated bx bx-trash-alt"></i></button>
-                                                <button class="btn btn-secondary " title="PDF"><i class="bi bi-file-earmark-pdf"></i></button>
-                                            </div>';
+                                                <button class="btn btn-danger " title="Eliminar solicitud"><i class="fadeIn animated bx bx-trash-alt"></i></button>';
+
+                                            if ($value["tipo_proceso"] == "Solicitud de compra") {
+                                                echo '<button class="btn btn-secondary btnImprimirSolicitud" idSolicitudFac="' . $value['id'] . '" title="PDF"><i class="bi bi-file-earmark-pdf"></i></button>
+                                                    </div>';
+                                            } elseif ($value["tipo_proceso"] == "Orden de compra") {
+                                                echo '<button class="btn btn-secondary btnImprimirFactura" idSolicitudFac="' . $value['id'] . '" title="PDF"><i class="bi bi-file-earmark-pdf"></i></button>
+                                                    </div>';
+                                            }
 
                                             ?>
                                         </td>
 
                                         <td><?php echo $value["fecha"] ?></td>
+                                        <td><?php echo $value["codigo"] ?></td>
                                         <td><?php echo $value["solicitante_lentrega"] ?></td>
                                         <td><?php echo $value["nombre_prov"] ?></td>
                                         <td><?php echo $value["total_soli"] ?></td>
@@ -2589,25 +2595,14 @@
                             </div>
                         </div>
 
-
-
-
-
-
                     </div><!--end row-->
-
-
-
 
                 </div>
             </div>
 
-
-
-
             <div class="card radius-10">
-            <div class="col-12" style="margin: 0 auto;">
-            <div class="col-12" id="inputContainer" style="display: none;">
+                <div class="col-12" style="margin: 0 auto;">
+                    <div class="col-12" id="inputContainer" style="display: none;">
                         <label class="form-label">Comentarios</label>
                         <textarea class="form-control" rows="4" cols="4" id="comentarioRechazo" name="comentarioRechazo"></textarea>
                     </div>
@@ -2617,15 +2612,15 @@
                         <textarea class="form-control" rows="4" cols="4" id="comentarioenespera" name="comentarioenespera"></textarea>
                     </div>
                     <br><br>
-                        </div>
-            
+                </div>
+
                 <div class="card-body">
-                    
+
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-3 g-3">
 
 
 
-                     
+
                         <div class="col-12" style="margin: 0 auto;">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" id="aprobarCheckbox">
@@ -2657,7 +2652,7 @@
             <?php
 
             $actualizarSolicitarAR = new SolicitudC();
-            $actualizarSolicitarAR->ActualizarSolicitudDC();
+            // $actualizarSolicitarAR->ActualizarSolicitudDM();
 
             ?>
 
