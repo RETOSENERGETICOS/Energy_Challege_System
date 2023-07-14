@@ -47,7 +47,7 @@ class SolicitudC
     /* -------------------------------------------------------------------------- */
     /*                                VISTA DIRECTOR                                */
     /* -------------------------------------------------------------------------- */
-    static public function VistaSolicitudDC($item, $valor,)
+    static public function VistaSolicitudDC($item, $valor)
     {
 
 
