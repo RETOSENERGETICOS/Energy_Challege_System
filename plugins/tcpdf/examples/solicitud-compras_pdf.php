@@ -537,5 +537,5 @@ EOF;
 //============================================================+
 
 $factura = new imprimirFactura();
-$factura->id = $_GET["id"];
+$factura->id = $_GET['id'];
 $factura->traerImpresionFactura();
