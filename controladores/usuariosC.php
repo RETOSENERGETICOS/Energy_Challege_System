@@ -30,7 +30,7 @@ class UsuariosC
 					$_SESSION["iniciales_firma"] = $respuesta["iniciales_firma"];
 
 					echo '<script>                    
-                    window.location = "inicio";
+                    window.location = "https://appcompras.grretosenergeticos.com/inicio";
                     </script>';
 				} else {
 					echo ' <div class="alert alert-dismissible fade show py-2 bg-danger">
