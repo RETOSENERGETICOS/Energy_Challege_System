@@ -14,7 +14,7 @@ on:
         type: string
 
 env:
-  DEPLOYMENT_FOLDER: Energy_Challege_System
+  DEPLOYMENT_FOLDER: ./
 
 jobs:
 # Please do not rename this job
@@ -33,7 +33,7 @@ jobs:
         with:
           api-key: ${{ secrets.IONOS_API_KEY }}
           service-host: api-us.ionos.space
-          project-id: 896e52db-677a-45b4-91ce-499c3a4de04e
+          project-id: 5b721b0b-ea43-414d-978b-c36f88c891db
           branch-id: ${{ inputs.branch-id }}
           version: ${{ github.sha }}
           folder: ${{ env.DEPLOYMENT_FOLDER }}
