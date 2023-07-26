@@ -1,16 +1,15 @@
 <?php
 
-// if($_SESSION["rol"] != "Administrador" || $_SESSION["rol"]== "Manager" 
-// || $_SESSION["rol"] != "Director"){
+ if($_SESSION["rol"] != "Administrador"){
 
-//     echo '<script>
+     echo '<script>
   
-//     window.location = "inicio";
-//     </script>';
+     window.location = "inicio";
+     </script>';
   
-//     return;
+     return;
   
-//   }
+   }
 ?>
 
 <!--start wrapper-->
