@@ -120,9 +120,9 @@ class imprimirFactura
         <td height="100" style="border:1px solid black;" class="right-section">
 
             <p style="text-align:left; font-size:8px; color:#1B4F72; line-height:-.2">NOMBRE: $respuestaFac[nombre_prov]</p>
-            <p style="text-align:left; font-size:8px; color:#1B4F72; line-height:.9">NOMBRE: $respuestaFac[nombre_prov]</p>
-            <p style="text-align:left; font-size:8px; color:#1B4F72; line-height:1.5">DIRECCIÓN: $respuestaFac[direccion] </p>
-            <p style="text-align:left; font-size:8px; color:#1B4F72; line-height:.9">TEL:  $respuestaFac[telefono]</p>
+            <p style="text-align:left; font-size:8px; color:#1B4F72; line-height:.1">NOMBRE: $respuestaFac[nombre_prov]</p>
+            <p style="text-align:left; font-size:8px; color:#1B4F72; line-height:1.3">DIRECCIÓN: $respuestaFac[direccion] </p>
+            <p style="text-align:left; font-size:8px; color:#1B4F72; line-height:.4">TEL:  $respuestaFac[telefono]</p>
             <p style="text-align:left; font-size:8px; color:#1B4F72;">ATN.:  $respuestaFac[atn]</p>
             <p style="text-align:left; font-size:8px; color:#1B4F72; line-height:-.2">Email:  $respuestaFac[email]</p>
             <p style="text-align:left; font-size:8px; color:#1B4F72; text-decoration:underline;">www.retosenergeticos.com</p>
