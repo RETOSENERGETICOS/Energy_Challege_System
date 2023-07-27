@@ -10,8 +10,7 @@ class imprimirFactura
 
     public function traerImpresionFactura()
     {
-
-        ob_start();
+        
         /* -------------------------------------------------------------------------- */
         /*                       TRER INFORMACION DE LA FACTURA                       */
         /* -------------------------------------------------------------------------- */
@@ -120,22 +119,22 @@ class imprimirFactura
     <tr>
         <td height="100" style="border:1px solid black;" class="right-section">
 
-            <p style="text-align:left; font-size:8px; color:#1B4F72; line-height:-.2">NOMBRE: $respuestaFac[nombre_prov]</p>
-            <p style="text-align:left; font-size:8px; color:#1B4F72; line-height:.1">NOMBRE: $respuestaFac[nombre_prov]</p>
-            <p style="text-align:left; font-size:8px; color:#1B4F72; line-height:1.3">DIRECCIÓN: $respuestaFac[direccion] </p>
-            <p style="text-align:left; font-size:8px; color:#1B4F72; line-height:.4">TEL:  $respuestaFac[telefono]</p>
-            <p style="text-align:left; font-size:8px; color:#1B4F72;">ATN.:  $respuestaFac[atn]</p>
-            <p style="text-align:left; font-size:8px; color:#1B4F72; line-height:-.2">Email:  $respuestaFac[email]</p>
-            <p style="text-align:left; font-size:8px; color:#1B4F72; text-decoration:underline;">www.retosenergeticos.com</p>
+            <p style="text-align:left; font-size:10px; color:#1B4F72; line-height:-.2">NOMBRE: $respuestaFac[nombre_prov]</p>
+            <p style="text-align:left; font-size:10px; color:#1B4F72; line-height:.1">NOMBRE: $respuestaFac[nombre_prov]</p>
+            <p style="text-align:left; font-size:10px; color:#1B4F72; line-height:1.3">DIRECCIÓN: $respuestaFac[direccion] </p>
+            <p style="text-align:left; font-size:10px; color:#1B4F72; line-height:.4">TEL:  $respuestaFac[telefono]</p>
+            <p style="text-align:left; font-size:10px; color:#1B4F72;">ATN.:  $respuestaFac[atn]</p>
+            <p style="text-align:left; font-size:10px; color:#1B4F72; line-height:-.2">Email:  $respuestaFac[email]</p>
+            <p style="text-align:left; font-size:10px; color:#1B4F72; text-decoration:underline;">www.retosenergeticos.com</p>
         </td>
         <td height="100"  class="left-section">
 
-            <p style="text-align:center; font-size:8px; color:#1B4F72; line-height:-.1;">-</p>
-            <p style="text-align:center; font-size:8px; color:#1B4F72; line-height:-.2;">$respuestaFac[lugarentr_solicitud] </p>
-            <p style="text-align:center; font-size:8px; color:#1B4F72; line-height:.5;">$respuestaFac[direccion_lentrega]</p>
-            <p style="text-align:center; font-size:8px; color:#1B4F72; line-height:-.2;"> $respuestaFac[cp_lentrega]</p>
-            <p style="text-align:center; font-size:8px; color:#1B4F72;"> Solicitante:  $respuestaFac[solicitante_lentrega]</p>
-            <p style="text-align:center; font-size:8px; color:#1B4F72; line-height:-.2;"> Email:  $respuestaFac[email_solicitante]</p>
+            <p style="text-align:center; font-size:10px; color:#1B4F72; line-height:-.1;">-</p>
+            <p style="text-align:center; font-size:10px; color:#1B4F72; line-height:-.2;">$respuestaFac[lugarentr_solicitud] </p>
+            <p style="text-align:center; font-size:10px; color:#1B4F72; line-height:.5;">$respuestaFac[direccion_lentrega]</p>
+            <p style="text-align:center; font-size:10px; color:#1B4F72; line-height:-.2;"> $respuestaFac[cp_lentrega]</p>
+            <p style="text-align:center; font-size:10px; color:#1B4F72;"> Solicitante:  $respuestaFac[solicitante_lentrega]</p>
+            <p style="text-align:center; font-size:10px; color:#1B4F72; line-height:-.2;"> Email:  $respuestaFac[email_solicitante]</p>
 
         </td>
     </tr>
@@ -319,39 +318,39 @@ EOF;
         if (!empty($r) && !empty($d) && !empty($c) && !empty($p) && !empty($t) && !empty($to)) {
             $contenido .= <<<EOF
         <tr style="border:1px solid black;">
-        <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">1</td>
-        <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r}</td>
-        <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d}</td>
-        <td style="text-align:center; font-size:8px; width:48px;border:1px solid black;">{$c}</td>
-        <td style="text-align:center; font-size:8px; border:1px solid black;">{$p}</td>
-        <td style="text-align:center; font-size:8px; border:1px solid black;">{$t}</td>
-        <td style="text-align:center; font-size:8px; border:1px solid black;">{$to}</td>
+        <td style="text-align:center; font-size:10px; width:16px; height:15px; border:1px solid black;">1</td>
+        <td style="text-align:center; font-size:10px; height:15px; border:1px solid black;">{$r}</td>
+        <td style="text-align:center; font-size:10px; width:164px; border:1px solid black;">{$d}</td>
+        <td style="text-align:center; font-size:10px; width:410px;border:1px solid black;">{$c}</td>
+        <td style="text-align:center; font-size:10px; border:1px solid black;">{$p}</td>
+        <td style="text-align:center; font-size:10px; border:1px solid black;">{$t}</td>
+        <td style="text-align:center; font-size:10px; border:1px solid black;">{$to}</td>
         </tr>
         EOF;
         }
         if (!empty($r2) && !empty($d2) && !empty($c2) && !empty($p2) && !empty($t2) && !empty($to2)) {
             $contenido .= <<<EOF
             <tr style="border:1px solid black;">
-            <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">2</td>
-            <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r2}</td>
-            <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d2}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$c2}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$p2}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t2}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$to2}</td>
+            <td style="text-align:center; font-size:10px; width:16px; height:15px; border:1px solid black;">2</td>
+            <td style="text-align:center; font-size:10px; height:15px; border:1px solid black;">{$r2}</td>
+            <td style="text-align:center; font-size:10px; width:164px; border:1px solid black;">{$d2}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$c2}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$p2}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$t2}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$to2}</td>
             </tr>
             EOF;
         }
         if (!empty($r3) && !empty($d3) && !empty($c3) && !empty($p3) && !empty($t3) && !empty($to3)) {
             $contenido .= <<<EOF
             <tr style="border:1px solid black;">
-            <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">3</td>
-            <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r3}</td>
-            <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d3}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$c3}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$p3}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t3}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$to3}</td>
+            <td style="text-align:center; font-size:10px; width:16px; height:15px; border:1px solid black;">3</td>
+            <td style="text-align:center; font-size:10px; height:15px; border:1px solid black;">{$r3}</td>
+            <td style="text-align:center; font-size:10px; width:164px; border:1px solid black;">{$d3}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$c3}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$p3}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$t3}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$to3}</td>
             </tr>
             EOF;
         }
@@ -360,13 +359,13 @@ EOF;
         if (!empty($r4) && !empty($d4) && !empty($c4) && !empty($p4) && !empty($t4) && !empty($to4)) {
             $contenido .= <<<EOF
             <tr style="border:1px solid black;">
-            <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">4</td>
-            <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r4}</td>
-            <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d4}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$c4}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$p4}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t4}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$to4}</td>
+            <td style="text-align:center; font-size:10px; width:16px; height:15px; border:1px solid black;">4</td>
+            <td style="text-align:center; font-size:10px; height:15px; border:1px solid black;">{$r4}</td>
+            <td style="text-align:center; font-size:10px; width:164px; border:1px solid black;">{$d4}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$c4}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$p4}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$t4}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$to4}</td>
             </tr>
             EOF;
         }
@@ -374,13 +373,13 @@ EOF;
         if (!empty($r5) && !empty($d5) && !empty($c5) && !empty($p5) && !empty($t5) && !empty($to5)) {
             $contenido .= <<<EOF
             <tr style="border:1px solid black;">
-            <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">5</td>
-            <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r5}</td>
-            <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d5}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$c5}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$p5}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t5}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$to5}</td>
+            <td style="text-align:center; font-size:10px; width:16px; height:15px; border:1px solid black;">5</td>
+            <td style="text-align:center; font-size:10px; height:15px; border:1px solid black;">{$r5}</td>
+            <td style="text-align:center; font-size:10px; width:164px; border:1px solid black;">{$d5}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$c5}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$p5}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$t5}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$to5}</td>
             </tr>
             EOF;
         }
@@ -388,13 +387,13 @@ EOF;
         if (!empty($r6) && !empty($d6) && !empty($c6) && !empty($p6) && !empty($t6) && !empty($to6)) {
             $contenido .= <<<EOF
             <tr style="border:1px solid black;">
-            <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">6</td>
-            <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r6}</td>
-            <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d6}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$c6}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$p6}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t6}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$to6}</td>
+            <td style="text-align:center; font-size:10px; width:16px; height:15px; border:1px solid black;">6</td>
+            <td style="text-align:center; font-size:10px; height:15px; border:1px solid black;">{$r6}</td>
+            <td style="text-align:center; font-size:10px; width:164px; border:1px solid black;">{$d6}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$c6}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$p6}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$t6}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$to6}</td>
             </tr>
             EOF;
         }
@@ -402,13 +401,13 @@ EOF;
         if (!empty($r7) && !empty($d7) && !empty($c7) && !empty($p7) && !empty($t7) && !empty($to7)) {
             $contenido .= <<<EOF
             <tr style="border:1px solid black;">
-            <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">7</td>
-            <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r7}</td>
-            <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d7}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$c7}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$p7}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t7}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$to7}</td>
+            <td style="text-align:center; font-size:10px; width:16px; height:15px; border:1px solid black;">7</td>
+            <td style="text-align:center; font-size:10px; height:15px; border:1px solid black;">{$r7}</td>
+            <td style="text-align:center; font-size:10px; width:164px; border:1px solid black;">{$d7}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$c7}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$p7}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$t7}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$to7}</td>
             </tr>
             EOF;
         }
@@ -416,13 +415,13 @@ EOF;
         if (!empty($r8) && !empty($d8) && !empty($c8) && !empty($p8) && !empty($t8) && !empty($to8)) {
             $contenido .= <<<EOF
             <tr style="border:1px solid black;">
-            <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">8</td>
-            <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r8}</td>
-            <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d8}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$c8}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$p8}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t8}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$to8}</td>
+            <td style="text-align:center; font-size:10px; width:16px; height:15px; border:1px solid black;">8</td>
+            <td style="text-align:center; font-size:10px; height:15px; border:1px solid black;">{$r8}</td>
+            <td style="text-align:center; font-size:10px; width:164px; border:1px solid black;">{$d8}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$c8}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$p8}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$t8}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$to8}</td>
             </tr>
             EOF;
         }    
@@ -430,26 +429,26 @@ EOF;
         if (!empty($r9) && !empty($d9) && !empty($c9) && !empty($p9) && !empty($t9) && !empty($to9)) {
             $contenido .= <<<EOF
             <tr style="border:1px solid black;">
-            <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">9</td>
-            <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r9}</td>
-            <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d9}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$c9}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$p9}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t9}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$to9}</td>
+            <td style="text-align:center; font-size:10px; width:16px; height:15px; border:1px solid black;">9</td>
+            <td style="text-align:center; font-size:10px; height:15px; border:1px solid black;">{$r9}</td>
+            <td style="text-align:center; font-size:10px; width:164px; border:1px solid black;">{$d9}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$c9}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$p9}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$t9}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$to9}</td>
             </tr>
             EOF;
         }    
         if (!empty($r10) && !empty($d10) && !empty($c10) && !empty($p10) && !empty($t10) && !empty($to10)) {
             $contenido .= <<<EOF
             <tr style="border:1px solid black;">
-            <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">10</td>
-            <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r10}</td>
-            <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d10}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$c10}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$p10}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t10}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$to10}</td>
+            <td style="text-align:center; font-size:10px; width:16px; height:15px; border:1px solid black;">10</td>
+            <td style="text-align:center; font-size:10px; height:15px; border:1px solid black;">{$r10}</td>
+            <td style="text-align:center; font-size:10px; width:164px; border:1px solid black;">{$d10}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$c10}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$p10}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$t10}</td>
+            <td style="text-align:center; font-size:10px; border:1px solid black;">{$to10}</td>
             </tr>
             EOF;
         }
