@@ -73,6 +73,7 @@
                                 <tr>
                                     <th>Estado</th>
                                     <th>Acciones</th>
+                                    <th>Codigo</th>
                                     <th>Fecha</th>
                                     <th>Solicitante</th>
                                     <th>Suministrador</th>
@@ -100,12 +101,19 @@
                                 $verS = SolicitudC::VistaManagerC($item, $valor);
                                 ?>
                                 <?php
+                                date_default_timezone_set('America/Mexico_City');
+                                $fecha = date('Y-m-d H:i:s');
+                                $anio = date('Y', strtotime($fecha));
+                                $ultimosDosDigitos = substr($anio, -2);
                                 /* -------------------------------------------------------------------------- */
                                 /*abrimos un foreach con la variable respuesta traiga un echo con lo que tenemos
                                   como registros en la tabla                                                  */
                                 /* -------------------------------------------------------------------------- */
+                                $codigo = 870;
 
+                                $codf = $codigo . '_' . $ultimosDosDigitos;
                                 foreach ($verS as $key => $value) {
+                                    $codigo += 1;
                                     echo '
                                     </tr>';
                                 ?>
@@ -132,18 +140,20 @@
 
                                             echo '<td>
                                             <div class="btn-group">
-                                                <button class="btn btn-warning btnVistaSolicitud" data-bs-toggle="modal" data-bs-target="#solicitudCom22"  idSolicitud="' . $value["id"] . '"><i class="fadeIn animated bx bx-edit-alt"></i></button>
-                                                <button class="btn btn-secondary btnImprimirFactura" idSolicitudFac="'.$value['id'].'" title="PDF"><i class="bi bi-file-earmark-pdf"></i></button>
-                                                <button class="btn btn-danger BorrarM" Mid="' . $value["id"] . '"><i class="fadeIn animated bx bx-trash-alt"></i></button>
+                                                <button class="btn btn-warning btnVistaSolicitud" data-bs-toggle="modal" data-bs-target="#solicitudCom22"  idSolicitud="' . $value["id"] . '"><i class="fadeIn animated bx bx-edit-alt"></i></button>                                                
+                                                <button class="btn btn-danger BorrarMA" MAid="' . $value["id"] . '"><i class="fadeIn animated bx bx-trash-alt"></i></button>
+                                                <button  class="btn btn-secondary btnImprimirSolicitud" idSolicitudFac="' . $value['id'] . '" title="Solicitud de compra PDF"><i class="bi bi-file-earmark-pdf"></i></button>                                            
+                                                <button style="background-color:#85929E;" class="btn btn-secondary btnImprimirFactura" idSolicitudFac="' . $value['id'] . '" title="Orden de compra PDF"><i class="bi bi-file-earmark-pdf"></i></button>
+                                                    </div>
                                             </div>';
 
                                             ?>
                                         </td>
-
+                                        <td><?php echo $value["codigo"] ?></td>
                                         <td><?php echo $value["fecha"] ?></td>
                                         <td><?php echo $value["solicitante_lentrega"] ?></td>
                                         <td><?php echo $value["nombre_prov"] ?></td>
-                                        <td><?php echo $value["total_soli"] ?></td>
+                                        <td><?php echo $value["total_soli"] . ' ' . $value["moneda"]; ?></td>
 
 
 
@@ -184,24 +194,38 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Solicitud de compra</h5>
+
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-right: 1%"></button>
             </div>
+
             <div class="row" style="background-color:#fff;">
                 <div class="col-xl-7 mx-auto">
 
                     <hr />
+
                     <div class="card">
+
                         <div class="card-body">
                             <div class="p-4 border rounded">
-                                <form id="solicitante" class="row g-3 needs-validation" method="post" enctype="multipart/form-data">
-
+                                <form id="solicitante" class="row g-3 needs-validation " method="post" enctype="multipart/form-data">
+                                    <div class="modal-header">
+                                        <label for="validationDefault01" class="form-label">PO#:</label>
+                                        <input style="width: 18%; margin-right: 77%;" type="text" class="form-control" value="" name="codigoN" id="validationDefault0" required>
+                                    </div>
                                     <h6 class="mb-0 text-uppercase">VENDOR / SUMINISTRADOR</h6>
                                     <div class="col-md-6">
-
-
                                         <label for="validationDefault01" class="form-label">Nombre</label>
+                                        <?php
+                                        date_default_timezone_set('America/Mexico_City');
+                                        $fecha = date('Y-m-d H:i:s');
+                                        $anio = date('Y', strtotime($fecha));
+                                        $ultimosDosDigitos = substr($anio, -2);
+                                        $codigo += 1;
+
+                                        ?>
+
                                         <select class="form-select" value="" name="proveedorN" id="proveedorN" required>
-                                            <option value="" name="">...</option>
+                                            <option value="" name="" id="proveedorN">...</option>
                                             <?php
                                             $item = null;
                                             $valor = null;
@@ -216,13 +240,11 @@
                                         </select>
 
 
-
-
                                     </div>
 
                                     <div class="col-md-6">
                                         <label for="validationDefaul05" class="form-label">ATN</label>
-                                        <input type="text" class="form-control" name="atnSN" id="validationDefault00" required>
+                                        <input type="text" class="form-control" name="atnSN" id="validationDefault0" oninput="convertirAMayusculas(this)" required>
 
                                     </div>
 
@@ -239,48 +261,67 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="p-4 border rounded">
+                                <div class="modal-header">
+                                    <br> <br>
+                                    <input type="hidden" style="width: 18%; margin-right: 80%;" type="text" class="form-control" value="" name="codigooN" id="validationDefault0" required>
+                                </div>
+                                <br>
                                 <div class="row g-3 needs-validation" novalidate>
 
                                     <h6 class="mb-0 text-uppercase">SHIP TO /LUGAR DE ENTREGA</h6>
                                     <div class="col-md-4">
                                         <label for="validationDefault01" class="form-label">Lugar/entrega</label>
-                                        <input type="text" class="form-control" name="entregaLN" id="validationDefaul01" value="RETOS ENERGETICOS SA DE CV">
+                                        <input type="text" class="form-control" oninput="convertirAMayusculas(this)" name="entregaLN" id="validationDefaul01" value="RETOS ENERGETICOS SA DE CV">
 
                                     </div>
                                     <div class="col-md-4">
                                         <label for="validationDefault02" class="form-label">ATN</label>
                                         <div class="col-md-12">
-                                            <input type="text" class="form-control" name="atnLN" id="validationDefaul02" value="" required>
+                                            <input type="text" class="form-control" oninput="convertirAMayusculas(this)" name="atnLN" id="validationDefaul03" value="" required>
 
                                         </div>
+                                        <!-- <select class="form-select" name="atnN" id="" required>
+                                        <option value="" name="">Seleciona ATN</option>
+                                            <?php
+                                            // $item = null;
+                                            // $valor = null;
 
+                                            // $manager = UsuariosC::VerManagerC($item, $valor);
+                                            // foreach ($manager as $key => $value) {
+                                            //     echo '<option value="' . $value["nombre"] . '">' . $value["nombre"] . '</option>';
+                                            // }
+                                            ?>
+
+
+                                        </select> -->
+                                        <!-- <input type="text" class="form-control" id="validationDefaul02" value="" required> -->
 
                                     </div>
                                     <div class="col-md-4">
                                         <label for="validationDefault01" class="form-label">CP</label>
-                                        <input type="text" class="form-control" name="cpLN" id="validationDefaul03" value="91919, VERACRUZ VER, MEXICO" required>
+                                        <input type="text" class="form-control" oninput="convertirAMayusculas(this)" name="cpLN" id="validationDefaul03" value="91919, VERACRUZ VER, MEXICO" required>
 
                                     </div>
 
                                     <div class="col-md-8">
                                         <label for="validationDefaul03" class="form-label">Dirección</label>
-                                        <input type="text" class="form-control" name="direccionLN" id="validationDefault04" value="JUAN GRIJALVA #610" required>
+                                        <input type="text" class="form-control" oninput="convertirAMayusculas(this)" name="direccionLN" id="validationDefault04" value="JUAN GRIJALVA #610" required>
 
                                     </div>
                                     <div class="col-md-4">
                                         <label for="validationDefault03" class="form-label">Teléfono</label>
-                                        <input type="text" class="form-control" name="telefonoLN" id="validationDefault05" value="+52 1 229 937 1727" required>
+                                        <input type="text" class="form-control" oninput="convertirAMayusculas(this)" name="telefonoLN" id="validationDefault05" value="+52 1 229 937 1727" required>
 
                                     </div>
                                     <div class="col-md-6">
                                         <label for="validationDefault2" class="form-label">Solicitante</label>
-                                        <input type="text" class="form-control" name="solicitanteLN" id="validationDefault06" value="<?php echo $_SESSION["nombre"]; ?>" disabled>
+                                        <input type="text" class="form-control" oninput="convertirAMayusculas(this)" name="solicitanteLN" id="validationDefault2" value="<?php echo $_SESSION["nombre"]; ?>" disabled>
 
                                     </div>
 
                                     <div class="col-md-6">
                                         <label for="validationDefault08" class="form-label">Email</label>
-                                        <input type="text" class="form-control" name="emailLN" id="validationDefault07" value='<?php echo $_SESSION["correo"]; ?>' disabled>
+                                        <input type="text" class="form-control" oninput="convertirAMayusculas(this)" name="emailLN" id="validationDefault08" value='<?php echo $_SESSION["correo"]; ?>' disabled>
 
                                     </div>
 
@@ -302,7 +343,7 @@
 
                                     <div class="col-md-2">
                                         <label for="validationDefault01" class="form-label">Requisitioner / Solicitante</label>
-                                        <input type="text" class="form-control" name="solicitanteSN" id="validationDefault08" value="<?php echo $_SESSION["iniciales_firma"]; ?>" required disabled>
+                                        <input type="text" class="form-control" name="solicitanteSN" id="validationDefault01" value="<?php echo $_SESSION["iniciales_firma"]; ?>" required disabled>
 
                                     </div>
                                     <div class="col-md-3">
@@ -315,7 +356,7 @@
 
                                             $suminis = UsuariosC::VerManagerC($item, $valor);
                                             foreach ($suminis as $key => $value) {
-                                                echo '<option value="' . $value["id"] . '" >' . $value["nombre"] . '</option>';
+                                                echo '<option  value="' . $value["id"] . '" >' . $value["nombre"] . '</option>';
                                             }
                                             //
                                             ?>
@@ -325,17 +366,17 @@
                                     </div>
                                     <div class="col-md-2">
                                         <label for="validationDefault03" class="form-label">Ship via / Forma de envio</label>
-                                        <input type="text" class="form-control" name="formaenvN" id="validationDefault09" value="" required>
+                                        <input type="text" class="form-control" oninput="convertirAMayusculas(this)" name="formaenvN" id="validationDefault03" value="" required>
 
                                     </div>
                                     <div class="col-md-2">
                                         <label for="validationDefault04" class="form-label">Incoterms</label>
-                                        <input type="text" class="form-control" name="incotermsN" id="validationDefault10" value="" required>
+                                        <input type="text" class="form-control" oninput="convertirAMayusculas(this)" name="incotermsN" id="validationDefault04" value="" required>
 
                                     </div>
                                     <div class="col-md-3">
                                         <label for="validationDefault05" class="form-label">Lead Time/ Plazo de entrega</label>
-                                        <input type="text" class="form-control" name="plazoentregaN" id="validationDefault11" required>
+                                        <input type="text" class="form-control" oninput="convertirAMayusculas(this)" name="plazoentregaN" id="validationDefault05" required>
 
                                     </div>
 
@@ -347,7 +388,7 @@
 
                                     <div class="col-md-2">
                                         <label for="validationDefault06" class="form-label">Client/ Cliente</label>
-                                        <select class="form-select" value="" name="clienteN" id="clienteN" required>
+                                        <select class="form-select" value="" name="clienteN" id="" required>
                                             <option value="" name="">...</option>
                                             <?php
                                             $item = null;
@@ -370,12 +411,12 @@
 
                                     <div class="col-md-2">
                                         <label for="validationDefault06" class="form-label">Project / Proyecto</label>
-                                        <input type="text" class="form-control" name="proyectoN" id="validationDefault12" value="" required>
+                                        <input type="text" class="form-control" oninput="convertirAMayusculas(this)" name="proyectoN" id="validationDefault06" value="" required>
 
                                     </div>
                                     <div class="col-md-3">
                                         <label for="validationDefault08" class="form-label">Insurance included/ Seguro incluido</label>
-                                        <select class="form-select" name="seguroincluN" id="validationDefault12" required>
+                                        <select class="form-select" name="seguroincluN" id="validationDefault08" required>
                                             <option selected disabled value="">...</option>
                                             <option>Sí</option>
                                             <option>No</option>
@@ -383,14 +424,14 @@
                                         </select>
 
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <label for="validationDefault09" class="form-label">Vendor offer / Oferta suministrador</label>
-                                        <input type="text" class="form-control" name="ofertasumN" id="validationDefault13">
+                                        <input type="text" class="form-control" oninput="convertirAMayusculas(this)" name="ofertasumN" id="validationDefault09">
 
                                     </div>
-                                    <div class="col-md-3">
-                                        <label for="validationDefault10" class="form-label">Special Instructions / Condiciones Especiales</label>
-                                        <input type="text" class="form-control" name="condicionesespN" id="validationDefault14" required>
+                                    <div class="col-md-2">
+                                        <label for="validationDefault10" class="form-label"> Condiciones Especiales</label>
+                                        <input type="text" class="form-control" oninput="convertirAMayusculas(this)" name="condicionesespN" id="validationDefault10" required>
 
                                     </div>
 
@@ -440,7 +481,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
-                                                            <textarea class="form-control" rows="1" cols="1" name="descripN[]"></textarea>
+                                                            <textarea class="form-control" oninput="convertirAMayusculas(this)" rows="1" cols="1" name="descripN[]"></textarea>
                                                             <!-- <input type="text" class="form-control" name="descripN[]"  required> -->
 
                                                         </div>
@@ -455,7 +496,7 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <input type="text " class="form-control" name="precuniN[]" id="precuniN[]" oninput="calcularS()">
+                                                            <input type="text" class="form-control" name="precuniN[]" id="precuniN[]" oninput="calcularS()">
 
                                                         </div>
                                                     </td>
@@ -497,7 +538,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
-                                                            <textarea class="form-control" rows="1" cols="1" name="descripN[]"></textarea>
+                                                            <textarea class="form-control" rows="1" oninput="convertirAMayusculas(this)" cols="1" name="descripN[]"></textarea>
                                                             <!-- <input type="text" class="form-control" name="descripN[]"  > -->
 
                                                         </div>
@@ -557,7 +598,7 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <textarea class="form-control" rows="1" cols="1" name="descripN[]"></textarea>
+                                                            <textarea class="form-control" oninput="convertirAMayusculas(this)" rows="1" cols="1" name="descripN[]"></textarea>
                                                             <!-- <input type="text" class="form-control" name="descripN[]"  > -->
 
                                                         </div>
@@ -615,65 +656,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
-                                                            <textarea class="form-control" rows="1" cols="1" name="descripN[]"></textarea>
-                                                            <!-- <input type="text" class="form-control" name="descripN[]"  > -->
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-10">
-
-                                                            <input type="text" class="form-control" name="cantN[]" id="cantN[]" oninput="calcularS()">
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="precuniN[]" id="precuniN[]" oninput="calcularS()">
-
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="hidden" class="form-control" name="tasaporN[]" id="tasaporN[]" oninput="calcularS()">
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="tasaN[]" id="tasaN[]" oninput="calcularS()">
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="totalesN[]" id="totalesN[]" oninput="calcularS()" value="">
-
-                                                        </div>
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <!-- -------------------------------------------------------------------------- -->
-                                                    <!--removeInput para eliminar filas de solicitud  boton danger                  -->
-                                                    <!-- -------------------------------------------------------------------------- -->
-                                                    <!-- <input type="" name="inputSummary" value="1"> -->
-                                                    <!-- <td><button class="btn btn-danger" onclick="removeInput(0,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td> -->
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="solicitanteN[]">
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-                                                            <textarea class="form-control" rows="1" cols="1" name="descripN[]"></textarea>
+                                                            <textarea class="form-control" rows="1" oninput="convertirAMayusculas(this)" cols="1" name="descripN[]"></textarea>
                                                             <!-- <input type="text" class="form-control" name="descripN[]"  > -->
 
                                                         </div>
@@ -731,7 +714,65 @@
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
-                                                            <textarea class="form-control" rows="1" cols="1" name="descripN[]"></textarea>
+                                                            <textarea class="form-control" rows="1" oninput="convertirAMayusculas(this)" cols="1" name="descripN[]"></textarea>
+                                                            <!-- <input type="text" class="form-control" name="descripN[]"  > -->
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-10">
+
+                                                            <input type="text" class="form-control" name="cantN[]" id="cantN[]" oninput="calcularS()">
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="precuniN[]" id="precuniN[]" oninput="calcularS()">
+
+                                                        </div>
+                                                    </td>
+
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="hidden" class="form-control" name="tasaporN[]" id="tasaporN[]" oninput="calcularS()">
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="tasaN[]" id="tasaN[]" oninput="calcularS()">
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="totalesN[]" id="totalesN[]" oninput="calcularS()" value="">
+
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <!-- -------------------------------------------------------------------------- -->
+                                                    <!--removeInput para eliminar filas de solicitud  boton danger                  -->
+                                                    <!-- -------------------------------------------------------------------------- -->
+                                                    <!-- <input type="" name="inputSummary" value="1"> -->
+                                                    <!-- <td><button class="btn btn-danger" onclick="removeInput(0,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td> -->
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="solicitanteN[]">
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+                                                            <textarea class="form-control" rows="1" oninput="convertirAMayusculas(this)" cols="1" name="descripN[]"></textarea>
                                                             <!-- <input type="text" class="form-control" name="descripN[]"  > -->
 
                                                         </div>
@@ -788,7 +829,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
-                                                            <textarea class="form-control" rows="1" cols="1" name="descripN[]"></textarea>
+                                                            <textarea class="form-control" rows="1" oninput="convertirAMayusculas(this)" cols="1" name="descripN[]"></textarea>
                                                             <!-- <input type="text" class="form-control" name="descripN[]"  > -->
 
                                                         </div>
@@ -845,7 +886,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
-                                                            <textarea class="form-control" rows="1" cols="1" name="descripN[]"></textarea>
+                                                            <textarea class="form-control" rows="1" oninput="convertirAMayusculas(this)" cols="1" name="descripN[]"></textarea>
                                                             <!-- <input type="text" class="form-control" name="descripN[]"  > -->
 
                                                         </div>
@@ -902,7 +943,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
-                                                            <textarea class="form-control" rows="1" cols="1" name="descripN[]"></textarea>
+                                                            <textarea class="form-control" rows="1" oninput="convertirAMayusculas(this)" cols="1" name="descripN[]"></textarea>
                                                             <!-- <input type="text" class="form-control" name="descripN[]"  > -->
 
                                                         </div>
@@ -959,123 +1000,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="col-md-12">
-                                                            <textarea class="form-control" rows="1" cols="1" name="descripN[]"></textarea>
-                                                            <!-- <input type="text" class="form-control" name="descripN[]"  > -->
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-10">
-
-                                                            <input type="text" class="form-control" name="cantN[]" id="cantN[]" oninput="calcularS()">
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="precuniN[]" id="precuniN[]" oninput="calcularS()">
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="hidden" class="form-control" name="tasaporN[]" id="tasaporN[]" oninput="calcularS()">
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="tasaN[]" id="tasaN[]" oninput="calcularS()">
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="totalesN[]" id="totalesN[]" oninput="calcularS()">
-
-                                                        </div>
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <!-- -------------------------------------------------------------------------- -->
-                                                    <!--removeInput para eliminar filas de solicitud  boton danger                  -->
-                                                    <!-- -------------------------------------------------------------------------- -->
-                                                    <!-- <input type="" name="inputSummary" value="1"> -->
-                                                    <!-- <td><button class="btn btn-danger" onclick="removeInput(0,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td> -->
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="solicitanteN[]">
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <textarea class="form-control" rows="1" cols="1" name="descripN[]"></textarea>
-                                                            <!-- <input type="text" class="form-control" name="descripN[]"  > -->
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-10">
-
-                                                            <input type="text" class="form-control" name="cantN[]" id="cantN[]" oninput="calcularS()">
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="precuniN[]" id="precuniN[]" oninput="calcularS()">
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="hidden" class="form-control" name="tasaporN[]" id="tasaporN[]" oninput="calcularS()">
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="tasaN[]" id="tasaN[]" oninput="calcularS()">
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="totalesN[]" id="totalesN[]" oninput="calcularS()">
-
-                                                        </div>
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <!-- -------------------------------------------------------------------------- -->
-                                                    <!--removeInput para eliminar filas de solicitud  boton danger                  -->
-                                                    <!-- -------------------------------------------------------------------------- -->
-                                                    <!-- <input type="" name="inputSummary" value="1"> -->
-                                                    <!-- <td><button class="btn btn-danger" onclick="removeInput(0,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td> -->
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <input type="text" class="form-control" name="solicitanteN[]">
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-md-12">
-
-                                                            <textarea class="form-control" rows="1" cols="1" name="descripN[]"></textarea>
+                                                            <textarea class="form-control" rows="1" oninput="convertirAMayusculas(this)" cols="1" name="descripN[]"></textarea>
                                                             <!-- <input type="text" class="form-control" name="descripN[]"  > -->
 
                                                         </div>
@@ -1133,7 +1058,7 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <textarea class="form-control" rows="1" cols="1" name="descripN[]"></textarea>
+                                                            <textarea class="form-control" rows="1" oninput="convertirAMayusculas(this)" cols="1" name="descripN[]"></textarea>
                                                             <!-- <input type="text" class="form-control" name="descripN[]"  > -->
 
                                                         </div>
@@ -1191,7 +1116,123 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <textarea class="form-control" rows="1" cols="1" name="descripN[]"></textarea>
+                                                            <textarea class="form-control" rows="1" oninput="convertirAMayusculas(this)" cols="1" name="descripN[]"></textarea>
+                                                            <!-- <input type="text" class="form-control" name="descripN[]"  > -->
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-10">
+
+                                                            <input type="text" class="form-control" name="cantN[]" id="cantN[]" oninput="calcularS()">
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="precuniN[]" id="precuniN[]" oninput="calcularS()">
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="hidden" class="form-control" name="tasaporN[]" id="tasaporN[]" oninput="calcularS()">
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="tasaN[]" id="tasaN[]" oninput="calcularS()">
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="totalesN[]" id="totalesN[]" oninput="calcularS()">
+
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <!-- -------------------------------------------------------------------------- -->
+                                                    <!--removeInput para eliminar filas de solicitud  boton danger                  -->
+                                                    <!-- -------------------------------------------------------------------------- -->
+                                                    <!-- <input type="" name="inputSummary" value="1"> -->
+                                                    <!-- <td><button class="btn btn-danger" onclick="removeInput(0,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td> -->
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="solicitanteN[]">
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <textarea class="form-control" rows="1" oninput="convertirAMayusculas(this)" cols="1" name="descripN[]"></textarea>
+                                                            <!-- <input type="text" class="form-control" name="descripN[]"  > -->
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-10">
+
+                                                            <input type="text" class="form-control" name="cantN[]" id="cantN[]" oninput="calcularS()">
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="precuniN[]" id="precuniN[]" oninput="calcularS()">
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="hidden" class="form-control" name="tasaporN[]" id="tasaporN[]" oninput="calcularS()">
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="tasaN[]" id="tasaN[]" oninput="calcularS()">
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="totalesN[]" id="totalesN[]" oninput="calcularS()">
+
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <!-- -------------------------------------------------------------------------- -->
+                                                    <!--removeInput para eliminar filas de solicitud  boton danger                  -->
+                                                    <!-- -------------------------------------------------------------------------- -->
+                                                    <!-- <input type="" name="inputSummary" value="1"> -->
+                                                    <!-- <td><button class="btn btn-danger" onclick="removeInput(0,'inputSummary')" title="Eliminar fila"><i class="lni lni-trash"></i></button></td> -->
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <input type="text" class="form-control" name="solicitanteN[]">
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12">
+
+                                                            <textarea class="form-control" rows="1" oninput="convertirAMayusculas(this)" cols="1" name="descripN[]"></textarea>
                                                             <!-- <input type="text" class="form-control" name="descripN[]"  > -->
 
                                                         </div>
@@ -1257,19 +1298,20 @@
                 <div class="card mb-0">
                     <div class="card-body">
                         <div class="my-3 border-top"></div>
-                        <h6 class="mb-0">Subtotal: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" id="subtotalN" value="" required></span></h5>
+                        <h6 class="mb-0">Subtotal: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="subtotalN" id="subtotalN" oninput="calcularS()" required></span></h5>
+
                             <div class="my-3 border-top"></div>
-                            <h6 class="mb-0">Taxes: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" id="taxesN" value="" required></span></h5>
+                            <h6 class="mb-0">Taxes: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="taxesN" id="taxesN" oninput="calcularS()" required></span></h5>
                                 <div class="my-3 border-top"></div>
-                                <h6 class="mb-0">Shipping: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" id="shippinglN" value="" required></span></h5>
+                                <h6 class="mb-0">Shipping: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="shippinglN" id="shippinglN" oninput="calcularS()" value="" required></span></h5>
                                     <div class="my-3 border-top"></div>
-                                    <h6 class="mb-0">Otros: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" id="otrosN" value="" required></span></h5>
+                                    <h6 class="mb-0">Otros: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="otrosN" id="otrosN" oninput="calcularS()" value="" required></span></h5>
                                         <div class="my-3 border-top"></div>
-                                        <h6 class="mb-0">Total: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" id="totalN" value="" required></span></h5>
+                                        <h6 class="mb-0">Total: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="totalN" id="totalN" oninput="calcularS()" required></span></h5>
 
                                             <div class="my-3 border-top"></div>
                                             <h6 class="mb-0">Moneda: <span class="float-end">
-                                                    <input type="text" class="form-control" style="position: relative; margin-top: -5%" id="monedaN" value="" required>
+                                                    <input type="text" class="form-control" oninput="convertirAMayusculas(this)" style="position: relative; margin-top: -5%" name="monedaN" value="" required>
                     </div>
                 </div>
                 <br>
@@ -1373,6 +1415,7 @@
         </div>
     </div>
 </div>
+
 
 
 </div>
@@ -2657,7 +2700,7 @@
 
             <div class="card radius-10">
                 <div class="card-body">
-                <div class="col-12" id="inputContainer" style="display: none;">
+                    <div class="col-12" id="inputContainer" style="display: none;">
                         <label class="form-label">Comentarios</label>
                         <textarea class="form-control" rows="4" cols="4" id="comentarioRechazo" name="comentarioRechazo"></textarea>
                     </div>
@@ -2668,7 +2711,7 @@
                     </div>
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-3 g-3">
 
-                    <br><br>
+                        <br><br>
                         <div class="col-12">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" id="aprobarCheckbox" name="comentarioenaceptar" value="1">
@@ -2678,10 +2721,10 @@
                                 <input class="form-check-input" type="checkbox" id="rechazarCheckbox" name="comentarioRechazo" value="2">
                                 <label class="form-check-label" for="rechazarCheckbox">Rechazar solicitud</label>
                             </div>
-                           
+
                         </div>
-                        
-                       
+
+
 
                     </div><!--end row-->
 
@@ -2692,13 +2735,13 @@
             <div class="col-12" id="inputContainer" style="display: none;">
                 <label class="form-label">Comentarios</label>
                 <textarea class="form-control" rows="4" cols="4" id="comentarioRechazo" name="comentarioRechazos"></textarea>
-                
+
             </div>
 
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
 
-            <input  type="hidden" class="form-control" rows="4" cols="4" id="aceptar " name="aceptar"></input>
+                <input type="hidden" class="form-control" rows="4" cols="4" id="aceptar " name="aceptar"></input>
                 <button id="Brechazar" value="R" name="comentarioR" class="btn btn-danger btn-md btn-block " style="display: none;" type="submit">Rechazar solicitud</button>
 
                 <button id="Baprobar" value="ace" name="comentarioenace" class="btn btn-primary btn-md btn-block" style="display: none;" type="submit">Aprobar solicitud</button>
@@ -2708,7 +2751,7 @@
             <?php
 
             $actualizarSolicitarAR = new SolicitudC();
-            $actualizarSolicitarAR->EliminarSolicitudC();
+            $actualizarSolicitarAR->ActualizarARSolicitudC();
 
             ?>
 
@@ -2722,6 +2765,5 @@
 
 <?php
 $borrarS = new SolicitudC();
-$borrarS->EliminarSolicitudC();
+$borrarS->EliminarSolicitudCMA();
 ?>
-
