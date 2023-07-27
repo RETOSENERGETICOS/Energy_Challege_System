@@ -11,7 +11,6 @@ class imprimirFactura
     public function traerImpresionFactura()
     {
         ob_start();
-
         /* -------------------------------------------------------------------------- */
         /*                       TRER INFORMACION DE LA FACTURA                       */
         /* -------------------------------------------------------------------------- */
@@ -122,22 +121,22 @@ class imprimirFactura
     <tr>
         <td height="100" style="border:1px solid black;" class="right-section">
 
-        <p style="text-align:left; font-size:8px; color:#1B4F72; line-height:-.2">NOMBRE: $respuestaFac[nombre_prov]</p>
-        <p style="text-align:left; font-size:8px; color:#1B4F72; line-height:.1">NOMBRE: $respuestaFac[nombre_prov]</p>
-        <p style="text-align:left; font-size:8px; color:#1B4F72; line-height:1.3">DIRECCIÓN: $respuestaFac[direccion] </p>
-        <p style="text-align:left; font-size:8px; color:#1B4F72; line-height:.4">TEL:  $respuestaFac[telefono]</p>
-        <p style="text-align:left; font-size:8px; color:#1B4F72;">ATN.:  $respuestaFac[atn]</p>
-        <p style="text-align:left; font-size:8px; color:#1B4F72; line-height:-.2">Email:  $respuestaFac[email]</p>
-        <p style="text-align:left; font-size:8px; color:#1B4F72; text-decoration:underline;">www.retosenergeticos.com</p>
+        <p style="text-align:left; font-size:10px; color:#1B4F72; line-height:-.2">NOMBRE: $respuestaFac[nombre_prov]</p>
+        <p style="text-align:left; font-size:10px; color:#1B4F72; line-height:.1">NOMBRE: $respuestaFac[nombre_prov]</p>
+        <p style="text-align:left; font-size:10px; color:#1B4F72; line-height:1.3">DIRECCIÓN: $respuestaFac[direccion] </p>
+        <p style="text-align:left; font-size:10px; color:#1B4F72; line-height:.4">TEL:  $respuestaFac[telefono]</p>
+        <p style="text-align:left; font-size:10px; color:#1B4F72;">ATN.:  $respuestaFac[atn]</p>
+        <p style="text-align:left; font-size:10px; color:#1B4F72; line-height:-.2">Email:  $respuestaFac[email]</p>
+        <p style="text-align:left; font-size:10px; color:#1B4F72; text-decoration:underline;">www.retosenergeticos.com</p>
         </td>
         <td height="100"  class="left-section">
 
-            <p style="text-align:center; font-size:8px; color:#1B4F72; line-height:-.1;">-</p>
-            <p style="text-align:center; font-size:8px; color:#1B4F72; line-height:-.2;">$respuestaFac[lugarentr_solicitud] </p>
-            <p style="text-align:center; font-size:8px; color:#1B4F72; line-height:.5;">$respuestaFac[direccion_lentrega]</p>
-            <p style="text-align:center; font-size:8px; color:#1B4F72; line-height:-.2;"> $respuestaFac[cp_lentrega]</p>
-            <p style="text-align:center; font-size:8px; color:#1B4F72;"> Solicitante:  $respuestaFac[solicitante_lentrega]</p>
-            <p style="text-align:center; font-size:8px; color:#1B4F72; line-height:-.2;"> Email:  $respuestaFac[email_solicitante]</p>
+            <p style="text-align:left; font-size:10px; color:#1B4F72; line-height:-.1;">-</p>
+            <p style="text-align:left; font-size:10px; color:#1B4F72; line-height:-.2;">$respuestaFac[lugarentr_solicitud] </p>
+            <p style="text-align:left; font-size:10px; color:#1B4F72; line-height:.5;">$respuestaFac[direccion_lentrega]</p>
+            <p style="text-align:left; font-size:10px; color:#1B4F72; line-height:-.2;"> $respuestaFac[cp_lentrega]</p>
+            <p style="text-align:left; font-size:10px; color:#1B4F72;"> Solicitante:  $respuestaFac[solicitante_lentrega]</p>
+            <p style="text-align:left; font-size:10px; color:#1B4F72; line-height:-.2;"> Email:  $respuestaFac[email_solicitante]</p>
 
         </td>
     </tr>
