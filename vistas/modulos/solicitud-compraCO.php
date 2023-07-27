@@ -12,7 +12,7 @@
 
             <!--start breadcrumb-->
             <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">Gestor de orden de compra</div>
+                <div class="breadcrumb-title pe-3">Gestor de solicitud de compra</div>
                 <div class="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 p-0 align-items-center">
@@ -24,24 +24,13 @@
                     </nav>
 
                 </div>
-                <!-- <div class="ms-auto">
-              <div class="btn-group">
-                <button type="button" class="btn btn-outline-primary">Settings</button>
-                <button type="button" class="btn btn-outline-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
-                </button>
-                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">Action</a>
-                  <a class="dropdown-item" href="javascript:;">Another action</a>
-                  <a class="dropdown-item" href="javascript:;">Something else here</a>
-                  <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">Separated link</a>
-                </div>
-              </div>
-            </div> -->
+
             </div>
             <!--end breadcrumb-->
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0 align-items-center">
 
-                    <li class="breadcrumb-item active" aria-current="page"><button type="button" class="btn btn-info px-5" style="color: #fff;" data-bs-toggle="modal" data-bs-target="#solicitudCom2"><i class="fadeIn animated bx bx-user-plus"></i>Crear solicitud de compra</button></li>
+                    <li class="breadcrumb-item active" aria-current="page"><button type="button" class="btn btn-info px-5" style="color: #fff;" data-bs-toggle="modal" data-bs-target="#solicitudCom2"><i class="fadeIn animated bx bx-user-plus"></i>Solicitud de compra</button></li>
 
 
                 </ol>
@@ -73,13 +62,12 @@
                                 <tr>
                                     <th>Estado</th>
                                     <th>Acciones</th>
+                                    <th>PO#</th>
                                     <th>Fecha</th>
                                     <th>Solicitante</th>
                                     <th>Suministrador</th>
                                     <th>Total</th>
-
-
-
+                                </tr>
                             </thead>
                             <tbody>
                                 <!-- -------------------------------------------------------------------------- -->
@@ -104,21 +92,28 @@
                                 /*abrimos un foreach con la variable respuesta traiga un echo con lo que tenemos
                                   como registros en la tabla                                                  */
                                 /* -------------------------------------------------------------------------- */
-
+                                $codigo = 870;
                                 foreach ($verS as $key => $value) {
+                                    $codigo += 1;
                                     echo '
                                     </tr>';
                                 ?>
                                     <tr>
                                         <td><?php
                                             if ($value['estado'] == 1) {
-                                                echo ' <button class="btn btn-secondary btn-block" ">En proceso</button>';
+                                                echo ' <button class="btn btn-secondary btn-block" >En proceso</button>';
                                             }
                                             if ($value['estado'] == 2) {
-                                                echo ' <button class="btn btn-success btn-block" ">Aprobada</button>';
+                                                echo ' <button class="btn btn-primary btn-block" style="background-color: #1F618D;">Aprobada</button>';
                                             }
                                             if ($value['estado'] == 3) {
-                                                echo ' <button class="btn btn-danger btn-block" ">Rechazada</button>';
+                                                echo ' <button class="btn btn-danger btn-block">Rechazada</button>';
+                                            }
+                                            if ($value['estado'] == 4) {
+                                                echo ' <button class="btn btn-warning btn-block">En espera</button>';
+                                            }
+                                            if ($value['estado'] == 5) {
+                                                echo ' <button class="btn btn-success btn-block">Autorizado</button>';
                                             }
 
                                             echo '</td>';
@@ -126,29 +121,29 @@
 
                                             echo '<td>
                                             <div class="btn-group">
-                                                <button class="btn btn-warning btnVistaSolicitud" data-bs-toggle="modal" data-bs-target="#solicitudCom22"  idSolicitud="' . $value["id"] . '"><i class="fadeIn animated bx bx-edit-alt"></i></button>
-                                                <button class="btn btn-danger " title="Eliminar solicitud"><i class="fadeIn animated bx bx-trash-alt"></i></button>';
-                                                if($value["tipo_proceso"] == "Solicitud de compra"){
-                                                    echo '<button class="btn btn-secondary btnImprimirSolicitud" idSolicitudFac="'.$value['id'].'" title="PDF"><i class="bi bi-file-earmark-pdf"></i></button>
+                                                <button class="btn btn-warning btnVistaSolicitud" data-bs-toggle="modal" data-bs-target="#solicitudCom22"  idSolicitud="' . $value["id"] . '"><i class="lni lni-eye"></i></button>
+                                                <button class="btn btn-danger BorrarCO" COid="' . $value["id"] . '"><i class="fadeIn animated bx bx-trash-alt"></i></button>
+                                               
+                                                <button  class="btn btn-secondary btnImprimirSolicitud" idSolicitudFac="' . $value['id'] . '" title="Solicitud de compra PDF"><i class="bi bi-file-earmark-pdf"></i></button>
+                                               
+                                            
+                                                <button style="background-color:#85929E;" class="btn btn-secondary btnImprimirFactura" idSolicitudFac="' . $value['id'] . '" title="Orden de compra PDF"><i class="bi bi-file-earmark-pdf"></i></button>
                                                     </div>';
-                                                }elseif($value["tipo_proceso"] == "Orden de compra"){
-                                                    echo '<button class="btn btn-secondary btnImprimirFactura" idSolicitudFac="'.$value['id'].'" title="PDF"><i class="bi bi-file-earmark-pdf"></i></button>
-                                                    </div>';
-                                                }
-                                                
+
+
 
                                             ?>
                                         </td>
-
+                                        <td><?php echo $value["codigo"] ?></td>
                                         <td><?php echo $value["fecha"] ?></td>
                                         <td><?php echo $value["solicitante_lentrega"] ?></td>
                                         <td><?php echo $value["nombre_prov"] ?></td>
-                                        <td><?php echo $value["total_soli"] ?></td>
+                                        <td><?php echo $value["total_soli"] . ' ' . $value["moneda"]; ?></td>
 
 
 
 
-                                        </tr> <?php } ?> 
+                                    </tr> <?php } ?>
 
                             </tbody>
                         </table>
@@ -186,6 +181,7 @@
                 <h5 class="modal-title">Solicitud de compra</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-right: 1%"></button>
             </div>
+
             <div class="row" style="background-color:#fff;">
                 <div class="col-xl-7 mx-auto">
 
@@ -194,7 +190,10 @@
                         <div class="card-body">
                             <div class="p-4 border rounded">
                                 <form id="solicitante" class="row g-3 needs-validation " method="post" enctype="multipart/form-data">
-                                  
+                                    <div class="modal-header" style="margin-left: -2%;">
+                                        <label for="validationDefault01" class="form-label">PO#:</label>
+                                        <input style="width: 18%; margin-right: 77%;" type="text" class="form-control" value="" name="codigoN" id="validationDefault0" required>
+                                    </div>
                                     <h6 class="mb-0 text-uppercase">VENDOR / SUMINISTRADOR</h6>
                                     <div class="col-md-6">
                                         <label for="validationDefault01" class="form-label">Nombre</label>
@@ -203,10 +202,10 @@
                                         $fecha = date('Y-m-d H:i:s');
                                         $anio = date('Y', strtotime($fecha));
                                         $ultimosDosDigitos = substr($anio, -2);
-                                        $codigo+=1;
-                                       
+                                        $codigo += 1;
+
                                         ?>
-                                         <input type="text" class="form-control" value="<?php echo $codigo.'_'.$ultimosDosDigitos ?>" name="codigoN" id="codigoN" >
+
                                         <select class="form-select" value="" name="proveedorN" id="proveedorN" required>
                                             <option value="" name="" id="proveedorN">...</option>
                                             <?php
@@ -395,7 +394,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <label for="validationDefault08" class="form-label">Insurance included/ Seguro incluido</label>
-                                        <select  class="form-select" name="seguroincluN" id="validationDefault08" required>
+                                        <select class="form-select" name="seguroincluN" id="validationDefault08" required>
                                             <option selected disabled value="">...</option>
                                             <option>Sí</option>
                                             <option>No</option>
@@ -1284,7 +1283,7 @@
                                 <div class="my-3 border-top"></div>
                                 <h6 class="mb-0">Shipping: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="shippinglN" id="shippinglN" oninput="calcularS()" value="" required></span></h5>
                                     <div class="my-3 border-top"></div>
-                                    <h6 class="mb-0">Otros: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="otrosN"  id="otrosN" oninput="calcularS()" value="" required></span></h5>
+                                    <h6 class="mb-0">Otros: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="otrosN" id="otrosN" oninput="calcularS()" value="" required></span></h5>
                                         <div class="my-3 border-top"></div>
                                         <h6 class="mb-0">Total: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="totalN" id="totalN" oninput="calcularS()" required></span></h5>
 
@@ -1406,7 +1405,7 @@
 
 
 <!-- -------------------------------------------------------------------------- -->
-<!--                         VISTA DATOS SOLICITUD                                    -->
+<!--                         VISTA DATOS SOLICITUD                              -->
 <!-- -------------------------------------------------------------------------- -->
 
 <div class="modal fade" id="solicitudCom22" tabindex="-1" aria-hidden="true" style="background-color: #fff;">
@@ -1427,15 +1426,15 @@
 
                                     <h6 class="mb-0 text-uppercase">VENDOR / SUMINISTRADOR</h6>
                                     <div class="col-md-6">
-                                       
-                                        
+
+
                                         <input type="hidden" class="form-control" name="idSolicitud" id="idSolicitud2">
                                         <label for="validationDefault01" class="form-label">Nombre</label>
                                         <select class="form-select" name="proveedorN" disabled>
                                             <option value=' . $value["nombre_prov"] . ' id="proveedorNS"></option>
 
                                         </select>
-                                        
+
 
 
                                     </div>
@@ -1443,7 +1442,7 @@
                                     <div class="col-md-6">
                                         <label for="validationDefaul05" class="form-label">ATN</label>
                                         <input type="text" class="form-control" name="atnSN" id="atnSN" readonly>
-                                        
+
 
                                     </div>
 
@@ -1542,9 +1541,9 @@
                                     </div>
                                     <div class="col-md-3">
                                         <label for="validationDefault02" class="form-label">Request by/ Firma de Autorizador</label>
-                                        <select class="form-select" value="" name="firmasupN"  readonly>
-                                        <?php echo '<option value="' . $value["nombre"] . '" id="firmasupN">...</option>' ?>   
-                                        
+                                        <select class="form-select" value="" name="firmasupN" readonly>
+                                            <?php echo '<option value="' . $value["nombre"] . '" id="firmasupN">...</option>' ?>
+
 
                                         </select>
                                     </div>
@@ -2724,8 +2723,9 @@
         </div>
     </div>
 </div>
-<?php
-$borrarU = new UsuariosC();
-$borrarU->BorrarUsuariosC();
 
+
+<?php
+$borrarCO = new SolicitudC();
+$borrarCO->EliminarSolicitudCO();
 ?>
