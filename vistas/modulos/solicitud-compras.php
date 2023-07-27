@@ -127,8 +127,14 @@
                                             <div class="btn-group">
                                                 <?php echo ' <button class="btn btn-warning btnVistaSolicitud" data-bs-toggle="modal" data-bs-target="#solicitudCom22"  idSolicitud="' . $value["id"] . '"><i class="lni lni-eye"></i></button>
                                            <button class="btn btn-danger BorrarM" Mid="' . $value["id"] . '"><i class="fadeIn animated bx bx-trash-alt"></i></button>' ?>
-                                                <?php echo ' <button  class="btn btn-secondary btnImprimirSolicitud" idSolicitudFac="' . $value['id'] . '" title="Solicitud de compra PDF"><i class="bi bi-file-earmark-pdf"></i></button>                                            
-                                                <button style="background-color:#85929E;" class="btn btn-secondary btnImprimirFactura" idSolicitudFac="' . $value['id'] . '" title="Orden de compra PDF"><i class="bi bi-file-earmark-pdf"></i></button>' ?>
+                                                
+                                                <?php if($value['estado'] == 1 || $value['estado'] == 3 || $value['estado'] == 4){
+                                                    echo'<button  class="btn btn-secondary btnImprimirSolicitud" idSolicitudFac="' . $value['id'] . '" title="Solicitud de compra PDF"><i class="bi bi-file-earmark-pdf"></i></button>  ';
+                                                }
+                                                
+                                                if($value['estado'] == 2 || $value['estado'] == 5 ){
+                                                    echo '<button style="background-color:#85929E;" class="btn btn-secondary btnImprimirFactura" idSolicitudFac="' . $value['id'] . '" title="Orden de compra PDF"><i class="bi bi-file-earmark-pdf"></i></button>';
+                                                } ?>
                                             </div>
                                         </td>
                                         <td><?php echo $value["codigo"] ?></td>
