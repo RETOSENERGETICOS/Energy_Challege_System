@@ -11,9 +11,9 @@
     margin-top: 6%;">Retos Energeticos</h4>
       </a>
     </div>
-     <!-- <div class="toggle-icon ms-auto">
+      <div class="toggle-icon ms-auto">
       <ion-icon name="menu-sharp"></ion-icon>
-    </div> -->
+    </div> 
   </div>
   <!--navigation-->
   <ul class="metismenu" id="menu">
