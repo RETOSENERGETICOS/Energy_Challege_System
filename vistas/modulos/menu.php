@@ -128,28 +128,28 @@
      
     }
 
-   // if ($_SESSION["rol"] == "Administrador") {
-     // echo '<li class="menu-label">Paginas</li>
+    if ($_SESSION["rol"] == "Administrador") {
+      echo '<li class="menu-label">Paginas</li>
 
-       //     </li>
-         //   <li>
-           //   <a class="has-arrow" href="javascript:;">
-             //   <div class="parent-icon">
-               //   <ion-icon name="map-sharp"></ion-icon>
-                //</div>
-                //<div class="menu-title">------</div>
-              //</a>
-              //<ul>
-               // <li> <a href="map-google-maps.html">
-                 //   <ion-icon name="ellipse-outline"></ion-icon>-----
-                  //</a>
-                //</li>
-                //<li> <a href="map-vector-maps.html">
-                  //  <ion-icon name="ellipse-outline"></ion-icon>-----
-                  //</a>
-                //</li>
-              //</ul>
-            //</li>';
+           </li>
+           <li>
+             <a class="has-arrow" href="javascript:;">
+               <div class="parent-icon">
+                 <ion-icon name="map-sharp"></ion-icon>
+                </div>
+                <div class="menu-title">------</div>
+            </a>
+            <ul>
+                <li> <a href="map-google-maps.html">
+                    <ion-icon name="ellipse-outline"></ion-icon>-----
+                  </a>
+              </li>
+                <li> <a href="map-vector-maps.html">
+                    <ion-icon name="ellipse-outline"></ion-icon>-----
+                  </a>
+                </li>
+              </ul>
+            </li>';
     }
 
     ?>
