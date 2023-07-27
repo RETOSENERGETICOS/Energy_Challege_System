@@ -26,10 +26,10 @@
               </a>
             </li> -->
 
-         <li class="nav-item dropdown dropdown-large">
-          <!-- <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown"> -->
+        <!-- <li class="nav-item dropdown dropdown-large">
+           <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown"> 
              <div class="position-relative">
-               <!-- <span class="notify-badge">8</span> -->
+                <span class="notify-badge">8</span> 
                <ion-icon name="notifications-sharp" style="
                 color: #fff;"></ion-icon>
              </div>
@@ -38,7 +38,7 @@
              <a href="javascript:;">
                <div class="msg-header">
                  <p class="msg-header-title">Notificationes</p>
-                 <!-- <p class="msg-header-clear ms-auto">Marks all as read</p> -->
+                  <p class="msg-header-clear ms-auto">Marks all as read</p>
                </div>
              </a>
              <div class="header-notifications-list">
@@ -59,7 +59,7 @@
              </div>
 
            </div>
-         </li>
+         </li> -->
          <li class="nav-item dropdown dropdown-user-setting">
            <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
              <div class="user-setting">
