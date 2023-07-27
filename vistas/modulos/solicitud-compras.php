@@ -135,7 +135,8 @@
                                         <td><?php echo $value["fecha"] ?></td>
                                         <td><?php echo $value["solicitante_lentrega"] ?></td>
                                         <td><?php echo $value["nombre_prov"] ?></td>
-                                         <td><?php echo $value["total_soli"] . ' ' . $value["moneda"]; ?></td>
+                                        <td><?php echo $value["total_soli"] . ' ' . $value["moneda"]; ?></td>
+
 
 
 
