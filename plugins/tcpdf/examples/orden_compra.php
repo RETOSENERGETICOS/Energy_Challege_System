@@ -10,6 +10,7 @@ class imprimirFactura
 
     public function traerImpresionFactura()
     {
+        ob_start();
 
         /* -------------------------------------------------------------------------- */
         /*                       TRER INFORMACION DE LA FACTURA                       */
