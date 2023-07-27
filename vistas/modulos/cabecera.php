@@ -27,7 +27,7 @@
             </li> -->
 
          <li class="nav-item dropdown dropdown-large">
-           <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
+          <!-- <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown"> -->
              <div class="position-relative">
                <!-- <span class="notify-badge">8</span> -->
                <ion-icon name="notifications-sharp" style="
