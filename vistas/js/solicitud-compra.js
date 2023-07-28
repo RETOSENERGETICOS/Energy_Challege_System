@@ -201,6 +201,35 @@ $(".TB").on("click", ".btnVistaSolicitud", function() {
       /*                        IMPRESION DE DATOS GENERALES                        */
       /* -------------------------------------------------------------------------- */
 
+      if (respuesta["estado"] == 4) {
+        $("#espText").val(respuesta["comentarioesp"]);
+        $("#motivoHideesp").show();
+        $("#motivoHiderech").hide();
+        $("#Benespera").hide();
+        $("#Brechazar").hide();
+      } else if (respuesta["estado"] == 3) {
+        $("#rechazoText").val(respuesta["comentariorerch"]);
+        $("#motivoHiderech").show();
+        $("#motivoHideesp").hide();
+        $("#Benespera").hide();
+        $("#Brechazar").hide();
+      } else if (respuesta["estado"] == 1) {
+        $("#motivoHiderech").hide();
+        $("#motivoHideesp").hide();
+        $("#Benespera").hide();
+        $("#Brechazar").hide();
+      } else if (respuesta["estado"] == 2) {
+        $("#motivoHiderech").hide();
+        $("#motivoHideesp").hide();
+        $("#Benespera").hide();
+        $("#Brechazar").hide();
+      } else if (respuesta["estado"] == 5) {
+        $("#motivoHiderech").hide();
+        $("#motivoHideesp").hide();
+        $("#Benespera").hide();
+        $("#Brechazar").hide();
+      }
+
       $("#idSolicitud2").val(respuesta["id"]);
       $("#proveedorNS").html(respuesta["nombre_prov"]);
       $("#proveedorNS").val(respuesta["nombre_prov"]);
@@ -361,54 +390,6 @@ $("#cuadroM").on("click", function(event) {
 /* -------------------------------------------------------------------------- */
 
 /* -------------------------------------------------------------------------- */
-/*                  MOSTRAR Y OCULTAR COMENTARIOS CHECK BOX                   */
-/* -------------------------------------------------------------------------- */
-
-$(document).ready(function() {
-  $("#aprobarCheckbox").change(function() {
-    if ($(this).is(":checked")) {
-      $("#Baprobar").show();
-      $("#rechazarCheckbox").prop("checked", false);
-      $("#enesperaCheckbox").prop("checked", false);
-      $("#inputContainer").hide();
-      $("#inputContainer2").hide();
-      $("#Benespera").hide();
-      $("#Brechazar").hide();
-    } else {
-      $("#Baprobar").hide();
-    }
-  });
-
-  $("#rechazarCheckbox").change(function() {
-    if ($(this).is(":checked")) {
-      $("#inputContainer").show();
-      $("#inputContainer2").hide();
-      $("#Baprobar").hide();
-      $("#enesperaCheckbox").prop("checked", false);
-      $("#Benespera").hide();
-      $("#Brechazar").show();
-    } else {
-      $("#inputContainer").hide();
-      $("#inputContainer2").hide();
-      $("#Brechazar").hide();
-    }
-  });
-
-  $("#enesperaCheckbox").change(function() {
-    if ($(this).is(":checked")) {
-      $("#inputContainer2").show();
-      $("#Baprobar").hide();
-      $("#rechazarCheckbox").prop("checked", false);
-      $("#Benespera").show();
-      $("#Brechazar").hide();
-    } else {
-      $("#inputContainer2").hide();
-      $("#Benespera").hide();
-    }
-  });
-});
-
-/* -------------------------------------------------------------------------- */
 /*                             FUNCION DE AUTOSUMA                            */
 /* -------------------------------------------------------------------------- */
 
@@ -544,104 +525,149 @@ $(".TB").on("click", ".btnImprimirSolicitud", function() {
   );
 });
 
-
 /* -------------------------------------------------------------------------- */
 /*                       Eliminar solicitud compras                      */
 /* -------------------------------------------------------------------------- */
-$(".TB").on("click", ".BorrarM", function(){
-
+$(".TB").on("click", ".BorrarM", function() {
   var Mid = $(this).attr("Mid");
 
   Swal.fire({
-      title: '¿Estas realmente seguro?',
-      text: "No podras revertir este proceso!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Sí!'
-    }).then(function(result) {
-      if (result.value) {
-          window.location = "index.php?url=manager&Mid="+Mid;
-      
-      }
-    })
-        
-    
-})
-
+    title: "¿Estas realmente seguro?",
+    text: "No podras revertir este proceso!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Sí!"
+  }).then(function(result) {
+    if (result.value) {
+      window.location = "index.php?url=manager&Mid=" + Mid;
+    }
+  });
+});
 
 /* -------------------------------------------------------------------------- */
 /*                      ELIMINAR SOLICITUD COMPRAS                            */
 /* -------------------------------------------------------------------------- */
-$(".TB").on("click", ".BorrarCO", function(){
-
+$(".TB").on("click", ".BorrarCO", function() {
   var COid = $(this).attr("COid");
 
   Swal.fire({
-      title: '¿Estas realmente seguro?',
-      text: "No podras revertir este proceso!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Sí!'
-    }).then(function(result) {
-      if (result.value) {
-          window.location = "index.php?url=solicitud-compraCO&COid="+COid;
-      
-      }
-    })
-        
-})
-
-
+    title: "¿Estas realmente seguro?",
+    text: "No podras revertir este proceso!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Sí!"
+  }).then(function(result) {
+    if (result.value) {
+      window.location = "index.php?url=solicitud-compraCO&COid=" + COid;
+    }
+  });
+});
 
 /* -------------------------------------------------------------------------- */
 /*                      ELIMINAR SOLICITUD DIRECTOR                            */
 /* -------------------------------------------------------------------------- */
-$(".TB").on("click", ".BorrarD", function(){
-
+$(".TB").on("click", ".BorrarD", function() {
   var Did = $(this).attr("Did");
 
   Swal.fire({
-      title: '¿Estas realmente seguro?',
-      text: "No podras revertir este proceso!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Sí!'
-    }).then(function(result) {
-      if (result.value) { 
-          window.location = "index.php?url=orden-compraD&Did="+Did;
-      
-      }
-    })
-        
-})
-
+    title: "¿Estas realmente seguro?",
+    text: "No podras revertir este proceso!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Sí!"
+  }).then(function(result) {
+    if (result.value) {
+      window.location = "index.php?url=orden-compraD&Did=" + Did;
+    }
+  });
+});
 
 /* -------------------------------------------------------------------------- */
 /*                      ELIMINAR SOLICITUD MANAGER                            */
 /* -------------------------------------------------------------------------- */
-$(".TB").on("click", ".BorrarMA", function(){
-
+$(".TB").on("click", ".BorrarMA", function() {
   var MAid = $(this).attr("MAid");
 
   Swal.fire({
-      title: '¿Estas realmente seguro?',
-      text: "No podras revertir este proceso!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Sí!'
-    }).then(function(result) {
-      if (result.value) {
-          window.location = "index.php?url=manager&MAid="+MAid;
-      
-      }
-    })
-        
-})
+    title: "¿Estas realmente seguro?",
+    text: "No podras revertir este proceso!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Sí!"
+  }).then(function(result) {
+    if (result.value) {
+      window.location = "index.php?url=manager&MAid=" + MAid;
+    }
+  });
+});
+
+/* -------------------------------------------------------------------------- */
+/*                        CONVERTIR EN MAYUSCULAS INPUT                       */
+/* -------------------------------------------------------------------------- */
+
+function convertirAMayusculas(inputElement) {
+  // Obtener el valor actual del campo de entrada
+  const textoIngresado = inputElement.value;
+
+  // Convertir el texto a mayúsculas
+  const textoEnMayusculas = textoIngresado.toUpperCase();
+
+  // Asignar el texto en mayúsculas al campo de entrada
+  inputElement.value = textoEnMayusculas;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                  MOSTRAR Y OCULTAR COMENTARIOS CHECK BOX                   */
+/* -------------------------------------------------------------------------- */
+
+$(document).ready(function() {
+  $("#aprobarCheckbox").change(function() {
+    if ($(this).is(":checked")) {
+      $("#Baprobar").show();
+      $("#rechazarCheckbox").prop("checked", false);
+      $("#enesperaCheckbox").prop("checked", false);
+      $("#inputContainer").hide();
+      $("#inputContainer2").hide();
+      $("#Benespera").hide();
+      $("#Brechazar").hide();
+    } else {
+      $("#Baprobar").hide();
+    }
+  });
+
+  $("#rechazarCheckbox").change(function() {
+    if ($(this).is(":checked")) {
+      $("#inputContainer").show();
+      $("#inputContainer2").hide();
+      $("#Baprobar").hide();
+      $("#enesperaCheckbox").prop("checked", false);
+      $("#Benespera").hide();
+      $("#Brechazar").show();
+    } else {
+      $("#inputContainer").hide();
+      $("#inputContainer2").hide();
+      $("#Brechazar").hide();
+    }
+  });
+
+  $("#enesperaCheckbox").change(function() {
+    if ($(this).is(":checked")) {
+      $("#inputContainer2").show();
+      $("#Baprobar").hide();
+      $("#rechazarCheckbox").prop("checked", false);
+      $("#Benespera").show();
+      $("#Brechazar").hide();
+    } else {
+      $("#inputContainer2").hide();
+      $("#Benespera").hide();
+    }
+  });
+});
