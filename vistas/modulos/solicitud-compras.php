@@ -127,12 +127,12 @@
                                             <div class="btn-group">
                                                 <?php echo ' <button class="btn btn-warning btnVistaSolicitud" data-bs-toggle="modal" data-bs-target="#solicitudCom22"  idSolicitud="' . $value["id"] . '"><i class="lni lni-eye"></i></button>
                                            <button class="btn btn-danger BorrarM" Mid="' . $value["id"] . '"><i class="fadeIn animated bx bx-trash-alt"></i></button>' ?>
-                                                
-                                                <?php if($value['estado'] == 1 || $value['estado'] == 3 || $value['estado'] == 4){
-                                                    echo'<button  class="btn btn-secondary btnImprimirSolicitud" idSolicitudFac="' . $value['id'] . '" title="Solicitud de compra PDF"><i class="bi bi-file-earmark-pdf"></i></button>  ';
+
+                                                <?php if ($value['estado'] == 1 || $value['estado'] == 3 || $value['estado'] == 4) {
+                                                    echo '<button  class="btn btn-secondary btnImprimirSolicitud" idSolicitudFac="' . $value['id'] . '" title="Solicitud de compra PDF"><i class="bi bi-file-earmark-pdf"></i></button>  ';
                                                 }
-                                                
-                                                if($value['estado'] == 2 || $value['estado'] == 5 ){
+
+                                                if ($value['estado'] == 2 || $value['estado'] == 5) {
                                                     echo '<button style="background-color:#85929E;" class="btn btn-secondary btnImprimirFactura" idSolicitudFac="' . $value['id'] . '" title="Orden de compra PDF"><i class="bi bi-file-earmark-pdf"></i></button>';
                                                 } ?>
                                             </div>
@@ -2571,13 +2571,8 @@
 
 
                                 </div>
-                                <!-- -------------------------------------------------------------------------- -->
-                                <!-- addInput agrega filas a tabla de prouctos                                  -->
-                                <!-- -------------------------------------------------------------------------- -->
-
-                                <!-- <button type="button" class="btn btn-warning" style="margin-left: 0.5%;" title="Agregar fila" onclick="addInput(this,'inputSummary')"><i class="lni lni-plus"></i></button>
-                                <label for="" class="form-label" style="color:#c2c2c2;">&ensp;Agregar solo filas necesarias</label> -->
-
+                          
+                            
                             </div>
                         </div>
                     </div>
@@ -2624,11 +2619,6 @@
                                     <a href="" download="" id="cuadroM">Archivo adjunto</a>
                                     <br>
                                     <div class="form-check mb-3">
-
-                                        <!-- <input type="checkbox" name="novalido1"  id="novalido1"value="Option 1">
-                      <label class="form-check-label" >No valido</label> -->
-
-
                                     </div>
                                     <div class="progress my-0" style="height: 6px;">
 
@@ -2646,10 +2636,9 @@
                                     <br>
                                     <a href="" download="" id="ofertaP">Archivo adjunto</a>
                                     <div class="form-check mb-3">
-                                        <!-- id="validationFormCheck1" -->
+
                                         <br>
-                                        <!-- <input type="checkbox" name="novalido2" id="novalido2" value="Option 1">
-                            <label class="form-check-label" >No valido</label> -->
+
 
                                     </div>
                                     <?php
@@ -2673,12 +2662,8 @@
                                     <a href="" download="" id="especifiT">Archivo adjunto</a>
                                     <div class="form-check mb-3">
                                         <br>
-                                        <!-- <input type="checkbox" name="novalido3" id="novalido3" value="Option 1">
-                         
-                          <label class="form-check-label">No valido</label>  -->
-
                                     </div>
-                                    <!-- <h4 class="mb-2 text-success">$85K</h4> -->
+
                                     <div class="progress my-0" style="height: 6px;">
 
                                     </div>
@@ -2687,44 +2672,50 @@
                         </div>
 
 
-
-
-
-
                     </div><!--end row-->
 
-
-
-                    <!-- <div class="col-12" id="inputContainer" style="display: none;">
-                        <label class="form-label">Comentarios</label>
-                        <textarea class="form-control" rows="4" cols="4" id="comentarioRechazo" name="comentarioRechazo"></textarea>
-                    </div>
-
-                    <div class="col-12">
-
-                        <br><br>
-                        <label for="rechazarCheckbox">Rechazar solicitud</label>
-                        <input type="checkbox" id="rechazarCheckbox"><br>
-
-                    </div> -->
                 </div>
             </div>
 
-            <!-- <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
-                <button id="Brechazar" class="btn btn-danger btn-md btn-block " style="display: none;" type="submit">Rechazar solicitud</button>
+            <div id="motivoHiderech" style="display: none; justify-content: center;">
+                <div class="card radius-10" style="width: 60%">
 
-                <button id="Baprobar" class="btn btn-primary btn-md btn-block" style="display: block;" type="submit">Aprobar solicitud</button>
-                <br>
-            </div> -->
+                    <label class="form-label">Motivo</label>
+                    <div>
+                        <textarea style="height: 108px; width: 164%;" id="rechazoText" type="" class="form-control" rows="4" cols="4">
 
-            <?php
+                    </textarea>
+                    </div>
+                    <div class="fs-5 ms-auto">
+                        <ion-icon name="ellipsis-horizontal-sharp" role="img" class="md hydrated" aria-label="ellipsis horizontal sharp"></ion-icon>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center mt-3">
 
-            // $actualizarSolicitarAR = new SolicitudC();
-            // $actualizarSolicitarAR->ActualizarARSolicitudC();
+                </div>
 
-            ?>
+            </div>
 
+            <div id="motivoHideesp" style="display: none; justify-content: center;">
+                <div class="card radius-10" style="width: 60%">
+
+                    <label class="form-label">Motivo</label>
+                    <div>
+                        <textarea style="height: 108px; width: 164%;" id="espText" type="" class="form-control" rows="4" cols="4">
+
+                    </textarea>
+                    </div>
+                    <div class="fs-5 ms-auto">
+                        <ion-icon name="ellipsis-horizontal-sharp" role="img" class="md hydrated" aria-label="ellipsis horizontal sharp"></ion-icon>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center mt-3">
+
+                </div>
+
+            </div>
+           
             </form>
 
         </div>
