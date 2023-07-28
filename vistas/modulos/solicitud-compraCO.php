@@ -2707,22 +2707,45 @@
                 </div>
             </div>
 
-            <!-- <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            
+            <div  id="motivoHiderech" style="display: none; justify-content: center;">
+                <div class="card radius-10" style="width: 60%">
 
+                    <label class="form-label">Motivo</label>
+                    <div>
+                        <textarea style="height: 108px; width: 164%;" id ="rechazoText" type="" class="form-control" rows="4" cols="4">
 
+                    </textarea>
+                    </div>
+                    <div class="fs-5 ms-auto">
+                        <ion-icon name="ellipsis-horizontal-sharp" role="img" class="md hydrated" aria-label="ellipsis horizontal sharp"></ion-icon>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center mt-3">
 
-                <button id="Brechazar" class="btn btn-danger btn-md btn-block " style="display: none;" type="submit">Rechazar solicitud</button>
+                </div>
 
-                <button id="Baprobar" class="btn btn-primary btn-md btn-block" style="display: block;" type="submit">Aprobar solicitud</button>
-                <br>
-            </div> -->
+            </div>
 
-            <?php
+            <div  id="motivoHideesp" style="display: none; justify-content: center;">
+                <div class="card radius-10" style="width: 60%">
 
-            // $actualizarSolicitarAR = new SolicitudC();
-            // $actualizarSolicitarAR->ActualizarARSolicitudC();
+                    <label class="form-label">Motivo</label>
+                    <div>
+                        <textarea style="height: 108px; width: 164%;" id ="espText" type="" class="form-control" rows="4" cols="4">
 
-            ?>
+                    </textarea>
+                    </div>
+                    <div class="fs-5 ms-auto">
+                        <ion-icon name="ellipsis-horizontal-sharp" role="img" class="md hydrated" aria-label="ellipsis horizontal sharp"></ion-icon>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center mt-3">
+
+                </div>
+
+            </div>
+                                 
 
             </form>
 
