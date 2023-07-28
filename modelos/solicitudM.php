@@ -84,7 +84,8 @@ class SolicitudM extends ConexionBD
         } else {
 
 
-            $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE status = 1  AND firma_superv = $idsuario AND estado= 1");
+            $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE status = 1 AND firma_superv = $idsuario AND estado IN (1, 5, 2)
+            ");  
 
 
 
@@ -503,7 +504,10 @@ class SolicitudM extends ConexionBD
             $pdo->close();
             $pdo = null;
 
-        } else if (isset($comentario2) && !empty($comentario2)) {
+        }
+
+
+        if (isset($comentario2) && !empty($comentario2)) {
 
             $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentariorerch = :comentariorerch, 
              comentarioesp = :comentarioesp ,  estado = 4, id_tipo_proceso= 2  WHERE id = :id");
@@ -519,7 +523,8 @@ class SolicitudM extends ConexionBD
 
             $pdo->close();
             $pdo = null;
-        } else {
+        } 
+        else {
 
             $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentariorerch = :comentariorerch, 
              comentarioesp = :comentarioesp , estado = 5, id_tipo_proceso= 2  WHERE id = :id");
