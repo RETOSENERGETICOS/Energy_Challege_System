@@ -11,7 +11,7 @@
     margin-top: 6%;">Retos Energeticos</h4>
       </a>
     </div>
-      <div class="toggle-icon ms-auto">
+     <div class="toggle-icon ms-auto">
       <ion-icon name="menu-sharp"></ion-icon>
     </div> 
   </div>
@@ -56,7 +56,8 @@
 
       if (
         $_SESSION["rol"] == "Administrador" ||  $_SESSION["rol"] == "Compras"
-        ||  $_SESSION["rol"] == "Manager" ||  $_SESSION["rol"] == "Director") {
+        ||  $_SESSION["rol"] == "Manager" ||  $_SESSION["rol"] == "Director"
+      ) {
         echo '<li> <a href="proveedores">
                         <i class="lni lni-delivery"></i>&nbsp Proveedores
                           </a>
@@ -76,7 +77,8 @@
 
     if (
       $_SESSION["rol"] == "Administrador" || $_SESSION["rol"] == "Empleado"
-      || $_SESSION["rol"] == "Compras"  || $_SESSION["rol"] == "Director") {
+      || $_SESSION["rol"] == "Compras"  || $_SESSION["rol"] == "Director"
+    ) {
       echo '   
        <li>
                 <a class="has-arrow" href="javascript:;">
@@ -87,8 +89,8 @@
                 </a>
                 <ul>';
       if (
-        $_SESSION["rol"] == "Administrador" || $_SESSION["rol"] == "Empleado"
-        || $_SESSION["rol"] == "Compras") {
+        $_SESSION["rol"] == "Compras"
+      ) {
         echo '
                   <li> <a href="solicitud-compraCO">
                   <i class="fadeIn animated bx bx-receipt"></i>&nbsp Solicitud de compra
@@ -97,9 +99,21 @@
 
         </li>';
       }
+      if ($_SESSION["rol"] == "Administrador" ||
+        $_SESSION["rol"] == "Empleado"
+      ) {
+        echo '
+                  <li> <a href="solicitud-compras">
+                  <i class="fadeIn animated bx bx-receipt"></i>&nbsp Solicitud de compra
+                    </a>
+                  </li>
+
+        </li>';
+      }
 
       if (
-        $_SESSION["rol"] == "Administrador" || $_SESSION["rol"] == "Director") {
+        $_SESSION["rol"] == "Administrador" || $_SESSION["rol"] == "Director"
+      ) {
         echo '<li> <a href="orden-compraD">
                            <i class="fadeIn animated bx bx-clipboard"></i>&nbsp Orden de compra
                              </a>
@@ -129,27 +143,27 @@
     }
 
     if ($_SESSION["rol"] == "Administrador") {
-    //  echo '<li class="menu-label">Paginas</li>
+      echo '<li class="menu-label">Paginas</li>
 
-      //      </li>
-        //    <li>
-          //    <a class="has-arrow" href="javascript:;">
-            //    <div class="parent-icon">
-              //    <ion-icon name="map-sharp"></ion-icon>
-                //</div>
-                //<div class="menu-title">------</div>
-              //</a>
-              //<ul>
-                //<li> <a href="map-google-maps.html">
-                  //  <ion-icon name="ellipse-outline"></ion-icon>-----
-                  //</a>
-                //</li>
-                //<li> <a href="map-vector-maps.html">
-                   // <ion-icon name="ellipse-outline"></ion-icon>-----
-                  //</a>
-                //</li>
-              //</ul>
-            //</li>';
+            </li>
+            <li>
+              <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon">
+                  <ion-icon name="map-sharp"></ion-icon>
+                </div>
+                <div class="menu-title">------</div>
+              </a>
+              <ul>
+                <li> <a href="map-google-maps.html">
+                    <ion-icon name="ellipse-outline"></ion-icon>-----
+                  </a>
+                </li>
+                <li> <a href="map-vector-maps.html">
+                    <ion-icon name="ellipse-outline"></ion-icon>-----
+                  </a>
+                </li>
+              </ul>
+            </li>';
     }
 
     ?>
