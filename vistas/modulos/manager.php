@@ -106,8 +106,8 @@
                                 $anio = date('Y', strtotime($fecha));
                                 $ultimosDosDigitos = substr($anio, -2);
                                 /* -------------------------------------------------------------------------- */
-                                /*abrimos un foreach con la variable respuesta traiga un echo con lo que tenemos
-                                  como registros en la tabla                                                  */
+                                /*abrimos un foreach con la variable respuesta traiga un echo con los
+                                  registros en la tabla                                                  */
                                 /* -------------------------------------------------------------------------- */
                                 $codigo = 870;
 
@@ -2706,8 +2706,46 @@
                 </div>
             </div>
 
+            <div id="motivoHiderech" style="display: none; justify-content: center;">
+                <div class="card radius-10" style="width: 60%">
+
+                    <label class="form-label">Motivo</label>
+                    <div>
+                        <textarea style="height: 108px; width: 164%;" id="rechazoText" type="" class="form-control" rows="4" cols="4">
+
+                    </textarea>
+                    </div>
+                    <div class="fs-5 ms-auto">
+                        <ion-icon name="ellipsis-horizontal-sharp" role="img" class="md hydrated" aria-label="ellipsis horizontal sharp"></ion-icon>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center mt-3">
+
+                </div>
+
+            </div>
+
+            <div id="motivoHideesp" style="display: none; justify-content: center;">
+                <div class="card radius-10" style="width: 60%">
+
+                    <label class="form-label">Motivo</label>
+                    <div>
+                        <textarea style="height: 108px; width: 164%;" id="espText" type="" class="form-control" rows="4" cols="4">
+
+                    </textarea>
+                    </div>
+                    <div class="fs-5 ms-auto">
+                        <ion-icon name="ellipsis-horizontal-sharp" role="img" class="md hydrated" aria-label="ellipsis horizontal sharp"></ion-icon>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center mt-3">
+
+                </div>
+
+            </div>
+
             <div class="card radius-10">
-                <div class="card-body">
+                <div class="col-12" style="margin: 0 auto;">
                     <div class="col-12" id="inputContainer" style="display: none;">
                         <label class="form-label">Comentarios</label>
                         <textarea class="form-control" rows="4" cols="4" id="comentarioRechazo" name="comentarioRechazo"></textarea>
@@ -2715,46 +2753,49 @@
 
                     <div class="col-12" id="inputContainer2" style="display: none;">
                         <label class="form-label">Comentarios</label>
-                        <textarea class="form-control" rows="4" cols="4" id="comentarioenaceptar" name="comentarioenaceptarr"></textarea>
+                        <textarea class="form-control" rows="4" cols="4" id="comentarioenespera" name="comentarioenespera"></textarea>
                     </div>
+
+
+                    <br><br>
+                </div>
+
+                <div class="card-body">
+
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-3 g-3">
 
-                        <br><br>
-                        <div class="col-12">
+
+
+
+                        <div class="col-12" style="margin: 0 auto;">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="aprobarCheckbox" name="comentarioenaceptar" value="1">
+                                <input class="form-check-input" type="checkbox" id="aprobarCheckbox">
                                 <label class="form-check-label" for="aprobarCheckbox">Aprobar solicitud</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="rechazarCheckbox" name="comentarioRechazo" value="2">
+                                <input class="form-check-input" type="checkbox" id="rechazarCheckbox">
                                 <label class="form-check-label" for="rechazarCheckbox">Rechazar solicitud</label>
                             </div>
-
+                            <!-- <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="enesperaCheckbox">
+                                <label class="form-check-label" for="enesperaCheckbox">En espera</label>
+                            </div> -->
                         </div>
-
-
-
-                    </div><!--end row-->
-
+                    </div>
                 </div>
-            </div>
 
 
-            <div class="col-12" id="inputContainer" style="display: none;">
-                <label class="form-label">Comentarios</label>
-                <textarea class="form-control" rows="4" cols="4" id="comentarioRechazo" name="comentarioRechazos"></textarea>
-
-            </div>
+            </div><!--end row-->
 
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
-
-                <input type="hidden" class="form-control" rows="4" cols="4" id="aceptar " name="aceptar"></input>
-                <button id="Brechazar" value="R" name="comentarioR" class="btn btn-danger btn-md btn-block " style="display: none;" type="submit">Rechazar solicitud</button>
-
-                <button id="Baprobar" value="ace" name="comentarioenace" class="btn btn-primary btn-md btn-block" style="display: none;" type="submit">Aprobar solicitud</button>
+                <button id="Brechazar" class="btn btn-danger btn-md btn-block " style="display: none;" type="submit">Rechazar solicitud</button>
+                <button id="Baprobar" class="btn btn-primary btn-md btn-block" style="display: none;" type="submit">Aprobar solicitud</button>
+                <!-- <button id="Benespera" class="btn btn-warning btn-md btn-block" style="display: none;" type="submit">En espera</button> -->
                 <br>
             </div>
+
+           
 
             <?php
 
