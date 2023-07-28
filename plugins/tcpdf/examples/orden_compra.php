@@ -325,7 +325,7 @@ EOF;
         <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d}</td>
         <td style="text-align:center; font-size:8px; width:48px;border:1px solid black;">{$c}</td>
         <td style="text-align:center; font-size:8px; border:1px solid black;">{$p}</td>
-        <td style="text-align:center; font-size:8px; border:1px solid black;">{$t}</td>
+        <td style="text-align:center; font-size:8px; border:1px solid black;">{$t}%</td>
         <td style="text-align:center; font-size:8px; border:1px solid black;">{$to}</td>
         </tr>
         EOF;
@@ -338,7 +338,7 @@ EOF;
             <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d2}</td>
             <td style="text-align:center; font-size:8px; border:1px solid black;">{$c2}</td>
             <td style="text-align:center; font-size:8px; border:1px solid black;">{$p2}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t2}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t2}%</td>
             <td style="text-align:center; font-size:8px; border:1px solid black;">{$to2}</td>
             </tr>
             EOF;
@@ -351,7 +351,7 @@ EOF;
             <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d3}</td>
             <td style="text-align:center; font-size:8px; border:1px solid black;">{$c3}</td>
             <td style="text-align:center; font-size:8px; border:1px solid black;">{$p3}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t3}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t3}%</td>
             <td style="text-align:center; font-size:8px; border:1px solid black;">{$to3}</td>
             </tr>
             EOF;
@@ -366,7 +366,7 @@ EOF;
             <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d4}</td>
             <td style="text-align:center; font-size:8px; border:1px solid black;">{$c4}</td>
             <td style="text-align:center; font-size:8px; border:1px solid black;">{$p4}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t4}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t4}%</td>
             <td style="text-align:center; font-size:8px; border:1px solid black;">{$to4}</td>
             </tr>
             EOF;
@@ -380,7 +380,7 @@ EOF;
             <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d5}</td>
             <td style="text-align:center; font-size:8px; border:1px solid black;">{$c5}</td>
             <td style="text-align:center; font-size:8px; border:1px solid black;">{$p5}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t5}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t5}%</td>
             <td style="text-align:center; font-size:8px; border:1px solid black;">{$to5}</td>
             </tr>
             EOF;
@@ -394,7 +394,7 @@ EOF;
             <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d6}</td>
             <td style="text-align:center; font-size:8px; border:1px solid black;">{$c6}</td>
             <td style="text-align:center; font-size:8px; border:1px solid black;">{$p6}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t6}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t6}%</td>
             <td style="text-align:center; font-size:8px; border:1px solid black;">{$to6}</td>
             </tr>
             EOF;
@@ -408,7 +408,7 @@ EOF;
             <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d7}</td>
             <td style="text-align:center; font-size:8px; border:1px solid black;">{$c7}</td>
             <td style="text-align:center; font-size:8px; border:1px solid black;">{$p7}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t7}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t7}%</td>
             <td style="text-align:center; font-size:8px; border:1px solid black;">{$to7}</td>
             </tr>
             EOF;
@@ -422,7 +422,7 @@ EOF;
             <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d8}</td>
             <td style="text-align:center; font-size:8px; border:1px solid black;">{$c8}</td>
             <td style="text-align:center; font-size:8px; border:1px solid black;">{$p8}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t8}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t8}%</td>
             <td style="text-align:center; font-size:8px; border:1px solid black;">{$to8}</td>
             </tr>
             EOF;
@@ -436,7 +436,7 @@ EOF;
             <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d9}</td>
             <td style="text-align:center; font-size:8px; border:1px solid black;">{$c9}</td>
             <td style="text-align:center; font-size:8px; border:1px solid black;">{$p9}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t9}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t9}%</td>
             <td style="text-align:center; font-size:8px; border:1px solid black;">{$to9}</td>
             </tr>
             EOF;
@@ -449,7 +449,7 @@ EOF;
             <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d10}</td>
             <td style="text-align:center; font-size:8px; border:1px solid black;">{$c10}</td>
             <td style="text-align:center; font-size:8px; border:1px solid black;">{$p10}</td>
-            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t10}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t10}%</td>
             <td style="text-align:center; font-size:8px; border:1px solid black;">{$to10}</td>
             </tr>
             EOF;
