@@ -195,7 +195,7 @@
                         <div class="card-body">
                             <div class="p-4 border rounded">
                                 <form id="solicitante" class="row g-3 needs-validation " method="post" enctype="multipart/form-data">
-                                    <div class="modal-header">
+                                    <div class="modal-header" style="margin-left:-3%;">
                                         <label for="validationDefault01" class="form-label">PO#:</label>
                                         <input style="width: 18%; margin-right: 77%;" type="text" class="form-control" value="" name="codigoN" id="validationDefault0" required>
                                     </div>
