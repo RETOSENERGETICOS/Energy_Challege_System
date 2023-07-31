@@ -26,7 +26,7 @@
               <div class="parent-icon">
                 <ion-icon name="briefcase-sharp"></ion-icon>
               </div>
-              <div class="menu-title">Herramientas</div>
+              <div class="menu-title">Módulos</div>
             </a>
   
             <ul>             
