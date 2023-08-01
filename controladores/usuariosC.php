@@ -30,7 +30,7 @@ class UsuariosC
 					$_SESSION["iniciales_firma"] = $respuesta["iniciales_firma"];
 
 					echo '<script>                    
-                    window.location = "https://appcompras.grretosenergeticos.com/inicio";
+                    window.location = "inicio";
                     </script>';
 				} else {
 					echo ' <div class="alert alert-dismissible fade show py-2 bg-danger">
@@ -127,37 +127,26 @@ class UsuariosC
 			$tablaBD = "usuarios";
 
 			//Creamos una nueva variable llamada datosC que sera igual a un array con propiedades la primera sera la de "usuario" el valor de esa prodiedad sera lo que venga en la variable $_POST segunda propiedad sera clave y le asiganeremos el valor de lo que venga en la variable post $_POST["claveN"] que viene del input del formulario para agregar el usuario
-			$datosC = array("usuario" => $_POST["usuarioN"], "nombre" => $_POST["nombreN"],
-			 "cargo" => $_POST["cargoN"], "correo" => $_POST["correoN"], 
-			 "clave" => $_POST["claveN"], "foto" => $rutaImg, "rol" => $_POST["rolN"],
-			 "firma" => $rutaImgf, "iniciales_firma" => $_POST["iniciales_firmaN"]);
+			$datosC = array(
+				"usuario" => $_POST["usuarioN"], "nombre" => $_POST["nombreN"],
+				"cargo" => $_POST["cargoN"], "correo" => $_POST["correoN"],
+				"clave" => $_POST["claveN"], "foto" => $rutaImg, "rol" => $_POST["rolN"],
+				"firma" => $rutaImgf, "iniciales_firma" => $_POST["iniciales_firmaN"]
+			);
 
 			//solicitamos una respuesta hacia nuestro modelo cola clase UsuariosM y la conectamos con la funcion CrearUsuariosM y mandando como  parametros $tablaBD y $datosC
 			$respuesta = UsuariosM::CrearUsuariosM($tablaBD, $datosC);
 
 			//creamos condicion lo que venga en respuesta es igual a verdadero entonces
-			if ($respuesta == "ok" ) {
+			if ($respuesta == "ok") {
 
 				echo '<script>
-			
-				Swal.fire({
-					
-					title: "Usuario ha sido agregado correctamente!",
-					icon: "success",
-					confirmButtonText: "Cerrar"
-				  });
 				  window.location = "usuarios";	
 						</script>';
 			} else {
 
 				echo '<script>
 			
-				Swal.fire({
-					
-					title: "Hubo un problema al agregar usuario!",
-					icon: "error",
-					confirmButtonText: "Cerrar"
-				  });
 				  window.location = "usuarios";	
 						
 						</script>';
@@ -214,6 +203,9 @@ class UsuariosC
 		}
 	}
 
+	//<!-- -------------------------------------------------------------------------- -->
+	//<!--                            Modal editar usuarios                           -->
+	//<!-- -------------------------------------------------------------------------- -->
 	public function ActualizarUsuariosC()
 	{
 
@@ -280,17 +272,7 @@ class UsuariosC
 
 			if ($respuesta == "ok") {
 
-				echo '
-				<div class="alert alert-dismissible fade show py-2 bg-success">
-                <div class="d-flex align-items-center">
-                  <div class="fs-3 text-white"><ion-icon name="checkmark-circle-sharp" role="img" class="md hydrated" aria-label="checkmark circle sharp"></ion-icon>
-                  </div>
-                  <div class="ms-3">
-                    <div class="text-white">Usuario actualizado con exito!</div>
-                  </div>
-                </div>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
+				echo '				
 				<script>
 						window.location ="usuarios";
 						</script>';
