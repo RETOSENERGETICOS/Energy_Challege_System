@@ -15,11 +15,6 @@
 
 <!--start wrapper-->
 <div class="wrapper">
-
-
-
-
-
     <!-- start page content wrapper-->
     <div class="page-content-wrapper">
         <!-- start page content-->
