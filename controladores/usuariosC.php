@@ -1,10 +1,6 @@
 <?php
-
-
 class UsuariosC
 {
-
-
 	static public function IngresoUsuariosC()
 	{
 		if (isset($_POST["usuario-Ing"])) {
@@ -46,8 +42,7 @@ class UsuariosC
 			}
 		}
 	}
-
-
+	
 	static public function VerUsuariosC()
 	{
 
